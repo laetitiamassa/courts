@@ -1,0 +1,59 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>Editez votre profil</h1>
+  </div>
+
+  <div class="panel-body">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control", :autofocus => true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: "form-control", :autofocus => true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: "form-control", :autofocus => true %>
+  </div>
+
+
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div class="form-group">
+      En attente de confirmation pour : <%= resource.unconfirmed_email %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :password %> <i>(laissez ce champ vide si vous ne souhaitez pas le modifier)</i>
+    <%= f.password_field :password, class: "form-control", :autocomplete => "off" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_password %> <i>(Introduisez votre mot de passe actuel pour confirmer vos modifications)</i>
+    <%= f.password_field :current_password, class: "form-control" %>
+  </div>
+
+  <div><%= f.submit "Mettre à jour", class: "btn btn-primary" %></div>
+<% end %>
+</div>
+
+<div class="panel-footer">
+<h3>Supprimer mon compte</h3>
+
+<p>Malheureux ? <%= button_to "Supprimer mon compte", registration_path(resource_name), class: "btn btn-primary", :data => { :confirm => "Etes-vous sûr de vouloir effacer votre compte et toutes ses données de manière permanente ?" }, :method => :delete %></p>
+
+<%= link_to "Retour", :back %>
+</div>
+</div>

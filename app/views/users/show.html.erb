@@ -1,0 +1,67 @@
+<div class="col-md-10 col-md-offset-1">
+	<div class="panel panel-default">
+	  
+	  <div class="panel-body">
+	  	<div class="row">
+		  	<div class="col-md-2">
+		  		
+		  	</div>
+
+		  	<div class="col-md-8">
+		  		<span class="bigger">Me <%= @user.first_name %> <%= @user.last_name %></span>
+
+		  		<% if @user.street and @user.street_number %>
+		  			<% if @user.zipcode and @user.city %>
+		  				<p><%= @user.street_and_number %> | <%= @user.zipcode_and_city %></p>
+		  			<% end %>
+		  		<% end %>
+		
+					<div class="row">
+
+						<div class="col-md-3">
+							<span class="glyphicon glyphicon-envelope"></span> <%= @user.email %>
+						</div>
+						<% if @user.telephone %>
+						<div class="col-md-3">
+							<span class="glyphicon glyphicon-phone-alt"></span> <%= @user.telephone %>
+						</div>
+						<% end %>
+						<% if @user.fax %>
+						<div class="col-md-3">
+							<span class="glyphicon glyphicon-print"></span> <%= @user.fax %>
+						</div>
+						<% end %>
+						<% if @user.mobile %>
+						<div class="col-md-3">
+							<span class="glyphicon glyphicon-earphone"></span> <%= @user.mobile %>
+						</div>
+						<% end %>
+					</div>
+				</div>
+			
+				<div class="col-md-2 text-right">
+					<span class="glyphicon glyphicon-map-marker"></span>
+	        <%= @user.bar %>
+	      </div>
+    	</div>
+    </div> <!-- panel body -->
+
+		<div class="panel-footer">
+			<div class="text-right">
+				<% if @user == current_user %>
+	        <%= link_to edit_user_path(@user) do %>
+	          <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-pencil btn btn-info') -%>
+	        <% end %>
+	      
+	      <% else %>
+	        
+	        <%= link_to "mailto:#{@user.email}" do %>  
+	          <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-envelope btn btn-info') -%>
+	        <% end %>
+
+	      <% end %>
+	    </div>
+		</div> <!-- panel footer -->
+	</div>
+</div>
+

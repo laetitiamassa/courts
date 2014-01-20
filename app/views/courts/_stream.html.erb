@@ -1,0 +1,77 @@
+<h3 class="center">Introduisez votre demande de remplacement</h3>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <%= render 'shortform' %>
+  </div>
+</div>
+
+<h2 class="center">Demandes de remplacement en cours</h2>
+
+<% @courts.each do |court| %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+            
+      <div class="col-md-1 center">
+        <span class="big"><i><%= court.date.strftime('%e') %></i></span> 
+        <b><%= court.date.strftime('%B') %> 
+        <small><%= court.date.strftime('%H:%M') %></small></b> 
+      </div>
+
+      <div class="col-md-8">
+        <div class="header">
+          <span class="big">
+            <%= link_to court.jurisdiction, court %>
+          <br><small><%= court.performance %></small></span>  
+          <% if court.user.last_name %> 
+            <i>loco Me <%= link_to court.user.full_name, user_path(court.user) %></i>
+          <% else %>
+            <i>loco Me <%= link_to court.user.email, user_path(court.user) %></i>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-3 text-right">
+        <span class="glyphicon glyphicon-map-marker"></span>
+        <%= court.bar %> 
+      </div> 
+
+    </div>
+  </div>
+
+  <div class="panel-footer">
+    <div class="text-right">
+      
+      <% if court.user == current_user %>
+        <%= link_to court do %>
+          <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-eye-open btn btn-default') -%>
+        <% end %>
+        <%= link_to edit_court_path(court) do %>
+          <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-pencil btn btn-info') -%>
+        <% end %>
+  
+      
+      <% else %>
+        
+        <%= link_to court do %>
+          <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-eye-open btn btn-default') -%>
+        <% end %>
+        
+        <% if court.have_found %>
+          <%= link_to court do %>
+            <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-ok btn btn-success', :disabled=> 'disabled') -%>
+          <% end %>
+        <% else %>
+            <%= link_to "mailto:#{court.user.email}?subject=Votre%20demande%20de%20remplacemement%20via%20Courts&body=Cher%20confrère,%09%0D%0A%09%0D%0AJe%20vous%20remplacerai%20volontiers%20le%20#{court.date}.%09%0D%0A%09%0D%0ASi%20cela%20vous%20convient%20également,%20pourriez-vous%20me%20transmettre%20davantage%20d'information%20?%09%0D%0A%09%0D%0AD'avance,%20merci.%09%0D%0A%09%0D%0AVotre%20bien%20dévoué(e),%09%0D%0A%09%0D%0A#{current_user.full_name}" do %>
+              <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-ok btn btn-success') -%>
+            <% end %>
+        <% end %>
+      
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% end %> <!-- for each court -->
+
+ 

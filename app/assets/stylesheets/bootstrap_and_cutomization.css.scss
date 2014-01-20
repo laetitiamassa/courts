@@ -1,0 +1,67 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+
+$body-bg:         					#ecf0f1;
+$font-family-sans-serif:   	'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$navbar-height:             50px;
+$navbar-default-bg:         white;
+$navbar-default-brand-color: #c0392b;
+$brand-primary:            	#c0392b;
+$jumbotron-bg:             	white;
+
+@import 'bootstrap';
+
+.center {
+     text-align: center;
+}
+
+.navbar-brand {
+     font-weight: bold;
+     font-size: 2.5em;
+}
+
+.big {
+	font-size: 2em;
+}
+
+.biggy {
+	font-size: 1.5em;
+}
+
+.bigger {
+	font-size: 2.5em;
+}
+
+.brandname {
+	font-size: 6em;
+	color: #c0392b;
+	font-weight: bold;
+}
+
+.homebg {
+	margin-top: -220px;
+	margin-bottom: 50px;
+	padding-top: 290px;
+  padding-bottom: 370px;
+	color: #f8f8f8; 
+	background-image: url(image-path('intro-bg.jpg'));
+	height: 900px;
+	background-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.section-heading-spacer {
+	border-top: 3px solid #e7e7e7;
+	width: 200px;
+	float: left;
+}
+
+.banner {
+	padding: 100px 0;
+	color: #f8f8f8;
+	background-image: url(image-path('banner-bg.jpg'));
+	background-align: center;
+  background-repeat: no-repeat;
+	background-size: cover;
+}

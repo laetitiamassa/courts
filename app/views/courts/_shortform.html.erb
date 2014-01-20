@@ -1,0 +1,54 @@
+<%= form_for(@court) do |f| %>
+  <% if @court.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(court.errors.count, "error") %> prohibited this court from being saved:</h2>
+
+      <ul>
+      <% court.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field col-md-3">
+    <div class="field form-group">
+    <%= f.datetime_select :date %>
+  </div>
+  </div>
+
+
+  <div class="field col-md-2 form-group">
+    <%= f.text_field :performance, :class => "form-control input-lg", :placeholder => "Prestation" %>
+  </div>
+  <div class="field col-md-2 form-group">
+    <%= f.text_field :jurisdiction, :class => "form-control input-lg", :placeholder => "Juridiction" %>
+  </div>
+  <div class="field col-md-2 form-group">
+    <%= f.text_field :bar, :class => "form-control input-lg input-block", :placeholder => "Barreau" %>
+  </div>
+  
+  <!--
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :have_found %><br>
+    <%= f.check_box :have_found %>
+  </div>
+-->
+  <div class="field col-md-3">
+    <div class="form-actions text-right">
+      <%= f.submit 'Publier ma demande', :class => "btn btn-primary btn-lg" %>
+    </div>
+  </div>
+<% end %>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('[data-behaviour~=datepicker]').datepicker();
+  })
+</script>
