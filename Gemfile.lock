@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Nerian/bootstrap-datepicker-rails.git
-  revision: 36da72bfec5cd03341f80d89886f963a7443fed2
+  revision: 54cb6d42c5c32d91c65edbf6af0073d11fbce22d
   specs:
-    bootstrap-datepicker-rails (1.3.0.1.rc5)
+    bootstrap-datepicker-rails (1.3.0.1.rc6)
       railties (>= 3.0)
 
 GEM
