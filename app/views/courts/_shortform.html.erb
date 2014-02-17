@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field col-md-3">
+  <div class="field col-md-3 form-inline">
     <div class="field form-group">
-    <%= f.datetime_select :date %>
+    <%= f.datetime_select :date, {}, {class: "form-control input-sm"} %>
   </div>
   </div>
 
@@ -24,8 +24,9 @@
   <div class="field col-md-2 form-group">
     <%= f.text_field :jurisdiction, :class => "form-control input-lg", :placeholder => "Juridiction" %>
   </div>
+  
   <div class="field col-md-2 form-group">
-    <%= f.text_field :bar, :class => "form-control input-lg input-block", :placeholder => "Barreau" %>
+    <%= f.select :bar, @bars, {:selected => params[:bar]}, {class: "form-control input-lg"} %>
   </div>
   
   <!--

@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field form-group">
-    <%= f.datetime_select :date %>
+    <%= f.datetime_select :date, {}, {class: "form-control input-lg"} %>
   </div>
 
   <div class="field form-group">
@@ -23,7 +23,7 @@
   </div>
   
   <div class="field form-group">
-    <%= f.text_field :bar, :placeholder => "Barreau dont relève la juridiction", class: "form-control input-lg" %>
+    <%= f.select :bar, @bars, {:selected => params[:bar]}, {class: "form-control input-lg"} %>
   </div>
   <div class="field">
     Avez-vous déjà trouvé un confrère disponible ?

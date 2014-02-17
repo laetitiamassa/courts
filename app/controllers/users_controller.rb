@@ -5,10 +5,12 @@ class UsersController < ApplicationController
 
   def edit
   	@user = current_user
+    @bars = User.bars
   end
 
   def update
   	@user = User.find(params[:id])
+    @bars = User.bars
     if @user.update(user_params)
       redirect_to @user, notice: 'Your profile was successfully updated.' 
     else

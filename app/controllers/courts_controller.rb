@@ -6,6 +6,7 @@ class CourtsController < ApplicationController
   def index
     @courts = Court.active.order(:date)
     @court = current_user.courts.build if current_user
+    @bars = Court.bars
   end
 
   # GET /courts/1
@@ -16,10 +17,12 @@ class CourtsController < ApplicationController
   # GET /courts/new
   def new
     @court = current_user.courts.build
+    @bars = Court.bars
   end
 
   # GET /courts/1/edit
   def edit
+    @bars = Court.bars
   end
 
   # POST /courts

@@ -3,14 +3,15 @@
   <div class="panel-body">
     <div class="row">      
       <div class="col-md-1 center">
-        <span class="big"><i><%= @court.date.strftime('%e') %></i></span> 
-        <b><%= @court.date.strftime('%B') %> 
-        <small> <%= @court.date.strftime('%H:%M') %></small></b> 
+        <small><%= l @court.date, :format => '%A' %></small>
+        <span class="big"><i><%= l @court.date, :format => ('%e') %></i></span> 
+        <b><%= l @court.date, :format => ('%B') %> 
+        <small> <%= l @court.date, :format => ('%H:%M') %></small></b> 
       </div>
 
       <div class="col-md-8">
         <div class="header">
-          
+          <br>
             <span class="bigger"><%= @court.jurisdiction %></span>
           <br><span class="big"><small><%= @court.performance %></small></span>  
           <% if @court.user.last_name %>

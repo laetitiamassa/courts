@@ -22,7 +22,7 @@
   <% end %>
 
   <div class="field form-group">
-    <%= f.datetime_select :date %>
+    <%= f.datetime_select :date, {:order => [:day,:month,:year]}, {class: "form-control input-lg"} %>
   </div>
 
   <div class="field form-group">

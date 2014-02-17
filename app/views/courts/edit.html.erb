@@ -21,7 +21,11 @@
   <% end %>
 
   <div class="field form-group">
-    <%= f.datetime_select :date %>
+    <%= f.check_box :have_found %>
+    J'ai trouvé un confrère disponible
+  </div>
+  <div class="field form-group form-inline">
+    <%= f.datetime_select :date, {:order => [:day,:month,:year]}, {class: "form-control input-sm"} %>
   </div>
 
   <div class="field form-group">
@@ -34,10 +38,7 @@
   <div class="field form-group">
     <%= f.text_field :bar, :placeholder => "Barreau dont relève la juridiction", class: "form-control input-lg" %>
   </div>
-  <div class="field">
-    Avez-vous déjà trouvé un confrère disponible ?
-    <%= f.check_box :have_found %>
-  </div>
+  
   <br>
   <div class="form-actions">
     <%= f.submit 'Modifier la demande', :class => "btn btn-primary btn-lg" %>

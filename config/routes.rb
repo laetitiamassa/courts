@@ -1,5 +1,7 @@
 Courts::Application.routes.draw do
   
+  resources :interests
+
   get "change_passwords/edit"
   get "change_passwords/update"
   devise_for :users, :controllers => { :registrations => "registrations" }

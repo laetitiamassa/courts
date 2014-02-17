@@ -1,9 +1,14 @@
 class User < ActiveRecord::Base
+
+  BARS = ["Arlon", "BrusselsFR", "BrusselsNL", "Charleroi", "Dinant", "Eupen", "Huy", "Liege", "Marche", "Mons", "Namur", "Neufchateau", "Nivelles", "Tournai", "Verviers", "Anvers", "Brugge", "Dendermonde", "Gent", "Hasselt", "Ieper", "Kortrijk", "Leuven", "Mechelen", "Oudernaarde", "Tongeren", "Turnhout", "Veurne"]
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, 
          :recoverable, :rememberable, :trackable, :validatable
   has_many :courts
+
+  validates :bar, presence: true
 
   def full_name
   	"#{first_name} #{last_name}"
@@ -19,5 +24,11 @@ class User < ActiveRecord::Base
 
   def zipcode_and_city
   	"#{zipcode} #{city}"
+  end
+
+  def self.bars
+    BARS.map do |bar|
+      [I18n.t("bars.#{bar}"), bar]
+    end
   end
 end

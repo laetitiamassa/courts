@@ -5,122 +5,110 @@
 
   <div class="panel-body">
     <%= form_for @user, :url => user_path(@user), :html => { :method => :put } do |f| %>
- 
 
-Vous
+			<p class="lead">Vous</p>
 
-<div class="row">
-  	<div class="col-md-4">
-		  <div class="form-group">
-		    <%= f.text_field :first_name, class: "form-control input-lg", :autofocus => true, :placeholder => "prénom" %>
-		  </div>
-		</div>
+			<div class="row">
+			  	<div class="col-md-4">
+					  <div class="form-group">
+					    <%= f.text_field :first_name, class: "form-control input-lg", :autofocus => true, :placeholder => "prénom" %>
+					  </div>
+					</div>
 
-  	<div class="col-md-4">
-		  <div class="form-group">
-		    <%= f.text_field :last_name, class: "form-control input-lg", :autofocus => true, :placeholder => "nom" %>
-		  </div>
-		</div>
+			  	<div class="col-md-4">
+					  <div class="form-group">
+					    <%= f.text_field :last_name, class: "form-control input-lg", :autofocus => true, :placeholder => "nom" %>
+					  </div>
+					</div>
 
-		<div class="col-md-4">
-		  <div class="form-group">
-		    <%= f.text_field :email, class: "form-control input-lg", :autofocus => true, :placeholder => "email" %>
-		  </div>
-		</div>
+					<div class="col-md-4">
+					  <div class="form-group">
+					    <%= f.text_field :email, class: "form-control input-lg", :autofocus => true, :placeholder => "email" %>
+					  </div>
+					</div>
+			</div>
+
+			<p class="lead">Votre barreau principal</p>
+			<div class="row">
+					<div class="col-md-4">
+					  <div class="form-group">
+					    <%= f.select :bar, @bars, {:selected => params[:bar]}, {class: "form-control input-lg"} %>
+					  </div>
+					</div>
+			</div>
+
+			<p class="lead">Votre cabinet</p>
+
+			<div class="row">
+			  	<div class="col-md-4">
+			  		<div class="form-group">
+			    		<%= f.text_field :street, class: "form-control input-lg", :autofocus => true, :placeholder => "rue/avenue" %>
+			  		</div>
+					</div>
+
+				  <div class="col-md-2">
+				  	<div class="form-group">
+				    	<%= f.text_field :street_number, class: "form-control input-lg", :autofocus => true, :placeholder => "numéro" %>
+				  	</div>
+					</div>
+
+				  <div class="col-md-2">
+					  <div class="form-group">
+					    <%= f.text_field :zipcode, class: "form-control input-lg", :autofocus => true, :placeholder => "code postal" %>
+					  </div>
+					</div>
+
+				  <div class="col-md-4">
+					  <div class="form-group">
+					    <%= f.text_field :city, class: "form-control input-lg", :autofocus => true, :placeholder => "commune" %>
+					  </div>
+					</div>
+			</div>
+
+		  <div class="row">
+		  	<div class="col-md-4">
+				  <div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="glyphicon glyphicon-phone-alt"></span> 
+				    		+32
+				    	</span>
+				    	<%= f.text_field :telephone, class: "form-control input-lg", :autofocus => true, :placeholder => "téléphone fixe" %>
+				  	</div>
+		  		</div>
+				</div>
+
+			  <div class="col-md-4">
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="glyphicon glyphicon-print"></span> 
+				    		+32
+				    	</span>
+				    	<%= f.text_field :fax, class: "form-control input-lg", :autofocus => true, :placeholder => "fax" %>
+				  	</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="glyphicon glyphicon-earphone"></span> 
+					    	+32
+					    </span>
+				    	<%= f.text_field :mobile, class: "form-control input-lg", :autofocus => true, :placeholder => "téléphone mobile" %>
+				  	</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<br>
+ <%= f.submit "Mettre à jour", class: "btn btn-primary btn-lg" %>
 	</div>
 
-
-Votre barreau principal
-<div class="row">
-		<div class="col-md-4">
-		  <div class="form-group">
-		    <%= f.text_field :bar, class: "form-control input-lg", :autofocus => true, :placeholder => "barreau" %>
-		  </div>
-		</div>
-	</div>
-
-Votre cabinet
-
-<div class="row">
-  	<div class="col-md-4">
-  <div class="form-group">
-    <%= f.text_field :street, class: "form-control input-lg", :autofocus => true, :placeholder => "rue/avenue" %>
-  </div>
-</div>
-
-  <div class="col-md-2">
-  <div class="form-group">
-    <%= f.text_field :street_number, class: "form-control input-lg", :autofocus => true, :placeholder => "numéro" %>
-  </div>
-</div>
-
-  <div class="col-md-2">
-  <div class="form-group">
-    <%= f.text_field :zipcode, class: "form-control input-lg", :autofocus => true, :placeholder => "code postal" %>
-  </div>
-</div>
-
-  <div class="col-md-4">
-  <div class="form-group">
-    <%= f.text_field :city, class: "form-control input-lg", :autofocus => true, :placeholder => "commune" %>
-  </div>
-</div>
-</div>
-
-  <div class="row">
-  	<div class="col-md-4">
-  <div class="form-group">
-  	<div class="input-group">
-    <span class="input-group-addon"> <span class="glyphicon glyphicon-phone-alt"></span> +32</span>
-    <%= f.text_field :telephone, class: "form-control input-lg", :autofocus => true, :placeholder => "téléphone fixe" %>
-  </div>
-  </div>
-</div>
-
-  <div class="col-md-4">
-	<div class="form-group">
-	  <div class="input-group">
-	    <span class="input-group-addon"> <span class="glyphicon glyphicon-print"></span> +32</span>
-	    <%= f.text_field :fax, class: "form-control input-lg", :autofocus => true, :placeholder => "fax" %>
-	  </div>
-	</div>
-</div>
-
-	<div class="col-md-4">
-	<div class="form-group">
-	  <div class="input-group">
-	    <span class="input-group-addon"> <span class="glyphicon glyphicon-earphone"></span> +32</span>
-	    <%= f.text_field :mobile, class: "form-control input-lg", :autofocus => true, :placeholder => "téléphone mobile" %>
-	  </div>
-	</div>
-</div>
-</div>
-
-  <div class="form-group">
-		<div class="checkbox">
-			<%= f.check_box :dominus_litis %>
-			<%= f.label :dominus_litis %>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<div class="checkbox">
-			<%= f.check_box :loco %>
-			<%= f.label :loco %>
-		</div>
-	</div>
-
-
-
-
-
- 
-</div>
-<div class="panel-footer">
-  <div><%= f.submit "Mettre à jour", class: "btn btn-primary btn-lg" %></div>
+  
 <% end %>
 
-
-</div>
 
 </div>
