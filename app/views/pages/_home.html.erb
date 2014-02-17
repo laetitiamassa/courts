@@ -5,9 +5,27 @@
 	Répondez aux demandes de vos confrères,<br>
 	<span class="biggy">sans vous étendre</span></h1>
 	<br>
-		<p>
-			<%= link_to "Se connecter", new_user_session_path, class: "btn btn-default btn-lg" %>  <%= link_to "S'inscrire gratuitement", new_user_registration_path, class: "btn btn-primary btn-lg" %>
-		</p>     
+		<div class="form-inline">
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+          <div class="form-group">
+            <%= f.email_field :email, :autofocus => true, :placeholder => "email", class: "form-control input-lg" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.password_field :password, :placeholder => "mot de passe", class: "form-control input-lg" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.password_field :password_confirmation, :placeholder => "confirmer mot de passe", class: "form-control input-lg" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "S'inscrire gratuitement", class: "btn btn-primary btn-lg" %>
+          </div>
+        <% end %>
+		</div>     
 </div>
 
 <div class="container">
@@ -57,11 +75,11 @@ Faites-le savoir en un seul clic.</p>
                 </div>
                 <div class="col-lg-6">
                     <ul class="list-inline banner-social-buttons">
-                        <li><a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                        <li><a href="http://linkedin.com/in/laetitiamassa" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Linkedin</span></a>
                         </li>
-                        <li><a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                        <li><a href="http://facebook.com/courts.be" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
                         </li>
-                        <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        <li><a href="http://twitter.com/courtsbe" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Twitter</span></a>
                         </li>
                     </ul>
                 </div>

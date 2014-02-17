@@ -8,8 +8,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :courts
 
-  validates :bar, presence: true
-
   def full_name
   	"#{first_name} #{last_name}"
   end
