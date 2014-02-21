@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(http://fonts.googleapis.com/css?family=Yesteryear);
 
 $body-bg:         					#ecf0f1;
 $font-family-sans-serif:   	'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -32,9 +33,21 @@ $jumbotron-bg:             	white;
 }
 
 .brandname {
-	font-size: 6em;
+	font-family: 'Yesteryear', cursive;
+	font-size: 15em;
 	color: #c0392b;
-	font-weight: bold;
+}
+
+.brandname-small {
+	font-family: 'Yesteryear', cursive;
+	font-size: 3em;
+	color: #c0392b;
+}
+
+.brandlike {
+	
+	font-size: 2.5em;
+	color: #c0392b;
 }
 
 .homebg {
