@@ -12,3 +12,5 @@
  *= require_tree .
  *= require bootstrap-datepicker
  */
+
+ body { padding-bottom: 95px; }
