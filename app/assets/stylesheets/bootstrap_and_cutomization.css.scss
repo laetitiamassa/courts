@@ -9,17 +9,10 @@ $navbar-default-brand-color: #c0392b;
 $brand-primary:            	#c0392b;
 $jumbotron-bg:             	white;
 
+body { padding-bottom: 95px; }
+
 @import 'bootstrap';
 
-@font-face {
- font-family: 'Yesteryear';
- font-style: normal;
- font-weight: 400;
- src: local('Yesteryear-regular'), 
- url('/fonts/Yesteryear-regular.eot?#iefix') format('embedded-opentype'), 
- url('/fonts/Yesteryear-regular.woff') format('woff'), 
- url('/fonts/Yesteryear-regular.ttf') format('truetype');
-}
 
 .center {
      text-align: center;
