@@ -1,5 +1,5 @@
-@import url('//fonts.googleapis.com/css?family=Lato:400,700');
-@import url('//fonts.googleapis.com/css?family=Yesteryear');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css?family=Yesteryear');
 
 $body-bg:         					#ecf0f1;
 $font-family-sans-serif:   	'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -65,7 +65,7 @@ $jumbotron-bg:             	white;
 }
 
 .banner {
-	padding: 100px 0;
+	padding: 70px 0;
 	color: #f8f8f8;
 	background-image: url(image-path('banner-bg.jpg'));
 	background-align: center;
