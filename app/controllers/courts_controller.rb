@@ -1,5 +1,7 @@
 class CourtsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_court, only: [:show, :edit, :update, :destroy]
+  before_filter :correct_user, :only => [:edit, :update]
 
   # GET /courts
   # GET /courts.json
@@ -46,7 +48,7 @@ class CourtsController < ApplicationController
   def update
     respond_to do |format|
       if @court.update(court_params)
-        format.html { redirect_to @court, notice: 'Court was successfully updated.' }
+        format.html { redirect_to @court, notice: 'Votre demande est modifiee.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -73,7 +75,7 @@ class CourtsController < ApplicationController
 
     def correct_user
       @court = current_user.courts.find_by(id: params[:id])
-      redirect_to courts_path, notice: "Not authorized to edit this court" if @court.nil?
+      redirect_to courts_path, notice: "Vous devez ne pouvez modifier cette demande" if @court.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
