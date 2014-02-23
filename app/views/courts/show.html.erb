@@ -45,8 +45,8 @@
             <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-ok btn btn-success', :disabled => 'disabled') -%>
             <% end %>
           <% else %>
-            <%= link_to "mailto:#{court.user.email}?subject=Votre%20demande%20de%20remplacemement%20via%20Courts.be
-              &body=Cher%20confrère,%09%0D%0A%09%0D%0AJe%20vous%20remplacerai%20volontiers%20le%20#{l court.date, :format => :mail}.%09%0D%0A%09%0D%0ASi%20cela%20vous%20convient%20également,%20pourriez-vous%20me%20transmettre%20davantage%20d'information%20?%09%0D%0A%09%0D%0AD'avance,%20merci.%09%0D%0A%09%0D%0AVotre%20bien%20dévoué(e),%09%0D%0A%09%0D%0A#{current_user.full_name}%09%0D%0A%09%0D%0A%09%0D%0A%09%0D%0AEnvoyé%20depuis%20mon%20compte%20sur%20Courts.be" do %>
+            <%= link_to "mailto:#{@court.user.email}?subject=Votre%20demande%20de%20remplacemement%20via%20Courts.be
+              &body=Cher%20confrère,%09%0D%0A%09%0D%0AJe%20vous%20remplacerai%20volontiers%20le%20#{l @court.date, :format => :mail}.%09%0D%0A%09%0D%0ASi%20cela%20vous%20convient%20également,%20pourriez-vous%20me%20transmettre%20davantage%20d'information%20?%09%0D%0A%09%0D%0AD'avance,%20merci.%09%0D%0A%09%0D%0AVotre%20bien%20dévoué(e),%09%0D%0A%09%0D%0A#{current_user.full_name}%09%0D%0A%09%0D%0A%09%0D%0A%09%0D%0AEnvoyé%20depuis%20mon%20compte%20sur%20Courts.be" do %>
             <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-ok btn btn-success') -%>
             <% end %>
           <% end %>
