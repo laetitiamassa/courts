@@ -1,5 +1,5 @@
 class CourtsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:index]
   before_action :set_court, only: [:show, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
 
@@ -34,7 +34,7 @@ class CourtsController < ApplicationController
 
     respond_to do |format|
       if @court.save
-        format.html { redirect_to root_path, notice: 'Court was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Votre demande a bien ete creee.' }
         format.json { render action: 'show', status: :created, location: @court }
       else
         format.html { render action: 'new' }
@@ -75,7 +75,7 @@ class CourtsController < ApplicationController
 
     def correct_user
       @court = current_user.courts.find_by(id: params[:id])
-      redirect_to courts_path, notice: "Vous devez ne pouvez modifier cette demande" if @court.nil?
+      redirect_to courts_path, notice: "Vous ne pouvez modifier cette demande" if @court.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

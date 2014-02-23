@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @bars = User.bars
     if @user.update(user_params)
-      redirect_to @user, notice: 'Your profile was successfully updated.' 
+      redirect_to @user, notice: 'Votre profil a bien ete mis a jour.' 
     else
       render action: 'edit', notice: 'try again'
     end
