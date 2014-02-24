@@ -7,6 +7,12 @@
 
 <h2 class="center">Demandes de remplacement en cours</h2>
 
+<% unless @courts.present? %>
+<p class="center">Pour l'instant, tous vos confrères ont trouvé un remplaçant.
+<br>Vous pouvez repasser plus tard pour consulter les prochaines opportunités, ou indiquer votre demande de remplacement via le module ci-dessus.</p>
+
+<% else %>
+
 <% @courts.each do |court| %>
 <div class="panel panel-default">
   <div class="panel-body">
@@ -75,5 +81,7 @@
 </div>
 
 <% end %> <!-- for each court -->
+
+<% end %>
 
  
