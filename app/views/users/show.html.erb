@@ -3,11 +3,11 @@
 	  
 	  <div class="panel-body">
 	  	<div class="row">
-		  	<div class="col-md-2">
+		  	<div class="col-md-1">
 		  		
 		  	</div>
 
-		  	<div class="col-md-8">
+		  	<div class="col-md-9">
 		  		<span class="bigger">Me <%= @user.first_name %> <%= @user.last_name %></span>
 
 		  		<% if @user.street and @user.street_number %>
@@ -18,7 +18,7 @@
 		
 					<div class="row">
 
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<span class="glyphicon glyphicon-envelope"></span> <%= @user.email %>
 						</div>
 						<% if @user.telephone %>
@@ -27,7 +27,7 @@
 						</div>
 						<% end %>
 						<% if @user.fax %>
-						<div class="col-md-3">
+						<div class="col-md-2">
 							<span class="glyphicon glyphicon-print"></span> <%= @user.fax %>
 						</div>
 						<% end %>
