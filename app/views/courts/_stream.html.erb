@@ -53,9 +53,8 @@
         <%= link_to court do %>
           <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-eye-open btn btn-default') -%>
         <% end %>
-        <%= link_to edit_court_path(court) do %>
-          <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-pencil btn btn-info') -%>
-        <% end %>
+        <%= link_to "Modifier", edit_court_path(court),:class=> 'btn btn-info' -%>
+        
   
       
       <% else %>
