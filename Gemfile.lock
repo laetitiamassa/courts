@@ -65,6 +65,8 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailjet (0.0.3)
+      activesupport (>= 3.1.0)
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
@@ -139,6 +141,7 @@ DEPENDENCIES
   devise (~> 3.1.1)
   jbuilder (~> 1.2)
   jquery-rails
+  mailjet
   pg
   rails (= 4.0.0)
   rails_12factor
