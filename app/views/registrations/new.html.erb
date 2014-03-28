@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="panel panel-default">
   <div class="panel-heading">
-    <h1>Inscrivez-vous gratuitement à Courts</h1>
+    <h1><%= t("users.registration.signup_title") %></h1>
   </div>
 
   <div class="panel-body">
@@ -24,8 +24,8 @@
 		  </div>
 
 		  <div class="form-group">
-		  	<%= f.submit "S'inscrire gratuitement", class: "btn btn-primary btn-lg" %>
-		  	<br><small>(Par votre inscription, vous acceptez nos <%= link_to "conditions générales", legal_path %>)</small>
+		  	<%= f.submit t("home.signup_free"), class: "btn btn-primary btn-lg" %>
+		  	<br><small><%= t("home.you_accept_terms") %><%= link_to t("home.our_terms"), legal_path %>)</small>
 		  </div>
 		<% end %>
 	</div>

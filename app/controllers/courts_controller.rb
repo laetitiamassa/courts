@@ -34,7 +34,7 @@ class CourtsController < ApplicationController
 
     respond_to do |format|
       if @court.save
-        format.html { redirect_to root_path, notice: 'Votre demande a bien ete creee.' }
+        format.html { redirect_to root_path, notice: t("courts.well_created") }
         format.json { render action: 'show', status: :created, location: @court }
       else
         format.html { render action: 'new' }
@@ -48,7 +48,7 @@ class CourtsController < ApplicationController
   def update
     respond_to do |format|
       if @court.update(court_params)
-        format.html { redirect_to @court, notice: 'Votre demande est modifiee.' }
+        format.html { redirect_to @court, notice: t("courts.well_modified") }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -75,7 +75,7 @@ class CourtsController < ApplicationController
 
     def correct_user
       @court = current_user.courts.find_by(id: params[:id])
-      redirect_to courts_path, notice: "Vous ne pouvez modifier cette demande" if @court.nil?
+      redirect_to courts_path, notice: t("courts.forbidden_modification") if @court.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

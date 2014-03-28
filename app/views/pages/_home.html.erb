@@ -1,9 +1,8 @@
 <div class="homebg">
 	<%= image_tag("courts_logo.png") %>
-	<h1><span class="biggy">Avocat de palais ?</span><br>
-		<small>Publiez vos demandes /
-	Saisissez des opportunités de</small><br>
-	<span class="bigger">remplacements</span><br></h1>
+	<h1><span class="biggy"><%= t("home.baseline_lawyer") %></span><br>
+		<small><%= t("home.baseline_cta") %></small><br>
+	<span class="bigger"><%= t("home.baseline_replacements") %></span><br></h1>
 	<br>
 		<div class="form-inline">
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -14,17 +13,17 @@
           </div>
 
           <div class="form-group">
-            <%= f.password_field :password, :placeholder => "mot de passe", class: "form-control input-lg" %>
+            <%= f.password_field :password, :placeholder => t("home.password"), class: "form-control input-lg" %>
           </div>
 
           <div class="form-group">
-            <%= f.password_field :password_confirmation, :placeholder => "confirmer mot de passe", class: "form-control input-lg" %>
+            <%= f.password_field :password_confirmation, :placeholder => t("home.confirm_password"), class: "form-control input-lg" %>
           </div>
 
           <div class="form-group">
-            <%= f.submit "S'inscrire gratuitement", class: "btn btn-primary btn-lg" %>
+            <%= f.submit t("home.signup_free"), class: "btn btn-primary btn-lg" %>
           </div>
-          <br><span class="center"><small>(Par votre inscription, vous acceptez nos <%= link_to " conditions générales", legal_path %>)</small></span>
+          <br><span class="center"><small><%= t("home.you_accept_terms") %><%= link_to t("home.our_terms"), legal_path %>)</small></span>
         <% end %>
 		</div>     
 </div>
@@ -45,12 +44,12 @@
 	<div class="col-md-6">
 		<hr class="section-heading-spacer">
 		<div class="clearfix"></div>
-	<h2 class="big">A peine 3 mots</h2>
- 		<p class="lead">Pour publier votre demande de remplacement,<br> 3 mots suffisent : la <b>date</b>, la <b>prestation</b>, et la <b>juridiction</b>.
- 		<br>Oui, <b>c'est tout</b>.</p>
+	<h2 class="big"><%= t("home.argument1_heading") %></h2>
+ 		<p class="lead"><%= t("home.argument1_content1") %><br><%= t("home.argument1_content2") %><b><%= t("home.argument1_content3") %></b><%= t("home.argument1_content4") %><b><%= t("home.argument1_content5") %></b><%= t("home.argument1_content6") %><b><%= t("home.argument1_content7") %></b>.
+ 		<br><%= t("home.argument1_content8") %><b><%= t("home.argument1_content9") %></b>.</p>
  		
  		<br>
- 		<div class="text-center"><%= link_to "S'inscrire gratuitement", new_registration_path(resource_name), class: "btn btn-primary btn-lg" %></div>
+ 		<div class="text-center"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %></div>
  		<br>
  		<br>
  		<br>
@@ -60,11 +59,11 @@
 <div class="col-md-6">
 	<hr class="section-heading-spacer">
 	<div class="clearfix"></div>
-<h2>Consultation au clin d'oeil</h2>
-<p class="lead">Constamment dans le rush ?
-	<br>En un clin d'oeil, vous pouvez <b>voir toutes les demandes de remplacement</b> à venir, des plus urgentes aux plus prochaines.</p>
+<h2><%= t("home.argument2_heading") %></h2>
+<p class="lead"><%= t("home.argument2_content1") %>
+	<br><%= t("home.argument2_content2") %><b><%= t("home.argument2_content3") %></b><%= t("home.argument2_content4") %></p>
 	<br>
- 		<div class="text-center"><%= link_to "S'inscrire gratuitement", new_registration_path(resource_name), class: "btn btn-primary btn-lg" %></div>
+ 		<div class="text-center"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %></div>
  		<br>
  		<br>
  		<br>
@@ -92,11 +91,11 @@
  <div class="col-md-6">
 	<hr class="section-heading-spacer">
 	<div class="clearfix"></div>
-<h2>Réponse au clic</h2>
-<p class="lead">Une <b>opportunité</b> de remplacement vous intéresse ?<br>
-Grâce à un email automatiquement précomposé pour vous, manifestez votre intérêt en un seul clic.</p>
+<h2><%= t("home.argument3_heading") %></h2>
+<p class="lead"><%= t("home.argument3_content1") %><b><%= t("home.argument3_content2") %></b><%= t("home.argument3_content3") %><br>
+<%= t("home.argument3_content4") %></p>
   <br>
- <div class="text-center"><%= link_to "S'inscrire gratuitement", new_registration_path(resource_name), class: "btn btn-primary btn-lg" %></div>
+ <div class="text-center"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %></div>
 
  	<br>
  		<br>
@@ -110,7 +109,7 @@ Grâce à un email automatiquement précomposé pour vous, manifestez votre int�
 	<div class="container">
 		 <div class="row">
                 <div class="col-lg-6">
-                    <h2 class="bigger">Restons connectés :</h2>
+                    <h2 class="bigger"><%= t("home.keep_in_touch") %></h2>
                 </div>
                 <div class="col-lg-6">
                     <ul class="list-inline banner-social-buttons">
@@ -137,31 +136,31 @@ Grâce à un email automatiquement précomposé pour vous, manifestez votre int�
                 	<br>
                     <ul class="list-inline">
                         <% if user_signed_in? %>
-                            <li><%= link_to "Accueil", root_path, class: 'btn btn-link btn-primary' %></li>
+                            <li><%= link_to t("header.home"), root_path, class: 'btn btn-link btn-primary' %></li>
                             <li class="footer-menu-divider">&sdot;</li>
-                            <li><%= link_to "Mon profil", edit_user_path(current_user), class: 'btn btn-link btn-primary' %></li>
+                            <li><%= link_to t("header.profile"), edit_user_path(current_user), class: 'btn btn-link btn-primary' %></li>
                             <li class="footer-menu-divider">&sdot;</li>
-                            <li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: 'btn btn-link btn-primary' %></li>
+                            <li><%= link_to t("header.log_out"), destroy_user_session_path, method: :delete, class: 'btn btn-link btn-primary' %></li>
                              <li class="footer-menu-divider">&sdot;</li>
-                            <li><%= link_to "A propos", about_path, class: 'btn btn-link btn-primary' %></li>
+                            <li><%= link_to t("header.about"), about_path, class: 'btn btn-link btn-primary' %></li>
                                 <li class="footer-menu-divider">&sdot;</li>
-                                <li><%= link_to "Conditions", legal_path, class: 'btn btn-link btn-primary' %></li> 
+                                <li><%= link_to t("header.terms"), legal_path, class: 'btn btn-link btn-primary' %></li> 
                                 <li class="footer-menu-divider">&sdot;</li>
                             <li><%= link_to "Contact", "mailto:info@courts.be", class: 'btn btn-link btn-primary' %></li>
 
                           <% else %>
-                                <li><%= link_to "A propos", about_path, class: 'btn btn-link btn-primary' %></li>
+                                <li><%= link_to t("header.about"), about_path, class: 'btn btn-link btn-primary' %></li>
                                 <li class="footer-menu-divider">&sdot;</li>
-                                <li><%= link_to "Conditions", legal_path, class: 'btn btn-link btn-primary' %></li> 
+                                <li><%= link_to t("header.terms"), legal_path, class: 'btn btn-link btn-primary' %></li> 
                                 <li class="footer-menu-divider">&sdot;</li>
-                            <li><%= link_to "Connexion", new_user_session_path, class: 'btn btn-link btn-primary' %></li>
+                            <li><%= link_to t("header.log_in"), new_user_session_path, class: 'btn btn-link btn-primary' %></li>
                             <li class="footer-menu-divider">&sdot;</li>
                             <li><%= link_to "Contact", "mailto:contact@courts.be", class: 'btn btn-link btn-primary' %></li>
                           <% end %>
 
                         
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; UPcetera 2014. Tous droits réservés</p>
+                    <p class="copyright text-muted small">Copyright &copy; UPcetera 2014</p>
                 </div>
             </div>
         </div>

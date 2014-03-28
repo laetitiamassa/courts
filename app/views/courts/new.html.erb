@@ -26,19 +26,19 @@
   </div>
 
   <div class="field form-group">
-    <%= f.text_field :performance, :placeholder => "Prestation attendue (ex : demande de remise)", class: "form-control input-lg" %>
+    <%= f.text_field :performance, :placeholder => t("courts.placeholder_performance"), class: "form-control input-lg" %>
   </div>
   <div class="field form-group">
-    <%= f.text_field :jurisdiction, :placeholder => "Juridiction concernée", class: "form-control input-lg" %>
+    <%= f.text_field :jurisdiction, :placeholder => t("courts.placeholder_court"), class: "form-control input-lg" %>
   </div>
   
   <div class="field form-group">
-    <%= f.text_field :bar, :placeholder => "Barreau dont relève la juridiction", class: "form-control input-lg" %>
+    <%= f.select :bar, @bars, {:selected => params[:bar]}, {class: "form-control input-lg"} %>
   </div>
   
   <br>
   <div class="form-actions">
-    <%= f.submit 'Nouvelle demande', :class => "btn btn-primary btn-lg" %>
+    <%= f.submit t("courts.button_new"), :class => "btn btn-primary btn-lg" %>
   </div>
 <% end %>
 

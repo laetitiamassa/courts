@@ -9,31 +9,31 @@
                 	<br>
                     <ul class="list-inline">
                         <% if user_signed_in? %>
-                            <li><%= link_to "Accueil", root_path, class: 'btn btn-link btn-primary' %></li>
+                            <li><%= link_to t("header.home"), root_path, class: 'btn btn-link btn-primary' %></li>
                             <li class="footer-menu-divider">&sdot;</li>
-                            <li><%= link_to "Mon profil", edit_user_path(current_user), class: 'btn btn-link btn-primary' %></li>
+                            <li><%= link_to t("header.profile"), edit_user_path(current_user), class: 'btn btn-link btn-primary' %></li>
                             <li class="footer-menu-divider">&sdot;</li>
-                            <li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: 'btn btn-link btn-primary' %></li>
+                            <li><%= link_to t("header.log_out"), destroy_user_session_path, method: :delete, class: 'btn btn-link btn-primary' %></li>
                              <li class="footer-menu-divider">&sdot;</li>
-                            <li><%= link_to "A propos", about_path, class: 'btn btn-link btn-primary' %></li>
+                            <li><%= link_to t("header.about"), about_path, class: 'btn btn-link btn-primary' %></li>
                                 <li class="footer-menu-divider">&sdot;</li>
-                                <li><%= link_to "Conditions", legal_path, class: 'btn btn-link btn-primary' %></li> 
+                                <li><%= link_to t("header.terms"), legal_path, class: 'btn btn-link btn-primary' %></li> 
                                 <li class="footer-menu-divider">&sdot;</li>
                             <li><%= link_to "Contact", "mailto:info@courts.be", class: 'btn btn-link btn-primary' %></li>
 
                           <% else %>
-                                <li><%= link_to "A propos", about_path, class: 'btn btn-link btn-primary' %></li>
+                                <li><%= link_to t("header.about"), about_path, class: 'btn btn-link btn-primary' %></li>
                                 <li class="footer-menu-divider">&sdot;</li>
-                                <li><%= link_to "Conditions", legal_path, class: 'btn btn-link btn-primary' %></li> 
+                                <li><%= link_to t("header.terms"), legal_path, class: 'btn btn-link btn-primary' %></li> 
                                 <li class="footer-menu-divider">&sdot;</li>
-                            <li><%= link_to "Connexion", new_user_session_path, class: 'btn btn-link btn-primary' %></li>
+                            <li><%= link_to t("header.log_in"), new_user_session_path, class: 'btn btn-link btn-primary' %></li>
                             <li class="footer-menu-divider">&sdot;</li>
                             <li><%= link_to "Contact", "mailto:contact@courts.be", class: 'btn btn-link btn-primary' %></li>
                           <% end %>
 
                         
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; UPcetera 2014. Tous droits réservés</p>
+                    <p class="copyright text-muted small">Copyright &copy; UPcetera 2014</p>
                 </div>
             </div>
         </div>

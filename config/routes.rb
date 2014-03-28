@@ -10,7 +10,9 @@ Courts::Application.routes.draw do
 
   
   get "pages/home"
+
   root 'courts#index'
+  
   get 'users/:id' => 'users#show'
   get 'users/:id/edit' => 'users#edit'
   get 'users/edit' => 'devise/registrations#edit'

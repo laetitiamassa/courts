@@ -1,15 +1,14 @@
-<h3 class="center">Introduisez votre demande de remplacement</h3>
+<h3 class="center"><%= t("courts.stream_create_court") %></h3>
 <div class="panel panel-primary">
   <div class="panel-body">
     <%= render 'shortform' %>
   </div>
 </div>
 
-<h2 class="center">Demandes de remplacement en cours</h2>
+<h2 class="center"><%= t("courts.stream_all_current_courts") %></h2>
 
 <% unless @courts.present? %>
-<p class="center">Pour l'instant, tous vos confrères ont trouvé un remplaçant.
-<br>Vous pouvez repasser plus tard pour consulter les prochaines opportunités, ou indiquer votre demande de remplacement via le module ci-dessus.</p>
+<p class="center"><%= t("courts.stream_no_current_court") %></p>
 
 <% else %>
 
@@ -53,8 +52,10 @@
         <%= link_to court do %>
           <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-eye-open btn btn-default') -%>
         <% end %>
-        <%= link_to "Modifier", edit_court_path(court),:class=> 'btn btn-info' -%>
-        
+        <%= link_to t("courts.button_edit"), edit_court_path(court),:class=> 'btn btn-info' -%>
+        <% if court.have_found %>
+          <%= link_to t("courts.button_found"), court,:class=> 'btn btn-warning', :disabled=> 'disabled' %>
+          <% end %>
   
       
       <% else %>
@@ -64,10 +65,10 @@
         <% end %>
         
         <% if court.have_found %>
-          <%= link_to "Trouvé !", court,:class=> 'btn btn-warning', :disabled=> 'disabled' %>
+          <%= link_to t("courts.button_found"), court,:class=> 'btn btn-warning', :disabled=> 'disabled' %>
 
         <% else %>
-            <%= link_to "Répondre", "mailto:#{court.user.email}?subject=Votre%20demande%20de%20remplacemement%20via%20Courts.be
+            <%= link_to t("courts.button_answer_email"), "mailto:#{court.user.email}?subject=Votre%20demande%20de%20remplacemement%20via%20Courts.be
               &body=Cher%20confrère,%09%0D%0A%09%0D%0AJe%20vous%20remplacerai%20volontiers%20le%20#{l court.date, :format => :mail}. %09%0D%0A%09%0D%0ASi%20cela%20vous%20convient%20également,%20pourriez-vous%20me%20transmettre%20davantage%20d'information%20?%09%0D%0A%09%0D%0AD'avance,%20merci.%09%0D%0A%09%0D%0AVotre%20bien%20dévoué(e),%09%0D%0A%09%0D%0A#{current_user.full_name}%09%0D%0A%09%0D%0A(PS%20:%20Pour%20mettre%20à%20jour%20votre%20demande,%20cliquez%20ici%20:%20#{edit_court_url(court)})%09%0D%0A%09%0D%0A%09%0D%0A%09%0D%0AEnvoyé%20depuis%20mon%20compte%20sur%20Courts.be", :class=> 'btn btn-success' %>
             
         <% end %>
