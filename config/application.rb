@@ -23,6 +23,6 @@ module Courts
     config.i18n.default_locale = :fr
 
     #configuration Mailjet
-    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.delivery_method = :mailjet
   end
 end
