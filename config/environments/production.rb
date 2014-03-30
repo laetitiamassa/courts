@@ -68,6 +68,18 @@ Courts::Application.configure do
   #required by Devise
   config.action_mailer.default_url_options = { :host => "courts.be" }
 
+  #mandrill
+  config.action_mailer.smtp_settings = {
+    :address   => "smtp.mandrillapp.com",
+    :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
+    :enable_starttls_auto => true, # detects and uses STARTTLS
+    :user_name => "contact@courts.be",
+    :password  => "gNPcW50j1B0YkzDJcXbZ8Q", # SMTP password is any valid API key
+    :authentication => 'login', # Mandrill supports 'plain' or 'login'
+    :domain => 'courts.be', # your domain to identify your server when connecting
+  }
+
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
   config.i18n.fallbacks = true
