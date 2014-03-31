@@ -294,7 +294,7 @@ fr:
     found_loco: "Avez-vous déjà trouvé un confrère disponible ?"
     i_found_loco: "J'ai trouvé un confrère disponible"
     button_new_court: "Nouvelle demande"
-    button_new_court_short: "Mijn verzoek publiceren"
+    button_new_court_short: "Publier ma demande"
     stream_create_court: "Introduisez votre demande de remplacement"
     stream_all_current_courts: "Demandes de remplacement en cours"
     stream_no_current_court: "Pour l'instant, tous vos confrères ont trouvé un remplaçant.\nVous pouvez repasser plus tard pour consulter les prochaines opportunités, ou indiquer votre demande de remplacement via le module ci-dessus."
