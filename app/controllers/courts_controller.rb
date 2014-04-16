@@ -34,6 +34,10 @@ class CourtsController < ApplicationController
 
     respond_to do |format|
       if @court.save
+        #send potential loco in the concerned bar a notification
+        UserMailer.new_court_in_my_bar(@court, users_in_bar).deliver if has_users_in_bar?
+        UserMailer.after_court_creation(@court, @court.user).deliver if has_users_in_bar?
+
         format.html { redirect_to root_path, notice: t("courts.well_created") }
         format.json { render action: 'show', status: :created, location: @court }
       else
@@ -67,6 +71,15 @@ class CourtsController < ApplicationController
     end
   end
 
+  #users_in_bar
+    def users_in_bar
+      User.where(:bar => @court.bar) 
+    end 
+
+    def has_users_in_bar?
+      users_in_bar.any?
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_court
@@ -82,4 +95,5 @@ class CourtsController < ApplicationController
     def court_params
       params.require(:court).permit(:performance, :jurisdiction, :date, :bar, :have_found)
     end
+
 end
