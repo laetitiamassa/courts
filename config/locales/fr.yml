@@ -328,8 +328,8 @@ fr:
     new_court_in_my_bar: 
       subject: "L'un de vos confrères recherche un remplaçant dans votre région, via Courts.be"
       content1: "Seriez-vous disponible pour remplacer votre confrère ?"
-      content2: "Découvrez la demande de remplacement et saisir cette opportunité ici :"
-      cta: "voir la demande sur Courts.be"
+      content2: "Découvrez la demande de remplacement et saisissez cette opportunité"
+      cta: " ici"
     after_court_creation:
       subject: "Votre demande de remplacement via Courts.be"
       content1: "Votre demande de remplacement vient d'être adressée à vos confrères au profil le plus pertinent."
