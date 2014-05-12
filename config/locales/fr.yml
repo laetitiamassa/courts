@@ -249,7 +249,7 @@ fr:
   header:
     home: "Accueil"
     view_profile: "Consultez votre profil"
-    edit_profile: "Eitez votre profil"
+    edit_profile: "Editez votre profil"
     log_out: "Déconnexion"
     about: "A propos"
     terms: "Conditions"
