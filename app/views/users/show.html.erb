@@ -63,5 +63,11 @@
 	    </div>
 		</div> <!-- panel footer -->
 	</div>
+	<% if @user == current_user %>
+	<br>
+		<h2 class="text-center"><%= t("courts.mycourts") %></h2>
+	<%= render 'mycourts' %>
+	<% end %>
+
 </div>
 

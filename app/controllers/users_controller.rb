@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   
   def show
   	@user = User.find(params[:id])
+    @user_courts = @user.courts.order("date DESC")
   end
 
   def edit

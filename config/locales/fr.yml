@@ -248,7 +248,8 @@ fr:
     keep_in_touch: "Restons connectés :"
   header:
     home: "Accueil"
-    profile: "Mon profil"
+    view_profile: "Consultez votre profil"
+    edit_profile: "Eitez votre profil"
     log_out: "Déconnexion"
     about: "A propos"
     terms: "Conditions"
@@ -304,6 +305,7 @@ fr:
     edit_title: "Modifier la demande de remplacement"
     button_edit_court: "Modifier la demande"
     button_new: "Nouvelle demande"
+    mycourts: "Mes demandes publiées"
   users:
     well_modified: "Votre profil a bien été mis à jour."
     error: "Oops, essayez à nouveau"
@@ -322,6 +324,7 @@ fr:
     q2_content3: "je me souviens m'être souvent demandée pourquoi il n'existait pas un outil pratique et dynamique pour permettre à la demande de remplacement de rencontrer l'offre"
     q2_content4: " importante ?"
     q2_content5: "Un bagage technologique, marketing et entrepreneurial plus tard, je n'avais plus de raison de ne pas créer un tel outil : Courts était né."
+    question3: "Est-ce un outil indépendant ?"
   mailer:
     salutation: "Cher Maître,"
     end_salutation: "Bonne journée,"
