@@ -6,7 +6,7 @@ class CourtsController < ApplicationController
   # GET /courts
   # GET /courts.json
   def index
-    @courts = Court.active.order(:date)
+    @courts = Court.order(:date)
     @court = current_user.courts.build if current_user
     @bars = Court.bars
   end
