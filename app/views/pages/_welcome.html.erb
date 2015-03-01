@@ -1,0 +1,43 @@
+<h1 class="text-center"><small>Vous souhaitez faire appel à vos confrères ?</small></h1>
+<br>
+<div class="text-center">
+	<p id="Find"><%= link_to "Oui, pour me remplacer", "#", :class => "btn btn-primary btn-lg" %></p>
+	
+	<div id="FormFind">
+		<h3><small><%= t("courts.stream_create_court") %></small></h3>
+		<div class="panel panel-primary">
+		    <div class="panel-body">
+				<%= render "courts/shortform" %>
+			</div>
+		</div>
+	</div>
+
+<p id="Question"><%= link_to "Oui, pour une question de procédure", "#", :class => "btn btn-info btn-lg" %></p>
+<div id="FormQuestion">
+	<h3><small>Adressez votre question à vos confrères</small></h3>
+	<div class="panel panel-info">
+		    <div class="panel-body">
+	<%= render "questions/shortform" %>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#FormFind").hide();
+    $("#Find").click(function() {
+      $("#FormFind").slideToggle("slow");
+    });
+  });
+
+$(document).ready(function() {
+    $("#FormQuestion").hide();
+    $("#Question").click(function() {
+      $("#FormQuestion").slideToggle("slow");
+    });
+  });
+</script>

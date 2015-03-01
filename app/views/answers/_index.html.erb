@@ -1,0 +1,9 @@
+<% @answers.each do |answer| %>
+  <ul>
+    <li class="list-group-item"> 
+      <p><%= simple_format(answer.description) %></p>
+      <h4 class="text-right"><small>Me <%= link_to answer.user.last_name, user_path(answer.user) %></small></h4>   
+    </li>
+  </ul>
+       
+    <% end %>

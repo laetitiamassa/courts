@@ -1,0 +1,23 @@
+<div class="col-md-10 col-md-offset-1">
+<div class="panel panel-default">
+  <div class="panel-body">
+  
+      	<h3><i><%= @question.subject %></i></h3>
+      	<h3><small><%= @question.description %></small></h3>
+      	<div class="text-right">
+      		<% if current_user == @question.user %>
+        		<%= link_to "Modifier ma demande", edit_question_path(@question), :class=> 'btn btn-default btn-sm' %>
+      		<% else %>
+      			<h4 class="text-right"><small>Question adressée par Me <%= link_to @question.user.last_name, user_path(@question.user) %></small></h4>
+      		<% end %>
+      	</div>
+    
+</div>
+<div class="panel-footer">
+	<%= render 'answers/form' %>
+	<hr>
+	<%= render 'answers/index' %>
+
+</div>
+</div>
+</div>

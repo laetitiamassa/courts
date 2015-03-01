@@ -1,5 +1,9 @@
 Courts::Application.routes.draw do
   
+  resources :answers
+
+  resources :questions
+
   resources :interests
 
   get "change_passwords/edit"
@@ -11,7 +15,7 @@ Courts::Application.routes.draw do
   
   get "pages/home"
 
-  root 'courts#index'
+  root 'pages#welcome'
   
   get 'users/:id' => 'users#show'
   get 'users/:id/edit' => 'users#edit'
@@ -20,6 +24,7 @@ Courts::Application.routes.draw do
 
   get "about" => "pages#about"
   get "legal" => "pages#legal"
+  get "welcome" => "pages#welcome"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

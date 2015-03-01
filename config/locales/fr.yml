@@ -219,7 +219,7 @@ fr:
   home:
     baseline_lawyer: "Avocat de palais ?"
     baseline_cta: "Publiez vos demandes / Saisissez des opportunités de"
-    baseline_replacements: "remplacemements"
+    baseline_replacements: "remplacements"
     password: "mot de passe"
     confirm_password: "confirmer mot de passe"
     signup_free: "S'inscrire gratuitement"
