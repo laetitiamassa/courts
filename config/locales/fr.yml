@@ -222,7 +222,7 @@ fr:
     baseline_replacements: "remplacements"
     password: "mot de passe"
     confirm_password: "confirmer mot de passe"
-    signup_free: "S'inscrire gratuitement"
+    signup_free: "Essayer gratuitement"
     you_accept_terms: "(Par votre inscription, vous acceptez nos "
     our_terms: "conditions générales"
     argument1_heading: "A peine 3 mots"
@@ -311,7 +311,7 @@ fr:
     error: "Oops, essayez à nouveau"
 
     registration:
-      signup_title: "Inscrivez-vous gratuitement à Courts"
+      signup_title: "Essayez Courts gratuitement"
   about:
     title: "A propos de Courts"
     question1: "Qu'est-ce que 'Courts' ?"
