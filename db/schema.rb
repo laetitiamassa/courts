@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302001122) do
+ActiveRecord::Schema.define(version: 20150319092834) do
 
   create_table "answers", force: true do |t|
     t.text     "subject"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 20150302001122) do
     t.string   "city"
     t.boolean  "loco"
     t.boolean  "dominus_litis"
+    t.boolean  "subscribed"
+    t.string   "stripeid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

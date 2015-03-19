@@ -1,7 +1,8 @@
 Courts::Application.routes.draw do
   
-  resources :answers
+  
 
+  resources :answers
   resources :questions
 
   get "change_passwords/edit"
@@ -78,4 +79,5 @@ Courts::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  resources :subscribers
 end

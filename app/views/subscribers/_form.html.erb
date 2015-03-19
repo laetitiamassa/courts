@@ -1,0 +1,13 @@
+<%= form_tag subscriber_path(1), :method => :put do %>
+	<script 
+		src="https://checkout.stripe.com/checkout.js" 
+		class="stripe-button"
+	    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+	    data-name="Courts.be"
+	    data-description="Abonnement annuel"
+	    data-amount="5000">
+    </script>
+    <span>
+    	50,- EUR pour un an
+    </span>
+<% end %>
