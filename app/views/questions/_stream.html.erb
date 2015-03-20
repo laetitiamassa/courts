@@ -5,10 +5,17 @@
   </div>
 </div>
 
+<% if current_user.overdue %>
+<h2 class="center">Questions précédemment posées</h2>
+  <h4 class="text-center danger">Pour voir les questions de procédure et/ou y répondre, vous devez être abonné.</h4>
+  <br>
+  <%= render "questionsunsubscribed" %>
+<% else %>
+
 <% if @questions.present? %>
 
 <h2 class="center">Questions précédemment posées</h2>
-
+<div class="col-md-10 col-md-offset-1">
 <% @questions.each do |question| %>
 <div class="panel panel-default">
   <div class="panel-body">
@@ -29,6 +36,9 @@
     </div>
   </div>
 </div>
-<% end %>
 
 <% end %>
+</div>
+<% end %>
+
+<% end %> <!-- subscribed or not ? -->

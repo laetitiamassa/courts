@@ -6,6 +6,11 @@
 </div>
 
 <h2 class="center"><%= t("courts.stream_all_current_courts") %></h2>
+<% if current_user.overdue %>
+  <h4 class="text-center danger">Pour voir les demandes de remplacement en cours et saisir ces opportunités, vous devez être abonné.</h4>
+  <br>
+  <%= render "courtsunsubscribed" %>
+<% else %>
 
 <% unless @courts.present? %>
 <p class="center"><%= t("courts.stream_no_current_court") %></p>
@@ -81,5 +86,7 @@
 <% end %> <!-- for each court -->
 
 <% end %>
+
+<% end %> <!-- subscribed or not -->
 
  

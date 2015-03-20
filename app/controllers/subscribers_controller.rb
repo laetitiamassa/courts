@@ -18,7 +18,10 @@ class SubscribersController < ApplicationController
 		current_user.stripeid = customer.id
 		current_user.save
 
-		redirect_to root_path
+		redirect_to root_path, notice: "Félicitations, vous êtes maintenant abonné à Courts.be !"
+	end
+
+	def unsubscribed
 	end
 
 

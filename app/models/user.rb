@@ -14,6 +14,30 @@ class User < ActiveRecord::Base
   	"#{first_name} #{last_name}"
   end
 
+  def name_or_placeholder
+    if full_name.present?
+      full_name
+    else
+      email.split("@")[0]
+    end
+  end
+
+  def firstname_or_placeholder
+    if first_name.present?
+      first_name
+    else
+      email.split("@")[0]
+    end
+  end
+
+  def first_name_or_email
+    if first_name.present?
+      first_name
+    else
+      email
+    end
+  end
+
   def full_address
   	"#{street} #{street_number} #{zipcode} #{city}"
   end
@@ -31,4 +55,38 @@ class User < ActiveRecord::Base
       [I18n.t("bars.#{bar}"), bar]
     end
   end
+
+  def on_trial
+    if created_at < "2015-02-27 00:00:00"
+      Time.now < "2015-04-06 00:00:00"
+    else 
+      Time.now - created_at < 15.days
+    end
+  end
+
+  def subscribed_or_on_trial
+    if subscribed
+      subscribed
+    else
+      on_trial
+    end
+  end
+
+  def trial_end_date
+    if created_at < "2015-02-27 00:00:00"
+      "2015-04-06 00:00:00"
+    else
+      created_at + 15.days
+    end
+  end
+
+  def overdue
+    !on_trial && !subscribed
+  end
+
+  def days_till_end_trial
+    ((trial_end_date - Time.now) / 1.day).round
+  end
+
+
 end

@@ -1,0 +1,10 @@
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  	<span aria-hidden="true">&times;</span>
+  </button>
+  <p class="text-center">
+  	<span class="lead">Bienvenue à votre essai gratuit, valable pendant encore <%= current_user.days_till_end_trial %> jours !</span>
+  	<br><b>Pour vous abonner à Courts.be, cliquez sur le bouton <%= link_to "S'abonner à Courts", new_subscriber_path, :class => "btn btn-default" %> et suivez les instructions.</b>
+
+	<br>Pour plus d'info, contactez-nous via <%=link_to "contact@courts.be", "mailto:contact@courts.be" %></p>
+</div>

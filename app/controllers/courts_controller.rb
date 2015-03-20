@@ -1,5 +1,6 @@
 class CourtsController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
+  before_action :subscribed_user, :only => [:show, :new, :edit]
   before_action :set_court, only: [:show, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
 
@@ -38,7 +39,7 @@ class CourtsController < ApplicationController
         UserMailer.new_court_in_my_bar(@court, users_in_bar).deliver if has_users_in_bar?
         UserMailer.after_court_creation(@court, @court.user).deliver if has_users_in_bar?
 
-        format.html { redirect_to root_path, notice: t("courts.well_created") }
+        format.html { redirect_to @court, notice: t("courts.well_created") }
         format.json { render action: 'show', status: :created, location: @court }
       else
         format.html { render action: 'new' }

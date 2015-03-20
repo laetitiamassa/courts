@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_filter :authenticate_user!
+  before_action :subscribed_user, :only => [:show, :new, :edit]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
 

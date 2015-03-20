@@ -23,9 +23,17 @@
 
 <% if user_signed_in? %>
   <div class="container">
+    <% if current_user.overdue %>
+    <%= render "layouts/overdue" %>
+    <% elsif current_user.on_trial && !current_user.subscribed %>
+    <%= render "layouts/on_trial" %>
+    <% end %>
+    
     <% flash.each do |name, msg| %>
        <%= content_tag(:div, msg, class: "alert alert-info") %>
     <% end %>
+
+    
 
     <%= yield %>
   </div>

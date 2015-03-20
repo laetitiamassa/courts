@@ -25,6 +25,8 @@ Courts::Application.routes.draw do
   get "legal" => "pages#legal"
   get "welcome" => "pages#welcome"
 
+  get "unsubscribed" => "subscribers#unsubscribed"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

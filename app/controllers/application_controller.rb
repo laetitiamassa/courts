@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def subscribed_user
+    redirect_to unsubscribed_path, notice: "Vous devez devenir membre pour bénéficier de cette fonctionnalité" if current_user.overdue
+  end
+
   before_action :set_locale
  
 	def set_locale

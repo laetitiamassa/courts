@@ -41,7 +41,11 @@
 -->
   <div class="field col-md-3">
     <div class="form-actions text-right">
+      <% if current_user.overdue %>
+      <%= link_to t("courts.button_new_court_short"), unsubscribed_path, :class => "btn btn-primary btn-lg" %>
+      <% else %>
       <%= f.submit t("courts.button_new_court_short"), :class => "btn btn-primary btn-lg" %>
+      <% end %>
     </div>
   </div>
 <% end %>
