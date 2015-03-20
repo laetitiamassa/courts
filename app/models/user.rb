@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
 
   def on_trial
     if created_at < "2015-02-27 00:00:00"
-      Time.now < "2015-04-06 00:00:00"
+      "2015-04-06 00:00:00"
     else 
       Time.now - created_at < 15.days
     end
