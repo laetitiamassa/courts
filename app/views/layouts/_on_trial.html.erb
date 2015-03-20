@@ -3,7 +3,13 @@
   	<span aria-hidden="true">&times;</span>
   </button>
   <p class="text-center">
-  	<span class="lead">Bienvenue à votre essai gratuit, valable pendant encore <%= current_user.days_till_end_trial %> jours !</span>
+  	
+  		<% if current_user.early_bird %>
+  		<b>Bonjour Me <%= current_user.last_name %>, profitez des derniers jours de votre essai gratuit, jusqu'au 6 avril 2014 !</b>
+  		<% else %>
+  		<span class="lead">Bienvenue à votre essai gratuit, valable pendant encore <%= current_user.days_till_end_trial %> jours !</span>
+  		<% end %>
+  	
   	<br><b>Pour vous abonner à Courts.be, cliquez sur le bouton <%= link_to "S'abonner à Courts", new_subscriber_path, :class => "btn btn-default" %> et suivez les instructions.</b>
 
 	<br>Pour plus d'info, contactez-nous via <%=link_to "contact@courts.be", "mailto:contact@courts.be" %></p>
