@@ -30,6 +30,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def last_name_or_placeholder
+    if last_name.present?
+      last_name
+    else
+      email.split("@")[0]
+    end
+  end
+
   def first_name_or_email
     if first_name.present?
       first_name

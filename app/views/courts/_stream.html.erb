@@ -34,11 +34,9 @@
           <span class="big">
             <%= link_to court.jurisdiction, court %>
           <br><small><%= court.performance %></small></span>  
-          <% if court.user.last_name %> 
-            <i>loco Me <%= link_to court.user.full_name, user_path(court.user) %></i>
-          <% else %>
-            <i>loco Me <%= link_to court.user.email, user_path(court.user) %></i>
-          <% end %>
+          
+            <i>loco Me <%= link_to court.user.last_name_or_placeholder, user_path(court.user) %></i>
+          
         </div>
       </div>
 
