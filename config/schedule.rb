@@ -23,6 +23,6 @@
  # runner "User.audiences"
 #end
 
-every :monday, :at => '6pm' do
+every :monday, :at => '7pm' do
  runner "User.testing"
 end
