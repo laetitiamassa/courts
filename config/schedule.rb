@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every :monday, :at => '7:30 pm' do
+every :monday, :at => '7:50 pm' do
  runner "User.testing"
 end
