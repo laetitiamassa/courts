@@ -18,4 +18,19 @@ class UserMailer < ActionMailer::Base
   		)
   end
 
+  def weekly_audiences(email)
+    mail(
+      :to => email,
+      :subject => t("mailer.weekly_audiences.subject")
+      )
+  end
+
+  def testing(me)
+    @me = me
+    mail(
+      :to => me
+      :subject => "testons cela"
+      )
+  end
+
 end

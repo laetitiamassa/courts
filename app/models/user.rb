@@ -98,5 +98,24 @@ class User < ActiveRecord::Base
       ((trial_end_date - Time.now) / 1.day).round
   end
 
+  def not_yet
+    sign_in_count < 1
+  end
+
+# email hebdomadaire audiences
+  def self.audiences
+    @users = User.all
+    @users.each do |u|
+      UserMailer.weekly_audiences(u.email).deliver
+    end
+  end
+
+# email test
+  def self.testing
+    @me = "laetitiamassa@gmail.com"
+    UserMailer.testing(@me).deliver
+  end
+
+
 
 end
