@@ -28,7 +28,7 @@ class UserMailer < ActionMailer::Base
   def testing(me)
     @me = me
     mail(
-      :to => me
+      :to => me,
       :subject => "testons cela"
       )
   end
