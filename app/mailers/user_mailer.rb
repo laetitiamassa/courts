@@ -22,7 +22,7 @@ class UserMailer < ActionMailer::Base
   def weekly_audiences(email)
     mail(
       :bcc => email,
-      :subject => t("mailer.weekly_audiences.subject")
+      :subject => "Des audiences, cette semaine ?"
       )
   end
 
