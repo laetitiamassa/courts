@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+  
   default from: "Courts <contact@courts.be>"
 
   def new_court_in_my_bar(court, users_concerned)
@@ -20,7 +21,7 @@ class UserMailer < ActionMailer::Base
 
   def weekly_audiences(email)
     mail(
-      :to => email,
+      :bcc => email,
       :subject => t("mailer.weekly_audiences.subject")
       )
   end
