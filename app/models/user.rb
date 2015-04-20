@@ -71,6 +71,8 @@ class User < ActiveRecord::Base
   def on_trial
     if early_bird
       Time.now < "2015-04-06 00:00:00"
+    elsif extended_trial
+      Time.now < extended_trial_end_date
     else 
       Time.now - created_at < 15.days
     end
@@ -86,7 +88,11 @@ class User < ActiveRecord::Base
 
   def trial_end_date
     unless early_bird
-      created_at + 15.days
+      if extended_trial
+        extended_trial_end_date
+      else
+        created_at + 15.days
+      end
     end
   end
 

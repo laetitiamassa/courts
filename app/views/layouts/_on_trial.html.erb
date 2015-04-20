@@ -6,6 +6,9 @@
   	
   		<% if current_user.early_bird %>
   		<b>Bonjour Me <%= current_user.last_name %>, profitez des derniers jours de votre essai gratuit, jusqu'au 6 avril 2014 !</b>
+      <% elsif current_user.extended_trial %>
+      <b>Bonjour Me <%= current_user.last_name %>, votre essai gratuit est étendu jusqu'au <%= current_user.extended_trial_end_date.strftime('%d %B') %> prochain !
+      </b>
   		<% else %>
   		<span class="lead">Bienvenue à votre essai gratuit, valable pendant encore <%= current_user.days_till_end_trial %> jours !</span>
   		<% end %>
