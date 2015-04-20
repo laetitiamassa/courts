@@ -103,10 +103,10 @@ class User < ActiveRecord::Base
   end
 
 # email hebdomadaire audiences
-  def self.weekly_audiences
+  def self.weekly
     @users = User.all
     @users.each do |u|
-      UserMailer.weekly_audiences(u.email).deliver
+      UserMailer.weekly(u.email).deliver
     end
   end
 

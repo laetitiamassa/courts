@@ -19,7 +19,7 @@ class UserMailer < ActionMailer::Base
   		)
   end
 
-  def weekly_audiences(email)
+  def weekly(email)
     mail(
       :to => email,
       :subject => "Des audiences, cette semaine ?"
