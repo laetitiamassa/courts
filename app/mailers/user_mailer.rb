@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
 
   def weekly_audiences(email)
     mail(
-      :bcc => email,
+      :to => email,
       :subject => "Des audiences, cette semaine ?"
       )
   end
@@ -33,5 +33,15 @@ class UserMailer < ActionMailer::Base
       :subject => "testons cela"
       )
   end
+
+  def new_test(me)
+    @me = me
+    mail(
+      :to => me,
+      :subject => "testons aussi cela"
+      )
+  end
+
+
 
 end

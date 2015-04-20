@@ -103,7 +103,7 @@ class User < ActiveRecord::Base
   end
 
 # email hebdomadaire audiences
-  def self.audiences
+  def self.weekly_audiences
     @users = User.all
     @users.each do |u|
       UserMailer.weekly_audiences(u.email).deliver
@@ -114,6 +114,12 @@ class User < ActiveRecord::Base
   def self.testing
     @me = "laetitiamassa@gmail.com"
     UserMailer.testing(@me).deliver
+  end
+
+# new test
+  def self.new_test
+    @me = "contact@appstratgram.com"
+    UserMailer.new_test(@me).deliver
   end
 
 

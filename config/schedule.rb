@@ -23,6 +23,10 @@ every :monday, :at => '09:59 am' do
  runner "User.testing"
 end
 
-every :monday, :at => '8:30 am' do
+every :monday, :at => '10:30 am' do
+ runner "User.new_test"
+end
+
+every :monday, :at => '10:10 am' do
   runner "User.audiences"
 end
