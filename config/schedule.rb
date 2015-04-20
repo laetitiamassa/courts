@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every :sunday, :at => '09:59 am' do
+every :monday, :at => '09:59 am' do
  runner "User.testing"
 end
 
