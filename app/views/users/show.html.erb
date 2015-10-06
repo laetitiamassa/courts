@@ -1,73 +1,188 @@
-<div class="col-md-10 col-md-offset-1">
-	<div class="panel panel-default">
-	  
-	  <div class="panel-body">
-	  	<div class="row">
-		  	<div class="col-md-1">
-		  		
-		  	</div>
 
-		  	<div class="col-md-9">
-		  		<span class="bigger">Me <%= @user.first_name %> <%= @user.last_name %></span>
 
-		  		<% if @user.street and @user.street_number %>
-		  			<% if @user.zipcode and @user.city %>
-		  				<p><%= @user.street_and_number %> | <%= @user.zipcode_and_city %></p>
-		  			<% end %>
-		  		<% end %>
-		
-					<div class="row">
 
-						<div class="col-md-4">
-							<span class="glyphicon glyphicon-envelope"></span> <%= @user.email %>
-						</div>
-						<% if @user.telephone %>
-						<div class="col-md-3">
-							<span class="glyphicon glyphicon-phone-alt"></span> <%= @user.telephone %>
-						</div>
-						<% end %>
-						<% if @user.fax %>
-						<div class="col-md-2">
-							<span class="glyphicon glyphicon-print"></span> <%= @user.fax %>
-						</div>
-						<% end %>
-						<% if @user.mobile %>
-						<div class="col-md-3">
-							<span class="glyphicon glyphicon-earphone"></span> <%= @user.mobile %>
-						</div>
-						<% end %>
-					</div>
-				</div>
+
+<div class="panel panel-default col-md-8 col-md-offset-2 no-border-radius profile-card">
+	<div class="row">
+		<div class="col-md-5 no-padding-left no-padding-right">
+			<!-- <img src="http://thetransformedmale.files.wordpress.com/2011/06/bruce-wayne-armani.jpg"
+            alt="" class="img-responsive" /> -->
+            <%= image_tag (@user.avatar.url(:large)) %>
+		</div>
+		<div class="col-md-7">
 			
-				<div class="col-md-2 text-right">
-					<span class="glyphicon glyphicon-map-marker"></span>
-	        <%= @user.bar %>
-	      </div>
-    	</div>
-    </div> <!-- panel body -->
-
-		<div class="panel-footer">
-			<div class="text-right">
+				<blockquote>
+					<h2>
+				<%= @user.name_or_placeholder %>
 				<% if @user == current_user %>
-	        <%= link_to edit_user_path(@user) do %>
-	          <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-pencil btn btn-info') -%>
-	        <% end %>
-	      
-	      <% else %>
-	        
-	        <%= link_to "mailto:#{@user.email}" do %>  
-	          <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-envelope btn btn-info') -%>
-	        <% end %>
+				<%= link_to "Modifier", edit_user_path(current_user), class: "btn btn-info btn-xs pull-right" %>
+				<% end %>
+				</h2>
+					<div class="lead">
+						<i class="fa fa-map-marker"></i>
+						<%= @user.bar %>
+					</div>
+					<% @user.prefered_areas.each do |area| %>
+					<span class="label label-primary no-bold"><%= area.name %></span>
 
-	      <% end %>
-	    </div>
-		</div> <!-- panel footer -->
-	</div>
-	<% if @user == current_user %>
+				<% end %>
+
+				</blockquote>
+			
+
+			<h3><small><%= @user.presentation %></small></h3>
+<%= render "recommandations" %>
+
+	<hr>	
+
+
+<p><small><b>Coordonnées de Me <%= @user.last_name_or_placeholder %> :</b>
+<br>Cliquez sur une icône pour plus de détails</small>
+</p>
+<!-- coordonnées -->
+<!-- pas envie de mettre l'email si facilement
+<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseMail" aria-expanded="false" aria-controls="collapseExample">
+	<i class="fa fa-envelope-o"></i>
+</button>
+-->
+
+<% if @user.full_address.present? %>
+<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseAddress" aria-expanded="false" aria-controls="collapseExample">
+	<i class="fa fa-map-marker"></i>
+</button>
+<% end %>
+
+<% if @user.telephone.present? %>
+<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseTelephone" aria-expanded="false" aria-controls="collapseExample">
+	<i class="fa fa-phone"></i>
+</button>
+<% end %>
+
+<% if @user.fax.present? %>
+<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseFax" aria-expanded="false" aria-controls="collapseExample">
+	<i class="fa fa-fax"></i>
+</button>
+<% end %>
+
+<% if @user.mobile.present? %>
+<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseMobile" aria-expanded="false" aria-controls="collapseExample">
+	<i class="fa fa-mobile"></i>
+</button>
+<% end %>
+
+<% if @user.website.present? %>
+<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseWebsite" aria-expanded="false" aria-controls="collapseExample">
+	<i class="fa fa-link"></i>
+</button>
+<% end %>
+
+<% if @user.linkedin.present? %>
+<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseLinkedin" aria-expanded="false" aria-controls="collapseExample">
+	<i class="fa fa-linkedin"></i>
+</button>
+<% end %>
+
+<% if @user.twitter.present? %>
+<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseTwitter" aria-expanded="false" aria-controls="collapseExample">
+	<i class="fa fa-twitter"></i>
+</button>
+<% end %>
+
+<% if @user.facebook.present? %>
+<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseFacebook" aria-expanded="false" aria-controls="collapseExample">
+	<i class="fa fa-facebook"></i>
+</button>
+<% end %>
+
+
+<div class="collapse" id="collapseMail">
 	<br>
-		<h2 class="text-center"><%= t("courts.mycourts") %></h2>
-	<%= render 'mycourts' %>
-	<% end %>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<%= @user.email %>    
+		</li>
+	</ul>
+</div>
 
+
+
+<div class="collapse" id="collapseAddress">
+	<br>
+	<ul class="list-group">
+		<li class="list-group-item">
+		    <%= @user.full_address %>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="collapse" id="collapseTelephone">
+	<br>
+	<ul class="list-group">
+		<li class="list-group-item">
+		      <%= @user.telephone %>      
+		</li>
+	</ul>
+</div>
+
+<div class="collapse" id="collapseFax">
+	<br>
+	<ul class="list-group">
+		<li class="list-group-item">
+		      <%= @user.fax %>      
+		</li>
+	</ul>
+</div>
+
+<div class="collapse" id="collapseMobile">
+	<br>
+	<ul class="list-group">
+		<li class="list-group-item">
+		      <%= @user.mobile %>      
+		</li>
+	</ul>
+</div>
+
+<div class="collapse" id="collapseWebsite">
+	<br>
+	<ul class="list-group">
+		<li class="list-group-item">
+		      <%= link_to @user.website, @user.website, target: "_blank" %>    
+		</li>
+	</ul>
+</div>
+
+<div class="collapse" id="collapseLinkedin">
+	<br>
+	<ul class="list-group">
+		<li class="list-group-item">
+		      <%= link_to @user.linkedin, @user.linkedin, target: "_blank" %>    
+		</li>
+	</ul>
+</div>
+
+<div class="collapse" id="collapseTwitter">
+	<br>
+	<ul class="list-group">
+		<li class="list-group-item">
+		      <%= link_to @user.twitter, @user.twitter, target: "_blank" %>    
+		</li>
+	</ul>
+</div>
+
+<div class="collapse" id="collapseFacebook">
+	<br>
+	<ul class="list-group">
+		<li class="list-group-item">
+		      <%= link_to @user.facebook, @user.facebook, target: "_blank" %>    
+		</li>
+	</ul>
+</div>
+
+
+
+</div>
+</div>
 </div>
 

@@ -1,56 +1,24 @@
-<div class="col-md-10 col-md-offset-1">
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="row">      
-      <div class="col-md-1 center">
-        <small><%= l @court.date, :format => '%A' %></small>
-        <span class="big"><i><%= l @court.date, :format => ('%e') %></i></span> 
-        <b><%= l @court.date, :format => ('%B') %> 
-        <small> <%= l @court.date, :format => ('%H:%M') %></small></b> 
-      </div>
+<!-- court -->
+  <%= render "court" %>
 
-      <div class="col-md-8">
-        <div class="header">
-          <br>
-            <span class="bigger"><%= @court.jurisdiction %></span>
-          <br><span class="big"><small><%= @court.performance %></small></span>  
-          
-            <i>loco Me <%= link_to @court.user.last_name_or_placeholder, user_path(@court.user) %></i>
-            
-        </div>
-      </div>
 
-      <div class="col-md-3 text-right">
-        <span class="glyphicon glyphicon-map-marker"></span>
-        <%= t("bars.#{@court.bar}") %> 
-      </div>
-    </div>
+<div class="row">
+  <div class="col-md-8">
+  <!-- description (avec documents visibles à tout disponible) -->
+    <%= render "description" %>
   </div>
-    
-  <div class="panel-footer">
-    <div class="text-right">
-      
-      <% if @court.user == current_user %>
-        <%= link_to t("courts.button_edit"), edit_court_path(@court),:class=> 'btn btn-info' -%>
-        <% if @court.have_found %>
-          <%= link_to t("courts.button_found"), @court, :class=> 'btn btn-warning', :disabled=> 'disabled' %>
-          <% end %>
-      
-      <% else %>
-        
-        
-          <% if @court.have_found %>
-            <%= link_to t("courts.button_found"), @court,:class=> 'btn btn-warning', :disabled => 'disabled' %>
-          <% else %>
-            <%= link_to t("courts.button_answer_email"), "mailto:#{@court.user.email}?subject=Votre%20demande%20de%20remplacemement%20via%20Courts.be
-              &body=Cher%20confrère,%09%0D%0A%09%0D%0AJe%20vous%20remplacerai%20volontiers%20le%20#{l @court.date, :format => :mail}. %09%0D%0A%09%0D%0ASi%20cela%20vous%20convient%20également,%20pourriez-vous%20me%20transmettre%20davantage%20d'information%20?%09%0D%0A%09%0D%0AD'avance,%20merci.%09%0D%0A%09%0D%0AVotre%20bien%20dévoué(e),%09%0D%0A%09%0D%0A#{current_user.full_name}%09%0D%0A%09%0D%0A(PS%20:%20Pour%20mettre%20à%20jour%20votre%20demande,%20cliquez%20ici%20:%20#{edit_court_url(@court)})%09%0D%0A%09%0D%0A%09%0D%0A%09%0D%0AEnvoyé%20depuis%20mon%20compte%20sur%20Courts.be", :class=> 'btn btn-success' %>
-          <% end %>
-        
-      <% end %>
 
-    </div>
+  <div class="col-md-4">
+  <!-- personnes disponibles/choisie -->
+  <% if current_user == @court.user %>
+    <%= render "available_locos" %>
+    <% end %>
   </div>
+
 </div>
-</div>
+
+<!-- conversations (avec documents visibles only aux membres de la conversation) -->
+<%= render "conversations" %>
+
 
 

@@ -1,0 +1,147 @@
+<!-- conversation -->
+<!-- la conversation en cours apparaît en évidence -->
+<!-- pour chaque loco du court, il y a un panneau de conversation.
+  Le current user voit le panneau dont il est le loco_lawyer.
+  Le dominus litis voit tous les panneaux de discussion -->
+
+<div class="row">
+<% @court.locos.order("updated_at DESC").each do |loco| %>
+
+<% if loco.members.include?(current_user) %>
+
+  <% if loco == @court.locos.last %>
+    <div class="col-md-12">
+  <% else %>
+    <div class="col-md-6">
+  <% end %>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <h4>Votre conversation avec Me 
+        <% if current_user == @court.user %>
+          <%= link_to loco.user.last_name_or_placeholder, user_path(loco.user) if loco.user %>
+        <% else %>
+          <%= link_to @court.user.last_name_or_placeholder, user_path(@court.user) %>
+        <% end %>
+
+<!-- pièce jointe -->
+        <button class="btn btn-default btn-sm pull-right" type="button" data-toggle="collapse" data-target="#collapsePrivateDoc" aria-expanded="false" aria-controls="collapseExample">
+          <i class="fa fa-paperclip"> Ajouter des documents privés</i>
+        </button>
+
+              
+        <div class="collapse" id="collapsePrivateDoc">
+          <br>
+          <div class="panel panel-default col-md-5 col-md-offset-7">
+            <div class="panel-body">
+            <%= form_for(@private_documentation) do |f| %>
+              <div class="form-group">
+              <%= f.text_field :name, :placeholder => "Nom du document", class: "form-control input-sm" %>
+              </div>
+              <%= f.file_field :document, class: "form-control input-sm" %>
+              <%= f.hidden_field :loco_id, :value => loco.id %>
+              <br>
+              <div class="actions">
+                <%= f.submit "Ajouter le document privé", class: "btn btn-primary btn-sm btn-block" %>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </h4>
+    
+      <hr>
+
+      <%= form_for(@comment) do |f| %>
+        <div class="form-inputs">
+          <%= f.text_area :body, :placeholder => t("courts.placeholder_comment"), class: "form-control input-lg" %>
+              </div>
+          <%= f.hidden_field :court_id, :value => @court.id %>
+          <%= f.hidden_field :loco_id, :value => loco.id %>
+          <br>
+          <div class="actions">
+            <%= f.submit t("courts.button_add_comment"), class: "btn btn-info btn-lg btn-block" %>
+          </div>
+      <% end %>
+
+
+
+
+
+      <hr> <!-- les commentaires de la conversation -->
+      <% if loco.private_documentations.any? %>
+
+        <p>
+          <small>Documents privés :</small>
+          <% loco.private_documentations.each do |doc| %>
+            <br>
+            <i class="fa fa-file-pdf-o"></i>
+            <%= link_to doc.name, doc.document.url, target: "_blank" %> (Me <%= doc.user.last_name_or_placeholder %>)
+            <% if current_user == doc.user %>
+            <%= link_to(doc, method: :delete) do %>
+              <%= content_tag(:i, " " ,:class=> 'fa fa-remove fa-danger') -%>
+            <% end %>
+            <% end %>
+          <% end %>
+        </p>
+        <hr>
+      <% end %>
+      
+      <% loco.comments.order("updated_at DESC").each do |comment| %>
+
+        <% if comment.user == @court.user %>
+      
+            <div class="row">
+              <div class="col-md-2">
+                <% if comment.user == current_user %>
+                  Vous
+                <% else %>
+                  Me <%= comment.user.last_name_or_placeholder %>
+                <% end %>
+                <br><small><%= l comment.created_at, :format => ('%e %b à %H:%M') %></small>
+        
+              </div>
+
+              <div class="col-md-10">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <%= comment.body %>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+        <% else %>
+
+          <div class="row">
+            <div class="col-md-10">
+              <div class="panel panel-default">
+                <div class="panel-body bg-comment">
+                  <%= comment.body %>
+                </div>
+              </div>
+              
+            </div>
+            <div class="col-md-2 text-right">
+              <% if comment.user == current_user %>
+              Vous
+              <% else %>
+              Me <%= comment.user.last_name_or_placeholder %>
+              <% end %>
+              <br><small><%= l comment.created_at, :format => ('%e %b à %H:%M') %></small>
+            </div>
+          </div>
+
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+<% end %>
+<% end %>
+</div>
+

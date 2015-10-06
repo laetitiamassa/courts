@@ -1,3 +1,8 @@
+
+
+
+
+
 <%= form_for(@court) do |f| %>
   <% if @court.errors.any? %>
     <div id="error_explanation">
@@ -11,40 +16,31 @@
     </div>
   <% end %>
 
-  <div class="field col-md-3 form-inline">
-    <div class="field form-group">
-    <%= f.datetime_select :date, {}, {class: "form-control input-sm"} %>
+  <div class="form-group col-md-4 few-padding-right">
+    <div class='input-group input-group-sm' id='datetimepicker'>
+      <%= f.text_field :date, class: "form-control input-xs" %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
   </div>
+  <div class="col-md-2 few-padding-left few-padding-right form-group">
+    <%= f.text_field :performance, :class => "form-control input-sm", :placeholder => t("courts.placeholder_performance_short") %>
   </div>
-
-
-  <div class="field col-md-2 form-group">
-    <%= f.text_field :performance, :class => "form-control input-lg", :placeholder => t("courts.placeholder_performance_short") %>
-  </div>
-  <div class="field col-md-2 form-group">
-    <%= f.text_field :jurisdiction, :class => "form-control input-lg", :placeholder => t("courts.placeholder_court_short") %>
-  </div>
-  
-  <div class="field col-md-2 form-group">
-    <%= f.select :bar, @bars, {:selected => params[:bar]}, {class: "form-control input-lg"} %>
+  <div class="col-md-2 form-group few-padding-left few-padding-right">
+    <%= f.text_field :jurisdiction, :class => "form-control input-sm", :placeholder => t("courts.placeholder_court_short") %>
   </div>
   
-  <!--
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+  <div class="col-md-2 form-group few-padding-left few-padding-right">
+    <%= f.select :bar, @bars, {:selected => params[:bar]}, {class: "form-control input-sm"} %>
   </div>
-  <div class="field">
-    <%= f.label :have_found %><br>
-    <%= f.check_box :have_found %>
-  </div>
--->
-  <div class="field col-md-3">
-    <div class="form-actions text-right">
+
+  <div class="field col-md-2 few-padding-left">
+    <div class="form-actions">
       <% if current_user.overdue %>
-      <%= link_to t("courts.button_new_court_short"), unsubscribed_path, :class => "btn btn-primary btn-lg" %>
+      <%= link_to t("courts.button_new_court_short"), unsubscribed_path, :class => "btn btn-primary btn-sm btn-block" %>
       <% else %>
-      <%= f.submit t("courts.button_new_court_short"), :class => "btn btn-primary btn-lg" %>
+      <%= f.submit t("courts.button_new_court_short"), :class => "btn btn-primary btn-sm btn-block" %>
       <% end %>
     </div>
   </div>
@@ -54,6 +50,9 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('[data-behaviour~=datepicker]').datepicker();
+    $('#datetimepicker').datetimepicker({
+                    locale: 'fr'
+                });
   })
+
 </script>

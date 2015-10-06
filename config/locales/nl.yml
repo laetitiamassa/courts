@@ -251,8 +251,8 @@ nl:
     log_in: "Inloggen"
   bars:
     Arlon: "Aaren"
-    BrusselsFR: "Bruxelles - OBFG"
-    BrusselsNL: "Bruxelles - OVB"
+    BrusselsFR: "Brussel - OBFG"
+    BrusselsNL: "Brussel - OVB"
     Charleroi: "Charleroi"
     Dinant: "Dinant"
     Eupen: "Eupen"
@@ -262,10 +262,10 @@ nl:
     Mons: "Mons"
     Namur: "Namur"
     Neufchateau: "Neufchateau"
-    Nivelles: "Nivelles"
+    Nivelles: "Brabant Wallon"
     Tournai: "Tournai"
     Verviers: "Verviers"
-    Anvers: "Anvers"
+    Anvers: "Antwerpen"
     Brugge: "Brugge"
     Dendermonde: "Dendermonde"
     Gent: "Gent"
@@ -304,3 +304,33 @@ nl:
 
     registration:
       signup_title: "Inscrivez-vous gratuitement à Courts"
+  about:
+    title: "A propos de Courts"
+    question1: "Qu'est-ce que 'Courts' ?"
+    q1_content1: "Courts, c'est "
+    q1_content2: "twitter, avec un but et une structure précise"
+    q1_content3: " : publier, consulter et répondre aux demandes de remplacement, entre confrères en Belgique."
+    question2: "Pourquoi avoir créé Courts ?"
+    q2_content1: "J'ai créé Courts en repensant à mes propres expériences il y a quelques années, lorsqu'il m'arrivait régulièrement d'intervenir 'loco' l'un ou l'autre de mes confrères, auprès de divers organes et juridictions."
+    q2_content2: "Férue de technologie déjà à l'époque, "
+    q2_content3: "je me souviens m'être souvent demandée pourquoi il n'existait pas un outil pratique et dynamique pour permettre à la demande de remplacement de rencontrer l'offre"
+    q2_content4: " importante ?"
+    q2_content5: "Un bagage technologique, marketing et entrepreneurial plus tard, je n'avais plus de raison de ne pas créer un tel outil : Courts était né."
+    question3: "Est-ce un outil indépendant ?"
+  mailer:
+    salutation: "Cher Maître,"
+    end_salutation: "Bonne journée,"
+    new_court_in_my_bar: 
+      subject: "L'un de vos confrères recherche un remplaçant dans votre région, via Courts.be"
+      content1: "Seriez-vous disponible pour remplacer votre confrère ?"
+      content2: "Découvrez la demande de remplacement et saisissez cette opportunité"
+      cta: " ici"
+    after_court_creation:
+      subject: "Votre demande de remplacement via Courts.be"
+      content1: "Votre demande de remplacement vient d'être adressée à vos confrères au profil le plus pertinent."
+      content2: "Vous avez trouvé un remplaçant parmi vos confrères ?"
+      content3: "Dès que ce sera le cas, vous pourrez mettre à jour votre demande, en cochant l'option 'j'ai trouvé un confrère disponible', prévue à cet effet :"
+      cta: "Mettre à jour ma demande sur Courts.be"
+      content4: "Ainsi, vous éviterez une inondation d'emails de réponse alors même que vous aurez déjà trouvé chaussure à votre pied !"
+
+

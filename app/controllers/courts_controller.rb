@@ -7,14 +7,30 @@ class CourtsController < ApplicationController
   # GET /courts
   # GET /courts.json
   def index
-    @courts = Court.active.order(:date)
+    @courts = Court.all
     @court = current_user.courts.build if current_user
+    @response = current_user.responses.build if current_user
     @bars = Court.bars
   end
 
   # GET /courts/1
   # GET /courts/1.json
   def show
+    @response = current_user.responses.build if current_user
+    @loco = Loco.new
+    @locos = Loco.all
+
+    @comment = current_user.comments.build if current_user
+    @comments = Comment.order("updated_at DESC")
+
+    @documentation = current_user.documentations.build if current_user
+    @private_documentation = current_user.private_documentations.build if current_user
+
+    @dominus_litis = @court.user
+    @loco_lawyer = @court.locos.last.user if @court.locos.any?
+
+    @loco_evaluation = current_user.loco_evaluations.build if current_user
+    @dominus_litis_evaluation = current_user.dominus_litis_evaluations.build if current_user
   end
 
   # GET /courts/new
@@ -39,7 +55,7 @@ class CourtsController < ApplicationController
         UserMailer.new_court_in_my_bar(@court, users_in_bar).deliver if has_users_in_bar?
         UserMailer.after_court_creation(@court, @court.user).deliver if has_users_in_bar?
 
-        format.html { redirect_to @court, notice: t("courts.well_created") }
+        format.html { redirect_to :back, notice: t("courts.well_created") }
         format.json { render action: 'show', status: :created, location: @court }
       else
         format.html { render action: 'new' }
@@ -94,7 +110,7 @@ class CourtsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def court_params
-      params.require(:court).permit(:performance, :jurisdiction, :date, :bar, :have_found)
+      params.require(:court).permit(:performance, :jurisdiction, :date, :bar, :have_found, :details)
     end
 
 end

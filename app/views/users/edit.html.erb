@@ -1,3 +1,199 @@
+
+<h2 class="page-header">Modifiez votre profil</h2>
+
+<%= form_for @user, :url => user_path(@user), :html => { :method => :put } do |f| %>
+<div class="row">
+	<div class="col-md-4">
+		<!-- vous -->
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2 class="text-right higher-up page-header"><small>Vous</small></h2>
+				
+				<div class="row upper-padding">
+
+					<div class="col-md-3 text-center">
+					<%= image_tag (current_user.avatar.url(:mini)), class: "img-rounded" %>
+					<br>
+					</div>
+
+					<div class="col-md-9">
+						Modifiez votre photo de profil :
+						<%= f.file_field :avatar, class: "form-control input-sm" %>
+					</div>
+				</div>
+
+				<div class="form-group">
+				<%= f.text_field :last_name, class: "form-control input-sm", :placeholder => "Votre nom" %>
+				</div>
+				
+				<div class="form-group">
+					<%= f.text_field :first_name, class: "form-control input-sm", :placeholder => "Votre prénom" %>
+				</div>
+				
+				<div class="form-group">
+					Votre barreau principal :
+					<%= f.select :bar, @bars, {:include_blank => true}, {class: "form-control input-sm"} %>  
+				</div>
+
+			</div>
+		</div>
+
+		<!-- vos coordonnées -->
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2 class="text-right higher-up page-header"><small>Vos coordonnées</small></h2>
+					
+
+
+			  		<div class="form-group">
+			    		<%= f.text_field :street, class: "form-control input-sm", :placeholder => "rue/avenue" %>
+			  		</div>
+					
+
+				  
+				  	<div class="form-group">
+				    	<%= f.text_field :street_number, class: "form-control input-sm", :placeholder => "numéro" %>
+				  	</div>
+					
+
+				  
+					  <div class="form-group">
+					    <%= f.text_field :zipcode, class: "form-control input-sm", :placeholder => "code postal" %>
+					  </div>
+					
+
+				  
+					  <div class="form-group">
+					    <%= f.text_field :city, class: "form-control input-sm", :placeholder => "commune" %>
+					  </div>
+					
+				<hr>
+				  <div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="glyphicon glyphicon-phone-alt"></span> 
+				    		+32
+				    	</span>
+				    	<%= f.text_field :telephone, class: "form-control input-sm", :placeholder => "téléphone fixe" %>
+				  	</div>
+		  		</div>
+				
+
+			  
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="glyphicon glyphicon-print"></span> 
+				    		+32
+				    	</span>
+				    	<%= f.text_field :fax, class: "form-control input-sm", :placeholder => "fax" %>
+				  	</div>
+					</div>
+				
+
+				
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="glyphicon glyphicon-earphone"></span> 
+					    	+32
+					    </span>
+				    	<%= f.text_field :mobile, class: "form-control input-sm", :placeholder => "téléphone mobile" %>
+				  	</div>
+					</div>
+
+					<hr>
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="fa fa-link"></span> 
+					    	
+					    </span>
+				    	<%= f.text_field :website, class: "form-control input-sm", :placeholder => "copiez l'url de votre site" %>
+				  	</div>
+					</div>
+
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="fa fa-linkedin"></span> 
+					    	
+					    </span>
+				    	<%= f.text_field :linkedin, class: "form-control input-sm", :placeholder => "copiez l'url de votre profil Linkedin" %>
+				  	</div>
+					</div>
+
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="fa fa-twitter"></span> 
+					    	
+					    </span>
+				    	<%= f.text_field :twitter, class: "form-control input-sm", :placeholder => "copiez l'url de votre profil Twitter" %>
+				  	</div>
+					</div>
+
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="fa fa-facebook"></span> 
+					    	
+					    </span>
+				    	<%= f.text_field :facebook, class: "form-control input-sm", :placeholder => "copiez l'url de votre profil Facebook" %>
+				  	</div>
+					</div>
+			
+
+
+
+			</div>
+		</div>
+	</div>
+
+	<!-- votre activité -->
+	<div class="col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2 class="text-right higher-up page-header"><small>Votre activité</small></h2>
+				
+					
+			
+				<p><b>Présentez votre activité</b>
+					<%= link_to "Ajoutez vos activités préférentielles", prefered_areas_path, class: "btn btn-success btn-xs pull-right" %>
+				</p>
+
+				
+				<%= f.text_area :presentation, class: "form-control input-sm", :rows => "15", :placeholder => "Décrivez votre activité, de votre parcours à vos particularités, en passant par vos points forts,..." %>
+			</div>
+		</div>
+	</div>
+	<%= f.submit "Mettre à jour le profil", class: "btn btn-primary pull-right" %>
+
+</div>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <div class="panel panel-default">
   <div class="panel-heading">
     <h1>Editez votre profil</h1>
@@ -112,4 +308,4 @@
 <% end %>
 
 
-</div>
+</div> -->

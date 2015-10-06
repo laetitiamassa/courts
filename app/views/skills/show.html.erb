@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @skill.user_id %>
+</p>
+
+<p>
+  <strong>Prefered area:</strong>
+  <%= @skill.prefered_area_id %>
+</p>
+
+<%= link_to 'Edit', edit_skill_path(@skill) %> |
+<%= link_to 'Back', skills_path %>

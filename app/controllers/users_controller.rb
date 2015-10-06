@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @user_courts = @user.courts.order("date DESC")
+    @courts = Court.all
   end
 
   def edit
@@ -22,6 +23,10 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :bar, :street, :street_number, :city, :zipcode, :telephone, :fax, :mobile, :dominus_litis, :loco, :subscribed, :extended_trial, :extended_trial_end_date)
+    params.require(:user).permit(:email, :first_name, :last_name, :bar, 
+                                  :street, :street_number, :city, :zipcode, 
+                                  :telephone, :fax, :mobile, :website, :facebook, :twitter, :linkedin,
+                                  :dominus_litis, :loco, :subscribed, :extended_trial, :extended_trial_end_date, 
+                                  :presentation, :avatar)
   end
 end

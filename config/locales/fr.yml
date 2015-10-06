@@ -289,13 +289,18 @@ fr:
     forbidden_modification: "Vous ne pouvez pas modifier cette demande"
     not_saved_error: "empêchent votre demande d'être enregistrée :"
     placeholder_performance: "Prestation attendue (ex : demande de remise)"
+    placeholder_details: "Décrivez la prestation attendue de votre confrère"
+    placeholder_comment: "Ajoutez un commentaire"
+    placeholder_comment_evaluation: "Ajoutez un commentaire à votre évaluation"
     placeholder_performance_short: "Prestation"
     placeholder_court_short: "Juridiction"
     placeholder_court: "Juridiction concernée"
     found_loco: "Avez-vous déjà trouvé un confrère disponible ?"
     i_found_loco: "J'ai trouvé un confrère disponible"
     button_new_court: "Nouvelle demande"
-    button_new_court_short: "Publier ma demande"
+    button_new_court_short: "Publier"
+    button_add_details_court: "Ajouter la description"
+    button_add_comment: "Ajouter"
     stream_create_court: "Introduisez votre demande de remplacement"
     stream_all_current_courts: "Demandes de remplacement en cours"
     stream_no_current_court: "Pour l'instant, tous vos confrères ont trouvé un remplaçant.\nVous pouvez repasser plus tard pour consulter les prochaines opportunités, ou indiquer votre demande de remplacement via le module ci-dessus."
@@ -340,7 +345,9 @@ fr:
       content3: "Dès que ce sera le cas, vous pourrez mettre à jour votre demande, en cochant l'option 'j'ai trouvé un confrère disponible', prévue à cet effet :"
       cta: "Mettre à jour ma demande sur Courts.be"
       content4: "Ainsi, vous éviterez une inondation d'emails de réponse alors même que vous aurez déjà trouvé chaussure à votre pied !"
-
+  subscribers:
+    modal:
+    
 
 
 

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Private Documentations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th>Conversation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @private_documentations.each do |private_documentation| %>
+      <tr>
+        <td><%= private_documentation.name %></td>
+        <td><%= private_documentation.user_id %></td>
+        <td><%= private_documentation.conversation_id %></td>
+        <td><%= link_to 'Show', private_documentation %></td>
+        <td><%= link_to 'Edit', edit_private_documentation_path(private_documentation) %></td>
+        <td><%= link_to 'Destroy', private_documentation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Private documentation', new_private_documentation_path %>

@@ -1,0 +1,50 @@
+
+
+<h2 class="page-header">Activités préférentielles
+</h2>
+
+<h3><small>Vos activités préférentielles</small></h3>
+  <% current_user.prefered_areas.each do |area| %>
+    <span class="label label-info"><%= area.name %></span>
+  <% end %>
+<hr>
+
+<h3><small>Ajoutez ou modifiez vos activités préférentielles</small></h3>
+
+    <% @prefered_areas.each do |prefered_area| %>
+      
+      <ul class="list-group col-md-3">
+        <li class="list-group-item">
+          <%= prefered_area.name %>
+          
+          <% if current_user.prefered_areas.include?(prefered_area) %>
+
+            
+            <% prefered_area.skills.each do |skill| %>
+              <% if current_user.id == skill.user_id %>
+                
+                <%= link_to 'Retirer', skill, method: :delete, class: "btn btn-xs btn-danger pull-right" %>
+              <% end %>
+            <% end %>
+            
+
+          <% else %>
+            
+            <%= form_for(@skill) do |f| %>
+              <%= f.hidden_field :prefered_area_id, :value => prefered_area.id %> 
+              
+              <button type="submit" class="btn btn-xs btn-success pull-right">
+                      Ajouter
+                </button>
+            <% end %>
+
+          <% end %>
+          <br>
+        </li>
+      </ul>
+        
+      
+    <% end %>
+
+<br>
+

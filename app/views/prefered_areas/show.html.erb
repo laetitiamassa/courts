@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @prefered_area.name %>
+  <% @prefered_area.skills.each do |skill| %>
+  	<% if current_user.id == skill.user_id %>
+  		on peut l'effacer
+  		<%= link_to 'Destroy', skill, method: :delete, data: { confirm: 'Are you sure?' } %>
+  	<% end %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_prefered_area_path(@prefered_area) %> |
+<%= link_to 'Back', prefered_areas_path %>

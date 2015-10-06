@@ -1,14 +1,19 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '2.2.3'
 
 
-gem 'rails', '4.0.0'
-gem 'devise', '~> 3.1.1' #this is the latest version and has been updated since the video
+gem 'rails', '4.2.4'
+gem 'devise', '~> 3.5.2'
+
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 
 gem 'sass-rails', '~> 4.0.0'
-gem 'bootstrap-sass', '~> 3.0.3.0'
-gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
-                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+
+gem 'bootstrap-sass', '3.1.1.0'
+#gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+                              #:git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'

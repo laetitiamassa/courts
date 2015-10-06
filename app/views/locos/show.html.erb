@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @loco.user_id %>
+</p>
+
+<p>
+  <strong>Court:</strong>
+  <%= @loco.court_id %>
+</p>
+
+<%= link_to 'Edit', edit_loco_path(@loco) %> |
+<%= link_to 'Back', locos_path %>

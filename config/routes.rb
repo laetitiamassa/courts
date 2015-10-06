@@ -2,6 +2,15 @@ Courts::Application.routes.draw do
   
   
 
+  resources :private_documentations
+  resources :documentations
+  resources :skills
+  resources :prefered_areas
+  resources :dominus_litis_evaluations
+  resources :loco_evaluations
+  resources :comments
+  resources :locos
+  resources :responses
   resources :answers
   resources :questions
 

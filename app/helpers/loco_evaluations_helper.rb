@@ -1,0 +1,2 @@
+module LocoEvaluationsHelper
+end

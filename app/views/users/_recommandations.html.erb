@@ -1,0 +1,82 @@
+<hr>
+
+			
+<p><small><b>Recommandations de Me <%= @user.last_name_or_placeholder %> :</b>
+<br>Cliquez sur les smiley pour plus de détails sur la recommandation</small>
+</p>
+			
+<% @courts.each do |court| %>
+						
+	<% if court.loco_evaluation && court.loco_evaluatee == @user %>
+		<% if court.loco_evaluation.evaluation == "happy" %>
+					
+
+		<button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseLocoEval_<%= court.loco_evaluation.id %>" aria-expanded="false" aria-controls="collapseExample">
+			<i class="fa fa-smile-o fa-lg fa-success"></i>
+		</button>
+
+           <% end %>   
+		
+				
+	<% end %>
+<% end %>
+
+<% @courts.each do |court| %>
+				
+				
+	<% if court.dominus_litis_evaluation && court.dominus_litis_evaluatee == @user %>
+		<% if court.dominus_litis_evaluation.evaluation == "happy" %>
+		
+		<button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseDLEval_<%= court.dominus_litis_evaluation.id %>" aria-expanded="false" aria-controls="collapseExample">
+			<i class="fa fa-smile-o fa-lg fa-success"></i>
+		</button>
+
+		<% end %>
+					
+	<% end %>
+
+<% end %>
+
+<% @courts.each do |court| %>
+						
+	<% if court.loco_evaluation && court.loco_evaluatee == @user %>
+		<% if court.loco_evaluation.evaluation == "happy" %>
+					
+
+		
+
+              
+		<div class="collapse" id="collapseLocoEval_<%= court.loco_evaluation.id %>">
+			<br>
+			<ul class="list-group">
+		        <li class="list-group-item">
+			        
+			        "<i><%= court.loco_evaluation.comment %></i>"
+		             - Me <%= link_to court.user.last_name_or_placeholder, user_path(court.user) %>
+			    </li>
+			</ul>
+		</div>
+			<% end %>	
+	<% end %>
+<% end %>
+
+<% @courts.each do |court| %>
+				
+				
+	<% if court.dominus_litis_evaluation && court.dominus_litis_evaluatee == @user %>
+		<% if court.dominus_litis_evaluation.evaluation == "happy" %>
+		
+
+		<div class="collapse" id="collapseDLEval_<%= court.dominus_litis_evaluation.id %>">
+		    <br>
+		    <ul class="list-group">
+		        <li class="list-group-item">
+		            "<i><%= court.dominus_litis_evaluation.comment %></i>"
+		             - Me <%= link_to court.locos.last.user.last_name_or_placeholder, user_path(court.locos.last.user) %>
+		        </li>
+		    </ul>
+		</div>
+			<% end %>		
+	<% end %>
+
+<% end %>

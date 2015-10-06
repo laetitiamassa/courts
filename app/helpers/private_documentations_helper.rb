@@ -1,0 +1,2 @@
+module PrivateDocumentationsHelper
+end

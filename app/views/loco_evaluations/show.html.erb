@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @loco_evaluation.user_id %>
+</p>
+
+<p>
+  <strong>Court:</strong>
+  <%= @loco_evaluation.court_id %>
+</p>
+
+<p>
+  <strong>Evaluation:</strong>
+  <%= @loco_evaluation.evaluation %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @loco_evaluation.comment %>
+</p>
+
+<%= link_to 'Edit', edit_loco_evaluation_path(@loco_evaluation) %> |
+<%= link_to 'Back', loco_evaluations_path %>

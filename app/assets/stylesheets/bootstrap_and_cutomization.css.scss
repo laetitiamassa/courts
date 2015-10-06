@@ -7,11 +7,13 @@ $navbar-height:             60px;
 $navbar-default-bg:         white;
 $navbar-default-brand-color: #c0392b;
 $brand-primary:            	#c0392b;
+$brand-info:				#5c97bf;
 $jumbotron-bg:             	white;
 
 
 
 @import 'bootstrap';
+@import 'bootstrap-datetimepicker';
 
 
 .center {
@@ -24,15 +26,20 @@ $jumbotron-bg:             	white;
 }
 
 .big {
-	font-size: 2em;
-}
-
-.biggy {
 	font-size: 1.5em;
 }
 
+.biggy {
+	font-size: 1.2em;
+}
+
 .bigger {
-	font-size: 2.5em;
+	font-size: 2em;
+}
+
+.smaller {
+	font-size: 0.7em;
+	line-height: 0px;
 }
 
 .brandname {
@@ -83,3 +90,68 @@ $jumbotron-bg:             	white;
 }
 
  body { padding-bottom: 100px; }
+
+.bg-comment {
+	background-color: #F0F9FA;
+}
+
+.fa-success {
+	color: #5cb85c;
+}
+
+.fa-warning {
+	color: #f0ad4e;
+}
+
+.fa-danger {
+	color: #d9534f;
+}
+
+.profile-card {
+	margin-top: 50px;
+}
+
+.no-border-radius {
+	border-radius: 0px;
+}
+
+.no-padding-left {
+	padding-left: 0px;
+}
+
+.few-padding-left {
+	padding-left: 1px;
+}
+
+.with-padding-left {
+	padding-left: 10px;
+}
+
+.no-padding-right {
+	padding-right: 0px;
+}
+
+.few-padding-right {
+	padding-right: 1px;
+}
+
+.with-padding-right {
+	padding-right: 10px;
+}
+
+.no-bold {
+	font-weight: normal;
+}
+
+.higher-up {
+	margin-top: -10px;
+}
+
+.upper-padding {
+	padding-bottom: 10px;
+}
+
+.new-court {
+	background-color: rgba(229,175,170, 0.1);
+}
+

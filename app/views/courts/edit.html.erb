@@ -24,8 +24,14 @@
     <%= f.check_box :have_found %>
     <%= t("courts.i_found_loco") %>
   </div>
-  <div class="field form-group form-inline">
-    <%= f.datetime_select :date, {:order => [:day,:month,:year]}, {class: "form-control input-sm"} %>
+  
+  <div class="form-group">
+    <div class='input-group input-group-lg' id='datetimepicker'>
+      <%= f.text_field :date, class: "form-control input-lg" %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
   </div>
 
   <div class="field form-group">
@@ -38,6 +44,10 @@
   <div class="field form-group">
     <%= f.select :bar, @bars, {:include_blank => false}, {class: "form-control input-lg"} %>
   </div>
+
+  <div class="form-inputs">
+    <%= f.text_area :details, :placeholder => t("courts.placeholder_details"), class: "form-control input-lg" %>
+  </div>
   
   <br>
   <div class="form-actions">
@@ -49,3 +59,12 @@
 		
 	</div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#datetimepicker').datetimepicker({
+                    locale: 'fr'
+                });
+  })
+
+</script>

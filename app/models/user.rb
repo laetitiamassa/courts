@@ -6,9 +6,66 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, 
          :recoverable, :rememberable, :trackable, :validatable
+  
   has_many :courts
+  has_many :responses
+  has_many :locos
+  has_many :comments
+  has_many :loco_evaluations
+  has_many :dominus_litis_evaluations
+
+  has_many :documentations
+  has_many :private_documentations
+
+  has_many :skills
+  has_many :prefered_areas, :through => :skills
+  
   has_many :questions
   has_many :answers
+
+  has_attached_file :avatar, 
+                    :styles => { large: "320x420#", medium: "300x300#", thumb: "100x100#", mini: "50x50#" }, 
+                    :default_url => ":style/missing.jpeg"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  
+  def loco_count
+    loco_count = 0
+    locos.each do |loco|
+      if loco.court.locos.last.user.id == self.id
+        loco_count += 1
+      end
+    end 
+    loco_count
+  end
+
+  def reco_count
+    loco_reco_count + dl_reco_count
+  end
+
+  def loco_reco_count
+    loco_reco_count = 0
+    locos.each do |loco|
+      if loco.court.loco_evaluation
+        if loco.court.loco_evaluatee.id == self.id && loco.court.loco_evaluation.evaluation == "happy"
+          loco_reco_count += 1
+        end
+      end
+    end
+    loco_reco_count
+  end
+
+  def dl_reco_count
+    dl_reco_count = 0
+    courts.each do |court|
+      if court.dominus_litis_evaluation
+        if court.dominus_litis_evaluatee.id == self.id && court.dominus_litis_evaluation.evaluation == "happy"
+          dl_reco_count += 1
+        end
+      end
+    end
+    dl_reco_count
+  end
 
   def full_name
   	"#{first_name} #{last_name}"

@@ -1,0 +1,2 @@
+module PreferedAreasHelper
+end

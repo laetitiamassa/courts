@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @private_documentation.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @private_documentation.user_id %>
+</p>
+
+<p>
+  <strong>Conversation:</strong>
+  <%= @private_documentation.conversation_id %>
+</p>
+
+<%= link_to 'Edit', edit_private_documentation_path(@private_documentation) %> |
+<%= link_to 'Back', private_documentations_path %>
