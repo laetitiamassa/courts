@@ -31,7 +31,36 @@ class User < ActiveRecord::Base
                     :default_url => ":style/missing.jpeg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  
+  def open_notifications_count
+    #nombre de notifications créées mais non lues, et dont on n'est pas le notifier
+    #pour les notifications à délai, 
+    # 1. tant que délai pas passé => pas de notification à délai
+    # 2. dès que délai passé => intégrer la notification dans le décompte
+
+    # (notif classiques) - (notif à délai).count  tant que délai pas passé
+    # (notif classiques tout court)
+  end
+
+  def open_notifications_count
+    all_open_notifications_count - delayed_open_notifications_count #toutes les notifications à l'exceptions de celles dont le user ne doit pas être averti
+  end
+
+  def all_open_notifications_count
+    self.notifications_as_notifiee.where(:read => false).count
+  end
+
+  def delayed_open_notifications_count
+    delayed_open_notifications_count = 0
+    self.notifications_as_notifiee.where(:read => false).each do |notif|
+      if notif.message.include? "invite" #si c'est une notification d'invitation à évaluer
+        if notif.notifiable.court.current #tant que le court est passé, et que donc le user ne doit pas encore être averti
+          delayed_open_notifications_count += 1
+        end
+      end
+    end
+    delayed_open_notifications_count
+  end
+
   def loco_count
     loco_count = 0
     locos.each do |loco|

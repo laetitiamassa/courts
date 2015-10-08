@@ -128,17 +128,18 @@
 			</div>
 			</li>
 			<% @courts.sort_by(&:date_display).each do |court| %>
-				<% if court.date_display >= Time.now %>
+				<% if court.current %>
 					<%= render :partial => "each_court", :locals => { :court => court} %>
 				<% end %>
 			<% end %>
 
 			
+				<!-- pas encore rôdé
 				<% unless @courts.where("date.to_datetime >= ?", Time.now) %>
 					<li class="list-group-item">
 						<h3 class="text-center"><small>Tous vos confrères ont déjà trouvé un remplaçant.</small></h3>
 					</li>
-				<% end %>
+				<% end %> -->
 			
 		</ul>
 	</div>

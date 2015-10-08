@@ -1,12 +1,4 @@
-<% @notifications.where('created_at >= ?', Time.now).each do |notification| %>
-court id <%= notification.notifiable.court.id %>,
-notif id
-<%= notification.id %>,
-notif created at <%= notification.created_at %>,
-court datetime <%= notification.notifiable.court.date.to_datetime %>,
-time now <%= Time.now %><br>
-time zone <%= Time.now.in_time_zone %>
-<% end %>
+
 
 <ul class="list-group col-md-4 col-md-offset-4">
   <li class="list-group-item">
@@ -24,7 +16,7 @@ time zone <%= Time.now.in_time_zone %>
           <div class="col-md-10">
 
             <%= render :partial => "notifiable_message", :locals => {:notification => notification} %>
-            <div class="text-right"><small><%= l notification.created_at, :format => ('%e %b à %H:%M') %></small></div>
+            <div class="text-right"><small><%= l notification.created_at_display, :format => ('%e %b à %H:%M') %></small></div>
           </div>
         </div>
       </li>
@@ -37,7 +29,7 @@ time zone <%= Time.now.in_time_zone %>
               </div>
               <div class="col-md-10">
                 <%= link_to notification.message, court_path(notification.notifiable.court.id) %>
-                <div class="text-right"><small><%= l notification.created_at, :format => ('%e %b à %H:%M') %></small></div>
+                <div class="text-right"><small><%= l notification.created_at_display, :format => ('%e %b à %H:%M') %></small></div>
               </div>
             </div>
           </li>

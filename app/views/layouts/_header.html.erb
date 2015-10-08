@@ -38,8 +38,8 @@
 
             <% if @notifications.where(:notifiee => current_user, :read => false).any? %>
               <%= content_tag(:i, " " ,:class=> 'fa fa-lg fa-bell') -%>
-                <% if @open_notifications_count > 0 %>
-                    <span class="label label-success label-as-badge"><small><%= @open_notifications_count %></small></span>
+                <% if current_user.open_notifications_count > 0 %>
+                    <span class="label label-success label-as-badge"><small><%= current_user.open_notifications_count %></small></span>
                 <% end %>
             <% else %>
               <%= content_tag(:i, " " ,:class=> 'fa fa-lg fa-bell') -%>

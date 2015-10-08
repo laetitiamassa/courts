@@ -27,6 +27,6 @@ class PagesController < ApplicationController
 
   def set_notifications
       @notifications = Notification.all
-      @open_notifications_count = @notifications.where(:notifiee => current_user, :read => false).count - @notifications.where(:notifiee => current_user, :notifier => current_user, :read => false).count - @notifications.where('created_at >= ?', Time.now).count 
+      @open_notifications_count = @notifications.where(:notifiee => current_user, :read => false).count - @notifications.where(:notifiee => current_user, :notifier => current_user, :read => false).count #- @notifications.where('created_at >= ?', Time.now).count 
     end
 end

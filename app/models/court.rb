@@ -26,8 +26,8 @@ class Court < ActiveRecord::Base
 	    end
 	end
 
-	def current
-		date_display >= Time.now
+	def current #workaround datepicker not set to UTC
+		date_display - 2.hours >= Time.now
 	end
 
 	def past
@@ -41,9 +41,7 @@ class Court < ActiveRecord::Base
 	end
 
 	def date_display
-		
-			date.to_datetime
-		
+		date.to_datetime
 	end
 
 	def loco_evaluator
@@ -60,10 +58,6 @@ class Court < ActiveRecord::Base
 
 	def dominus_litis_evaluatee
 		dominus_litis_evaluation.evaluatee
-	end
-
-	def current
-		date >= Time.now 
 	end
 
 	def create_notification
