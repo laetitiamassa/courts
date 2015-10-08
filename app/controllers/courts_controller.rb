@@ -1,4 +1,5 @@
 class CourtsController < ApplicationController
+  before_action :set_notifications
   before_filter :authenticate_user!, except: [:index]
   before_action :subscribed_user, :only => [:show, :new, :edit]
   before_action :set_court, only: [:show, :edit, :update, :destroy]
@@ -106,6 +107,11 @@ class CourtsController < ApplicationController
     def correct_user
       @court = current_user.courts.find_by(id: params[:id])
       redirect_to courts_path, notice: t("courts.forbidden_modification") if @court.nil?
+    end
+
+    def set_notifications
+      @notifications = Notification.all
+      @open_notifications_count = @notifications.where(:notifiee => current_user, :read => false).count - @notifications.where(:notifiee => current_user, :notifier => current_user, :read => false).count - @notifications.where('created_at >= ?', Time.now).count 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

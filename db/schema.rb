@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005153949) do
+ActiveRecord::Schema.define(version: 20151007095737) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "subject"
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(version: 20151005153949) do
     t.integer  "court_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "notifier_id"
+    t.integer  "notifiee_id"
+    t.string   "message"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "read",            default: false
+    t.string   "notifiable_type"
+    t.integer  "notifiable_id"
   end
 
   create_table "prefered_areas", force: :cascade do |t|

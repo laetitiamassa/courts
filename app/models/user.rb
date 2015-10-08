@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
 
+  has_many :notifications_as_notifier, :class_name=> 'Notification', :foreign_key => 'notifier_id'
+  has_many :notifications_as_notifiee, :class_name=> 'Notification', :foreign_key => 'notifiee_id'
+
   has_attached_file :avatar, 
                     :styles => { large: "320x420#", medium: "300x300#", thumb: "100x100#", mini: "50x50#" }, 
                     :default_url => ":style/missing.jpeg"

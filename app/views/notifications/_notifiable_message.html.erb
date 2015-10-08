@@ -1,0 +1,15 @@
+<% if notification.notifiable_type.include? "ourt" %>
+	<%= link_to notification.message, court_path(notification.notifiable_id) %>
+<% end %>
+<% if notification.notifiable_type.include? "esponse" %>
+	<%= link_to notification.message, court_path(notification.notifiable.court.id) %>
+<% end %> 
+<% if notification.notifiable_type.include? "oco" %>
+
+	<%= link_to notification.message, court_path(notification.notifiable.court.id) %>
+	
+
+	
+<% end %>
+
+<!-- évaluation si locos & si court est passée -->

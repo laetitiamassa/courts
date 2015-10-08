@@ -1,9 +1,18 @@
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>User:</strong>
-  <%= @loco.user_id %>
+  <%= @loco.user.last_name_or_placeholder %>
 </p>
+
+<% @loco.court.responses.each do |response| %>
+	<% unless @loco.user.id == response.user.id %>
+	<%= response.user.id %> a perdu
+	<% end %>
+<% end %>
+
+
 
 <p>
   <strong>Court:</strong>

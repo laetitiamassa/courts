@@ -1,5 +1,6 @@
 class PreferedAreasController < ApplicationController
   before_action :set_prefered_area, only: [:show, :edit, :update, :destroy]
+  before_action :set_notifications
 
   # GET /prefered_areas
   # GET /prefered_areas.json
@@ -66,6 +67,11 @@ class PreferedAreasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_prefered_area
       @prefered_area = PreferedArea.find(params[:id])
+    end
+
+    def set_notifications
+      @notifications = Notification.all
+      @open_notifications_count = @notifications.where(:notifiee => current_user, :read => false).count - @notifications.where(:notifiee => current_user, :notifier => current_user, :read => false).count - @notifications.where('created_at >= ?', Time.now).count 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

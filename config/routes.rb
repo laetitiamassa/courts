@@ -2,6 +2,7 @@ Courts::Application.routes.draw do
   
   
 
+  resources :notifications
   resources :private_documentations
   resources :documentations
   resources :skills

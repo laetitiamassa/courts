@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  before_action :set_notifications
   
   def show
   	@user = User.find(params[:id])
@@ -21,6 +22,13 @@ class UsersController < ApplicationController
       render action: 'edit', notice: t("users.error")
     end
   end
+
+  private
+
+  def set_notifications
+      @notifications = Notification.all
+      @open_notifications_count = @notifications.where(:notifiee => current_user, :read => false).count - @notifications.where(:notifiee => current_user, :notifier => current_user, :read => false).count - @notifications.where('created_at >= ?', Time.now).count 
+    end
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :bar, 

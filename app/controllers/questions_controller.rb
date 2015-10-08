@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
   before_action :subscribed_user, :only => [:show, :new, :edit]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
+  before_action :set_notifications
 
   # GET /questions
   # GET /questions.json
@@ -79,6 +80,11 @@ class QuestionsController < ApplicationController
     def correct_user
       @question = current_user.questions.find_by(id: params[:id])
       redirect_to questions_path, notice: t("courts.forbidden_modification") if @question.nil?
+    end
+
+    def set_notifications
+      @notifications = Notification.all
+      @open_notifications_count = @notifications.where(:notifiee => current_user, :read => false).count - @notifications.where(:notifiee => current_user, :notifier => current_user, :read => false).count - @notifications.where('created_at >= ?', Time.now).count 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
