@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
-  before_action :set_notifications
+
 
   # GET /notifications
   # GET /notifications.json
@@ -73,13 +73,6 @@ class NotificationsController < ApplicationController
       @notification = Notification.find(params[:id])
     end
 
-    def set_notifications
-      @notifications = Notification.all
-      # décompte de toutes les notifications au moment où elles sont créées 
-      # mais ajout d'une notification d'éval que au moment où le court concerné est past
-      # si y a notif contenant "invite" & notif.court.past => compte = 
-      @open_notifications_count = @notifications.where(:notifiee => current_user, :read => false).count - @notifications.where(:notifiee => current_user, :notifier => current_user, :read => false).count - @notifications.where('created_at >= ?', Time.now).count 
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notification_params

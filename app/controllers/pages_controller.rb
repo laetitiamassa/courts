@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_notifications
+
 
   def home
   	
@@ -23,10 +23,5 @@ class PagesController < ApplicationController
     @response = current_user.responses.build if current_user
   end
 
-  private
 
-  def set_notifications
-      @notifications = Notification.all
-      @open_notifications_count = @notifications.where(:notifiee => current_user, :read => false).count - @notifications.where(:notifiee => current_user, :notifier => current_user, :read => false).count #- @notifications.where('created_at >= ?', Time.now).count 
-    end
 end

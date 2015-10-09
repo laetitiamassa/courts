@@ -21,7 +21,7 @@
         </div>
       </li>
       <% else %>
-        <% if notification.notifiable.court.past %>
+        <% if notification.notifiable && notification.notifiable.court.past %>
           <li class="list-group-item">
             <div class="row">
               <div class="col-md-2">

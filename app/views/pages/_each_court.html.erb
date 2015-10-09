@@ -19,42 +19,8 @@
 					          
 					            
 					          <div class="text-right">
-					          	<% if court.user == current_user %>
-							        <%= link_to t("courts.button_edit"), edit_court_path(court),:class=> 'btn btn-info btn-xs' -%>
-							        <% if court.have_found %>
-							          <%= link_to t("courts.button_found"), court, :class=> 'btn btn-warning btn-xs', :disabled=> 'disabled' %>
-							          <% end %>
-							      
-							      <% else %>
-							        
-							          <% if court.have_found %>
-							            <%= link_to t("courts.button_found"), court,:class=> 'btn btn-warning btn-xs', :disabled => 'disabled' %>
-							          <% else %>
-							            
-							              <% if (current_user.responses && court.responses).any? %>
-							              	
-							                
-							                <% if court.locos.any? && current_user.id == court.locos.last.user.id %>
-							                  <span class="label label-info no-bold">Vous intervenez loco</span> 
-							                <% else %>
-							                	<span class="label label-info no-bold">Vous avez répondu</span>
-							                <% end %>
-							                
-							              
-							              
-							            <% else %>
-							              <%= form_for(@response) do |f| %> 
-							                  <%= f.hidden_field :court_id, :value => court.id %>
-							                  <button type="submit" class="btn btn-primary btn-sm">
-							                    <%= content_tag(:i, " " , :class=> 'fa fa-ok') -%>  
-							                    Proposer mes services
-							                  </button>
-							              <% end %>
-							            <% end %>
-
-							          <% end %>
-							        
-							      <% end %>
+					          	<%= render :partial => "court_status_and_cta", :locals => {:court => court} %>
+					          	
 					          </div>  
 					        </div>
 					    </div>

@@ -4,6 +4,10 @@ class Notification < ActiveRecord::Base
 	belongs_to :notifiable, :polymorphic => true
 
 	def created_at_display
-		created_at - 2.hours
+		if message.include? "invite"
+			created_at - 2.hours
+		else
+			created_at
+		end
 	end
 end

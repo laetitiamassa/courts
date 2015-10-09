@@ -36,15 +36,12 @@
         <li>
           <%= link_to notifications_path do %> 
 
-            <% if @notifications.where(:notifiee => current_user, :read => false).any? %>
+            
               <%= content_tag(:i, " " ,:class=> 'fa fa-lg fa-bell') -%>
                 <% if current_user.open_notifications_count > 0 %>
                     <span class="label label-success label-as-badge"><small><%= current_user.open_notifications_count %></small></span>
                 <% end %>
-            <% else %>
-              <%= content_tag(:i, " " ,:class=> 'fa fa-lg fa-bell') -%>
-              
-            <% end %>
+            
           <% end %>
         </li>
 

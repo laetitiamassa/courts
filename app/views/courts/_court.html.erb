@@ -1,11 +1,4 @@
 
-
-
-
-
-
-
-
 <div class="col-md-10 col-md-offset-1">
 
 <div class="panel panel-default">
@@ -46,48 +39,11 @@
         <%= render "evaluations" %>
       
       <% else %>
-    
-
-
-    
-    <div class="text-right">
-      
-      <% if @court.user == current_user %>
-        <%= link_to t("courts.button_edit"), edit_court_path(@court),:class=> 'btn btn-info' -%>
-        <% if @court.have_found %>
-          <%= link_to t("courts.button_found"), @court, :class=> 'btn btn-warning', :disabled=> 'disabled' %>
-          <% end %>
-      
-      <% else %>
-        
-          <% if @court.have_found %>
-            <%= link_to t("courts.button_found"), @court,:class=> 'btn btn-warning', :disabled => 'disabled' %>
-          <% else %>
-            
-              <% if (current_user.responses && @court.responses).any? %>
-              Vous avez déjà répondu
-                
-                <% if @court.locos.any? &&  current_user.id == @court.locos.last.user.id %>
-                  <span class="label label-success">Vous intervenez loco</span> 
-                <% end %>
-                
-              
-              
-            <% else %>
-              <%= form_for(@response) do |f| %> 
-                  <%= f.hidden_field :court_id, :value => @court.id %>
-                  <button type="submit" class="btn btn-success">
-                    <%= content_tag(:i, " " , :class=> 'glyphicon glyphicon-ok') -%>  Je suis disponible
-                  </button>
-              <% end %>
-            <% end %>
-
-          <% end %>
-        
+          <div class="text-right">
+            <%= render "status_and_cta" %>
+          </div>
+  
       <% end %>
-
-    </div>
-<% end %>
 
   </div> <!-- fin panel footer -->
 </div>
