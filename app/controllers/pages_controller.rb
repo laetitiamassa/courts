@@ -23,5 +23,11 @@ class PagesController < ApplicationController
     @response = current_user.responses.build if current_user
   end
 
+  def account
+  end
+
+  def rewards
+  end
+
 
 end

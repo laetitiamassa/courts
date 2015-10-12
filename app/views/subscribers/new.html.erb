@@ -3,37 +3,69 @@
 </h2>
 <br>
 
-<div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h4 class="text-center">
-                        Abonnement annuel</h4>
-                </div>
-                <div class="panel-body text-center">
-                    <h3 class="lead">
-                        <strong>50,- EUR <small>htva**</small> / an</strong>
-                        <br><small>Toutes les fonctionnalités, en mode <b>illimité</b></small>
-                    </h3>
-                </div>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item">Demander des remplacements</li>
-                    <li class="list-group-item">Saisir des opportunités de remplacement</li>
-                    <li class="list-group-item">Poser des questions de procédure (*)</li>
-                    <li class="list-group-item">Répondre à des questions de procédure (*)</li>
-                </ul>
-                <div class="panel-footer text-center">
-                	<div class="row">
-                		<p><b>Sélectionnez votre moyen de paiement</b></p>
-                		<div class="col-md-6">
-                			<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Payer par virement</button>
-                			<%= render "modalVirement" %>
-                		</div>
-                		
-                    		<%= render "form" %>
-                    	</div>
-                    
-                </div>
-            </div>
+
+<div class="row">
+    <div class="col-md-3 col-md-offset-1">
+        <ul class="list-group text-center lower">
+            <li class="list-group-item list-group-item-info">
+                <h4 class="text-center">Une semaine d'accès</h4>
+            </li>
+            <li class="list-group-item">
+                <h3 class="lead">
+                    <strong>2,50 EUR <small>htva**</small></strong>
+                    <br><small>Toutes les fonctionnalités, en mode <b>illimité</b></small>
+
+                </h3>
+            </li>
+            <li class="list-group-item list-group-item-info">
+                <%= render "form_one_week" %>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <ul class="list-group text-center">
+            <li class="list-group-item list-group-item-success">
+                <h3 class="text-center">Abonnement annuel</h3>
+            </li>
+            <li class="list-group-item">
+                <h3 class="lead">
+                    <strong>50,- EUR <small>htva**</small> / an</strong>
+                    <br><small>Toutes les fonctionnalités, en mode <b>illimité</b></small>
+                </h3>
+            </li>
+            <li class="list-group-item list-group-item-success">
+                <div class="row">
+                        <p><b>Sélectionnez votre moyen de paiement</b></p>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Payer par virement</button>
+                            <%= render "modalVirement" %>
+                        </div>
+                        
+                            <%= render "form_yearly" %>
+                        </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul class="list-group text-center lower">
+            <li class="list-group-item list-group-item-warning">
+                <h4 class="text-center">Abonnement mensuel</h4>
+            </li>
+            <li class="list-group-item">
+                <h3 class="lead">
+                    <strong>5,- EUR <small>htva**</small> / mois</strong>
+                    <br><small>Toutes les fonctionnalités, en mode <b>illimité</b></small>
+                </h3>
+            </li>
+            <li class="list-group-item list-group-item-warning">
+                <%= render "form_monthly" %>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+           
             <h3 class="text-center"><small>Une question ? <%= link_to "contact@courts.be", "mailto:contact@courts.be" %></small></h3>
             <p class="text-center">
             	* inclus gratuitement durant la phase de test
@@ -41,4 +73,4 @@
             </p>
             <h3 class="text-center"><small>Oui : vous recevrez ensuite une facture :)</small></h3>
 
-        </div>
+    

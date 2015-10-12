@@ -18,6 +18,7 @@ Courts::Application.routes.draw do
   get "change_passwords/edit"
   get "change_passwords/update"
   devise_for :users, :controllers => { :registrations => "registrations" }
+
   resources :courts
   resources :users
 
@@ -34,7 +35,9 @@ Courts::Application.routes.draw do
   get "about" => "pages#about"
   get "legal" => "pages#legal"
   get "welcome" => "pages#welcome"
-
+  get "account" => "pages#account"
+  get "rewards" => "pages#rewards"
+  get "pricing" => "subscribers#new"
   get "unsubscribed" => "subscribers#unsubscribed"
 
   # The priority is based upon order of creation: first created -> highest priority.

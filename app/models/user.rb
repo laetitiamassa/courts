@@ -4,8 +4,10 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, 
+  devise :invitable, :database_authenticatable, :registerable, 
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :invitations, :class_name => self.to_s, :as => :invited_by
   
   has_many :courts
   has_many :responses
@@ -31,14 +33,43 @@ class User < ActiveRecord::Base
                     :default_url => ":style/missing.jpeg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  def open_notifications_count
-    #nombre de notifications créées mais non lues, et dont on n'est pas le notifier
-    #pour les notifications à délai, 
-    # 1. tant que délai pas passé => pas de notification à délai
-    # 2. dès que délai passé => intégrer la notification dans le décompte
+  def plan_name_display
+    if plan_name = "1530"
+      "Courts One Week" 
+    elsif plan_name = "1520"
+      "Courts Monthly"
+    elsif plan_name = "1510"
+      "Courts Yearly"
+    end
+  end
 
-    # (notif classiques) - (notif à délai).count  tant que délai pas passé
-    # (notif classiques tout court)
+  def next_billing_date_including_free_months
+    next_billing_date + free_months_period_in_months.months
+  end
+
+  def next_billing_date
+    subscription_start_date + billing_duration
+  end
+
+  def billing_duration
+    if plan_name = "1530"
+      1.week 
+    elsif plan_name = "1520"
+      1.month
+    elsif plan_name = "1510"
+      1.year
+    end
+  end
+
+
+  def accepted_invitations_count
+    accepted_invitations_count = 0
+    self.invitations.each do |invitation|
+      unless invitation.invitation_accepted_at.blank?
+        accepted_invitations_count += 1
+      end
+    end
+    accepted_invitations_count
   end
 
   def open_notifications_count
@@ -164,6 +195,30 @@ class User < ActiveRecord::Base
       Time.now < extended_trial_end_date
     else 
       Time.now - created_at < 15.days
+    end
+  end
+
+  def on_free
+    Time.now < free_months_period_end_date
+  end
+
+  def free_months_period_end_date
+    free_months_period_start_date + free_months_period_in_months.months
+  end
+
+  def free_months_period_in_months
+    if accepted_invitations_count > 12
+      12
+    elsif accepted_invitations_count <= 12
+      accepted_invitations_count.to_i.months
+    end
+  end
+
+  def free_months_period_start_date
+    if subscription_start_date.present?
+      next_billing_date
+    elsif on_trial
+      trial_end_date
     end
   end
 

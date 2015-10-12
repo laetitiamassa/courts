@@ -1,0 +1,24 @@
+fr:
+  devise:
+    failure:
+      invited: "Vous avez reçu une invitation, acceptez cette invitation pour achever la création de votre compte."
+    invitations:
+      send_instructions: "Une invitation a été envoyée par email à %{email}."
+      invitation_token_invalid: "Le code d'invitation n'est pas valide !"
+      updated: "Votre mot de passe a bien été créé. Vous êtes maintenant connecté."
+      updated_not_active: "Votre mot de passe a bien été créé."
+      no_invitations_remaining: "Il ne reste aucune invitation"
+      invitation_removed: "Votre invitation a été retirée."
+      new:
+        header: "Envoyez une invitation"
+        submit_button: "Envoyer l'invitation"
+      edit:
+        header: "Créer un mot de passe"
+        submit_button: "Créer mon mot de passe"
+    mailer:
+      invitation_instructions:
+        subject: "Invitation instructions"
+        hello: "Bonjour %{email}"
+        someone_invited_you: "Votre confrère %{invited_by.name_or_placeholder} vous a invité à %{url}, vous pouvez accepter cette invitation via le lien ci-dessous."
+        accept: "Accepter l'invitation à Courts"
+        ignore: "Si vous ne souhaitez pas accepter cette invitation, vous ne devez rien faire.<br />Votre compte Courts ne sera créé que lorsque vous accèderez à Courts.be via ce lien, et que vous choisirez un mot de passe."

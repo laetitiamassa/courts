@@ -21,6 +21,13 @@ class ApplicationController < ActionController::Base
     { :locale => I18n.locale }
   end
 
+  def after_accept_path_for(resource)
+    edit_user_path(@user)
+  end
+
+  def after_invite_path_for(current_inviter)
+    new_user_invitation_path
+  end
   
 
 end

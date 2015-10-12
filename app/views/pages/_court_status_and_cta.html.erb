@@ -21,7 +21,10 @@
 	<!-- proposer vos services -->
 		<!-- vous avez répondu -->
 
-		<% if (current_user.responses && court.responses).any? %>
+		
+
+		<% if (court.responses.where(:user_id => current_user.id)).any? %>
+
 		    <span class="label label-info">Vous avez répondu</span>
 
 		<% else %> 
@@ -46,7 +49,7 @@
 		<% else %>
 
 			<!-- trouvé -->
-			<span class="label label-warning">Ttrouvé</span>
+			<span class="label label-warning">Trouvé</span>
 			
 		<% end %>
 

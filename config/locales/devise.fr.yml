@@ -14,6 +14,20 @@ fr:
       timeout: "Votre session est expirée, veuillez vous reconnecter pour continuer."
       unauthenticated: "Vous devez vous connecter ou vous inscrire pour continuer."
       unconfirmed: "Vous devez valider votre compte pour continuer."
+      invited: "Vous avez reçu une invitation, acceptez cette invitation pour achever la création de votre compte, ou bien cliquez sur 'Mot de passe oublié?'."
+    invitations:
+      send_instructions: "Votre invitation a été envoyée par email à %{email}."
+      invitation_token_invalid: "Le code d'invitation n'est pas valide. Vous pouvez"
+      updated: "Votre mot de passe a bien été créé. Vous êtes maintenant connecté."
+      updated_not_active: "Votre mot de passe a bien été créé."
+      no_invitations_remaining: "Il ne reste aucune invitation"
+      invitation_removed: "Votre invitation a été retirée."
+      new:
+        header: "Envoyez une invitation"
+        submit_button: "Envoyer l'invitation"
+      edit:
+        header: "Créer un mot de passe"
+        submit_button: "Créer mon mot de passe"
     mailer:
       confirmation_instructions:
         subject: "Instructions de confirmation"
@@ -21,6 +35,12 @@ fr:
         subject: "Instructions pour changer le mot de passe"
       unlock_instructions:
         subject: "Instructions pour déverrouiller le compte"
+      invitation_instructions:
+        subject: "Vous êtes invité à rejoindre Courts.be"
+        hello: "Bonjour %{email}"
+        someone_invited_you: "L'un de vos confrères vous a invite à le rejoindre sur %{url} ; vous pouvez accepter cette invitation via le lien ci-dessous."
+        accept: "Accepter l'invitation à Courts"
+        ignore: "Si vous ne souhaitez pas accepter cette invitation, vous ne devez rien faire.<br />Votre compte Courts ne sera créé que lorsque vous accèderez à Courts.be via ce lien, et que vous choisirez un mot de passe."
     omniauth_callbacks:
       failure: "Nous n'avons pas pu vous authentifier via %{kind} : '%{reason}'."
       success: 'Authentifié avec succès via %{kind}.'
@@ -53,5 +73,5 @@ fr:
       not_found: "n'a pas été trouvé(e)"
       not_locked: "n'était pas verrouillé(e)"
       not_saved:
-        one: "1 erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
+        one: "Oups..."
         other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e) :"

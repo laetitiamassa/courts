@@ -125,7 +125,7 @@ fr:
       restrict_dependent_destroy:
         one: "Suppression impossible: un autre enregistrement est lié"
         many: "Suppression impossible: d'autres enregistrements sont liés"
-      taken: "n'est pas disponible"
+      taken: ": cet utilisateur est déjà membre de Courts.be, mais vous pouvez inviter d'autres confrères."
       too_long:
         one: "est trop long (pas plus d'un caractère)"
         other: "est trop long (pas plus de %{count} caractères)"
@@ -244,7 +244,7 @@ fr:
     argument3_content1: "Une "
     argument3_content2: "opportunité"
     argument3_content3: " de remplacement vous intéresse ?"
-    argument3_content4: "Grâce à un email automatiquement précomposé pour vous, manifestez votre intérêt en un seul clic."
+    argument3_content4: "Manifestez votre intérêt en un seul clic et vous serez averti automatiquement du choix de collaboration de votre confrère !"
     keep_in_touch: "Restons connectés :"
   header:
     home: "Accueil"

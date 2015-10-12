@@ -21,7 +21,8 @@
 	<!-- proposer vos services -->
 		<!-- vous avez répondu -->
 
-		<% if (current_user.responses && @court.responses).any? %>
+		
+		<% if (@court.responses.where(:user_id => current_user.id)).any? %>
 		    <span class="label label-info">Vous avez répondu</span>
 
 		<% else %> 

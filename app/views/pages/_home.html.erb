@@ -1,110 +1,165 @@
+<!-- partie haute -->
 <div class="homebg">
-	<%= image_tag("courts_logo.png") %>
-	<h1><span class="biggy"><%= t("home.baseline_lawyer") %></span><br>
-		<small><%= t("home.baseline_cta") %></small><br>
-	<span class="bigger"><%= t("home.baseline_replacements") %></span><br></h1>
-	<br>
+	
+  <%= image_tag("courts_logo.png") %>
+	
+  <h1>
+    <span class="biggy"><%= t("home.baseline_lawyer") %></span>
+		<br><small><%= t("home.baseline_cta") %></small>
+	  <br><span class="bigger"><%= t("home.baseline_replacements") %></span><br>
+  </h1>
+	
+  <br>
 		<div class="form-inline">
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+        <%= devise_error_messages! %>
 
           <div class="form-group">
-            <%= f.email_field :email, :autofocus => true, :placeholder => "email", class: "form-control input-lg" %>
+            <%= f.email_field :email, :autofocus => true, :placeholder => "email", class: "form-control" %>
           </div>
 
           <div class="form-group">
-            <%= f.password_field :password, :placeholder => t("home.password"), class: "form-control input-lg" %>
+            <%= f.password_field :password, :placeholder => t("home.password"), class: "form-control" %>
           </div>
 
           <div class="form-group">
-            <%= f.password_field :password_confirmation, :placeholder => t("home.confirm_password"), class: "form-control input-lg" %>
+            <%= f.password_field :password_confirmation, :placeholder => t("home.confirm_password"), class: "form-control" %>
           </div>
 
           <div class="form-group">
-            <%= f.submit t("home.signup_free"), class: "btn btn-primary btn-lg" %>
+            <%= f.submit t("home.signup_free"), class: "btn btn-primary" %>
           </div>
-          <br><span class="center"><small><%= t("home.you_accept_terms") %><%= link_to t("home.our_terms"), legal_path %>)</small></span>
+          <br>
+          <span class="center"><small>
+            <%= t("home.you_accept_terms") %><%= link_to t("home.our_terms"), legal_path %>)
+          </small></span>
         <% end %>
 		</div>     
 </div>
 
+<!-- arguments -->
+
 <div class="container">
 
-<div class="row">
-	<div class="col-md-6">
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<%= image_tag("mockup_publish.png", class: "img-rounded") %>
-	</div>
+<!-- argument 1 -->
+  <div class="row padding-arguments">
+	  <div class="col-md-6">
+		  <%= image_tag("mockup_publish.png", class: "img-rounded padding-mockup") %>
+	  </div>
 
-	<div class="col-md-6">
-		<hr class="section-heading-spacer">
-		<div class="clearfix"></div>
-	<h2 class="big"><%= t("home.argument1_heading") %></h2>
- 		<p class="lead"><%= t("home.argument1_content1") %><br><%= t("home.argument1_content2") %><b><%= t("home.argument1_content3") %></b><%= t("home.argument1_content4") %><b><%= t("home.argument1_content5") %></b><%= t("home.argument1_content6") %><b><%= t("home.argument1_content7") %></b>.
- 		<br><%= t("home.argument1_content8") %><b><%= t("home.argument1_content9") %></b>.</p>
+	  <div class="col-md-6">
+		  <hr class="section-heading-spacer">
+		  <div class="clearfix"></div>
+	  
+      <h2><%= t("home.argument1_heading") %></h2>
  		
- 		<br>
- 		<div class="text-center"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %></div>
- 		<br>
- 		<br>
- 		<br>
+      <p class="lead">
+        <%= t("home.argument1_content1") %>
+        <br><%= t("home.argument1_content2") %><b><%= t("home.argument1_content3") %></b><%= t("home.argument1_content4") %><b><%= t("home.argument1_content5") %></b><%= t("home.argument1_content6") %><b><%= t("home.argument1_content7") %></b>.
+        <br><%= t("home.argument1_content8") %><b><%= t("home.argument1_content9") %></b>.
+
+ 		  <div class="text-center padding-cta"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %>
+      </div>
  		</div>
+  </div> <!-- row -->
+
+<!-- argument 2 -->
+<div class="row padding-arguments">
+  
+  <div class="col-md-6">
+  	<hr class="section-heading-spacer">
+  	<div class="clearfix"></div>
+
+    <h2><%= t("home.argument2_heading") %></h2>
+    <p class="lead"><%= t("home.argument2_content1") %>
+  	<br><%= t("home.argument2_content2") %><b><%= t("home.argument2_content3") %></b><%= t("home.argument2_content4") %></p>
+  	
+   	<div class="text-center padding-cta"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %>
+    </div> 		
+  </div>
+
+  <div class="col-md-6">	
+ 		<%= image_tag("mockup_stream.png", class: "img-rounded") %>
+ 	</div>
 </div> <!-- row -->
 
-<div class="col-md-6">
-	<hr class="section-heading-spacer">
-	<div class="clearfix"></div>
-<h2><%= t("home.argument2_heading") %></h2>
-<p class="lead"><%= t("home.argument2_content1") %>
-	<br><%= t("home.argument2_content2") %><b><%= t("home.argument2_content3") %></b><%= t("home.argument2_content4") %></p>
-	<br>
- 		<div class="text-center"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %></div>
- 		<br>
- 		<br>
- 		<br>
-</div>
-
-<div class="col-md-6">
- 		
- 		<%= image_tag("mockup_stream.png", class: "img-rounded") %>
- 		<br>
- 		<br>
- 		<br>
- <br>
- 	</div>
- 
+<!-- argument 3 -->
+<div class="row padding-arguments">
  	<div class="col-md-6">
- 		
- 		<br>
  		<%= image_tag("mockup_mail.png", class: "img-rounded") %>
- 		<br>
- 		<br>
- 		<br>
- <br>
  	</div>
  
- <div class="col-md-6">
-	<hr class="section-heading-spacer">
-	<div class="clearfix"></div>
-<h2><%= t("home.argument3_heading") %></h2>
-<p class="lead"><%= t("home.argument3_content1") %><b><%= t("home.argument3_content2") %></b><%= t("home.argument3_content3") %><br>
-<%= t("home.argument3_content4") %></p>
-  <br>
- <div class="text-center"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %></div>
+  <div class="col-md-6">
+  	<hr class="section-heading-spacer">
+  	<div class="clearfix"></div>
 
- 	<br>
- 		<br>
- 		<br>
+    <h2><%= t("home.argument3_heading") %></h2>
 
-<br>
-</div>
+    <p class="lead"><%= t("home.argument3_content1") %><b><%= t("home.argument3_content2") %></b><%= t("home.argument3_content3") %>
+      <br><%= t("home.argument3_content4") %>
+    </p>
+ 
+    <div class="text-center"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %>
+    </div>
+  </div>
 </div>
 
+<!-- argument 4 : échangez en privé -->
+<div class="row padding-arguments">
+  
+  <div class="col-md-6">
+    <hr class="section-heading-spacer">
+    <div class="clearfix"></div>
+
+    <h2>Echanges privés</h2>
+    <p class="lead">
+      Prêt à collaborer ?
+      <br>Echangez vos messages et documents avec votre confrère, <b>en privé, dans une conversation dédiée,</b> qui ne se mêlera pas aux nombreux emails de votre mailbox. 
+    </p>
+    
+    <div class="text-center padding-cta"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %>
+    </div>    
+  </div>
+
+  <div class="col-md-6">  
+    <%= image_tag("mockup_stream.png", class: "img-rounded") %>
+  </div>
+</div> <!-- row -->
+
+
+<!-- argument 5 : évaluez -->
+<div class="row padding-arguments">
+  <div class="col-md-6">
+    <%= image_tag("mockup_mail.png", class: "img-rounded") %>
+  </div>
+ 
+  <div class="col-md-6">
+    <hr class="section-heading-spacer">
+    <div class="clearfix"></div>
+
+    <h2>Votre profil parle pour vous</h2>
+
+    <p class="lead">
+      Vous excellez dans votre domaine ?
+      <br> Laissez <b>vos confrères en attester pour vous</b>, via les recommandations après chaque collaboration, qui apparaissent sur votre profil !
+    </p>
+ 
+    <div class="text-center"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %>
+    </div>
+  </div>
+</div>
+
+
+<!-- argument 6 : gardez tout en mémoire -->
+
+
+
+
+
+</div> <!-- container -->
+
+
+<!-- restons connectés -->
 <div class="banner">
 	<div class="container">
 		 <div class="row">

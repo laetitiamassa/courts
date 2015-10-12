@@ -1,21 +1,30 @@
 class SubscribersController < ApplicationController
 
 	before_filter :authenticate_user!
-	before_action :set_notifications
+	
 
 	def new
 	end
 
 	def update
 		token = params[:stripeToken]
+		plan_name = params[:planName]
+		#current_period_start = params[:current_period_start]
+		#current_period_end = params[:current_period_end]
+		#cancel_at_period_end = params[:cancel_at_period_end]
 
 		customer = Stripe::Customer.create(
 			card: token,
-			plan: 1510,
-			email: current_user.email
+			plan: plan_name,
+			email: current_user.email,
+			#cancel_at_period_end: true if plan_name == "1530"
 			)
 
 		current_user.subscribed = true
+		current_user.subscription_start_date = Time.now
+		current_user.plan = plan_name
+		#current_user.plan_start_date = current_period_start #(pas nécessaire car on rallonge)
+		#current_user.plan_end_date = current_period_end + current_user.free_months_period_in_months
 		current_user.stripeid = customer.id
 		current_user.save
 
@@ -24,13 +33,6 @@ class SubscribersController < ApplicationController
 
 	def unsubscribed
 	end
-
-	private
-
-	def set_notifications
-      @notifications = Notification.all
-      @open_notifications_count = @notifications.where(:notifiee => current_user, :read => false).count - @notifications.where(:notifiee => current_user, :notifier => current_user, :read => false).count - @notifications.where('created_at >= ?', Time.now).count 
-    end
 
 
 end

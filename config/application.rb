@@ -24,5 +24,7 @@ module Courts
 
     #configuration Mailjet
     #config.action_mailer.delivery_method = :mailjet
+
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
