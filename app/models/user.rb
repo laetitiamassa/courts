@@ -37,11 +37,7 @@ class User < ActiveRecord::Base
 
 
 
-# DEVISE INVITABLE
 
-def block_from_invitation?
-  false
-end
 
 #SUBSCRIPTIONS, INVITATIONS AND ACCESS
 
