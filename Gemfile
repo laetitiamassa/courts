@@ -7,6 +7,7 @@ gem 'devise', '~> 3.5.2'
 gem 'devise_invitable', '~> 1.5.2'
 
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk'
 
 gem 'sass-rails', '~> 4.0.0'
 
