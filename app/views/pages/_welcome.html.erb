@@ -123,9 +123,12 @@
 		<ul class="list-group">
 			<li class="list-group-item new-court">
 				<div class="row">
+					<h2 class="text-center"><small><span class="fa-primary">Publiez votre demande de remplacement</span></small></h2>
 					<br>
 				<%= render "courts/shortform" %>
 			</div>
+			<li class="list-group-item">
+				<h3 class="text-center padding-top-short"><small>Demandes de remplacement en cours</small></h3></li>
 			</li>
 			<% @courts.sort_by(&:date_display).each do |court| %>
 				<% if court.current %>
@@ -145,6 +148,7 @@
 	</div>
 	<div class="col-md-3">
 		<ul class="list-group">
+
 			<li class="list-group-item">
 				<div class="row">
 					<div class="col-md-3">

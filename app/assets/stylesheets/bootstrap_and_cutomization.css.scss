@@ -123,6 +123,10 @@ $jumbotron-bg:             	white;
 	color: #d9534f;
 }
 
+.fa-primary {
+	color: #c0392b;
+}
+
 .profile-card {
 	margin-top: 50px;
 }
@@ -270,12 +274,11 @@ $jumbotron-bg:             	white;
     width: 100%;
     left: 0;
     text-align: center;
-    margin: auto;
     top: 20px;
 }
 
 .padding-mockup {
-	padding-top: 100px;
+	padding-top: 70px;
 }
 
 .padding-cta {
@@ -286,6 +289,15 @@ $jumbotron-bg:             	white;
 .padding-arguments {
 	padding-bottom: 30px;
 	padding-top: 30px;
+}
+
+.status-account {
+	margin-top: 40px;
+}
+
+.padding-top-short {
+	margin-top: -5px;
+	margin-bottom: -5px;
 }
 
 

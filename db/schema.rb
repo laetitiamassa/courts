@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012131404) do
+ActiveRecord::Schema.define(version: 20151012142206) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "subject"
@@ -185,6 +185,7 @@ ActiveRecord::Schema.define(version: 20151012131404) do
     t.datetime "plan_start_date"
     t.datetime "plan_end_date"
     t.datetime "subscription_start_date"
+    t.string   "subscription_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

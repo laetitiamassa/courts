@@ -36,6 +36,6 @@ class UsersController < ApplicationController
                                   :telephone, :fax, :mobile, :website, :facebook, :twitter, :linkedin,
                                   :dominus_litis, :loco, :subscribed, :extended_trial, :extended_trial_end_date, 
                                   :presentation, :avatar,
-                                  :plan, :plan_start_date, :plan_end_date, :subscription_start_date)
+                                  :plan, :plan_start_date, :plan_end_date, :subscription_start_date, :subscription_id)
   end
 end

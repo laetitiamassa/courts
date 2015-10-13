@@ -15,17 +15,26 @@ class SubscribersController < ApplicationController
 
 		customer = Stripe::Customer.create(
 			card: token,
-			plan: plan_name,
+			#plan: plan_name,
 			email: current_user.email,
 			#cancel_at_period_end: true if plan_name == "1530"
 			)
 
+		subscription = customer.subscriptions.create({
+			:plan => plan_name
+			})
+
+		if plan_name == "1530"
+		  subscription.delete({
+		  	:at_period_end => true
+		  	})
+		end
+
 		current_user.subscribed = true
 		current_user.subscription_start_date = Time.now
 		current_user.plan = plan_name
-		#current_user.plan_start_date = current_period_start #(pas nécessaire car on rallonge)
-		#current_user.plan_end_date = current_period_end + current_user.free_months_period_in_months
 		current_user.stripeid = customer.id
+		current_user.subscription_id = subscription.id
 		current_user.save
 
 		redirect_to root_path, notice: "Félicitations, vous êtes maintenant abonné à Courts.be !"

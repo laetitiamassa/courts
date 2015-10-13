@@ -19,7 +19,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
 
-      <h4>Votre conversation avec Me 
+      <h4><i class="fa fa-lock fa-primary"></i> Votre conversation privée avec Me 
         <% if current_user == @court.user %>
           <%= link_to loco.user.last_name_or_placeholder, user_path(loco.user) if loco.user %>
         <% else %>

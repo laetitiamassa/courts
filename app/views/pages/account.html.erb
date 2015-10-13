@@ -6,56 +6,97 @@
         <!-- <%= link_to "Récompenses", rewards_path, class: "list-group-item" %> -->
         <%= link_to "Mot de passe", edit_user_registration_path(current_user), class: "list-group-item" %>
        <!-- <%= link_to "Paramètres", "", class: "list-group-item" %> -->
-
     </ul>
   </div>
 
-  <div class="col-md-9">
+<div class="col-md-9">
+  
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4>Votre abonnement à Courts</h4>
+        <h4>Votre abonnement à Courts
+          <% if current_user.has_active_access %>
+            <span class="label label-success no-bold pull-right">activé</span>  
+          <% else %>
+            <%= link_to "Activer", new_subscriber_path, class: "btn btn-default btn-sm pull-right" %>
+            <span class="label label-warning no-bold">inactif</span>
+          <% end %>
+        </h4>
       </div>
+
       <div class="panel-body">
-        
+
+        <!-- abonnement -->
       	<div class="row">
       		<div class="col-sm-3 text-right">
       			<h4><small>Votre abonnement :</small></h4>
       		</div>
-      		<div class="col-sm-9">
-      			<h4><%= current_user.plan_name_display %> <small>
-              <br> du <%= current_user.subscription_start_date %> au <%= current_user.next_billing_date %></small></h4>
+      		
+          <div class="col-sm-9">
+      			<h4>
+              <%= current_user.plan_name_display %>
+              <small>
+                <% unless current_user.subscribed %>
+                <%= link_to "Activer mon compte", new_subscriber_path, class: "btn btn-primary btn-sm pull-right" %>
+                <% end %>
+                <br>
+              
+                  du 
+                  <%= current_user.subscription_start_date_or_placeholder %>
+                   au 
+                   <%= current_user.subscription_end_date_or_placeholder %>
+                  
+              </small>
+            </h4>
       		</div>
       	</div>
 
+
+
+        <!-- mois gratuits -->
       	<div class="row">
       		<div class="col-sm-3 text-right">
       			<h4><small><i class="fa fa-gift fa-lg fa-success"></i> Extensions :</small></h4>
       		</div>
-      		<div class="col-sm-9">
-      			<h4><%= current_user.free_months_period_in_months %> mois gratuits <small>
-      				<% if current_user.accepted_invitations_count >= 12 %>
-      					<%= link_to "Inviter d'autres confrères", new_user_invitation_path, :class => "btn btn-default btn-sm pull-right" %>
-      				<% else %>
-      				<%= link_to "Recevoir des mois gratuits", new_user_invitation_path, :class => "btn btn-success btn-sm pull-right" %>
-      				<% end %>
-      				<br> du <%= current_user.free_months_period_start_date %> au <%= current_user.free_months_period_end_date %>
-      				
 
-      			</small></h4>
+      		<div class="col-sm-9">
+      			<h4>
+              <%= current_user.free_months_period_in_months_display %> 
+              mois gratuits 
+              <small>
+        				<% if current_user.accepted_invitations_count >= 12 %>
+        					<%= link_to "Inviter d'autres confrères", new_user_invitation_path, :class => "btn btn-default btn-sm pull-right" %>
+        				<% else %>
+        				  <%= link_to "Recevoir des mois gratuits", new_user_invitation_path, :class => "btn btn-success btn-sm pull-right" %>
+        				<% end %>
+                <% if current_user.accepted_invitations_count >= 1 %>
+        				<br> du 
+                <%= current_user.free_months_period_start_date %>
+                 au <%= current_user.free_months_period_end_date %>
+                 <% end %>
+      			 </small></h4>
       		</div>
       	</div>
 
+        <!-- échéance -->
       	<div class="row">
       		<div class="col-sm-3 text-right">
-      			<h4><small>Prochaine échéance :</small></h4>
+      			<h4><small>
+              <% if Time.now < current_user.next_billing_date_including_free_months %>
+              Prochaine échéance :
+              <% else %>
+              Expiration :
+              <% end %>
+            </small></h4>
       		</div>
       		<div class="col-sm-9">
       			<h4> <%= current_user.next_billing_date_including_free_months %>
               <small><br>
-                <% if current_user.plan = "1530" %>
+                <% if current_user.plan == 1530 %>
+                  <% if Time.now < current_user.next_billing_date_including_free_months %>
                   Votre accès prendra fin à cette date.
-                <% else %>
+                  <% end %>
+                <% elsif current_user.subscribed %>
                   Votre accès sera renouvelé à cette date, sauf annulation entretemps.
                 <% end %>
               </small>

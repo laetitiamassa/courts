@@ -44,7 +44,7 @@
 <!-- argument 1 -->
   <div class="row padding-arguments">
 	  <div class="col-md-6">
-		  <%= image_tag("mockup_publish.png", class: "img-rounded padding-mockup") %>
+		  <%= image_tag("mockup-publish.png", class: "img-rounded padding-mockup") %>
 	  </div>
 
 	  <div class="col-md-6">
@@ -79,14 +79,14 @@
   </div>
 
   <div class="col-md-6">	
- 		<%= image_tag("mockup_stream.png", class: "img-rounded") %>
+ 		<%= image_tag("mockup-all-courts.png", class: "img-rounded") %>
  	</div>
 </div> <!-- row -->
 
 <!-- argument 3 -->
 <div class="row padding-arguments">
  	<div class="col-md-6">
- 		<%= image_tag("mockup_mail.png", class: "img-rounded") %>
+ 		<%= image_tag("mockup-notifications.png", class: "img-rounded") %>
  	</div>
  
   <div class="col-md-6">
@@ -95,8 +95,11 @@
 
     <h2><%= t("home.argument3_heading") %></h2>
 
-    <p class="lead"><%= t("home.argument3_content1") %><b><%= t("home.argument3_content2") %></b><%= t("home.argument3_content3") %>
-      <br><%= t("home.argument3_content4") %>
+    <p class="lead">
+      Une <b>opportunité</b> vous intéresse, ou vous avez fait le <b>choix</b> de votre remplaçant ?
+      <!-- <%= t("home.argument3_content1") %><b><%= t("home.argument3_content2") %></b><%= t("home.argument3_content3") %> -->
+      <br>Manifestez votre intérêt en un seul clic et chacun sera <b>averti automatiquement</b> comme de droit !
+      <!-- <%= t("home.argument3_content4") %> -->
     </p>
  
     <div class="text-center"><%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-primary btn-lg" %>
@@ -122,7 +125,7 @@
   </div>
 
   <div class="col-md-6">  
-    <%= image_tag("mockup_stream.png", class: "img-rounded") %>
+    <%= image_tag("mockup-private-conversation.png", class: "img-rounded") %>
   </div>
 </div> <!-- row -->
 
@@ -130,7 +133,7 @@
 <!-- argument 5 : évaluez -->
 <div class="row padding-arguments">
   <div class="col-md-6">
-    <%= image_tag("mockup_mail.png", class: "img-rounded") %>
+    <%= image_tag("mockup-profile-eval.png", class: "img-rounded") %>
   </div>
  
   <div class="col-md-6">

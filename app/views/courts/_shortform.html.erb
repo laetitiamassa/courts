@@ -1,8 +1,4 @@
 
-
-
-
-
 <%= form_for(@court) do |f| %>
   <% if @court.errors.any? %>
     <div id="error_explanation">
@@ -47,15 +43,11 @@
 <% end %>
 
 
-
 <script type="text/javascript">
   $(document).ready(function(){
     $('#datetimepicker').datetimepicker({
-                    locale: 'fr';
-                    
+                    locale: 'fr'
                 });
   })
-
-
 
 </script>

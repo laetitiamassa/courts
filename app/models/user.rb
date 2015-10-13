@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  #after_create :right_path
+
   BARS = ["Arlon", "BrusselsFR", "BrusselsNL", "Charleroi", "Dinant", "Eupen", "Huy", "Liege", "Marche", "Mons", "Namur", "Neufchateau", "Nivelles", "Tournai", "Verviers", "Anvers", "Brugge", "Dendermonde", "Gent", "Hasselt", "Ieper", "Kortrijk", "Leuven", "Mechelen", "Oudernaarde", "Tongeren", "Turnhout", "Veurne"]
 
   # Include default devise modules. Others available are:
@@ -33,34 +35,190 @@ class User < ActiveRecord::Base
                     :default_url => ":style/missing.jpeg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  def plan_name_display
-    if plan_name = "1530"
-      "Courts One Week" 
-    elsif plan_name = "1520"
-      "Courts Monthly"
-    elsif plan_name = "1510"
-      "Courts Yearly"
+
+
+# DEVISE INVITABLE
+
+def block_from_invitation?
+  false
+end
+
+#SUBSCRIPTIONS, INVITATIONS AND ACCESS
+
+# TRIAL PERIOD
+
+  def early_bird
+    created_at < "2015-02-27 00:00:00"
+  end
+
+  def on_trial
+    if early_bird
+      Time.now < "2015-04-06 00:00:00"
+    elsif extended_trial
+      Time.now < extended_trial_end_date
+    else 
+      Time.now - created_at < 15.days
     end
   end
 
-  def next_billing_date_including_free_months
-    next_billing_date + free_months_period_in_months.months
+  # def trial_end_date
+  #   unless early_bird
+  #     if extended_trial
+  #       extended_trial_end_date
+  #     end
+  #   else
+  #     created_at + 15.days
+  #   end 
+  # end
+
+  def trial_end_date
+    if extended_trial
+      extended_trial_end_date
+    else
+      created_at + 15.days
+    end
   end
 
-  def next_billing_date
-    subscription_start_date + billing_duration
+  def days_till_end_trial
+      ((trial_end_date - Time.now) / 1.day).round
   end
+
+  def not_yet
+    sign_in_count < 1
+  end
+
+
+
+# ACCESS STATUS
+
+  def subscribed_or_on_trial_or_on_free
+    if subscribed
+      subscribed
+    elsif on_trial
+      on_trial
+    elsif on_free
+      on_free
+    end
+  end
+
+  def subscribed_or_on_trial
+    if subscribed
+      subscribed
+    else
+      on_trial
+    end
+  end
+  
+  def overdue
+    !on_trial && !subscribed 
+  end
+
+  def has_active_access
+    Time.now < next_billing_date_including_free_months
+  end
+
+# PLANS
+
+  def plan_name_display
+    if subscribed
+      if plan == 1530
+        "Courts One Week" 
+      elsif plan == 1520
+        "Courts Monthly"
+      elsif plan == 1510
+        "Courts Yearly"
+      else
+        "Courts Yearly" #parce que les users payants jusqu'à présent sont sous Courts Yearly
+      end
+    elsif on_trial
+      "en période d'essai"
+    elsif overdue
+      "Compte inactif"
+    end
+  end
+
+  def subscription_start_date_or_placeholder
+    if subscription_start_date # le user s'est inscrit et a une date de souscription
+      subscription_start_date
+    elsif on_trial # le user est en période d'essai depuis son arrivée
+      created_at
+    else #le user a dépassé la période d'essai et est en overdue
+      created_at
+    end    
+  end
+
+  def subscription_end_date_or_placeholder
+    if plan_end_date
+      plan_end_date
+    elsif on_trial
+      trial_end_date
+    else
+      trial_end_date
+    end
+  end
+
+# FREE PERIOD
+
+  def on_free
+    Time.now < free_months_period_end_date
+  end
+
+  def free_months_period_end_date
+    if accepted_invitations_count >= 1
+      free_months_period_start_date + free_months_period_in_months
+    else
+      free_months_period_start_date
+    end
+  end
+
+  def free_months_period_in_months
+    if accepted_invitations_count > 12
+      12.months
+    elsif accepted_invitations_count <= 12
+      accepted_invitations_count.months
+    end
+  end
+
+  def free_months_period_in_months_display
+    free_months_period_in_months / 1.month
+  end
+
+  def free_months_period_start_date
+    subscription_end_date_or_placeholder
+  end
+
+
+# BILLINGS
 
   def billing_duration
-    if plan_name = "1530"
+    if plan == 1530
       1.week 
-    elsif plan_name = "1520"
+    elsif plan == 1520
       1.month
-    elsif plan_name = "1510"
+    elsif plan == 1510
       1.year
     end
   end
 
+  def next_billing_date
+    if billing_duration
+      subscription_start_date_or_placeholder + billing_duration
+    else
+      subscription_start_date_or_placeholder
+    end
+  end
+
+  def next_billing_date_including_free_months
+      free_months_period_end_date
+  end
+
+  
+
+
+
+
+
+#INVITATIONS
 
   def accepted_invitations_count
     accepted_invitations_count = 0
@@ -72,6 +230,7 @@ class User < ActiveRecord::Base
     accepted_invitations_count
   end
 
+#USER NOTIFICATIONS
   def open_notifications_count
     all_open_notifications_count - delayed_open_notifications_count #toutes les notifications à l'exceptions de celles dont le user ne doit pas être averti
   end
@@ -91,6 +250,8 @@ class User < ActiveRecord::Base
     end
     delayed_open_notifications_count
   end
+
+#USER STATS
 
   def loco_count
     loco_count = 0
@@ -129,6 +290,8 @@ class User < ActiveRecord::Base
     end
     dl_reco_count
   end
+
+#USER PROFILE
 
   def full_name
   	"#{first_name} #{last_name}"
@@ -184,73 +347,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def early_bird
-    created_at < "2015-02-27 00:00:00"
-  end
 
-  def on_trial
-    if early_bird
-      Time.now < "2015-04-06 00:00:00"
-    elsif extended_trial
-      Time.now < extended_trial_end_date
-    else 
-      Time.now - created_at < 15.days
-    end
-  end
-
-  def on_free
-    Time.now < free_months_period_end_date
-  end
-
-  def free_months_period_end_date
-    free_months_period_start_date + free_months_period_in_months.months
-  end
-
-  def free_months_period_in_months
-    if accepted_invitations_count > 12
-      12
-    elsif accepted_invitations_count <= 12
-      accepted_invitations_count.to_i.months
-    end
-  end
-
-  def free_months_period_start_date
-    if subscription_start_date.present?
-      next_billing_date
-    elsif on_trial
-      trial_end_date
-    end
-  end
-
-  def subscribed_or_on_trial
-    if subscribed
-      subscribed
-    else
-      on_trial
-    end
-  end
-
-  def trial_end_date
-    unless early_bird
-      if extended_trial
-        extended_trial_end_date
-      else
-        created_at + 15.days
-      end
-    end
-  end
-
-  def overdue
-    !on_trial && !subscribed
-  end
-
-  def days_till_end_trial
-      ((trial_end_date - Time.now) / 1.day).round
-  end
-
-  def not_yet
-    sign_in_count < 1
-  end
 
 # email hebdomadaire audiences
   def self.weekly

@@ -28,6 +28,5 @@ class ApplicationController < ActionController::Base
   def after_invite_path_for(current_inviter)
     new_user_invitation_path
   end
-  
 
 end

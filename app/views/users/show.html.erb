@@ -22,10 +22,10 @@
 						<i class="fa fa-map-marker"></i>
 						<%= @user.bar %>
 					</div>
-					<% @user.prefered_areas.each do |area| %>
-					<span class="label label-primary no-bold"><%= area.name %></span>
 
-				<% end %>
+					<small><% @user.prefered_areas.each do |area| %>
+					<span class="label label-primary no-bold"><%= area.name %></span>
+					<% end %></small>
 
 				</blockquote>
 			
