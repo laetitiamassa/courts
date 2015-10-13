@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/svenfuchs/rails-i18n.git
-  revision: 794f4f5140d8fc10a81cc8af7a590b81ad2f04da
+  revision: a88532c57359d889a93bbbb9c1062aec6d9dfdaa
   branch: master
   specs:
     rails-i18n (4.0.5)
@@ -73,7 +73,7 @@ GEM
     bcrypt (3.1.10)
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
-    bootstrap3-datetimepicker-rails (4.15.35)
+    bootstrap3-datetimepicker-rails (4.17.37)
       momentjs-rails (>= 2.8.1)
     builder (3.2.2)
     climate_control (0.0.3)
@@ -218,7 +218,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk (< 2.0)
   bootstrap-sass (= 3.1.1.0)
-  bootstrap3-datetimepicker-rails (~> 4.15.35)
+  bootstrap3-datetimepicker-rails (~> 4.17.37)
   coffee-rails (~> 4.0.0)
   devise (~> 3.5.2)
   devise_invitable (~> 1.5.2)

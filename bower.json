@@ -1,0 +1,26 @@
+{
+  "name": "courts",
+  "version": "0.0.0",
+  "homepage": "https://github.com/laetitiamassa/courts",
+  "authors": [
+    "Laetitia Massa <laetitiamassa@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37"
+  }
+}

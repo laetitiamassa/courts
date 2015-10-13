@@ -15,7 +15,7 @@ gem 'bootstrap-sass', '3.1.1.0'
 #gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
                               #:git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
