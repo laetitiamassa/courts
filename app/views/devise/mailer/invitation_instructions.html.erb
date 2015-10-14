@@ -2,9 +2,9 @@
 
 <p>Vos confrère <%= @resource.invited_by.name_or_placeholder %> vous invite à rejoindre <%= link_to "Courts.be", root_url %>, l'outil de remplacement 2.0 !</p>
 
-<p>Courts est l'outil choisi par plusieurs centaines de vos confrères dans toute la Belgique, pour trouver un confrère remplaçant ou des opportunités de remplacement, en 3 clics.</p>
+<p><%= link_to "Courts.be", root_url %> est l'outil choisi par de nombreux confrères, pour trouver un confrère remplaçant ou des opportunités de remplacement, en 3 clics.</p>
 
-<p>Pour découvrir Courts, il vous suffit d'accepter cette invitation en cliquant ci-dessous :</p>
+<p>Vous pouvez tester gratuitement <%= link_to "Courts.be", root_url %> en acceptant cette invitation en cliquant ci-dessous :</p>
 
 <%= link_to accept_invitation_url(@resource, :invitation_token => @token) do %>
 <table cellspacing="0" cellpadding="0">
@@ -18,9 +18,6 @@
 </tr>
 </table>
 <% end %>
-
-<p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token) %></p>
-
 
 <p><%= t("devise.mailer.invitation_instructions.ignore") %></p>
 
