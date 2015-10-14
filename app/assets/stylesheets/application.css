@@ -9,9 +9,315 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap/dist/css/bootstrap
+ *= require bootstrap
  *= require bootstrap-datetimepicker
  *= require_tree .
  */
+
+
+ @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css?family=Yesteryear');
+
+$body-bg:         					#ecf0f1;
+$font-family-sans-serif:   	'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$navbar-height:             60px;
+$navbar-default-bg:         white;
+$navbar-default-brand-color: #c0392b;
+$brand-primary:            	#c0392b;
+$brand-info:				#5c97bf;
+$jumbotron-bg:             	white;
+
+
+
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';
+
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+
+
+.center {
+     text-align: center;
+}
+
+.navbar-brand {
+     font-weight: bold;
+     font-size: 2.5em;
+}
+
+.big {
+	font-size: 1.5em;
+}
+
+.biggy {
+	font-size: 1.2em;
+}
+
+.bigger {
+	font-size: 2em;
+}
+
+.smaller {
+	font-size: 0.7em;
+	line-height: 0px;
+}
+
+.brandname {
+	font-family: 'Yesteryear', cursive;
+	font-size: 15em;
+	color: #c0392b;
+}
+
+.brandname-small {
+	font-family: 'Yesteryear', cursive;
+	font-size: 3em;
+	color: #c0392b;
+}
+
+.brandlike {
+	
+	font-size: 2.5em;
+	color: #c0392b;
+}
+
+.homebg {
+	margin-top: -220px;
+	margin-bottom: 50px;
+	padding-top: 210px;
+  padding-bottom: 370px;
+	color: #f8f8f8; 
+	background-image: url(image-path('intro-bg.jpg'));
+	height: 700px;
+	background-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.homebg-invite {
+	margin-top: -220px;
+	margin-bottom: 50px;
+	padding-top: 230px;
+  	padding-bottom: 370px;
+	color: #f8f8f8; 
+	background-image: url(image-path('intro-bg.jpg'));
+	height: 700px;
+	background-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.section-heading-spacer {
+	border-top: 3px solid #e7e7e7;
+	width: 200px;
+	float: left;
+}
+
+.banner {
+	padding: 100px 0;
+	color: #f8f8f8;
+	background-image: url(image-path('banner-bg.jpg'));
+	background-align: center;
+  background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.bg-comment {
+	background-color: #F0F9FA;
+}
+
+.fa-success {
+	color: #5cb85c;
+}
+
+.fa-warning {
+	color: #f0ad4e;
+}
+
+.fa-danger {
+	color: #d9534f;
+}
+
+.fa-primary {
+	color: #c0392b;
+}
+
+.profile-card {
+	margin-top: 50px;
+}
+
+.no-border-radius {
+	border-radius: 0px;
+}
+
+.no-padding-left {
+	padding-left: 0px;
+}
+
+.few-padding-left {
+	padding-left: 1px;
+}
+
+.with-padding-left {
+	padding-left: 10px;
+}
+
+.no-padding-right {
+	padding-right: 0px;
+}
+
+.few-padding-right {
+	padding-right: 1px;
+}
+
+.with-padding-right {
+	padding-right: 10px;
+}
+
+.no-bold {
+	font-weight: normal;
+}
+
+.higher-up {
+	margin-top: -10px;
+}
+
+.upper-padding {
+	padding-bottom: 10px;
+}
+
+.new-court {
+	background-color: rgba(229,175,170, 0.1);
+}
+
+.label-as-badge {
+	border-radius: 1em;
+	margin-left: -10px;
+	margin-top: -20px;
+}
+
+.shape{    
+    border-style: solid; border-width: 0 40px 40px 0; float:right; height: 0px; width: 0px;
+    -webkit-transform: rotate(360deg);  
+    -moz-transform: rotate(360deg);  
+    -o-transform: rotate(360deg);  
+    transform: rotate(360deg); 
+}
+.shape-text{
+    color:#fff; font-size:12px; font-weight:bold; position:relative; right:-22px; top:-3px; white-space: nowrap;
+	-ms-transform:rotate(30deg); /* IE 9 */
+	-o-transform: rotate(360deg);  /* Opera 10.5 */
+	-webkit-transform:rotate(46deg); /* Safari and Chrome */
+	transform:rotate(46deg);
+}
+.offer{
+	background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
+}
+.shape {
+	border-color: rgba(255,255,255,0) #d9534f rgba(255,255,255,0) rgba(255,255,255,0);
+}
+.offer-radius{
+	border-radius:7px;
+}
+.offer-danger {	border-color: #d9534f; }
+.offer-danger .shape{
+	border-color: transparent #d9534f transparent transparent;
+}
+.offer-success {	border-color: #5cb85c; }
+.offer-success .shape{
+	border-color: transparent #5cb85c transparent transparent;
+}
+.offer-default {	border-color: #999999; }
+.offer-default .shape{
+	border-color: transparent #999999 transparent transparent;
+}
+.offer-primary {	border-color: #428bca; }
+.offer-primary .shape{
+	border-color: transparent #428bca transparent transparent;
+}
+.offer-info {	border-color: #5bc0de; }
+.offer-info .shape{
+	border-color: transparent #5bc0de transparent transparent;
+}
+.offer-warning {	border-color: #f0ad4e; }
+.offer-warning .shape{
+	border-color: transparent #f0ad4e transparent transparent;
+}
+
+.offer-content{
+	padding:0 20px 10px;
+}
+@media (min-width: 487px) {
+  .container {
+    max-width: 750px;
+  }
+  .col-sm-6 {
+    width: 50%;
+  }
+}
+@media (min-width: 900px) {
+  .container {
+    max-width: 970px;
+  }
+  .col-md-4 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+  .col-lg-3 {
+    width: 25%;
+  }
+}
+
+ .home_signup {
+ 	margin-top: 40px;
+  padding: 20px;
+  background-color: rgba(0,0,0, 0.4);
+  border-radius: 6px;
+ }
+
+.lower {
+	margin-top: 20px;
+}
+
+.navbar-center {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    top: 20px;
+}
+
+.padding-mockup {
+	padding-top: 70px;
+}
+
+.padding-cta {
+	padding-top: 20px;
+	padding-bottom: 50px;
+}
+
+.padding-arguments {
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+
+.status-account {
+	margin-top: 40px;
+}
+
+.padding-top-short {
+	margin-top: -5px;
+	margin-bottom: -5px;
+}
+
+
+
 
 
