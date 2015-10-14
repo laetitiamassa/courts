@@ -41,6 +41,20 @@ class User < ActiveRecord::Base
 
 #SUBSCRIPTIONS, INVITATIONS AND ACCESS
 
+# USER STATUS
+
+  def status
+    if subscribed
+      subscribed
+    elsif on_trial
+      on_trial
+    elsif on_free
+      on_free
+    else
+      overdue
+    end
+  end
+
 # TRIAL PERIOD
 
   def early_bird

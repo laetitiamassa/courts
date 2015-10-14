@@ -15,11 +15,9 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>Votre abonnement à Courts
-          <% if current_user.has_active_access %>
-            <span class="label label-success no-bold pull-right">activé</span>  
-          <% else %>
+          <%= render "layouts/user_status" %> 
+          <% unless current_user.has_active_access %>
             <%= link_to "Activer", new_subscriber_path, class: "btn btn-default btn-sm pull-right" %>
-            <span class="label label-warning no-bold">inactif</span>
           <% end %>
         </h4>
       </div>

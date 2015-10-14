@@ -7,8 +7,14 @@ il ne voit les deux éval que lorsqu'il aura rempli sa propre éval sur l'autre 
 
 <% if current_user == @loco_lawyer %>
     <%= render "evaluation_loco_view" %>
-<% elsif current_user == @dominus_litis && @court.locos.any? %>
+<% elsif current_user == @dominus_litis %>
+	<% if @court.locos.any? %>
     <%= render "evaluation_dl_view" %>
+    <% else %>
+    <div class="text-right">
+	    <span class="label label-info no-bold">Aucun de vos confrère n'est intervenu loco</span>
+	</div>
+    <% end %>
 <% else %>
 	<% if @court.locos.any? %>
 	<%= render "evaluation_all_view" %>

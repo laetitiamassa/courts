@@ -74,11 +74,13 @@
           </ul>
         </li>
         <li class="lower">
+             <!--
               <% if current_user.has_active_access %> 
               <span class="label label-success no-bold">activé</span>
               <% else %>
               <span class="label label-warning no-bold">inactif</span>
-              <% end %>
+              <% end %> -->
+              <%= render "layouts/user_status" %>
             </li>
 
 

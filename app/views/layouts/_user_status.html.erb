@@ -1,0 +1,9 @@
+<% if current_user.subscribed %>
+<span class="label label-success no-bold">abonné</span>
+<% elsif current_user.on_trial %>
+<span class="label label-warning no-bold">essai</span>
+<% elsif current_user.on_free %>
+<span class="label label-success no-bold">free</span>
+<% else %>
+<span class="label label-danger no-bold">inactif</span>
+<% end %>
