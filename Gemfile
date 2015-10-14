@@ -5,6 +5,7 @@ ruby '2.2.3'
 gem 'rails', '4.2.4'
 gem 'devise', '~> 3.5.2'
 gem 'devise_invitable', '~> 1.5.2'
+gem 'activeadmin', github: 'activeadmin'
 
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk', '< 2.0' #as future version have some incompatibilities
