@@ -1,7 +1,28 @@
-<p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+<h2><%= t("mailer.salutation") %></h2>
 
-<p><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %></p>
+<p>Vos confrère <%= @resource.invited_by.name_or_placeholder %> vous invite à rejoindre <%= link_to "Courts.be", root_url %>, l'outil de remplacement 2.0 !</p>
+
+<p>Courts est l'outil choisi par plusieurs centaines de vos confrères dans toute la Belgique, pour trouver un confrère remplaçant ou des opportunités de remplacement, en 3 clics.</p>
+
+<p>Pour découvrir Courts, il vous suffit d'accepter cette invitation en cliquant ci-dessous :</p>
+
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td align="center" width="300" height="40" bgcolor="#c0392b" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">
+<span style="font-size:16px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; line-height:40px; width:100%; display:inline-block"><span style="color: #FFFFFF">
+
+	<%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token) %>
+
+</span></span>
+</td>
+</tr>
+</table>
 
 <p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token) %></p>
 
-<p><%= t("devise.mailer.invitation_instructions.ignore").html_safe %></p>
+
+<p><%= t("devise.mailer.invitation_instructions.ignore") %></p>
+
+<p class="signature">Bien à vous,
+	<br>L'Equipe Courts
+</p>

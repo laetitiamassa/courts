@@ -75,7 +75,7 @@ Courts::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   #required by Devise
-  config.action_mailer.default_url_options = { :host => "courts.be" }
+  config.action_mailer.default_url_options = { :host => 'courts.be' }
 
   #mandrill
   config.action_mailer.smtp_settings = {

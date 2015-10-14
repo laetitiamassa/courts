@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: "Lucida Grande", arial, sans-serif;
+        margin: 0 auto;
+        width: 632px;
+        font-size: 1em;
+      }
+
+      #content {
+        background: #fafafa;
+        border: 1px solid #eee;
+        padding: 20px;
+      }
+
+      h1 {
+        display: inline;
+        text-align: right;
+      }
+
+      p.tagline {
+        display: inline;
+      }
+
+      h2 {
+        margin: 0 0 15px;
+        padding: 0;
+        color: #666;
+        font-size: 1.8em;
+        font-weight: bold;
+      }
+
+      p {
+        color: #aaa;
+      }
+
+      p.signature {
+        color: #545454;
+      }
+    </style>
+  </head>
+  
+
+  <body>
+    <div class="wrap">
+      <h1>
+       
+        
+      </h1>
+      <h2></h2>
+
+      <div id="content">
+      	<h2>bla bla</h2>
+        <%= yield %>
+        <p class="signature">signature</p>
+      </div>
+
+		<img src="http://courts.be/assets/courts_logo.png" alt="Courts logo" height="60" width="150">
+	<br><%= link_to "Courts.be", "http://courts.be" %> | <%= link_to "Facebook", "http://facebook.com/courts.be" %> | <%= link_to "Linkedin", "http://linkedin.com/company/courtsbe" %>
+    </div>
+  </body>
+</html>

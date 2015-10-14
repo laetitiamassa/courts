@@ -24,6 +24,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'mailjet'
 gem 'sendgrid'
+gem 'roadie-rails', '~> 1.0'
 
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'

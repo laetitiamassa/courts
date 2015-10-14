@@ -2,10 +2,19 @@
 
 <p><%= t("mailer.new_court_in_my_bar.content1") %></p> 
 
-<p><%= t("mailer.new_court_in_my_bar.content2") %>
-<%= link_to t("mailer.new_court_in_my_bar.cta"), court_url(@court) %>.</p>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td align="center" width="300" height="40" bgcolor="#c0392b" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">
+<span style="font-size:16px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; line-height:40px; width:100%; display:inline-block"><span style="color: #FFFFFF">
 
-<p><%= t("mailer.end_salutation") %></p>
+	<%= link_to 'Voir cette opportunité', link_to court_url(@court) %>
 
-<img src="http://courts.be/assets/courts_logo.png" alt="Courts logo" height="60" width="150">
-<br>http://courts.be | http://facebook.com/courts.be | http://linkedin.com/company/courtsbe
+</span></span>
+</td>
+</tr>
+</table>
+
+
+<p class="signature">Bien à vous,
+	<br>L'Equipe Courts
+</p>

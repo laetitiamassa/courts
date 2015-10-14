@@ -1,15 +1,28 @@
-<p><%= t("mailer.salutation") %></p>
+<h2><%= t("mailer.salutation") %></h2>
 
-<p><%= t("mailer.after_court_creation.content1") %></p> 
+<p>Votre demande de remplacement vient d'être envoyée à vos confrères les plus pertinents.</p>
 
-<p><b><%= t("mailer.after_court_creation.content2") %></b><br>
-<%= t("mailer.after_court_creation.content3") %></p>
+<p>Vous pouvez dès à présent gérer votre audience depuis la page-même de votre demande, pour :
+<ul>
+<li>- voir les confrères disponibles
+<li>- transmettre des informations et documents complémentaires à vos confrères
+<li>- choisir parmi ces confrères le plus adéquat pour assurer votre remplacement
+<li>- communiquer en privé avec le confrère qui assurera votre remplacement
+</ul></p>
 
-<h2 class="center"><%= link_to t("mailer.after_court_creation.cta") , edit_court_url(@court) %></h2>
 
-<p><%= t("mailer.after_court_creation.content4") %></p>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td align="center" width="300" height="40" bgcolor="#c0392b" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">
+<span style="font-size:16px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; line-height:40px; width:100%; display:inline-block"><span style="color: #FFFFFF">
 
-<p><%= t("mailer.end_salutation") %></p>
+	<%= link_to "ALLER SUR LA PAGE DE MA DEMANDE", court_url(@court) %>
 
-<img src="http://courts.be/assets/courts_logo.png" alt="Courts logo" height="60" width="150">
-<br>http://courts.be | http://facebook.com/courts.be | http://linkedin.com/company/courtsbe
+</span></span>
+</td>
+</tr>
+</table>
+
+
+<p class="signature"><%= t("mailer.end_salutation") %></p>
+
