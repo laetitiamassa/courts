@@ -19,7 +19,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
 
-      <h4><i class="fa fa-lock fa-primary"></i> Votre conversation privée avec Me 
+      <h4><i class="fa fa-lock fa-primary"></i> <%= t("courts.conversation.your_private_conversation_with") %> 
         <% if current_user == @court.user %>
           <%= link_to loco.user.last_name_or_placeholder, user_path(loco.user) if loco.user %>
         <% else %>
@@ -28,7 +28,7 @@
 
 <!-- pièce jointe -->
         <button class="btn btn-default btn-sm pull-right" type="button" data-toggle="collapse" data-target="#collapsePrivateDoc_<%= loco.id %>" aria-expanded="false" aria-controls="collapseExample">
-          <i class="fa fa-paperclip"> Ajouter des documents privés</i>
+          <i class="fa fa-paperclip"> <%= t("courts.conversation.add_private_docs") %></i>
         </button>
 
               
@@ -44,7 +44,7 @@
               <%= f.hidden_field :loco_id, :value => loco.id %>
               <br>
               <div class="actions">
-                <%= f.submit "Ajouter le document privé", class: "btn btn-primary btn-sm btn-block" %>
+                <%= f.submit t("courts.conversation.add_the_private_doc"), class: "btn btn-primary btn-sm btn-block" %>
               </div>
             <% end %>
             </div>
@@ -74,7 +74,7 @@
       <% if loco.private_documentations.any? %>
 
         <p>
-          <small>Documents privés :</small>
+          <small><%= t("courts.conversation.private_docs") %></small>
           <% loco.private_documentations.each do |doc| %>
             <br>
             <i class="fa fa-file-pdf-o"></i>
@@ -96,7 +96,7 @@
             <div class="row">
               <div class="col-md-2">
                 <% if comment.user == current_user %>
-                  Vous
+                  <%= t("courts.conversation.you") %>
                 <% else %>
                   Me <%= comment.user.last_name_or_placeholder %>
                 <% end %>
@@ -126,7 +126,7 @@
             </div>
             <div class="col-md-2 text-right">
               <% if comment.user == current_user %>
-              Vous
+              <%= t("courts.conversation.you") %>
               <% else %>
               Me <%= comment.user.last_name_or_placeholder %>
               <% end %>

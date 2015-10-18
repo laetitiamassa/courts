@@ -4,16 +4,18 @@
   </button>
   <p class="text-center">
   	
-  		<% if current_user.early_bird %>
-  		<b>Bonjour Me <%= current_user.last_name %>, profitez des derniers jours de votre essai gratuit, jusqu'au 6 avril 2014 !</b>
-      <% elsif current_user.extended_trial %>
-      <b>Bonjour Me <%= current_user.last_name %>, votre essai gratuit est étendu jusqu'au <%= current_user.extended_trial_end_date.strftime('%d %B') %> prochain !
+  		<!--  if current_user.early_bird MAIS C EST PASSE
+  		<b>Bonjour Me <%= current_user.last_name %>, profitez des derniers jours de votre essai gratuit, jusqu'au 6 avril 2014 !</b> -->
+      
+      <% if current_user.extended_trial %>
+      
+      <b><%= t("header.on_trial.content1") %> <%= current_user.name_or_placeholder %>, <%= t("header.on_trial.content2") %> <%= current_user.extended_trial_end_date.strftime('%d %B') %> <%= t("header.on_trial.content3") %>
       </b>
   		<% else %>
-  		<span class="lead">Bienvenue à votre essai gratuit, valable pendant encore <%= current_user.days_till_end_trial %> jours !</span>
+  		<span class="lead"><%= t("header.on_trial.content4") %> <%= current_user.days_till_end_trial %> <%= t("header.on_trial.content5") %></span>
   		<% end %>
   	
-  	<br><b>Pour vous abonner à Courts.be, cliquez sur le bouton <%= link_to "S'abonner à Courts", new_subscriber_path, :class => "btn btn-default" %> et suivez les instructions.</b>
+  	<br><b><%= t("header.to_suscribe") %> <%= link_to t("header.subscribe_button"), new_subscriber_path, :class => "btn btn-default" %> <%= t("header.follow_instructions") %></b>
 
-	<br>Pour plus d'info, contactez-nous via <%=link_to "contact@courts.be", "mailto:contact@courts.be" %></p>
+	<br><%= t("header.contact_us") %> <%=link_to "contact@courts.be", "mailto:contact@courts.be" %></p>
 </div>

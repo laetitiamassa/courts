@@ -31,10 +31,12 @@
 
 <% if user_signed_in? %>
   <div class="container">
-    <% if current_user.overdue %>
-    <%= render "layouts/overdue" %>
-    <% elsif current_user.on_trial && !current_user.subscribed %>
-    <%= render "layouts/on_trial" %>
+    <% if current_user.on_trial && !current_user.subscribed %>
+      <%= render "layouts/on_trial" %>
+    <% elsif current_user.on_free %>
+      <%= render "layouts/on_free" %>
+    <% elsif current_user.overdue %>
+      <%= render "layouts/overdue" %>
     <% end %>
     
     <% flash.each do |name, msg| %>
@@ -54,7 +56,7 @@
   <%= yield %>
 
 <% end %>
-<br><br><br><br><br><br><br><br>
+<!-- <br><br><br><br><br><br><br><br> -->
 
 
 

@@ -5,7 +5,7 @@
     <% unless current_user.accepted_invitations_count > 12 %>
       <div class="navbar-center">
         <%= link_to new_user_invitation_path do %>
-        <%= content_tag(:i, " Recevez des mois gratuits", :class => "fa fa-gift fa-success fa-lg btn btn-default") %> 
+        <%= content_tag(:i, " #{t('header.get_free_months')} ", :class => "fa fa-gift fa-success fa-lg btn btn-default") %> 
         <% end %>
       </div>
     <% end %>
@@ -68,7 +68,7 @@
             <li><%= link_to t("header.edit_profile"), edit_user_path(current_user) %></li>
             <li role="presentation" class="divider"></li>
             
-            <li><%= link_to "Paramètres", account_path %></li>
+            <li><%= link_to t("header.settings"), account_path %></li>
             <li role="presentation" class="divider"></li>     
             <li><%= link_to t("header.log_out"), destroy_user_session_path, method: :delete %></li>
           </ul>

@@ -54,7 +54,7 @@
 		        <li class="list-group-item">
 			        
 			        "<i><%= court.loco_evaluation.comment %></i>"
-		             <div class="text-right"><small>(à propos de Me <%= link_to court.loco_evaluatee.last_name_or_placeholder, court_path(court) %>)</small></div>
+		             <div class="text-right"><small>(<%= t("courts.evaluation_about") %> <%= link_to court.loco_evaluatee.last_name_or_placeholder, court_path(court) %>)</small></div>
 			    </li>
 			</ul>
 		</div>
@@ -74,7 +74,7 @@
 		    <ul class="list-group">
 		        <li class="list-group-item">
 		            "<i><%= court.dominus_litis_evaluation.comment %></i>"
-		             <div class="text-right"><small>(à propos de Me <%= link_to court.dominus_litis_evaluatee.last_name_or_placeholder, court_path(court) %>)</small></div>
+		             <div class="text-right"><small>(<%= t("courts.evaluation_about") %> <%= link_to court.dominus_litis_evaluatee.last_name_or_placeholder, court_path(court) %>)</small></div>
 		        </li>
 		    </ul>
 		</div>

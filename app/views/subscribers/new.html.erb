@@ -1,5 +1,5 @@
-<h2 class="text-center">Facilitez-vous la vie, en vous abonnant à Courts.be
-	<br><small>Courts.be vous permet de collaborer avec vos confrères, partout en Belgique !</small>
+<h2 class="text-center"><%= t("subscribers.title") %>
+	<br><small><%= t("subscribers.baseline") %></small>
 </h2>
 <br>
 
@@ -8,12 +8,12 @@
     <div class="col-md-3 col-md-offset-1">
         <ul class="list-group text-center lower">
             <li class="list-group-item list-group-item-info">
-                <h4 class="text-center">Une semaine d'accès</h4>
+                <h4 class="text-center"><%= t("subscribers.one_week_plan") %></h4>
             </li>
             <li class="list-group-item">
                 <h3 class="lead">
-                    <strong>2,50 EUR <small>htva**</small></strong>
-                    <br><small>Toutes les fonctionnalités, en mode <b>illimité</b></small>
+                    <strong>2,50 EUR <small><%= t("subscribers.htva") %>**</small></strong>
+                    <br><small><%= t("subscribers.all_functionalities") %> <b><%= t("subscribers.unlimited") %></b></small>
 
                 </h3>
             </li>
@@ -25,19 +25,19 @@
     <div class="col-md-4">
         <ul class="list-group text-center">
             <li class="list-group-item list-group-item-success">
-                <h3 class="text-center">Abonnement annuel</h3>
+                <h3 class="text-center"><%= t("subscribers.yearly_plan") %></h3>
             </li>
             <li class="list-group-item">
                 <h3 class="lead">
-                    <strong>50,- EUR <small>htva**</small> / an</strong>
-                    <br><small>Toutes les fonctionnalités, en mode <b>illimité</b></small>
+                    <strong>50,- EUR <small><%= t("subscribers.htva") %>**</small> / <%= t("subscribers.year") %></strong>
+                    <br><small><%= t("subscribers.all_functionalities") %> <b><%= t("subscribers.unlimited") %></b></small>
                 </h3>
             </li>
             <li class="list-group-item list-group-item-success">
                 <div class="row">
-                        <p><b>Sélectionnez votre moyen de paiement</b></p>
+                        <p><b><%= t("subscribers.select_payment_mode") %></b></p>
                         <div class="col-md-6">
-                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Payer par virement</button>
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal"><%= t("subscribers.by_wire") %></button>
                             <%= render "modalVirement" %>
                         </div>
                         
@@ -49,12 +49,12 @@
     <div class="col-md-3">
         <ul class="list-group text-center lower">
             <li class="list-group-item list-group-item-warning">
-                <h4 class="text-center">Abonnement mensuel</h4>
+                <h4 class="text-center"><%= t("subscribers.monthly_plan") %></h4>
             </li>
             <li class="list-group-item">
                 <h3 class="lead">
-                    <strong>5,- EUR <small>htva**</small> / mois</strong>
-                    <br><small>Toutes les fonctionnalités, en mode <b>illimité</b></small>
+                    <strong>5,- EUR <small><%= t("subscribers.htva") %>**</small> / <%= t("subscribers.month") %></strong>
+                    <br><small><%= t("subscribers.all_functionalities") %> <b><%= t("subscribers.unlimited") %></b></small>
                 </h3>
             </li>
             <li class="list-group-item list-group-item-warning">
@@ -66,11 +66,11 @@
 
 
            
-            <h3 class="text-center"><small>Une question ? <%= link_to "contact@courts.be", "mailto:contact@courts.be" %></small></h3>
+            <h3 class="text-center"><small><%= t("subscribers.a_question") %> <%= link_to "contact@courts.be", "mailto:contact@courts.be" %></small></h3>
             <p class="text-center">
-            	* inclus gratuitement durant la phase de test
-            	<br>** <i>Pas de TVA applicable - régime de franchise</i>.
+            	<!-- * inclus gratuitement durant la phase de test
+            	<br>-->** <i><%= t("subscribers.no_vat") %></i>.
             </p>
-            <h3 class="text-center"><small>Oui : vous recevrez ensuite une facture :)</small></h3>
+            <h3 class="text-center"><small><%= t("subscribers.yes_billing") %> :)</small></h3>
 
     

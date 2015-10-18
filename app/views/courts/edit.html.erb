@@ -1,8 +1,8 @@
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-6 col-md-offset-3">
 	<div class="panel panel-default">
 	  <div class="panel-heading">
 	    <div class="panel-title">
-	    	<h1><%= t("courts.edit_title") %></h1>
+	    	<h3><%= t("courts.edit_title") %></h3>
 	    </div>
 	  </div>
 	  <div class="panel-body">
@@ -23,8 +23,8 @@
   
   
   <div class="form-group">
-    <div class='input-group input-group-lg' id='datetimepicker'>
-      <%= f.text_field :date, class: "form-control input-lg" %>
+    <div class='input-group' id='datetimepicker'>
+      <%= f.text_field :date, class: "form-control" %>
       <span class="input-group-addon">
         <span class="glyphicon glyphicon-calendar"></span>
       </span>
@@ -32,23 +32,23 @@
   </div>
 
   <div class="field form-group">
-    <%= f.text_field :performance, :placeholder => t("courts.placeholder_performance"), class: "form-control input-lg" %>
+    <%= f.text_field :performance, :placeholder => t("courts.placeholder_performance"), class: "form-control" %>
   </div>
   <div class="field form-group">
-    <%= f.text_field :jurisdiction, :placeholder => t("courts.placeholder_court"), class: "form-control input-lg" %>
+    <%= f.text_field :jurisdiction, :placeholder => t("courts.placeholder_court"), class: "form-control" %>
   </div>
   
   <div class="field form-group">
-    <%= f.select :bar, @bars, {:include_blank => false}, {class: "form-control input-lg"} %>
+    <%= f.select :bar, @bars, {:selected => params[:bar]}, {class: "form-control"} %>
   </div>
 
   <div class="form-inputs">
-    <%= f.text_area :details, :placeholder => t("courts.placeholder_details"), class: "form-control input-lg" %>
+    <%= f.text_area :details, :placeholder => t("courts.placeholder_details"), class: "form-control" %>
   </div>
   
   <br>
   <div class="form-actions">
-    <%= f.submit t("courts.button_edit_court"), :class => "btn btn-primary btn-lg" %>
+    <%= f.submit t("courts.button_edit_court"), :class => "btn btn-primary" %>
   </div>
 <% end %>
 

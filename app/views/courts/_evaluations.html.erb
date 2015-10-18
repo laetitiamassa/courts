@@ -12,7 +12,7 @@ il ne voit les deux éval que lorsqu'il aura rempli sa propre éval sur l'autre 
     <%= render "evaluation_dl_view" %>
     <% else %>
     <div class="text-right">
-	    <span class="label label-info no-bold">Aucun de vos confrère n'est intervenu loco</span>
+	    <span class="label label-info no-bold"><%= t("courts.evaluation_no_loco") %></span>
 	</div>
     <% end %>
 <% else %>

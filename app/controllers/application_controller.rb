@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def subscribed_user
-    redirect_to unsubscribed_path, notice: "Vous devez devenir membre pour bénéficier de cette fonctionnalité" if current_user.overdue
+    redirect_to unsubscribed_path, notice: "Vous devez devenir membre pour bénéficier de cette fonctionnalité" if !current_user.has_active_access
   end
 
   before_action :set_locale

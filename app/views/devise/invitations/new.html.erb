@@ -1,25 +1,27 @@
 <div class="row">
   <div class="col-md-3">
     <ul class="list-group">
-        <%= link_to "Abonnement", account_path, class: "list-group-item" %>
-        <%= link_to "Invitations", new_user_invitation_path, class: "list-group-item active" %>
-        <!-- <%= link_to "Récompenses", rewards_path, class: "list-group-item" %> -->
-        <%= link_to "Mot de passe", edit_user_registration_path(current_user), class: "list-group-item" %>
-       <!-- <%= link_to "Paramètres", "", class: "list-group-item" %> -->
+        <%= link_to t("account.subscription"), account_path, class: "list-group-item" %>
+        <%= link_to t("account.invitations"), new_user_invitation_path, class: "list-group-item active" %>
+        <%= link_to t("account.password"), edit_user_registration_path(current_user), class: "list-group-item" %>
     </ul>
   </div>
 
   <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4>Invitez vos confrères sur Courts</h4>
+        <h4><%= t("devise.invitations.invite_your_colleagues") %></h4>
       </div>
       <div class="panel-body">
       	<% unless current_user.accepted_invitations_count > 12 %>
-	      	<h3 class="text-center"><small><i class="fa fa-gift fa-success fa-2x pull-left"></i> <span class="fa-success">Recevez un mois gratuit pour chaque confrère qui rejoint Courts.be suite à votre invitation !</span>*</small></h3>
+	      	<h3 class="text-center"><small><i class="fa fa-gift fa-success fa-2x pull-left"></i> <span class="fa-success">
+	      		<%= t("devise.invitations.receive_free_months") %>
+	      	</span>*</small></h3>
 	      	<hr>
       	<% end %>
-      	<h3><small>Introduisez l'email de chaque confrère que vous souhaitez inviter :</small></h3>
+      	<h3><small>
+      		<%= t("devise.invitations.insert_email") %>
+      	</small></h3>
 
         <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
 		  	
@@ -29,7 +31,7 @@
 				<div class="form-group">
 					<% resource.class.invite_key_fields.each do |field| -%>
 					  
-					  <%= f.text_field field, :placeholder => "confrère@email.com", class: "form-control" %>
+					  <%= f.text_field field, :placeholder => t("devise.invitations.email_placeholder"), class: "form-control" %>
 					<% end %>
 				</div>
 		  		<%= f.submit t("devise.invitations.new.submit_button"), class: "btn btn-primary" %>
@@ -43,18 +45,18 @@
 					<td>
 						<%= invitation.email %>
 						<% unless invitation.invitation_accepted_at.blank? %>
-						 a accepté votre invitation le <%= invitation.invitation_accepted_at %>
+						 <%= t("devise.invitations.accepted_your_invitation") %> <%= invitation.invitation_accepted_at %>
 						<% else %>
-						 n'a pas encore accepté votre invitation.
+						 <%= t("devise.invitations.did_not_accept_yet") %>
 						<% end %>
 					</td>
 					<td>
 						<% unless invitation.invitation_accepted_at.blank? %>
 							<% if current_user.accepted_invitations_count > 12 %>
-								<i class="fa fa-ok fa-check fa-success"></i>
+								<i class="fa fa-ok fa-check fa-success pull-right"></i>
 							<% else %>
 
-								<span class="label label-success">1 mois gratuit</span>
+								<span class="label label-success pull-right no-bold">1 <%= t("devise.invitations.month_free") %></span>
 							<% end %>
 						<% else %>
 							<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
@@ -63,7 +65,7 @@
 								<% resource.class.invite_key_fields.each do |field| -%>	  
 									<%= f.hidden_field field, :value => invitation.email %>
 								<% end %>
-						  		<%= f.submit "relancer", class: "btn btn-primary btn-xs" %>
+						  		<%= f.submit t("devise.invitations.invite_again"), class: "btn btn-primary btn-xs pull-right" %>
 						<% end %>
 
 						<% end %>
@@ -77,18 +79,8 @@
 
       </div>
     </div>
-    <h5 class="text-center"><small>* Jusqu'à 12 mois gratuits</small></h5>
+    <h5 class="text-center"><small>* <%= t("devise.invitations.free_months_disclaimer") %></small></h5>
  
-<!-- 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Vos factures
-      </div>
-      <div class="panel-body">
-        bla bla
-      </div>
-    </div>
-  -->
   </div>
 
 </div>
@@ -98,37 +90,3 @@
 
 
 
-<!--
-<h2><%= t "devise.invitations.new.header" %></h2>
-
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
-  <%= devise_error_messages! %>
-
-<% resource.class.invite_key_fields.each do |field| -%>
-  <p><%= f.label field %><br />
-  <%= f.text_field field %></p>
-<% end -%>
-
-  <p><%= f.submit t("devise.invitations.new.submit_button") %></p>
-<% end %>
-
-<% if current_user.invitations.any? %>
-	<h1>Félicitations ! 
-	<small><br>Grâce à votre réseau,
-		<br>Vous recevez <%= current_user.accepted_invitations_count %> mois gratuit 
-		<br>Vous recevez la promo de la semaine
-	</small>
-	</h1>
-<% end %>
-<p>Vous avez envoyé <%= current_user.invitations.count %> invitations, dont <%= current_user.accepted_invitations_count %> a été acceptée.
-</p>
-
-<% current_user.invitations.each do |invitation| %>
-	<p><%= invitation.email %>
-	<% unless invitation.invitation_accepted_at.blank? %>
-	 a accepté votre invitation le <%= invitation.invitation_accepted_at %>
-	<% else %>
-	 n'a pas encore accepté votre invitation.
-	<% end %></p>
-<% end %>
--->

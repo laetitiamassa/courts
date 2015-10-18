@@ -13,24 +13,27 @@
 <p><%= t("about.q2_content5") %></p>
 
 <h3><%= t("about.question3") %></h3>
-<p><b>Oui</b>, tout à fait.<br>
-Courts est indépendant de l'OBFG, de l'OVB, d'un quelconque autre organe lié, ainsi que d'une quelconque société ou association autre que la société UPcetera.</p>
+<p><b><%= t("about.q3_content1") %></b>, <%= t("about.q3_content2") %>.<br>
+<%= t("about.q3_content3") %></p>
 
-<h3>L'outil gère-t-il la relation entre les confrères (dominus litis/loco) ?</h3>
-<p><b>Non</b>.<br>
-	Courts est un outil couplant de manière dynamique l'offre à la demande de remplacement, sans s'immiscer dans la suite de la relation entre confrères.</p>
+<h3><%= t("about.question4") %></h3>
+<p><b><%= t("about.q4_content1") %></b>.<br>
+	<%= t("about.q4_content2") %>
+	<br><%= t("about.q4_content3") %> <b><%= t("about.q4_content4") %></b> <%= t("about.q4_content5") %>
+	<br><%= t("about.q4_content6") %> <b><%= t("about.q4_content7") %></b>: <%= t("about.q4_content8") %>
+</p>
 
-<h3>Combien coûte Courts ?</h3>
-<p><b>Courts est gratuit pendant vos deux premières semaines</b> d'utilisation.<br>
-Passée cette période, vous pourrez continuer à utiliser Courts en souscrivant à un abonnement mensuel de 7,90 EUR htva seulement (soit 94,80 EUR htva par an).</p>
+<h3><%= t("about.question5") %></h3>
+<p><b><%= t("about.q5_content1") %></b> <%= t("about.q5_content2") %><br>
+<%= t("about.q5_content3") %></p>
 
 <br>
 <div class="col-md-3 col-md-offset-9">
 <div class="text-right">
 	<%= image_tag("ProfilLaetitiaMassa.jpg", class: "img-rounded") %>
 	<br><b>Laetitia Massa </b>
-	<br>Votre ex-confrère
-	<br>Fondatrice de Courts.be 
+	<br><%= t("about.your_ex_colleague") %>
+	<br><%= t("about.founder_of_courts") %> 
 	<br><%= link_to "Linked in", "http://linkedin.com/in/laetitiamassa" %> | <%= link_to "Email ", "mailto:laetitiamassa@gmail.com" %>
 
 </div>

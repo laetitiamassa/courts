@@ -106,7 +106,7 @@ class CourtsController < ApplicationController
 
     def correct_user
       @court = current_user.courts.find_by(id: params[:id])
-      redirect_to courts_path, notice: t("courts.forbidden_modification") if @court.nil?
+      redirect_to root_path, notice: t("courts.forbidden_modification") if @court.nil?
     end
 
     def set_notifications

@@ -3,8 +3,8 @@
   	<span aria-hidden="true">&times;</span>
   </button>
   <p class="text-center">
-  	<span class="lead">Votre essai gratuit est terminé !</span>
-  	<br><b>Pour continuer à bénéficier des fonctionnalités de Courts, cliquez sur le bouton <%= link_to "S'abonner à Courts", new_subscriber_path, :class => "btn btn-default" %> et suivez les instructions.</b>
+  	<span class="lead"><%= t("header.overdue.content1") %></span>
+  	<br><b><%= t("header.overdue.content2") %> <%= link_to t("header.subscribe_button"), new_subscriber_path, :class => "btn btn-default" %> <%= t("header.follow_instructions") %></b>
 
-	<br>Pour plus d'info, contactez-nous via <%=link_to "contact@courts.be", "mailto:contact@courts.be" %></p>
+	<br><%= t("header.contact_us") %> <%=link_to "contact@courts.be", "mailto:contact@courts.be" %></p>
 </div>

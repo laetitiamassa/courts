@@ -1,7 +1,7 @@
 <div class="row">
       <div class="col-md-6">
         <% if @court.loco_evaluation %>
-      <small>Evaluation de la prestation de Me <%= @loco_lawyer.last_name_or_placeholder %> :</small>
+      <small><%= t("courts.evaluation_of_performance") %> <%= @loco_lawyer.last_name_or_placeholder %> :</small>
         <% if @court.loco_evaluation.evaluation == "happy" %>
             <i class='fa fa-smile-o fa-3x fa-pull-left fa-border fa-success'> </i>
       <% elsif @court.loco_evaluation.evaluation == "ok" %>
@@ -17,7 +17,7 @@
     </div>
     <div class="col-md-6">
       <% if @court.dominus_litis_evaluation %>
-      <small>Evaluation de son expérience de remplacement pour Me <%= @dominus_litis.last_name_or_placeholder %> : </small>
+      <small><%= t("courts.evaluation_of_experience") %> <%= @dominus_litis.last_name_or_placeholder %> : </small>
       <% if @court.dominus_litis_evaluation.evaluation == "happy" %>
             <i class='fa fa-smile-o fa-3x fa-pull-left fa-border fa-success'> </i>
       <% elsif @court.dominus_litis_evaluation.evaluation == "ok" %>

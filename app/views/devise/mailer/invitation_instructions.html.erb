@@ -1,10 +1,10 @@
 <p><%= t("mailer.salutation") %></p>
 
-<p>Vos confrère <%= @resource.invited_by.name_or_placeholder %> vous invite à rejoindre <%= link_to "Courts.be", root_url %>, l'outil de remplacement 2.0 !</p>
+<p><%= @resource.invited_by.name_or_placeholder %> <%= t("devise.mailer.invitation_instructions.content1") %> <%= link_to "Courts.be", root_url %>, <%= t("devise.mailer.invitation_instructions.content2") %></p>
 
-<p><%= link_to "Courts.be", root_url %> est l'outil choisi par de nombreux confrères, pour trouver un confrère remplaçant ou des opportunités de remplacement, en 3 clics.</p>
+<p><%= link_to "Courts.be", root_url %> <%= t("devise.mailer.invitation_instructions.content3") %></p>
 
-<p>Vous pouvez tester gratuitement <%= link_to "Courts.be", root_url %> en acceptant cette invitation en cliquant ci-dessous :</p>
+<p><%= t("devise.mailer.invitation_instructions.content4") %> <%= link_to "Courts.be", root_url %> <%= t("devise.mailer.invitation_instructions.content5") %></p>
 
 <%= link_to accept_invitation_url(@resource, :invitation_token => @token) do %>
 <table cellspacing="0" cellpadding="0">
@@ -21,8 +21,8 @@
 
 <p><%= t("devise.mailer.invitation_instructions.ignore") %></p>
 
-<p class="signature">Bien à vous,
-	<br>L'Equipe Courts
+<p class="signature"><%= t("mailer.end_salutation") %>
+	<br><%= t("mailer.signature_team") %>
 </p>
 
 <img src="http://courts.be/assets/courts_logo.png" alt="Courts logo" height="60" width="150">

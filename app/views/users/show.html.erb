@@ -1,21 +1,16 @@
-
-
-
-
 <div class="panel panel-default col-md-8 col-md-offset-2 no-border-radius profile-card">
 	<div class="row">
 		<div class="col-md-5 no-padding-left no-padding-right">
-			<!-- <img src="http://thetransformedmale.files.wordpress.com/2011/06/bruce-wayne-armani.jpg"
-            alt="" class="img-responsive" /> -->
             <%= image_tag (@user.avatar.url(:large)) %>
 		</div>
 		<div class="col-md-7">
 			
-				<blockquote>
-					<h2>
+			<blockquote>
+				<h2>
+				
 				<%= @user.name_or_placeholder %>
 				<% if @user == current_user %>
-				<%= link_to "Modifier", edit_user_path(current_user), class: "btn btn-info btn-xs pull-right" %>
+				<%= link_to t("helpers.submit.update"), edit_user_path(current_user), class: "btn btn-info btn-xs pull-right" %>
 				<% end %>
 				</h2>
 					<div class="lead">
@@ -36,15 +31,9 @@
 	<hr>	
 
 
-<p><small><b>Coordonnées de Me <%= @user.last_name_or_placeholder %> :</b>
-<br>Cliquez sur une icône pour plus de détails</small>
+<p><small><b><%= t("users.coordonnees") %> <%= @user.last_name_or_placeholder %> :</b>
+<br><%= t("users.coordonnees_details") %></small>
 </p>
-<!-- coordonnées -->
-<!-- pas envie de mettre l'email si facilement
-<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseMail" aria-expanded="false" aria-controls="collapseExample">
-	<i class="fa fa-envelope-o"></i>
-</button>
--->
 
 <% if @user.full_address.present? %>
 <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseAddress" aria-expanded="false" aria-controls="collapseExample">

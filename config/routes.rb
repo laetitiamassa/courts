@@ -42,6 +42,9 @@ Courts::Application.routes.draw do
   get "pricing" => "subscribers#new"
   get "unsubscribed" => "subscribers#unsubscribed"
 
+  get "edit_coordonnees" => "users#edit_coordonnees"
+  get "edit_activity" => "users#edit_activity"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

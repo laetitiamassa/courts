@@ -1,11 +1,8 @@
-
-
 <div class="container">
 	<div class="col-md-4 col-md-offset-4">
 	<div class="panel panel-default">
-		
   <div class="panel-heading">
-    <h1>Inscrivez-vous gratuitement à Courts</h1>
+    <h2><%= t("users.registration.signup_title") %></h2>
   </div>
 
   <div class="panel-body">
@@ -13,23 +10,23 @@
   	<%= devise_error_messages! %>
 
 		  <div class="form-group">
-		  	<%= f.label :email %>
-		  	<%= f.email_field :email, :autofocus => true, class: "form-control" %>
-		  </div>
-
-		  <div class="form-group">
-		  	<%= f.label :password %>
-		  	<%= f.password_field :password, class: "form-control" %>
-		  </div>
-
-		  <div class="form-group">
-		  	<%= f.label :password_confirmation %>
-		  	<%= f.password_field :password_confirmation, class: "form-control" %>
+		  	
+		  	<%= f.email_field :email, :autofocus => true, :placeholder => "email", class: "form-control" %>
 		  </div>
 
 		  <div class="form-group">
 		  	
-		  	<%= f.submit "S'inscrire", class: "btn btn-primary" %>
+		  	<%= f.password_field :password, :placeholder => t("home.password"), class: "form-control" %>
+		  </div>
+
+		  <div class="form-group">
+		  	
+		  	<%= f.password_field :password_confirmation, :placeholder => t("home.confirm_password"), class: "form-control" %>
+		  </div>
+
+		  <div class="form-group">
+		  	<%= f.submit t("home.signup_free"), class: "btn btn-primary btn-block" %>
+		  	<br><small><%= t("home.you_accept_terms") %><%= link_to t("home.our_terms"), legal_path %>)</small>
 		  </div>
 		<% end %>
 	</div>
@@ -37,6 +34,5 @@
 	<div class="panel-footer">
 	<%= render "devise/shared/links" %>
 	</div>
-</div>
 </div>
 </div>

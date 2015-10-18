@@ -1,19 +1,32 @@
+<h2 class="page-header"><%= t("users.modify_your_profile") %></h2>
+<div class="row">
+<div class="col-md-3">
+    <ul class="list-group">
+        <%= link_to t("users.you"), edit_user_path(current_user), class: "list-group-item" %>
+        <%= link_to t("users.your_coordonnees"), edit_coordonnees_path, class: "list-group-item" %>
+        <%= link_to t("users.your_activity"), edit_activity_path, class: "list-group-item" %>
+        <%= link_to t("users.your_prefered_areas"), prefered_areas_path, class: "list-group-item active" %>
+    </ul>
+</div>
 
-
-<h2 class="page-header">Activités préférentielles
-</h2>
-
-<h3><small>Vos activités préférentielles</small></h3>
-  <% current_user.prefered_areas.each do |area| %>
-    <span class="label label-info"><%= area.name %></span>
-  <% end %>
-<hr>
-
-<h3><small>Ajoutez ou modifiez vos activités préférentielles</small></h3>
-
-    <% @prefered_areas.each do |prefered_area| %>
+  <div class="col-md-9">
+    <div class="panel panel-default">
       
-      <ul class="list-group col-md-3">
+      <div class="panel-body">
+        <h2 class="text-right higher-up page-header"><small><%= t("users.your_prefered_areas") %></small></h2>
+
+       
+          <% current_user.prefered_areas.each do |area| %>
+            <span class="label label-info no-bold"><%= area.name %></span>
+          <% end %>
+        
+        <hr>
+
+        <h3><small><%= t("users.add_your_prefered_areas") %></small></h3>
+
+        <% @prefered_areas.each do |prefered_area| %>
+      
+      <ul class="list-group col-md-4">
         <li class="list-group-item">
           <%= prefered_area.name %>
           
@@ -23,7 +36,7 @@
             <% prefered_area.skills.each do |skill| %>
               <% if current_user.id == skill.user_id %>
                 
-                <%= link_to 'Retirer', skill, method: :delete, class: "btn btn-xs btn-danger pull-right" %>
+                <%= link_to t("helpers.remove"), skill, method: :delete, class: "btn btn-xs btn-danger pull-right" %>
               <% end %>
             <% end %>
             
@@ -34,7 +47,7 @@
               <%= f.hidden_field :prefered_area_id, :value => prefered_area.id %> 
               
               <button type="submit" class="btn btn-xs btn-success pull-right">
-                      Ajouter
+                      <%= t("helpers.add") %>
                 </button>
             <% end %>
 
@@ -45,6 +58,19 @@
         
       
     <% end %>
+
+
+
+      </div>
+    </div>
+  </div>
+</div> <!-- row -->
+
+
+
+
+
+    
 
 <br>
 

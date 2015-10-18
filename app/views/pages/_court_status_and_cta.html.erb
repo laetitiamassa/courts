@@ -6,7 +6,7 @@
 
 	<!-- vous avez trouvé -->
     <% if court.locos.any? %>
-        <span class="label label-success">Vous avez trouvé</span>
+        <span class="label label-success"><%= ("courts.status.you_have_found") %></span>
     <% end %>
 
 	<!-- modifier -->
@@ -25,14 +25,14 @@
 
 		<% if (court.responses.where(:user_id => current_user.id)).any? %>
 
-		    <span class="label label-info">Vous avez répondu</span>
+		    <span class="label label-info"><%= t("courts.status.you_have_responded") %></span>
 
 		<% else %> 
 			<%= form_for(@response) do |f| %>   
 	        	<%= f.hidden_field :court_id, :value => court.id %>
 				<button type="submit" class="btn btn-primary btn-sm">
 					<%= content_tag(:i, " " , :class=> 'fa fa-ok') -%>  
-					Proposer mes services
+					<%= t("courts.status.propose_my_services") %>
 				</button>
 			<% end %>
 		<% end %>
@@ -45,11 +45,11 @@
 		<% if court.locos.any? &&  current_user.id == court.locos.last.user.id %>
 
 			<!-- vous intervenez loco -->
-		    <span class="label label-info">Vous intervenez loco</span> 
+		    <span class="label label-info"><%= t("courts.status.you_are_loco") %></span> 
 		<% else %>
 
 			<!-- trouvé -->
-			<span class="label label-warning">Trouvé</span>
+			<span class="label label-warning"><%= t("courts.status.found") %></span>
 			
 		<% end %>
 

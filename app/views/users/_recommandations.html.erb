@@ -1,8 +1,8 @@
 <hr>
 
 			
-<p><small><b>Recommandations de Me <%= @user.last_name_or_placeholder %> :</b>
-<br>Cliquez sur les smiley pour plus de détails sur la recommandation</small>
+<p><small><b><%= t("users.recommandations") %><%= @user.last_name_or_placeholder %> :</b>
+<br><%= t("users.click_to_see_more_reco") %></small>
 </p>
 			
 <% @courts.each do |court| %>

@@ -1,0 +1,124 @@
+<h2 class="page-header"><%= t("users.modify_your_profile") %></h2>
+<div class="row">
+<div class="col-md-3">
+    <ul class="list-group">
+        <%= link_to t("users.you"), edit_user_path(current_user), class: "list-group-item" %>
+        <%= link_to t("users.your_coordonnees"), edit_coordonnees_path, class: "list-group-item active" %>
+        <%= link_to t("users.your_activity"), edit_activity_path, class: "list-group-item" %>
+        <%= link_to t("users.your_prefered_areas"), prefered_areas_path, class: "list-group-item" %>
+    </ul>
+</div>
+
+<div class="col-md-9">
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2 class="text-right higher-up page-header"><small><%= t("users.your_coordonnees") %></small></h2>
+					
+					<%= form_for @user, :url => user_path(@user), :html => { :method => :put } do |f| %>
+
+			  		<div class="form-group">
+			    		<%= f.text_field :street, class: "form-control input-sm", :placeholder => t("users.street") %>
+			  		</div>
+					
+
+				  
+				  	<div class="form-group">
+				    	<%= f.text_field :street_number, class: "form-control input-sm", :placeholder => t("users.street_number") %>
+				  	</div>
+					
+
+				  
+					  <div class="form-group">
+					    <%= f.text_field :zipcode, class: "form-control input-sm", :placeholder => t("users.zipcode") %>
+					  </div>
+					
+
+				  
+					  <div class="form-group">
+					    <%= f.text_field :city, class: "form-control input-sm", :placeholder => t("users.city") %>
+					  </div>
+					
+				<hr>
+				  <div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="glyphicon glyphicon-phone-alt"></span> 
+				    		+32
+				    	</span>
+				    	<%= f.text_field :telephone, class: "form-control input-sm", :placeholder => t("users.telephone") %>
+				  	</div>
+		  		</div>
+				
+
+			  
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="glyphicon glyphicon-print"></span> 
+				    		+32
+				    	</span>
+				    	<%= f.text_field :fax, class: "form-control input-sm", :placeholder => t("users.fax") %>
+				  	</div>
+					</div>
+				
+
+				
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="glyphicon glyphicon-earphone"></span> 
+					    	+32
+					    </span>
+				    	<%= f.text_field :mobile, class: "form-control input-sm", :placeholder => t("users.mobile") %>
+				  	</div>
+					</div>
+
+					<hr>
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="fa fa-link"></span> 
+					    	
+					    </span>
+				    	<%= f.text_field :website, class: "form-control input-sm", :placeholder => t("users.website") %>
+				  	</div>
+					</div>
+
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="fa fa-linkedin"></span> 
+					    	
+					    </span>
+				    	<%= f.text_field :linkedin, class: "form-control input-sm", :placeholder => t("users.linkedin") %>
+				  	</div>
+					</div>
+
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="fa fa-twitter"></span> 
+					    	
+					    </span>
+				    	<%= f.text_field :twitter, class: "form-control input-sm", :placeholder => t("users.twitter") %>
+				  	</div>
+					</div>
+
+					<div class="form-group">
+				  	<div class="input-group">
+				    	<span class="input-group-addon"> 
+				    		<span class="fa fa-facebook"></span> 
+					    	
+					    </span>
+				    	<%= f.text_field :facebook, class: "form-control input-sm", :placeholder => t("users.facebook") %>
+				  	</div>
+					</div>
+					<%= f.submit t("helpers.submit.update"), class: "btn btn-primary pull-right" %>
+				<% end %>		
+			</div>
+		</div>
+
+	</div> <!-- col-md-9 -->
+</div>
+	

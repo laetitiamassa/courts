@@ -13,6 +13,16 @@ class UsersController < ApplicationController
     @bars = User.bars
   end
 
+  def edit_coordonnees
+    @user = current_user
+    @bars = User.bars
+  end
+
+  def edit_activity
+    @user = current_user
+    @bars = User.bars
+  end
+
   def update
   	@user = User.find(params[:id])
     @bars = User.bars

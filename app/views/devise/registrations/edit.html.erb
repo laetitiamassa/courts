@@ -1,18 +1,17 @@
 <div class="row">
   <div class="col-md-3">
     <ul class="list-group">
-        <%= link_to "Abonnement", account_path, class: "list-group-item" %>
-        <%= link_to "Invitations", new_user_invitation_path, class: "list-group-item" %>
-        <!-- <%= link_to "Récompenses", rewards_path, class: "list-group-item" %> -->
-        <%= link_to "Mot de passe", edit_user_registration_path(current_user), class: "list-group-item active" %>
-       <!-- <%= link_to "Paramètres", "", class: "list-group-item" %> -->
+        <%= link_to t("account.subscription"), account_path, class: "list-group-item" %>
+        <%= link_to t("account.invitations"), new_user_invitation_path, class: "list-group-item" %>
+        <%= link_to t("account.password"), edit_user_registration_path(current_user), class: "list-group-item active" %>
+       
     </ul>
   </div>
 
   <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4>Modifiez votre mot de passe</h4>
+        <h4><%= t("account.modify_your_password") %></h4>
       </div>
       <div class="panel-body">
         <div class="col-md-5">
@@ -20,18 +19,18 @@
           <%= devise_error_messages! %>
 
           <div class="form-group">
-            <b>Introduisez votre mot de passe actuel :</b>
-            <%= f.password_field :current_password, :placeholder => "mot de passe actuel", class: "form-control" %>
+            <b><%= t("account.current_password") %></b>
+            <%= f.password_field :current_password, :placeholder => t("account.current_password_placeholder"), class: "form-control" %>
           </div>
 
           <div class="form-group">
-            <b>Introduisez votre nouveau mot de passe :</b>
-            <%= f.password_field :password, :placeholder => "nouveau mot de passe", class: "form-control", :autocomplete => "off" %>
+            <b><%= t("account.new_password") %></b>
+            <%= f.password_field :password, :placeholder => t("account.new_password_placeholder"), class: "form-control", :autocomplete => "off" %>
           </div>
 
           <div class="form-group">
-            <b>Confirmez votre nouveau mot de passe :</b>
-            <%= f.password_field :password_confirmation, :placeholder => "nouveau mot de passe", class: "form-control" %>
+            <b><%= t("confirm_new_password") %></b>
+            <%= f.password_field :password_confirmation, :placeholder => t("account.new_password_placeholder"), class: "form-control" %>
           </div>
 
           

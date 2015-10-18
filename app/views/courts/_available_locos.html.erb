@@ -1,14 +1,14 @@
 <!-- Les réponses obtenues -->  
   <ul class="list-group">
     <li class="list-group-item text-center">
-      <b><small>Il y a 
+      <b><small><%= t("courts.locos.thera_are") %> 
         <% if !@court.current %>
-         eu 
+         <%= t("courts.locos.there_have_been") %> 
         <% end %>
-        <%= @court.responses.count %> réponses à votre demande</small></b>
+        <%= @court.responses.count %> <%= t("courts.locos.responses_to_your_court") %></small></b>
       <% if @court.current %>
         <br>
-        <small>Choisissez votre remplaçant ci-dessous</small>
+        <small><%= t("courts.locos.choose_your_loco") %></small>
       <% end %>
     </li>
     
@@ -37,7 +37,7 @@
                       
                       <ul class="list-group col-md-10 col-md-offset-1">
                         <li class="list-group-item">
-                          <small>Choisissez un autre remplaçant</small>
+                          <small><%= t("courts.locos.choose_another_loco") %></small>
                         </li>
                         <% @court.responses.each do |r| %>
 
@@ -48,7 +48,7 @@
                                 <%= f.hidden_field :court_id, :value => @court.id %>
                                 <%= f.hidden_field :user_id, :value => r.user.id %>
                                 <button type="submit" class="btn btn-xs btn-success pull-right">
-                                      Choisir
+                                      <%= t("courts.locos.choose") %>
                                 </button>
                               <% end %>
                             </li>
@@ -70,7 +70,7 @@
                 <%= f.hidden_field :court_id, :value => @court.id %>
                 <%= f.hidden_field :user_id, :value => response.user.id %>
                 <button type="submit" class="btn btn-xs btn-success pull-right">
-                      Choisir
+                      <%= t("courts.locos.choose") %>
                 </button>
               <% end %>
             <% end %>

@@ -1,9 +1,9 @@
 <% if current_user.subscribed %>
-<span class="label label-success no-bold">abonné</span>
+<span class="label label-success no-bold"><%= t("header.status_subscribed") %></span>
 <% elsif current_user.on_trial %>
-<span class="label label-warning no-bold">essai</span>
+<span class="label label-warning no-bold"><%= t("header.status_trial") %></span>
 <% elsif current_user.on_free %>
-<span class="label label-success no-bold">free</span>
+<span class="label label-success no-bold"><%= t("header.status_free") %></span>
 <% else %>
-<span class="label label-danger no-bold">inactif</span>
+<span class="label label-danger no-bold"><%= t("header.status_overdue") %></span>
 <% end %>

@@ -1,7 +1,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-        <h4>Détail de la demande</h4>
+        <h4><%= t("courts.description.details") %></h4>
         <hr>
 
 <% if !@court.details.blank? %> <!-- s'il y a des détails -->
@@ -13,7 +13,7 @@
     <% if @court.documentations.any? %>
 
       <p>
-        <small><br>Documents :</small>
+        <small><br><%= t("courts.description.documents") %></small>
         <% @court.documentations.each do |doc| %>
           <br>
           <i class="fa fa-file-pdf-o"></i>
@@ -30,7 +30,7 @@
     <%= link_to t("courts.button_edit"), edit_court_path(@court),:class=> 'btn btn-info pull-right btn-sm' -%>
 
 <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Ajouter un document (pdf)
+  <%= t("courts.description.add_a_document") %>
 </button>
 <div class="collapse" id="collapseExample">
   <br>
@@ -38,13 +38,13 @@
     <div class="panel-body">
     <%= form_for(@documentation) do |f| %>
     <div class="form-group">
-      <%= f.text_field :name, :placeholder => "Nom du document", class: "form-control input-sm" %>
+      <%= f.text_field :name, :placeholder => t("courts.description.document_placeholder"), class: "form-control input-sm" %>
     </div>
       <%= f.file_field :document, class: "form-control input-sm" %>
       <%= f.hidden_field :court_id, :value => @court.id %>
       <br>
       <div class="actions">
-        <%= f.submit "Ajouter le document", class: "btn btn-primary btn-sm btn-block" %>
+        <%= f.submit t("courts.description.add_document_button"), class: "btn btn-primary btn-sm btn-block" %>
       </div>
     <% end %>
   </div>
@@ -61,7 +61,7 @@
     <% if @court.documentations.any? %>
 
       <p>
-        <small><br>Documents :</small>
+        <small><br><%= t("courts.description.documents") %></small>
         <% @court.documentations.each do |doc| %>
           <br>
           <i class="fa fa-file-pdf-o"></i>
@@ -72,13 +72,13 @@
     <br>
     
         <% if @court.have_found %>
-              <%= link_to t("courts.button_found"), @court,:class=> 'btn btn-warning pull-right', :disabled => 'disabled' %>
+              <%= link_to t("courts.status.found"), @court,:class=> 'btn btn-warning pull-right', :disabled => 'disabled' %>
         <% else %>
           <% unless (current_user.responses && @court.responses).any? %>
                 <%= form_for(@response) do |f| %> 
                     <%= f.hidden_field :court_id, :value => @court.id %>
                     <button type="submit" class="btn btn-success">
-                      <%= content_tag(:i, " " , :class=> 'glyphicon glyphicon-ok') -%>  Je suis disponible
+                      <%= content_tag(:i, " " , :class=> 'glyphicon glyphicon-ok') -%>  <%= t("courts.status.propose_my_services") %>
                     </button>
                 <% end %>
           <% end %>
@@ -86,7 +86,7 @@
 
   <% else %>
 
-    Seuls les confrères du barreau de <%= @court.bar %> peuvent voir le détail de la demande
+    <%= t("courts.description.only_visible_to1") %> <%= @court.bar %> <%= t("courts.description.only_visible_to2") %>
 
   <% end %>
 
@@ -98,9 +98,9 @@
 
    <% if current_user == @court.user && @court.current %>
 
-      <h3 class="text-center">Qu'attendez-vous précisément de votre confrère ?
+      <h3 class="text-center"><%= t("courts.description.what_do_you_expect") %>
     
-      <br><small>Seuls vos confrères susceptibles de vous remplacer verront les détails de la prestation attendue.</small></h3>
+      <br><small><%= t("courts.description.who_will_see_this") %></small></h3>
       
       <%= form_for(@court) do |f| %>
         <div class="form-inputs">
@@ -114,10 +114,10 @@
 
   <% elsif current_user.bar == @court.bar %>
 
-    Il n'y a pas d'autre détail.
+    <%= t("courts.description.no_detail") %>
 
   <% else %>
-    Il n'y a pas d'autre détail.
+    <%= t("courts.description.no_detail") %>
   <% end %>
 
 <% end %>
