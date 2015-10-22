@@ -2,10 +2,7 @@
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
   	<span aria-hidden="true">&times;</span>
   </button>
-  <p class="text-center">
-  	
-  		
-      
+  <p class="text-center">  
       <b><%= t("header.on_free.content1") %> <%= current_user.accepted_invitations_count %> <%= t("header.on_free.content2") %> <%= current_user.free_months_period_end_date.strftime('%d %B') %> <%= t("header.on_free.content3") %></b>
   	
 	<br><%= t("header.on_free.content4") %> <%=  link_to t("header.on_free.link"), account_path %>, <%= t("header.on_free.content5") %> <%=link_to "contact@courts.be", "mailto:contact@courts.be" %></p>
