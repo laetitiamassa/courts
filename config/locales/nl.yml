@@ -519,7 +519,7 @@ nl:
       #content4: "Ainsi, vous éviterez une inondation d'emails de réponse alors même que vous aurez déjà trouvé chaussure à votre pied !"
   subscribers:
     title: "Vereenvoudig uw leven door u te abonneren op Courts.be"
-    baseline: "Courts.be helpt u samen met uw confraters, overal in België!"
+    baseline: "Courts.be helpt u om samen met uw confraters te werken, overal in België!"
     one_week_plan: "Eek week toegang"
     htva: "ebtw"
     all_functionalities: "Alle functionaliteiten, "
@@ -527,7 +527,7 @@ nl:
     yearly_plan: "Jaarabonnement"
     year: "jaar"
     select_payment_mode: "Kies uw betaalmethode"
-    by_wire: "Betalen via overschrijving"
+    by_wire: "Via overschrijving"
     monthly_plan: "Maandabonnement"
     month: "maand"
     a_question: "Een vraag?"
