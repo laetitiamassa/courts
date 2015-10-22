@@ -5,7 +5,7 @@ class Notification < ActiveRecord::Base
 
 	def created_at_display
 		if message.include? "invite"
-			created_at - 2.hours
+			created_at #workaround in dev: created_at - 2.hours
 		else
 			created_at
 		end
