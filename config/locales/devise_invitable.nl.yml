@@ -1,29 +1,29 @@
 nl:
   devise:
     failure:
-      invited: "Vous avez reçu une invitation, acceptez cette invitation pour achever la création de votre compte."
+      invited: "U hebt een uitnodiging ontvangen, accepteer deze uitnodiging om het maken van uw account."
     invitations:
-      send_instructions: "Une invitation a été envoyée par email à %{email}."
-      invitation_token_invalid: "Le code d'invitation n'est pas valide !"
-      updated: "Votre mot de passe a bien été créé. Vous êtes maintenant connecté."
-      updated_not_active: "Votre mot de passe a bien été créé."
-      no_invitations_remaining: "Il ne reste aucune invitation"
-      invitation_removed: "Votre invitation a été retirée."
+      send_instructions: "Een uitnodiging werd verzonden per e-mail naar %{email}."
+      invitation_token_invalid: "De uitnodiging code is niet geldig!"
+      updated: "Uw wachtwoord is aangemaakt. U bent nu ingelogd."
+      updated_not_active: "Uw wachtwoord is aangemaakt."
+      #no_invitations_remaining: "Il ne reste aucune invitation"
+      invitation_removed: "Uw uitnodiging is ingetrokken."
       new:
-        header: "Envoyez une invitation"
-        submit_button: "Envoyer l'invitation"
+        header: "Stuur een uitnodiging"
+        submit_button: "Uitnodiging verzenden"
       edit:
-        header: "Créer un mot de passe"
-        submit_button: "Créer mon mot de passe"
-      invite_your_colleagues: "Invitez vos confrères sur Courts"
-      receive_free_months: "Recevez un mois gratuit pour chaque confrère qui rejoint Courts.be suite à votre invitation !"
-      insert_email: "Introduisez l'email de chaque confrère que vous souhaitez inviter :"
+        header: "Maak een wachtwoord"
+        submit_button: "Wachtwoord maken"
+      invite_your_colleagues: "Nodig uw confraters op Courts"
+      receive_free_months: "Ontvang een maand gratis voor elke confrater die Courts.be toetreedt na uw uitnodiging!"
+      insert_email: "Invoer de e-mail van elke confrater die U wilt uitnodigen:"
       email_placeholder: "confrater@email.com"
-      accepted_your_invitation: "a accepté votre invitation le"
-      did_not_accept_yet: "n'a pas encore accepté votre invitation."
-      month_free: "mois gratuit"
-      invite_again: "relancer"
-      free_months_disclaimer: "Jusqu'à 12 mois gratuits"
+      accepted_your_invitation: "heeft uw uitnodiging geaccepteerd op"
+      did_not_accept_yet: "heeft nog niet uw uitnodiging geaccepteerd."
+      month_free: "gratis maand"
+      invite_again: "opnieuw sturen"
+      free_months_disclaimer: "Tot 12 maanden gratis"
     #mailer:
       #invitation_instructions:
        #subject: "Invitation instructions"
