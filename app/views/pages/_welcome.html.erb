@@ -130,9 +130,11 @@
 			<li class="list-group-item">
 				<h3 class="text-center padding-top-short"><small><%= t("welcome.current_courts") %></small></h3></li>
 			</li>
-			<% @courts.sort_by(&:date_display).each do |court| %>
-				<% if court.current %>
-					<%= render :partial => "each_court", :locals => { :court => court} %>
+			<% if current_user.has_active_access %>
+				<% @courts.sort_by(&:date_display).each do |court| %>
+					<% if court.current %>
+						<%= render :partial => "each_court", :locals => { :court => court} %>
+					<% end %>
 				<% end %>
 			<% end %>
 			
