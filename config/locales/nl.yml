@@ -466,7 +466,7 @@ nl:
     next_billing_date: "Volgende deadline:"
     expiration: "Vervaltijd:"
     your_access_ends_then: "Uw toegang zal eindigen op die datum"
-    your_access_renews_the: "Uw toegang zal op die datum worden vernieuwd, tenzij geanuleerd in de tussentijd."
+    your_access_renews_then: "Uw toegang zal op die datum worden vernieuwd, tenzij geanuleerd in de tussentijd."
   about:
     title: "Over Courts"
     question1: "Wat is 'Courts'?"

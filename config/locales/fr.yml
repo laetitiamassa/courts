@@ -472,7 +472,7 @@ fr:
     next_billing_date: "Prochaine échéance :"
     expiration: "Expiration :"
     your_access_ends_then: "Votre accès prendra fin à cette date"
-    your_access_renews_the: "Votre accès sera renouvelé à cette date, sauf annulation entretemps."
+    your_access_renews_then: "Votre accès sera renouvelé à cette date, sauf annulation entretemps."
   about:
     title: "A propos de Courts"
     question1: "Qu'est-ce que 'Courts' ?"
