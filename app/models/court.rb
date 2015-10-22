@@ -27,7 +27,8 @@ class Court < ActiveRecord::Base
 	end
 
 	def current #workaround datetimepicker not set to UTC
-		date_display >= Time.now #date_display - 2.hours >= Time.now
+		#date_display >= Time.now
+		date_display - 2.hours >= Time.now
 	end
 
 	def past
