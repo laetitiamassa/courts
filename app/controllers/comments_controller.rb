@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_action :subscribed_user#, :only => [:show, :new, :edit]
 
   # GET /comments
   # GET /comments.json

@@ -1,5 +1,7 @@
 class LocoEvaluationsController < ApplicationController
   before_action :set_loco_evaluation, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_action :subscribed_user#, :only => [:show, :new, :edit]
 
   # GET /loco_evaluations
   # GET /loco_evaluations.json

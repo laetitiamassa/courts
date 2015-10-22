@@ -264,6 +264,7 @@ nl:
     keep_in_touch: "Contact maken met ons:"
   header:
     home: "Startpagina"
+    pricing: "Tarieven"
     view_profile: "Bekijk uw profiel"
     edit_profile: "Bewerk uw profiel"
     settings: "Instellingen"

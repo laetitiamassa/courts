@@ -1,5 +1,7 @@
 class DocumentationsController < ApplicationController
   before_action :set_documentation, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_action :subscribed_user#, :only => [:show, :new, :edit]
 
   # GET /documentations
   # GET /documentations.json

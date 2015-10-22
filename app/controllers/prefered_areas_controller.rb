@@ -1,6 +1,8 @@
 class PreferedAreasController < ApplicationController
   before_action :set_prefered_area, only: [:show, :edit, :update, :destroy]
   before_action :set_notifications
+  before_filter :authenticate_user!
+  before_action :subscribed_user#, :only => [:show, :new, :edit]
 
   # GET /prefered_areas
   # GET /prefered_areas.json

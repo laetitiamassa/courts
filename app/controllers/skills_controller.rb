@@ -1,6 +1,8 @@
 class SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
   before_action :set_notifications
+  before_filter :authenticate_user!
+  before_action :subscribed_user#, :only => [:show, :new, :edit]
 
   # GET /skills
   # GET /skills.json

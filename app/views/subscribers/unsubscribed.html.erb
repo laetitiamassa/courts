@@ -18,7 +18,11 @@
                 </h3>
             </li>
             <li class="list-group-item list-group-item-info">
+                <% if user_signed_in? %>
                 <%= render "form_one_week" %>
+                <% else %>
+                <%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-default btn-block btn-lg" %>
+                <% end %>
             </li>
         </ul>
     </div>
@@ -34,6 +38,7 @@
                 </h3>
             </li>
             <li class="list-group-item list-group-item-success">
+                <% if user_signed_in? %>
                 <div class="row">
                         <p><b><%= t("subscribers.select_payment_mode") %></b></p>
                         <div class="col-md-6">
@@ -43,6 +48,9 @@
                         
                             <%= render "form_yearly" %>
                         </div>
+                <% else %>
+                <%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-default btn-block btn-lg" %>
+                <% end %>
             </li>
         </ul>
     </div>
@@ -53,12 +61,16 @@
             </li>
             <li class="list-group-item">
                 <h3 class="lead">
-                    <strong>5,- EUR <small><%= t("subscribers.htva") %>**</small> / <%= t("subscribers.month") %></strong>
+                    <strong>5,90 EUR <small><%= t("subscribers.htva") %>**</small> / <%= t("subscribers.month") %></strong>
                     <br><small><%= t("subscribers.all_functionalities") %> <b><%= t("subscribers.unlimited") %></b></small>
                 </h3>
             </li>
             <li class="list-group-item list-group-item-warning">
+                <% if user_signed_in? %>
                 <%= render "form_monthly" %>
+                <% else %>
+                <%= link_to t("home.signup_free"), new_registration_path(resource_name), class: "btn btn-default btn-block btn-lg" %>
+                <% end %>
             </li>
         </ul>
     </div>
@@ -72,3 +84,5 @@
                 <br>-->** <i><%= t("subscribers.no_vat") %></i>.
             </p>
             <h3 class="text-center"><small><%= t("subscribers.yes_billing") %> :)</small></h3>
+
+    

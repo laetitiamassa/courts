@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+  before_action :subscribed_user, :only => [:welcome]
+  before_filter :authenticate_user!, :only => [:welcome, :account, :rewards]
+
 
 
   def home

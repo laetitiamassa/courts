@@ -1,6 +1,6 @@
 class SubscribersController < ApplicationController
 
-	before_filter :authenticate_user!, except: [:new]
+	before_filter :authenticate_user!, :only => [:update]
 	
 
 	def new

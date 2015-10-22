@@ -1,5 +1,7 @@
 class DominusLitisEvaluationsController < ApplicationController
   before_action :set_dominus_litis_evaluation, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_action :subscribed_user#, :only => [:show, :new, :edit]
 
   # GET /dominus_litis_evaluations
   # GET /dominus_litis_evaluations.json

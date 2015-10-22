@@ -1,7 +1,7 @@
 class CourtsController < ApplicationController
   before_action :set_notifications
   before_filter :authenticate_user!, except: [:index]
-  before_action :subscribed_user, :only => [:show, :new, :edit]
+  before_action :subscribed_user#, :only => [:show, :new, :edit]
   before_action :set_court, only: [:show, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
 

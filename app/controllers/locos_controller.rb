@@ -1,6 +1,8 @@
 class LocosController < ApplicationController
   before_action :set_loco, only: [:show, :edit, :update, :destroy]
   before_action :set_notifications
+  before_filter :authenticate_user!
+  before_action :subscribed_user#, :only => [:show, :new, :edit]
 
   # GET /locos
   # GET /locos.json

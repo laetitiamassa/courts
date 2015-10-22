@@ -264,6 +264,7 @@ fr:
     keep_in_touch: "Restons connectés :"
   header:
     home: "Accueil"
+    pricing: "Formules"
     view_profile: "Consultez votre profil"
     edit_profile: "Editez votre profil"
     settings: "Paramètres"

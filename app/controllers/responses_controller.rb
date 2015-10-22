@@ -1,6 +1,8 @@
 class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :edit, :update, :destroy]
   before_action :set_notifications
+  before_filter :authenticate_user!
+  before_action :subscribed_user#, :only => [:show, :new, :edit]
 
   # GET /responses
   # GET /responses.json

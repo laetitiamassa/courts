@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_notifications
+  before_action :subscribed_user, :only => [:show]
   
   def show
   	@user = User.find(params[:id])

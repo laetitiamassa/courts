@@ -1,5 +1,7 @@
 class PrivateDocumentationsController < ApplicationController
   before_action :set_private_documentation, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_action :subscribed_user#, :only => [:show, :new, :edit]
 
   # GET /private_documentations
   # GET /private_documentations.json
