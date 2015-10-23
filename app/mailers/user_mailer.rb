@@ -19,6 +19,7 @@ class UserMailer < ActionMailer::Base
   		)
   end
 
+
   # def weekly(email)
   #   mail(
   #     :to => email,

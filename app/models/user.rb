@@ -393,15 +393,14 @@ class User < ActiveRecord::Base
     UserMailer.new_test(@me).deliver
   end
 
-#mailer invitations to come from the inviter
-def headers_for(action)
-  action_string = action.to_s
-  case action_string
-  when "invitation" || "invitation_instructions"
-    {:from => 'foo@bar.com'}
-  else
-    {}
+def send_devise_notification(notification, *args)
+  if :invitation_instructions == notification
+    args << {
+      from: "#{invited_by.name_or_placeholder} via Courts.be",
+      subject: "#{invited_by.name_or_placeholder} vous invite sur Courts.be"
+    }
   end
+  super
 end
 
 
