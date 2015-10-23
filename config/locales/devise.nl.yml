@@ -50,7 +50,7 @@ nl:
         content5: "door het aanvaarden van deze uitnodiging door hieronder te klikken:"
         #someone_invited_you: "L'un de vos confrères vous a invite à le rejoindre sur %{url} ; vous pouvez accepter cette invitation via le lien ci-dessous."
         accept: "Accepteer de uitnodiging om Courts"
-        ignore: "Als u niet wilt dat deze uitnodiging accepteert, moet je niets doen. <br /> Uw Courts account zal worden aangemaakt wanneer je zal bereiken Courts.be via deze link, en u een wachtwoord te kiezen."
+        ignore: "Als u niet wilt dat deze uitnodiging accepteert, moet je niets doen. Uw Courts account zal worden aangemaakt wanneer je zal bereiken Courts.be via deze link, en u een wachtwoord te kiezen."
     omniauth_callbacks:
       failure: "Kan je niet autoriseren van %{kind}, omdat \"%{reason}\"."
       success: "Succesvol geautoriseerd met %{kind} account."

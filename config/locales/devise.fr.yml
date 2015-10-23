@@ -50,7 +50,7 @@ fr:
         content5: "en acceptant cette invitation en cliquant ci-dessous :"
         #someone_invited_you: "L'un de vos confrères vous a invite à le rejoindre sur %{url} ; vous pouvez accepter cette invitation via le lien ci-dessous."
         accept: "Accepter l'invitation à Courts"
-        ignore: "Si vous ne souhaitez pas accepter cette invitation, vous ne devez rien faire.<br />Votre compte Courts ne sera créé que lorsque vous accèderez à Courts.be via ce lien, et que vous choisirez un mot de passe."
+        ignore: "Si vous ne souhaitez pas accepter cette invitation, vous ne devez rien faire.  Votre compte Courts ne sera créé que lorsque vous accèderez à Courts.be via ce lien, et que vous choisirez un mot de passe."
     omniauth_callbacks:
       failure: "Nous n'avons pas pu vous authentifier via %{kind} : '%{reason}'."
       success: 'Authentifié avec succès via %{kind}.'
