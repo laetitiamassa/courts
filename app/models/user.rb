@@ -393,6 +393,16 @@ class User < ActiveRecord::Base
     UserMailer.new_test(@me).deliver
   end
 
+#mailer invitations to come from the inviter
+def headers_for(action)
+  action_string = action.to_s
+  case action_string
+  when "invitation" || "invitation_instructions"
+    {:from => 'foo@bar.com'}
+  else
+    {}
+  end
+end
 
 
 end
