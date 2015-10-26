@@ -397,7 +397,7 @@ def send_devise_notification(notification, *args)
   if :invitation_instructions == notification
     args << {
       from: "#{invited_by.name_or_placeholder} via Courts.be <contact@courts.be>",
-      subject: "#{invited_by.name_or_placeholder} vous invite sur Courts.be"
+      subject: t("devise.mailer.invitation_instructions.subject", :name => invited_by.name_or_placeholder)
     }
   end
   super

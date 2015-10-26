@@ -26,8 +26,9 @@ nl:
       free_months_disclaimer: "Tot 12 maanden gratis"
     mailer:
       invitation_instructions:
-       subject: "U bent uitgenodigd om Courts.be te ontdekken"
+       subject: "%{name} nodigt U uit om Courts.be te ontdekken"
        hello: "Bonjour %{email}"
-       someone_invited_you: "Votre confrère %{invited_by.name_or_placeholder} vous a invité à %{url}, vous pouvez accepter cette invitation via le lien ci-dessous."
-       accept: "Accepter l'invitation à Courts"
-       ignore: "Si vous ne souhaitez pas accepter cette invitation, vous ne devez rien faire.<br />Votre compte Courts ne sera créé que lorsque vous accèderez à Courts.be via ce lien, et que vous choisirez un mot de passe."
+       #someone_invited_you: "Votre confrère %{invited_by.name_or_placeholder} vous a invité à %{url}, vous pouvez accepter cette invitation via le lien ci-dessous."
+       accept: "Accepteer de uitnodiging om Courts"
+       ignore: "Als u niet wilt dat deze uitnodiging accepteert, moet je niets doen. n\ Uw account wordt aangemaakt wanneer u bereikt Courts.be via deze link, en u een wachtwoord te kiezen."
+   

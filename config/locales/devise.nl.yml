@@ -41,16 +41,16 @@ nl:
       unlock_instructions:
         subject: "Ontgrendel instructies"
       invitation_instructions:
-        subject: "U bent uitgenodigd om Courts.be te ontdekken"
+        subject: "%{name} nodigt U uit om Courts.be te ontdekken"
         hello: "Hallo %{email}"
         content1: "nodigt u uit om mee "
         content2: "de '2.0' vervanging tool!"
-        content3: "is het tool gekozen door veel confraters, om een vervangende confrater of vervanging opportuniteit te vinden, in 3 klikken."
-        content4: "U kunt testen gratis"
-        content5: "door het aanvaarden van deze uitnodiging door hieronder te klikken:"
+        content3: "is de tool die een toenemend aantal Belgische advocaten hebben gekozen, om een vervangende collega of vervangings opportuniteiten te vinden, in 3 klikken."
+        content4: "U kunt een gratis test maken van"
+        content5: "door het aanvaarden van de uitnodiging hieronder:"
         #someone_invited_you: "L'un de vos confrères vous a invite à le rejoindre sur %{url} ; vous pouvez accepter cette invitation via le lien ci-dessous."
         accept: "Accepteer de uitnodiging om Courts"
-        ignore: "Als u niet wilt dat deze uitnodiging accepteert, moet je niets doen. Uw Courts account zal worden aangemaakt wanneer je zal bereiken Courts.be via deze link, en u een wachtwoord te kiezen."
+        ignore: "Als u niet wilt dat deze uitnodiging accepteert, moet je niets doen. n\ Uw account wordt aangemaakt wanneer u bereikt Courts.be via deze link, en u een wachtwoord te kiezen."
     omniauth_callbacks:
       failure: "Kan je niet autoriseren van %{kind}, omdat \"%{reason}\"."
       success: "Succesvol geautoriseerd met %{kind} account."

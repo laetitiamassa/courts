@@ -41,13 +41,13 @@ fr:
       unlock_instructions:
         subject: "Instructions pour déverrouiller le compte"
       invitation_instructions:
-        subject: "Vous êtes invité à rejoindre Courts.be"
+        subject: "%{name} vous invite à rejoindre Courts.be"
         hello: "Bonjour %{email}"
         content1: "vous invite à rejoindre"
         content2: "l'outil de remplacement 2.0 !"
-        content3: "est l'outil choisi par de nombreux confrères, pour trouver un confrère remplaçant ou des opportunités de remplacement, en 3 clics."
-        content4: "Vous pouvez tester gratuitement"
-        content5: "en acceptant cette invitation en cliquant ci-dessous :"
+        content3: "est l'outil choisi par un nombre croissant d'avocats belges, pour trouver un confrère remplaçant ou des opportunités de remplacement, en 3 clics."
+        content4: "Pour tester gratuitement"
+        content5: "il vous suffit d'accepter cette invitation en cliquant ci-dessous :"
         #someone_invited_you: "L'un de vos confrères vous a invite à le rejoindre sur %{url} ; vous pouvez accepter cette invitation via le lien ci-dessous."
         accept: "Accepter l'invitation à Courts"
         ignore: "Si vous ne souhaitez pas accepter cette invitation, vous ne devez rien faire.  Votre compte Courts ne sera créé que lorsque vous accèderez à Courts.be via ce lien, et que vous choisirez un mot de passe."
