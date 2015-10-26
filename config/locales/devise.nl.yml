@@ -45,7 +45,7 @@ nl:
         hello: "Hallo %{email}"
         content1: "nodigt u uit om mee "
         content2: "de '2.0' vervanging tool!"
-        content3: "is de tool die een toenemend aantal Belgische advocaten hebben gekozen, om een vervangende collega of vervangings opportuniteiten te vinden, in 3 klikken."
+        content3: "is de tool die een toenemend aantal Belgische advocaten hebben gekozen, om een vervangende confrater of om opportuniteiten van vervanging te vinden, in 3 klikken."
         content4: "U kunt een gratis test maken van"
         content5: "door het aanvaarden van de uitnodiging hieronder:"
         #someone_invited_you: "L'un de vos confrères vous a invite à le rejoindre sur %{url} ; vous pouvez accepter cette invitation via le lien ci-dessous."

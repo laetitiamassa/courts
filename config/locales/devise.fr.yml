@@ -41,7 +41,7 @@ fr:
       unlock_instructions:
         subject: "Instructions pour déverrouiller le compte"
       invitation_instructions:
-        subject: "%{name} vous invite à rejoindre Courts.be"
+        subject: " %{name} vous invite à rejoindre Courts.be"
         hello: "Bonjour %{email}"
         content1: "vous invite à rejoindre"
         content2: "l'outil de remplacement 2.0 !"
