@@ -30,4 +30,4 @@ fr:
         hello: "Bonjour %{email}"
         #someone_invited_you: "Votre confrère %{invited_by.name_or_placeholder} vous a invité à %{url}, vous pouvez accepter cette invitation via le lien ci-dessous."
         accept: "Accepter l'invitation à Courts"
-        ignore: "Si vous ne souhaitez pas accepter cette invitation, vous ne devez rien faire. n\ Votre compte Courts ne sera créé que lorsque vous accèderez à Courts.be via ce lien, et que vous choisirez un mot de passe."
+        ignore: "Si vous ne souhaitez pas accepter cette invitation, vous ne devez rien faire.  Votre compte Courts ne sera créé que lorsque vous accèderez à Courts.be via ce lien, et que vous choisirez un mot de passe."

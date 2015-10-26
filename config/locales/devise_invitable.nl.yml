@@ -30,5 +30,5 @@ nl:
        hello: "Bonjour %{email}"
        #someone_invited_you: "Votre confrère %{invited_by.name_or_placeholder} vous a invité à %{url}, vous pouvez accepter cette invitation via le lien ci-dessous."
        accept: "Accepteer de uitnodiging om Courts"
-       ignore: "Als u niet wilt dat deze uitnodiging accepteert, moet je niets doen. n\ Uw account wordt aangemaakt wanneer u bereikt Courts.be via deze link, en u een wachtwoord te kiezen."
+       ignore: "Als U niet wilt deze uitnodiging accepteren, moet U niets doen. Uw account wordt aangemaakt wanneer U bereikt Courts.be via deze link, en U een wachtwoord te kiezen."
    
