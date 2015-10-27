@@ -52,6 +52,19 @@ ActiveAdmin.register_page "Dashboard" do
         end
 
         column do
+            panel "weekly users" do
+            ul do
+                User.where('current_sign_in_at <= ?', 1.week.ago).map do |user|
+                    li link_to(user.name_or_placeholder, admin_user_path(user)) do 
+                            span "-"
+                            span user.bar 
+                        end
+                    end
+                end
+            end
+        end
+
+        column do
             panel "Offre de remplacement par barreau" do
                 ul do
                     #le bar en question + le nombre de users dont le barreau est celui-là
