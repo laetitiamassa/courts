@@ -53,7 +53,11 @@ ActiveAdmin.register_page "Dashboard" do
 
         column do
             panel "weekly users" do
+            span "Il y a"
+            span User.where('current_sign_in_at <= ?', 1.week.ago).count
+            span "utilisateurs hébdomadaires"
             ul do
+
                 User.where('current_sign_in_at <= ?', 1.week.ago).map do |user|
                     li link_to(user.name_or_placeholder, admin_user_path(user)) do 
                             span "-"
