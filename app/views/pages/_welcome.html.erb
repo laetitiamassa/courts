@@ -1,5 +1,7 @@
 
 <div class="row">
+
+<!-- to do -->
 	<div class="col-md-3">
 		
 			
@@ -119,6 +121,9 @@
 		
 		
 	</div>
+
+<!-- courts -->
+
 	<div class="col-md-6">
 		<ul class="list-group">
 			<li class="list-group-item new-court">
@@ -131,15 +136,38 @@
 				<h3 class="text-center padding-top-short"><small><%= t("welcome.current_courts") %></small></h3></li>
 			</li>
 			<% if current_user.has_active_access %>
-				<% @courts.sort_by(&:date_display).each do |court| %>
-					<% if court.current %>
-						<%= render :partial => "each_court", :locals => { :court => court} %>
+				<% if current_user.bar.blank? %>
+<br>
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  	<span aria-hidden="true">&times;</span>
+  </button>
+  <p class="text-center">
+  	<span class="lead">
+  	Vous manquez des opportunités...
+  </span>
+  <br>Votre barreau n'est pas indiqué dans votre profil, ce qui nous empêche de vous <b>afficher/notifier les opportunités de remplacement</b>.
+  <br>
+  <br>
+  <%= link_to "Ajouter mon barreau à mon profil", edit_user_path(current_user), :class => "btn btn-primary" %>
+  </p>
+</div>
+
+				<% else %>
+					<% @courts.sort_by(&:date_display).each do |court| %>
+						<% if court.current %>
+							<%= render :partial => "each_court", :locals => { :court => court} %>
+						<% end %>
 					<% end %>
 				<% end %>
 			<% end %>
 			
 		</ul>
 	</div>
+
+
+<!-- info -->	
+
 	<div class="col-md-3">
 		<ul class="list-group">
 
