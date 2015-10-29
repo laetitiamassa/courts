@@ -446,6 +446,12 @@ fr:
     recommandations_count: "recommandations"
     received_eval: "Evaluations reçues"
     given_eval: "Evaluations données"
+    alerts:
+     bar_blank:
+      content1: "Vous manquez des opportunités..."
+      content2: "Votre barreau n'est pas indiqué dans votre profil, ce qui nous empêche de vous"
+      content3: "afficher/notifier les opportunités de remplacement"
+      cta: "Ajouter mon barreau à mon profil"
   notifications:
     title: "Vos notifications"
   account:

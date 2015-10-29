@@ -440,6 +440,12 @@ nl:
     recommandations_count: "aanbevelingen"
     received_eval: "Ontvang feedback"
     given_eval: "Gegeven feedback"
+    alerts:
+     bar_blank:
+      content1: "U mist opportuniteiten..."
+      content2: "Uw balie is niet in uw profiel vermeld, die verhindert ons"
+      content3: "om de opportuniteiten van vervanging te laten zien/melden"
+      cta: "Voeg mijn balie aan mijn profiel"
   notifications:
     title: "Uw notificaties"
   account:

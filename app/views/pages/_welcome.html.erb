@@ -144,12 +144,12 @@
   </button>
   <p class="text-center">
   	<span class="lead">
-  	Vous manquez des opportunités...
+  	<%= t("welcome.alerts.bar_blank.content1") %>
   </span>
-  <br>Votre barreau n'est pas indiqué dans votre profil, ce qui nous empêche de vous <b>afficher/notifier les opportunités de remplacement</b>.
+  <br><%= t("welcome.alerts.bar_blank.content2") %> <b><%= t("welcome.alerts.bar_blank.content3") %></b>.
   <br>
   <br>
-  <%= link_to "Ajouter mon barreau à mon profil", edit_user_path(current_user), :class => "btn btn-primary" %>
+  <%= link_to t("welcome.alerts.bar_blank.cta"), edit_user_path(current_user), :class => "btn btn-primary" %>
   </p>
 </div>
 
