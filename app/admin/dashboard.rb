@@ -52,19 +52,33 @@ ActiveAdmin.register_page "Dashboard" do
         end
 
         column do
-            panel "weekly users" do
-            span "Il y a"
-            span User.where('current_sign_in_at >= ?', 1.week.ago).count
-            span "utilisateurs hébdomadaires"
-            ul do
+            panel "Connected this week" do
+                span "Il y a"
+                span User.where('current_sign_in_at >= ?', 1.week.ago).count
+                span "utilisateurs hébdomadaires"
+                ul do
 
-                User.where('current_sign_in_at >= ?', 1.week.ago).map do |user|
-                    li link_to(user.name_or_placeholder, admin_user_path(user)) do 
-                            span "-"
-                            span user.bar 
-                            #span user.current_sign_in_at #for checking
+                    User.where('current_sign_in_at >= ?', 1.week.ago).map do |user|
+                        li link_to(user.name_or_placeholder, admin_user_path(user)) do 
+                                span "-"
+                                span user.bar 
+                                #span user.current_sign_in_at #for checking
+                            end
                         end
                     end
+            end
+
+            panel "Visited this week" do
+                span User.where('last_seen_at >= ?', 1.week.ago).count
+                span "visiteurs hébdomadaires"
+                ul do
+                    User.where('last_seen_at >= ?', 1.week.ago).map do |user|
+                        li link_to(user.name_or_placeholder, admin_user_path(user)) do 
+                                span "-"
+                                span user.bar 
+                                span user.last_seen_at #for checking
+                            end
+                        end
                 end
             end
         end

@@ -18,7 +18,8 @@ permit_params :email, :first_name, :last_name, :bar,
                                   :telephone, :fax, :mobile, :website, :facebook, :twitter, :linkedin,
                                   :dominus_litis, :loco, :subscribed, :extended_trial, :extended_trial_end_date, 
                                   :presentation, :avatar,
-                                  :plan, :plan_start_date, :plan_end_date, :subscription_start_date, :subscription_id
+                                  :plan, :plan_start_date, :plan_end_date, :subscription_start_date, :subscription_id,
+                                  :last_seen_at
 
 
 end

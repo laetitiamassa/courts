@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014110445) do
+ActiveRecord::Schema.define(version: 20151029110222) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -219,6 +219,7 @@ ActiveRecord::Schema.define(version: 20151014110445) do
     t.datetime "plan_end_date"
     t.datetime "subscription_start_date"
     t.string   "subscription_id"
+    t.datetime "last_seen_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

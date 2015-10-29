@@ -37,7 +37,7 @@ class SubscribersController < ApplicationController
 		current_user.subscription_id = subscription.id
 		current_user.save
 
-		redirect_to root_path, notice: "Félicitations, vous êtes maintenant abonné à Courts.be !"
+		redirect_to account_path, notice: "Félicitations, vous êtes maintenant abonné à Courts.be !"
 	end
 
 	def unsubscribed

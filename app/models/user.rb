@@ -141,14 +141,14 @@ class User < ActiveRecord::Base
 
   def plan_name_display
     if subscribed
-      if plan == 1530
+      if plan == "1530"
         "Courts One Week" 
-      elsif plan == 1520
+      elsif plan == "1520"
         "Courts Monthly"
-      elsif plan == 1510
+      elsif plan == "1510"
         "Courts Yearly"
-      else
-        "Courts Yearly" #parce que les users payants jusqu'à présent sont sous Courts Yearly
+      #else
+        #"Courts Yearly" #parce que les users payants jusqu'à présent sont sous Courts Yearly
       end
     elsif on_trial
       "en période d'essai"
@@ -170,6 +170,8 @@ class User < ActiveRecord::Base
   def subscription_end_date_or_placeholder
     if plan_end_date
       plan_end_date
+    elsif subscribed
+      subscription_start_date + billing_duration
     elsif on_trial
       trial_end_date
     else
@@ -215,11 +217,11 @@ class User < ActiveRecord::Base
 # BILLINGS
 
   def billing_duration
-    if plan == 1530
+    if plan == "1530"
       1.week 
-    elsif plan == 1520
+    elsif plan == "1520"
       1.month
-    elsif plan == 1510
+    elsif plan == "1510"
       1.year
     end
   end
@@ -237,10 +239,6 @@ class User < ActiveRecord::Base
   end
 
   
-
-
-
-
 
 #INVITATIONS
 

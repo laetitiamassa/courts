@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  before_action :set_last_seen_at, if: proc { |p| user_signed_in? && (session[:last_seen_at] == nil || session[:last_seen_at] < 15.minutes.ago) }
+
   protect_from_forgery with: :exception
 
   def subscribed_user
@@ -16,8 +18,6 @@ class ApplicationController < ActionController::Base
 	  I18n.locale = params[:locale] || I18n.default_locale
 	end
 
-
-
 	def default_url_options(options = {})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { :locale => I18n.locale }
@@ -29,6 +29,12 @@ class ApplicationController < ActionController::Base
 
   def after_invite_path_for(current_inviter)
     new_user_invitation_path
+  end
+
+  private
+  def set_last_seen_at
+    current_user.update_attribute(:last_seen_at, Time.now)
+    session[:last_seen_at] = Time.now
   end
 
 end
