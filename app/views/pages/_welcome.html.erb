@@ -137,21 +137,21 @@
 			</li>
 			<% if current_user.has_active_access %>
 				<% if current_user.bar.blank? %>
-<br>
-<div class="alert alert-danger alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  	<span aria-hidden="true">&times;</span>
-  </button>
-  <p class="text-center">
-  	<span class="lead">
-  	<%= t("welcome.alerts.bar_blank.content1") %>
-  </span>
-  <br><%= t("welcome.alerts.bar_blank.content2") %> <b><%= t("welcome.alerts.bar_blank.content3") %></b>.
-  <br>
-  <br>
-  <%= link_to t("welcome.alerts.bar_blank.cta"), edit_user_path(current_user), :class => "btn btn-primary" %>
-  </p>
-</div>
+					<br>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  	<span aria-hidden="true">&times;</span>
+					  </button>
+					  <p class="text-center">
+					  	<span class="lead">
+					  	<%= t("welcome.alerts.bar_blank.content1") %>
+					  </span>
+					  <br><%= t("welcome.alerts.bar_blank.content2") %> <b><%= t("welcome.alerts.bar_blank.content3") %></b>.
+					  <br>
+					  <br>
+					  <%= link_to t("welcome.alerts.bar_blank.cta"), edit_user_path(current_user), :class => "btn btn-primary" %>
+					  </p>
+					</div>
 
 				<% else %>
 					<% @courts.sort_by(&:date_display).each do |court| %>
@@ -160,6 +160,19 @@
 						<% end %>
 					<% end %>
 				<% end %>
+			<% else %>
+				<br>
+					<div class="alert alert-info alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  	<span aria-hidden="true">&times;</span>
+					  </button>
+					  <p class="text-center">
+					  	
+					  	Vous devez <%= link_to "activer votre compte", account_path %> pour découvrir les opportunités de remplacements.
+					  
+					  
+					  </p>
+					</div>
 			<% end %>
 			
 		</ul>

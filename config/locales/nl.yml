@@ -226,7 +226,7 @@ nl:
     confirm_password: "bevestig het wachtwoord"
     signup_free: "Gratis proberen"
     you_accept_terms: "(Door zich te registreren, accepteer U onze"
-    our_terms: "algemeen voordwaarden"
+    our_terms: "algemene voordwaarden"
     argument1_heading: "Slechts 3 woorden"
     argument1_content1: "Om uw vervanging verzoek te publiceren,"
     argument1_content2: " 3 woorden volstaan : de "
@@ -550,7 +550,7 @@ nl:
       communication: "Communicatie"
       beneficiary: "Begunstigde"
   legal:
-    title: "Algemeen voorwaarden van gebruik"
+    title: "Algemene voorwaarden"
     in_short:
       content1: "In het kort, kunt U hieronder lezen dat u eigenaar bent, de controleert en verantwoordelijk zijn voor wat U post op Courts.be en we willen dat uw ervaring is zo aangenaam mogelijk te maken."
       content2: "Wij vragen u dan ook om Courts.be diensten en de gemeenschap met respect behandelen."
