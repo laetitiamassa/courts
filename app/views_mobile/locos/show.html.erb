@@ -1,0 +1,23 @@
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @loco.user.last_name_or_placeholder %>
+</p>
+
+<% @loco.court.responses.each do |response| %>
+	<% unless @loco.user.id == response.user.id %>
+	<%= response.user.id %> a perdu
+	<% end %>
+<% end %>
+
+
+
+<p>
+  <strong>Court:</strong>
+  <%= @loco.court_id %>
+</p>
+
+<%= link_to 'Edit', edit_loco_path(@loco) %> |
+<%= link_to 'Back', locos_path %>

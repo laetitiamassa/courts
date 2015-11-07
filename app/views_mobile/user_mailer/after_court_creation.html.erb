@@ -1,0 +1,31 @@
+<h2><%= t("mailer.salutation") %></h2>
+
+<p><%= t("mailer.after_court_creation.content1") %></p>
+
+<p><%= t("mailer.after_court_creation.content2") %>
+<ul>
+<li><%= t("mailer.after_court_creation.li1") %>
+<li><%= t("mailer.after_court_creation.li2") %>
+<li><%= t("mailer.after_court_creation.li3") %>
+<li><%= t("mailer.after_court_creation.li4") %>
+</ul></p>
+
+
+<%= link_to court_url(@court) do %>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td align="center" width="300" height="40" bgcolor="#c0392b" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">
+<span style="font-size:16px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; line-height:40px; width:100%; display:inline-block"><span style="color: #FFFFFF">
+
+	<%= t("mailer.after_court_creation.cta") %>
+</span></span>
+</td>
+</tr>
+</table>
+<% end %>
+
+
+<p class="signature"><%= t("mailer.end_salutation") %>
+	<br><%= t("mailer.signature_team") %>
+</p>
+

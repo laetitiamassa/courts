@@ -1,0 +1,102 @@
+<!--<h3 class="center"><%= t("courts.stream_create_court") %></h3>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <%= render 'shortform' %>
+  </div>
+</div>
+
+<h2 class="center"><%= t("courts.stream_all_current_courts") %></h2>
+<% if current_user.overdue %>
+  <h4 class="text-center danger">Pour voir les demandes de remplacement en cours et saisir ces opportunités, vous devez être abonné.</h4>
+  <br>
+  <%= render "courtsunsubscribed" %>
+<% else %>
+
+<% unless @courts.present? %>
+<p class="center"><%= t("courts.stream_no_current_court") %></p>
+
+<% else %>
+
+<% @courts.sort_by(&:date_display).each do |court| %>
+<% if court.date_display < Time.now %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+            
+      <div class="col-md-1 center">
+
+        <small><%= l court.date_display, :format => '%A' %></small>
+        <span class="big"><i><%= court.date_display.strftime('%d') %></i></span> 
+        <b><%= l court.date_display, :format => '%B' %> 
+        <small><%= court.date_display.strftime('%H:%M') %></small></b> 
+      </div>
+
+      <div class="col-md-8">
+        <div class="header">
+          <span class="big">
+            <%= link_to court.jurisdiction, court %>
+          <br><small><%= court.performance %></small></span>  
+          
+            <i>loco Me <%= link_to court.user.last_name_or_placeholder, user_path(court.user) %></i>
+          
+        </div>
+      </div>
+
+      <div class="col-md-3 text-right">
+        <span class="glyphicon glyphicon-map-marker"></span>
+        <%= t("bars.#{court.bar}") %> 
+      </div> 
+
+    </div>
+  </div>
+
+  <div class="panel-footer">
+    <div class="text-right">
+      
+      <% if court.user == current_user %>
+        <%= link_to court do %>
+          <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-eye-open btn btn-default') -%>
+        <% end %>
+        <%= link_to t("courts.button_edit"), edit_court_path(court),:class=> 'btn btn-info' -%>
+        <% if court.have_found %>
+          <%= link_to t("courts.button_found"), court,:class=> 'btn btn-warning', :disabled=> 'disabled' %>
+          <% end %>
+  
+      
+      <% else %>
+        
+        <%= link_to court do %>
+          <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-eye-open btn btn-default') -%>
+        <% end %>
+        
+        <% if court.have_found %>
+          <%= link_to t("courts.button_found"), court,:class=> 'btn btn-warning', :disabled=> 'disabled' %>
+
+        <% else %>
+            <% if (current_user.responses && court.responses).any? %>
+              Vous avez déjà répondu
+              
+            <% else %>
+              <%= form_for(@response) do |f| %> 
+                  <%= f.hidden_field :court_id, :value => @court.id %>
+                  <button type="submit" class="btn btn-success">
+                    <%= content_tag(:i, " " , :class=> 'glyphicon glyphicon-ok') -%>  Je suis disponible
+                  </button>
+              <% end %>
+            <% end %>
+            
+        <% end %>
+      
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %> <!-- active courts -->
+<% end %> <!-- for each court -->
+
+<% end %>
+
+<% end %> <!-- subscribed or not -->
+
+ 
+-->

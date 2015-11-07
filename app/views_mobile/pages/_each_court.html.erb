@@ -1,0 +1,33 @@
+<li class="list-group-item">
+						<div class="row">
+						  <div class="col-md-2 center">
+					        <small><%= l court.date_display, :format => '%A' %></small>
+					        <br><span class="big"><i><%= l court.date_display, :format => ('%e') %></i></span> 
+					        <br><b><%= l court.date_display, :format => ('%B') %> 
+					        <br><small> <%= l court.date_display, :format => ('%H:%M') %></small></b> 
+					      </div>
+
+						<div class="col-md-7">
+					        <div class="header">
+					          <span class="biggy">
+					          	<%= link_to court.jurisdiction, court_path(court) %>
+					          </span> 
+					          <br>
+					          <span class="fa fa-map-marker"> <%= t("bars.#{court.bar}") %></span>
+        					  <br>
+        					  <%= link_to court.performance, court %> 
+					          
+					            
+					          <div class="text-right">
+					          	<%= render :partial => "court_status_and_cta", :locals => {:court => court} %>
+					          	
+					          </div>  
+					        </div>
+					    </div>
+					    <div class="col-md-3 text-right">
+						<%= image_tag (court.user.avatar.url(:mini)), class: "img-rounded" %>
+						<br><i>loco Me <%= link_to court.user.last_name_or_placeholder, user_path(court.user) %></i>
+						</div>
+						
+						</div>
+					</li>

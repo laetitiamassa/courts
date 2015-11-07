@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @documentation.name %>
+</p>
+
+<%= link_to @documentation.name, @documentation.document.url, target: "_blank" %>
+
+<p>
+  <strong>User:</strong>
+  <%= @documentation.user_id %>
+</p>
+
+<p>
+  <strong>Court:</strong>
+  <%= @documentation.court_id %>
+</p>
+
+<%= link_to 'Edit', edit_documentation_path(@documentation) %> |
+<%= link_to 'Back', documentations_path %>

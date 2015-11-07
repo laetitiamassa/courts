@@ -1,0 +1,21 @@
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  	<span aria-hidden="true">&times;</span>
+  </button>
+  <p class="text-center">
+  	
+  		<!--  if current_user.early_bird MAIS C EST PASSE
+  		<b>Bonjour Me <%= current_user.last_name %>, profitez des derniers jours de votre essai gratuit, jusqu'au 6 avril 2014 !</b> -->
+      
+      <% if current_user.extended_trial %>
+      
+      <b><%= t("header.on_trial.content1") %> <%= current_user.name_or_placeholder %>, <%= t("header.on_trial.content2") %> <%= current_user.extended_trial_end_date.strftime('%d %B') %> <%= t("header.on_trial.content3") %>
+      </b>
+  		<% else %>
+  		<span class="lead"><%= t("header.on_trial.content4") %> <%= current_user.days_till_end_trial %> <%= t("header.on_trial.content5") %></span>
+  		<% end %>
+  	
+  	<br><b><%= t("header.to_subscribe") %> <%= link_to t("header.subscribe_button"), new_subscriber_path, :class => "btn btn-default" %> <%= t("header.follow_instructions") %></b>
+
+	<br><%= t("header.contact_us") %> <%=link_to "contact@courts.be", "mailto:contact@courts.be" %></p>
+</div>

@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%= t("subscribers.modal.pay_by_bank") %></h4>
+      </div>
+      <div class="modal-body text-left">
+        <h4 class="text-center"><%= t("subscribers.modal.content1") %>
+        <br><small><b><%= t("subscribers.modal.content2") %> : </b><%= t("subscribers.modal.content3") %> 
+        <br><%= t("subscribers.modal.content4") %> <%= link_to "contact@courts.be", "mailto:contact@courts.be" %> <%= t("subscribers.modal.content5") %></small>
+    	</h4>
+    	<hr>
+    	
+        	<b><%= t("subscribers.modal.amount") %> :</b> 50,- EUR
+		    <br><b><%= t("subscribers.modal.communication") %> :</b> <%= current_user.email %> - Courts Yearly
+		    <br><b><%= t("subscribers.modal.beneficiary") %> :</b> UPcetera SPRL
+		    <br><b>IBAN :</b> BE10 0017 0156 4704
+		    <br><b>BIC :</b> GEBABEBB
+		    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>

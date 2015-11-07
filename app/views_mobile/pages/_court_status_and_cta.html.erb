@@ -1,0 +1,60 @@
+
+      <!-- modifier / proposer ses services => vous avez répondu => vous intervenez loco / trouvé -->
+   
+<!-- DL -->
+<% if court.user == current_user %>
+
+	<!-- vous avez trouvé -->
+    <% if court.locos.any? %>
+        <span class="label label-success"><%= ("courts.status.you_have_found") %></span>
+    <% end %>
+
+	<!-- modifier -->
+    <%= link_to t("courts.button_edit"), edit_court_path(court),:class=> 'btn btn-default btn-sm' -%>
+      
+
+<% else %>      
+<!-- PAS DL -->
+
+	<!-- pas encore choisi de loco -->
+	<% unless court.locos.any? %>
+	<!-- proposer vos services -->
+		<!-- vous avez répondu -->
+
+		
+
+		<% if (court.responses.where(:user_id => current_user.id)).any? %>
+
+		    <span class="label label-info"><%= t("courts.status.you_have_responded") %></span>
+
+		<% else %> 
+			<%= form_for(@response) do |f| %>   
+	        	<%= f.hidden_field :court_id, :value => court.id %>
+				<button type="submit" class="btn btn-primary btn-sm">
+					<%= content_tag(:i, " " , :class=> 'fa fa-ok') -%>  
+					<%= t("courts.status.propose_my_services") %>
+				</button>
+			<% end %>
+		<% end %>
+
+
+	<% else %>
+	<!-- déjà choisi loco -->
+
+		
+		<% if court.locos.any? &&  current_user.id == court.locos.last.user.id %>
+
+			<!-- vous intervenez loco -->
+		    <span class="label label-info"><%= t("courts.status.you_are_loco") %></span> 
+		<% else %>
+
+			<!-- trouvé -->
+			<span class="label label-warning"><%= t("courts.status.found") %></span>
+			
+		<% end %>
+
+	<% end %>
+
+<% end %>
+
+ 

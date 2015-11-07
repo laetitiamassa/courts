@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+	<div class="col-md-4 col-md-offset-4">
+  <div class="panel-heading">
+    <div class="panel-title">
+    	<h1>Recevoir à nouveau les instructions de confirmation</h1>
+    </div>
+  </div>
+  
+  <div class="panel-body">
+
+		<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+		  <%= devise_error_messages! %>
+
+		  <div class="form-group"><%= f.label :email %>
+		  <%= f.email_field :email, class: "form-control" :autofocus => true %></div>
+
+		  <div><%= f.submit "Recevoir les instructions de confirmation", class: "btn btn-primary" %></div>
+		<% end %>
+	</div>
+	<div class="panel-footer">
+		<%= render "devise/shared/links" %>
+	</div>
+</div>
+</div>

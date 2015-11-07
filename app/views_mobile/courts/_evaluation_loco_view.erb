@@ -1,0 +1,123 @@
+<% if @court.dominus_litis_evaluation.blank? %>
+  <div class="row">    
+    
+    <div class="col-md-8">
+          <div class="col-md-1">
+            <%= form_for(@dominus_litis_evaluation) do |f| %>
+              <%= f.hidden_field :court_id, :value => @court.id %>
+              <%= f.hidden_field :evaluation, :value => "happy" %>
+              <%= content_tag :button, :type => "submit", :class => 'btn btn-default btn-large' do %>
+                <i class='fa fa-smile-o fa-lg fa-success'></i>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="col-md-1">
+            <%= form_for(@dominus_litis_evaluation) do |f| %>
+              <%= f.hidden_field :court_id, :value => @court.id %>
+              <%= f.hidden_field :evaluation, :value => "ok" %>
+              <%= content_tag :button, :type => "submit", :class => 'btn btn-default btn-large' do %>
+                <i class='fa fa-meh-o fa-lg fa-warning'></i>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="col-md-1">
+            <%= form_for(@dominus_litis_evaluation) do |f| %>
+              <%= f.hidden_field :court_id, :value => @court.id %>
+              <%= f.hidden_field :evaluation, :value => "not happy" %>
+              <%= content_tag :button, :type => "submit", :class => 'btn btn-default btn-large' do %>
+                <i class='fa fa-frown-o fa-lg fa-danger'></i>
+              <% end %>
+            <% end %>
+          </div> 
+          <div class="col-md-9">
+          <b><%= t("courts.you_were_loco_for") %> <%= @dominus_litis.last_name_or_placeholder %></b> 
+          <br><%= t("courts.did_you_enjoy") %> 
+      </div>
+      </div>
+  </div>  
+   
+
+  <% elsif @court.dominus_litis_evaluation.comment.blank? %>
+ <div class="row"> 
+  <div class="col-md-1">  
+    <div class="btn btn-default btn-sm">
+      <% if @court.dominus_litis_evaluation.evaluation == "happy" %>
+          <i class='fa fa-smile-o fa-3x fa-success'></i>
+        <% elsif @court.dominus_litis_evaluation.evaluation == "ok" %>
+          <i class='fa fa-meh-o fa-3x fa-warning'></i>
+        <% else %>
+          <i class='fa fa-frown-o fa-3x fa-danger'></i>
+        <% end %>
+    </div>
+        
+        
+    
+    </div>
+    <div class="col-md-11"> 
+     
+      <%= form_for(@court.dominus_litis_evaluation) do |f| %>
+        <form class="form-inline"> 
+
+          <div class="form-group">
+          <%= f.text_area :comment, :rows => "2", :placeholder => t("courts.placeholder_comment_evaluation"), class: "form-control input-sm" %>
+          <%= f.hidden_field :court_id, :value => @court.id %>
+      </div>
+          
+          <%= f.submit 'Ajouter', class: 'btn btn-default btn-sm pull-right' %>
+      
+      </form>
+      <% end %>
+
+  </div>
+</div>
+
+
+  <% else %>
+
+    <div class="row">
+      <div class="col-md-6">
+        <% if @court.loco_evaluation %>
+      <small><%= t("courts.evaluation_of_performance") %> <%= @loco_lawyer.last_name_or_placeholder %> :</small>
+        <% if @court.loco_evaluation.evaluation == "happy" %>
+            <i class='fa fa-smile-o fa-3x fa-pull-left fa-border fa-success'> </i>
+      <% elsif @court.loco_evaluation.evaluation == "ok" %>
+            <i class='fa fa-meh-o fa-3x fa-pull-left fa-border fa-warning'> </i>
+      <% else %>
+            <i class='fa fa-frown-o fa-3x fa-pull-left fa-border fa-danger'> </i>
+      <% end %>
+      
+        <p><b>"</b><i><%= @court.loco_evaluation.comment %></i><b>"</b>
+          <br><div class="text-right"><small>Me <%= link_to @dominus_litis.last_name_or_placeholder, user_path(@dominus_litis) %></small></div>
+        </p>
+        <% end %>
+    </div>
+    <div class="col-md-6">
+      <% if @court.dominus_litis_evaluation %>
+      <small><%= t("courts.evaluation_of_experience") %> <%= @dominus_litis.last_name_or_placeholder %> : </small>
+      <% if @court.dominus_litis_evaluation.evaluation == "happy" %>
+            <i class='fa fa-smile-o fa-3x fa-pull-left fa-border fa-success'> </i>
+      <% elsif @court.dominus_litis_evaluation.evaluation == "ok" %>
+            <i class='fa fa-meh-o fa-3x fa-pull-left fa-border fa-warning'> </i>
+      <% else %>
+            <i class='fa fa-frown-o fa-3x fa-pull-left fa-border fa-danger'> </i>
+      <% end %>
+      <p><b>"</b><i><%= @court.dominus_litis_evaluation.comment %></i><b>"</b>
+        <br><div class="text-right"><small>Me <%= link_to @loco_lawyer.last_name_or_placeholder, user_path(@loco_lawyer) %></small></div>
+      </p>
+      <% end %>
+    </div>
+</div>
+  
+      
+    
+    
+
+    
+
+  <% end %>
+
+
+
+

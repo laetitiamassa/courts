@@ -1,0 +1,22 @@
+
+
+<!--En fait, tout le monde voit les deux éval, 
+MAIS
+si le current user est le loco ou le dl (locos.last.members)
+il ne voit les deux éval que lorsqu'il aura rempli sa propre éval sur l'autre -->
+
+<% if current_user == @loco_lawyer %>
+    <%= render "evaluation_loco_view" %>
+<% elsif current_user == @dominus_litis %>
+	<% if @court.locos.any? %>
+    <%= render "evaluation_dl_view" %>
+    <% else %>
+    <div class="text-right">
+	    <span class="label label-info no-bold"><%= t("courts.evaluation_no_loco") %></span>
+	</div>
+    <% end %>
+<% else %>
+	<% if @court.locos.any? %>
+	<%= render "evaluation_all_view" %>
+	<% end %>
+<% end %>

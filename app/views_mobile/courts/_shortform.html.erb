@@ -1,0 +1,55 @@
+
+<%= form_for(@court) do |f| %>
+  <% if @court.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(court.errors.count, t("error")) %> <%= t("courts.not_saved_error") %></h2>
+
+      <ul>
+      <% court.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group col-md-4 few-padding-right">
+    <div class='input-group input-group-sm' id='datetimepicker'>
+      <%= f.text_field :date, class: "form-control input-xs" %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+  </div>
+  <div class="col-md-2 few-padding-left few-padding-right form-group">
+    <%= f.text_field :performance, :class => "form-control input-sm", :placeholder => t("courts.placeholder_performance_short") %>
+  </div>
+  <div class="col-md-2 form-group few-padding-left few-padding-right">
+    <%= f.text_field :jurisdiction, :class => "form-control input-sm", :placeholder => t("courts.placeholder_court_short") %>
+  </div>
+  
+  <div class="col-md-2 form-group few-padding-left few-padding-right">
+    <%= f.select :bar, @bars, {:selected => params[:bar]}, {class: "form-control input-sm"} %>
+  </div>
+
+  <div class="field col-md-2 few-padding-left">
+    <div class="form-actions">
+      <% if current_user.overdue %>
+      <%= link_to t("courts.button_new_court_short"), unsubscribed_path, :class => "btn btn-primary btn-sm btn-block" %>
+      <% else %>
+      <%= f.submit t("courts.button_new_court_short"), :class => "btn btn-primary btn-sm btn-block" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker').datetimepicker({
+                    locale: 'fr'
+                });
+            });
+        </script>
+
+        

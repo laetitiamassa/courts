@@ -1,0 +1,23 @@
+<% if notification.notifiable_type.include? "ourt" %>
+	<%= link_to notification.message, court_path(notification.notifiable_id) %>
+<% end %>
+<% if notification.notifiable_type.include? "esponse" %>
+	<%= link_to notification.message, court_path(notification.notifiable.court.id) %>
+<% end %> 
+<% if notification.notifiable_type.include? "oco" %>
+	<%= link_to notification.message, court_path(notification.notifiable.court.id) if notification.notifiable %>	
+<% end %>
+<% if notification.notifiable_type.include? "itis" %>
+	<%= link_to notification.message, court_path(notification.notifiable.court.id) %>	
+<% end %>
+<% if notification.notifiable_type.include? "omment" %>
+	<%= link_to notification.message, court_path(notification.notifiable.court.id) %>
+<% end %>
+<% if notification.notifiable_type.include? "ocumentation" %>
+	<% if notification.notifiable_type.include? "rivate" %>
+		<%= link_to notification.message, court_path(notification.notification.loco.court.id) %>
+	<% else %>
+		<%= link_to notification.message, court_path(notification.notifiable.court.id) %>
+	<% end %>
+<% end %>
+

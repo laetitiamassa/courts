@@ -1,4 +1,10 @@
 class ResponsesController < ApplicationController
+  # Render mobile or desktop depending on User-Agent for these actions.
+  before_filter :check_for_mobile #, :only => [:new, :edit]
+
+  # Always render mobile versions for these, regardless of User-Agent.
+  #before_filter :prepare_for_mobile, :only => :show
+  
   before_action :set_response, only: [:show, :edit, :update, :destroy]
   before_action :set_notifications
   before_filter :authenticate_user!

@@ -1,0 +1,11 @@
+<%= form_tag subscriber_path(1), :method => :put do %>
+	<input type="hidden" name="planName" id="planName" value="1510" />
+	<script 
+		src="https://checkout.stripe.com/checkout.js" 
+		class="stripe-button"
+	    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+	    data-name="Courts.be"
+	    data-description="Abonnement annuel"
+	    data-amount="5000">
+    </script>
+<% end %>

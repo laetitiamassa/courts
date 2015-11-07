@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @dominus_litis_evaluation.user_id %>
+</p>
+
+<p>
+  <strong>Court:</strong>
+  <%= @dominus_litis_evaluation.court_id %>
+</p>
+
+<p>
+  <strong>Evaluation:</strong>
+  <%= @dominus_litis_evaluation.evaluation %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @dominus_litis_evaluation.comment %>
+</p>
+
+<%= link_to 'Edit', edit_dominus_litis_evaluation_path(@dominus_litis_evaluation) %> |
+<%= link_to 'Back', dominus_litis_evaluations_path %>

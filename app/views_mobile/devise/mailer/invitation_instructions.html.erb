@@ -1,0 +1,29 @@
+<p><%= t("mailer.salutation") %></p>
+
+<p><%= @resource.invited_by.name_or_placeholder %> <%= t("devise.mailer.invitation_instructions.content1") %> <%= link_to "Courts.be", root_url %>, <%= t("devise.mailer.invitation_instructions.content2") %></p>
+
+<p><%= link_to "Courts.be", root_url %> <%= t("devise.mailer.invitation_instructions.content3") %></p>
+
+<p><%= t("devise.mailer.invitation_instructions.content4") %> <%= link_to "Courts.be", root_url %> <%= t("devise.mailer.invitation_instructions.content5") %></p>
+
+<%= link_to accept_invitation_url(@resource, :invitation_token => @token) do %>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td align="center" width="300" height="40" bgcolor="#c0392b" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">
+<span style="font-size:16px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; line-height:40px; width:100%; display:inline-block"><span style="color: #FFFFFF">
+
+	<%= t("devise.mailer.invitation_instructions.accept") %>
+</span></span>
+</td>
+</tr>
+</table>
+<% end %>
+
+<p><%= t("devise.mailer.invitation_instructions.ignore") %></p>
+
+<p class="signature"><%= t("mailer.end_salutation") %>
+	<br><%= t("mailer.signature_team") %>
+</p>
+
+<img src="http://courts.be/assets/courts_logo.png" alt="Courts logo" height="60" width="150">
+	<br><%= link_to "Courts.be", "http://courts.be" %> | <%= link_to "Facebook", "http://facebook.com/courts.be" %> | <%= link_to "Linkedin", "http://linkedin.com/company/courtsbe" %>

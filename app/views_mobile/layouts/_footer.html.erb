@@ -1,0 +1,43 @@
+<footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <div class="container">
+    
+
+        <div class="container center">
+            <div class="row">
+                <div class="col-lg-12">
+                	<br>
+                    <ul class="list-inline">
+                        <% if user_signed_in? %>
+                            <li><%= link_to t("header.home"), root_path, class: 'btn btn-link btn-primary' %></li>
+                            <li class="footer-menu-divider">&sdot;</li>
+                            <li><%= link_to t("header.profile"), edit_user_path(current_user), class: 'btn btn-link btn-primary' %></li>
+                            <li class="footer-menu-divider">&sdot;</li>
+                            <li><%= link_to t("header.log_out"), destroy_user_session_path, method: :delete, class: 'btn btn-link btn-primary' %></li>
+                             <li class="footer-menu-divider">&sdot;</li>
+                            <li><%= link_to t("header.about"), about_path, class: 'btn btn-link btn-primary' %></li>
+                                <li class="footer-menu-divider">&sdot;</li>
+                                <li><%= link_to t("header.terms"), legal_path, class: 'btn btn-link btn-primary' %></li> 
+                                <li class="footer-menu-divider">&sdot;</li>
+                            <li><%= link_to "Contact", "mailto:info@courts.be", class: 'btn btn-link btn-primary' %></li>
+
+                          <% else %>
+                                <li><%= link_to t("header.about"), about_path, class: 'btn btn-link btn-primary' %></li>
+                                <li class="footer-menu-divider">&sdot;</li>
+                                <li><%= link_to t("header.terms"), legal_path, class: 'btn btn-link btn-primary' %></li> 
+                                <li class="footer-menu-divider">&sdot;</li>
+                            <li><%= link_to t("header.log_in"), new_user_session_path, class: 'btn btn-link btn-primary' %></li>
+                            <li class="footer-menu-divider">&sdot;</li>
+                            <li><%= link_to "Contact", "mailto:contact@courts.be", class: 'btn btn-link btn-primary' %></li>
+                          <% end %>
+
+                        
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; UPcetera 2014</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
+    </footer>

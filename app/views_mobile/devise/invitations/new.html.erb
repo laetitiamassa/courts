@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-md-3">
+    <ul class="list-group">
+        <%= link_to t("account.subscription"), account_path, class: "list-group-item" %>
+        <%= link_to t("account.invitations"), new_user_invitation_path, class: "list-group-item active" %>
+        <%= link_to t("account.password"), edit_user_registration_path(current_user), class: "list-group-item" %>
+    </ul>
+  </div>
+
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4><%= t("devise.invitations.invite_your_colleagues") %></h4>
+      </div>
+      <div class="panel-body">
+      	<% unless current_user.accepted_invitations_count > 12 %>
+	      	<h3 class="text-center"><small><i class="fa fa-gift fa-success fa-2x pull-left"></i> <span class="fa-success">
+	      		<%= t("devise.invitations.receive_free_months") %>
+	      	</span>*</small></h3>
+	      	<hr>
+      	<% end %>
+      	<h3><small>
+      		<%= t("devise.invitations.insert_email") %>
+      	</small></h3>
+
+        <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+		  	
+		  	<%= devise_error_messages! %>
+			
+			<div class="form-inline">
+				<div class="form-group">
+					<% resource.class.invite_key_fields.each do |field| -%>
+					  
+					  <%= f.text_field field, :placeholder => t("devise.invitations.email_placeholder"), class: "form-control" %>
+					<% end %>
+				</div>
+		  		<%= f.submit t("devise.invitations.new.submit_button"), class: "btn btn-primary" %>
+			</div>
+		<% end %>
+		<br>
+		<div class="table-responsive">
+		  <table class="table">
+		    <% current_user.invitations.order("created_at DESC").each do |invitation| %>
+				<tr>
+					<td>
+						<%= invitation.email %>
+						<% unless invitation.invitation_accepted_at.blank? %>
+						 <%= t("devise.invitations.accepted_your_invitation") %> <%= invitation.invitation_accepted_at %>
+						<% else %>
+						 <%= t("devise.invitations.did_not_accept_yet") %>
+						<% end %>
+					</td>
+					<td>
+						<% unless invitation.invitation_accepted_at.blank? %>
+							<% if current_user.accepted_invitations_count > 12 %>
+								<i class="fa fa-ok fa-check fa-success pull-right"></i>
+							<% else %>
+
+								<span class="label label-success pull-right no-bold">1 <%= t("devise.invitations.month_free") %></span>
+							<% end %>
+						<% else %>
+							<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+		  	
+						  		<!--<%= devise_error_messages! %> -->
+								<% resource.class.invite_key_fields.each do |field| -%>	  
+									<%= f.hidden_field field, :value => invitation.email %>
+								<% end %>
+						  		<%= f.submit t("devise.invitations.invite_again"), class: "btn btn-primary btn-xs pull-right" %>
+						<% end %>
+
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+		  </table>
+		</div>
+		
+
+
+      </div>
+    </div>
+    <h5 class="text-center"><small>* <%= t("devise.invitations.free_months_disclaimer") %></small></h5>
+ 
+  </div>
+
+</div>
+
+
+
+
+
+

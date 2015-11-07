@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Documentations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th>Court</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @documentations.each do |documentation| %>
+      <tr>
+        <td><%= documentation.name %></td>
+        <td><%= documentation.user_id %></td>
+        <td><%= documentation.court_id %></td>
+        <td><%= link_to 'Show', documentation %></td>
+        <td><%= link_to 'Edit', edit_documentation_path(documentation) %></td>
+        <td><%= link_to 'Destroy', documentation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Documentation', new_documentation_path %>

@@ -1,0 +1,44 @@
+<h3 class="center">Adressez votre question à vos confrères</h3>
+<div class="panel panel-info">
+  <div class="panel-body">
+    <%= render 'shortform' %>
+  </div>
+</div>
+
+<% if current_user.overdue %>
+<h2 class="center">Questions précédemment posées</h2>
+  <h4 class="text-center danger">Pour voir les questions de procédure et/ou y répondre, vous devez être abonné.</h4>
+  <br>
+  <%= render "questionsunsubscribed" %>
+<% else %>
+
+<% if @questions.present? %>
+
+<h2 class="center">Questions précédemment posées</h2>
+<div class="col-md-10 col-md-offset-1">
+<% @questions.each do |question| %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+    	<div class="col-md-9">
+    	
+    	<h4><%= link_to question.subject, question %>
+    		<br><i><small>par Me <%= link_to question.user.last_name, user_path(question.user) %></small></i>
+    	</h4>
+    </div>
+    <div class="col-md-3 text-right">
+      <% if current_user == question.user %>
+        <%= link_to "Modifier ma demande", edit_question_path(question), :class=> 'btn btn-default' %>
+      <% else %>
+        <%= link_to "Voir et répondre", question, :class=> 'btn btn-lg btn-success' %>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+</div>
+<% end %>
+
+<% end %> <!-- subscribed or not ? -->

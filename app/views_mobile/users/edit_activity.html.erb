@@ -1,0 +1,31 @@
+<h2 class="page-header"><%= t("users.modify_your_profile") %></h2>
+<div class="row">
+<div class="col-md-3">
+    <ul class="list-group">
+        <%= link_to t("users.you"), edit_user_path(current_user), class: "list-group-item" %>
+        <%= link_to t("users.your_coordonnees"), edit_coordonnees_path, class: "list-group-item" %>
+        <%= link_to t("users.your_activity"), edit_activity_path, class: "list-group-item active" %>
+        <!-- <%= link_to t("users.your_prefered_areas"), prefered_areas_path, class: "list-group-item" %> -->
+    </ul>
+</div>
+
+<div class="col-md-9">
+	<div class="panel panel-default">
+			<div class="panel-body">
+				<h2 class="text-right higher-up page-header"><small><%= t("users.your_activity") %></small></h2>
+			<%= form_for @user, :url => user_path(@user), :html => { :method => :put } do |f| %>	
+					
+			
+				<p><b><%= t("users.present_your_activity") %></b>
+					<!--<%= link_to t("users.add_your_prefered_areas"), prefered_areas_path, class: "btn btn-success btn-xs pull-right" %> -->
+				</p>
+
+				
+				<%= f.text_area :presentation, class: "form-control input-sm", :rows => "15", :placeholder => t("users.presentation_placeholder") %>
+				<br><%= f.submit t("helpers.submit.update"), class: "btn btn-primary pull-right" %>
+			</div>
+
+			<% end %>
+		</div>
+</div>
+</div>

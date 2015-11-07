@@ -1,0 +1,40 @@
+
+
+<ul class="list-group col-md-4 col-md-offset-4">
+  <li class="list-group-item">
+    <h1 class="text-center"><small><%= t("notifications.title") %></small></h1>
+  </li>
+
+  <% @notifications.each do |notification| %>
+    <% unless current_user == notification.notifier %>
+      <% unless notification.message.include? "invite" %>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-md-2">
+            <%= link_to image_tag(notification.notifier.avatar.url(:mini), class: "img-rounded"), user_path(notification.notifier) %>
+          </div>
+          <div class="col-md-10">
+
+            <%= render :partial => "notifiable_message", :locals => {:notification => notification} %>
+            <div class="text-right"><small><%= l notification.created_at_display, :format => ('%e %b à %H:%M') %></small></div>
+          </div>
+        </div>
+      </li>
+      <% else %>
+        <% if notification.notifiable && notification.notifiable.court.past %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-2">
+                <%= link_to image_tag(notification.notifier.avatar.url(:mini), class: "img-rounded"), user_path(notification.notifier) %>
+              </div>
+              <div class="col-md-10">
+                <%= link_to notification.message, court_path(notification.notifiable.court.id) %>
+                <div class="text-right"><small><%= l notification.created_at_display, :format => ('%e %b à %H:%M') %></small></div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>

@@ -1,0 +1,24 @@
+<!-- court -->
+  <%= render "court" %>
+
+
+<div class="row">
+  <div class="col-md-8">
+  <!-- description (avec documents visibles à tout disponible) -->
+    <%= render "description" %>
+  </div>
+
+  <div class="col-md-4">
+  <!-- personnes disponibles/choisie -->
+  <% if current_user == @court.user %>
+    <%= render "available_locos" %>
+    <% end %>
+  </div>
+
+</div>
+
+<!-- conversations (avec documents visibles only aux membres de la conversation) -->
+<%= render "conversations" %>
+
+
+

@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-md-3">
+    <ul class="list-group">
+        <%= link_to "Abonnement", account_path, class: "list-group-item" %>
+        <%= link_to "Invitations", new_user_invitation_path, class: "list-group-item" %>
+        <!-- <%= link_to "Récompenses", rewards_path, class: "list-group-item active" %> -->
+        <%= link_to "Mot de passe", edit_user_registration_path(current_user), class: "list-group-item" %>
+       <!-- <%= link_to "Paramètres", "", class: "list-group-item" %> -->
+    </ul>
+  </div>
+
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Votre abonnement mensuel gratuit</h4>
+      </div>
+
+      <div class="panel-body text-center">
+
+      	<div class="row">
+	        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-lg-offset-3 col-md-offset-3">
+				<div class="offer offer-success">
+					<div class="shape">
+						<div class="shape-text">
+							<small>mois</small>							
+						</div>
+					</div>
+					<div class="offer-content">
+						<h3 class="lead text-center">
+							<span class="big"><%= current_user.accepted_invitations_count %> mois gratuits</span>
+							<br><small>au lieu de 5,- EUR/mois</small>
+						</h3>						
+						<p>Grâce à <%= current_user.accepted_invitations_count %> de vos confrères, qui ont accepté votre invitation
+							
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 col-md-offset-4">
+			<%= link_to "Inviter d'autres confrères", new_user_invitation_path, class: "btn btn-primary btn-block" %>
+		</div>
+<!--
+      	<% if current_user.accepted_invitations_count == 0 %>
+      		<h4><small>Grâce à vos confrères, vous pouvez recevoir jusqu'à</small></h4>
+      		<h1><span class="label label-success">12 mois gratuits</span></h1>
+      		<p>Et oui, vous recevez un mois supplémentaire gratuit chaque fois qu'un confrère accepte votre invitation à vous rejoindre sur Courts !</p>
+      	<% elsif current_user.accepted_invitations_count <= 12 %>
+	        <h4>Grâce à <%= current_user.accepted_invitations_count %> de vos confrères, vous bénéficiez de </h4>
+	        <h1><span class="label label-success"><%= current_user.accepted_invitations_count %> mois gratuits</span></h1>
+        <% elsif current_user.accepted_invitations_count > 12 %>
+        	<h4>Grâce à vos confrères, vous avez droit à </h4>
+        	<h1><span class="label label-success">12 mois gratuits</span></h1>
+        <% end %>
+-->
+      </div>
+    </div>
+ 
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Votre abonnement annuel à prix réduit</h4>
+      </div>
+      <div class="panel-body text-center">
+        <!--Cette semaine, vous pouvez bénéficiez du coupon CHALLENGE52, et payer votre abonnement annuel à 2,- EUR ttc au lieu de 50,- EUR ttc ! -->
+		<div class="row">
+	        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-lg-offset-3 col-md-offset-3">
+				<div class="offer offer-default">
+					<div class="shape">
+						<div class="shape-text">
+							an								
+						</div>
+					</div>
+					<div class="offer-content">
+						<h3 class="lead text-center">
+							Abonnement à 2,-  EUR
+							<br><small>au lieu de 50,- EUR/an</small>
+						</h3>						
+						<p>
+							Pour votre abonnement annuel
+							<br>(offre valable jusqu'au 10 octobre 2015)
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4 col-md-offset-4">
+			<%= link_to "Activer l'offre", new_user_invitation_path, class: "btn btn-primary btn-block" %>
+		</div>
+      </div>
+    </div>
+
+    <h3 class="text-center"><small>
+    	Oui : ces récompenses sont combinables !
+    	<br>Vous pourriez donc avoir un abonnement d'un an à prix réduit + 12 mois gratuits <i class="fa fa-smile-o"></i>
+    </small></h3>
+
+  </div>
+
+</div>

@@ -1,0 +1,125 @@
+
+<div class="panel panel-default">
+  <div class="panel-body">
+        <h4><%= t("courts.description.details") %></h4>
+        <hr>
+
+<% if !@court.details.blank? %> <!-- s'il y a des détails -->
+  
+  <% if current_user == @court.user %>
+
+    <%= @court.details %>
+  <br>
+    <% if @court.documentations.any? %>
+
+      <p>
+        <small><br><%= t("courts.description.documents") %></small>
+        <% @court.documentations.each do |doc| %>
+          <br>
+          <i class="fa fa-file-pdf-o"></i>
+          <%= link_to doc.name, doc.document.url, target: "_blank" %>
+          <%= link_to(doc, method: :delete) do %>
+            <%= content_tag(:i, " " ,:class=> 'fa fa-remove fa-danger') -%>
+          <% end %>
+        <% end %>
+      </p>
+    <% end %>
+
+
+    <br>
+    <%= link_to t("courts.button_edit"), edit_court_path(@court),:class=> 'btn btn-info pull-right btn-sm' -%>
+
+<button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <%= t("courts.description.add_a_document") %>
+</button>
+<div class="collapse" id="collapseExample">
+  <br>
+  <div class="panel panel-default col-md-5">
+    <div class="panel-body">
+    <%= form_for(@documentation) do |f| %>
+    <div class="form-group">
+      <%= f.text_field :name, :placeholder => t("courts.description.document_placeholder"), class: "form-control input-sm" %>
+    </div>
+      <%= f.file_field :document, class: "form-control input-sm" %>
+      <%= f.hidden_field :court_id, :value => @court.id %>
+      <br>
+      <div class="actions">
+        <%= f.submit t("courts.description.add_document_button"), class: "btn btn-primary btn-sm btn-block" %>
+      </div>
+    <% end %>
+  </div>
+  </div>
+</div>
+
+
+    
+
+
+  <% elsif current_user.bar == @court.bar %>
+
+    <%= @court.details %>
+    <% if @court.documentations.any? %>
+
+      <p>
+        <small><br><%= t("courts.description.documents") %></small>
+        <% @court.documentations.each do |doc| %>
+          <br>
+          <i class="fa fa-file-pdf-o"></i>
+          <%= link_to doc.name, doc.document.url, target: "_blank" %>
+        <% end %>
+      </p>
+    <% end %>
+    <br>
+    
+        <% if @court.have_found %>
+              <%= link_to t("courts.status.found"), @court,:class=> 'btn btn-warning pull-right', :disabled => 'disabled' %>
+        <% else %>
+          <% unless (current_user.responses && @court.responses).any? %>
+                <%= form_for(@response) do |f| %> 
+                    <%= f.hidden_field :court_id, :value => @court.id %>
+                    <button type="submit" class="btn btn-success">
+                      <%= content_tag(:i, " " , :class=> 'glyphicon glyphicon-ok') -%>  <%= t("courts.status.propose_my_services") %>
+                    </button>
+                <% end %>
+          <% end %>
+        <% end %>
+
+  <% else %>
+
+    <%= t("courts.description.only_visible_to1") %> <%= @court.bar %> <%= t("courts.description.only_visible_to2") %>
+
+  <% end %>
+
+
+
+
+
+<% else %> <!-- s'il n'y en a pas -->
+
+   <% if current_user == @court.user && @court.current %>
+
+      <h3 class="text-center"><%= t("courts.description.what_do_you_expect") %>
+    
+      <br><small><%= t("courts.description.who_will_see_this") %></small></h3>
+      
+      <%= form_for(@court) do |f| %>
+        <div class="form-inputs">
+          <%= f.text_area :details, :placeholder => t("courts.placeholder_details"), class: "form-control input-sm" %>
+        </div>
+        <br>
+        <div class="form-actions">
+          <%= f.submit t('courts.button_add_details_court'), :class => "btn btn-primary pull-right" %>
+        </div>
+      <% end %>
+
+  <% elsif current_user.bar == @court.bar %>
+
+    <%= t("courts.description.no_detail") %>
+
+  <% else %>
+    <%= t("courts.description.no_detail") %>
+  <% end %>
+
+<% end %>
+</div>
+</div>
