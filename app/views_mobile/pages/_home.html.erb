@@ -1,18 +1,28 @@
-<div class="splash">
-  <div class="courts_mobile_title text-center">
-    <%= link_to image_tag("courts_logo.png", :size => "250x100"), root_path %>
-  </div>
-  <div class="courts_mobile_baseline text-center">  
-    Remplacements entre confrères
-  </div>
 
-  <%= link_to t("home.signup_free"), "", class: "btn btn-default btn-lg btn-block" %>
-  
-  <%= link_to t("users.registration.sign_in"), new_user_session_path, class: "btn btn-link btn-lg btn-block" %>
-  <br>
-  <p class="text-center"><%= link_to "En savoir plus", "", class: "btn btn-link" %></p>
-  
+  <div class="splash">
+    <div class="splash-filter">
+    
+      <div class="title">
+        <div class="courts_mobile_title text-center">
+          <%= link_to image_tag("courts_logo.png", :size => "250x100"), root_path %>
+        </div>
+        <div class="courts_mobile_baseline text-center white">  
+          Remplacements entre confrères
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col-xs-6 reduced-padding-right">
+          <%= link_to "Essayer", "", class: "btn btn-primary btn-block" %>
+        </div>
+        <div class="col-xs-6 reduced-padding-left">
+          <%= link_to t("users.registration.sign_in"), new_user_session_path, class: "btn btn-info btn-block" %>
+        </div>
+      </div>
+
+    </div>
+  <!-- <p class="text-center"><%= link_to "En savoir plus", "", class: "btn btn-link" %></p> -->
 </div>
+
 
 	

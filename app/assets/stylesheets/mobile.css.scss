@@ -11,7 +11,6 @@ $brand-info:				#5c97bf;
 $jumbotron-bg:             	white;
 
 body { 
-
 	padding-bottom: 80px; 
 }
 
@@ -19,12 +18,33 @@ body {
 @import 'bootstrap-datetimepicker';
 
 .splash {
-	background-color: #34495e;
+    background-image: url(image-path('mobile_home_bg.jpg'));
+    background-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 	margin: none;
-	padding-top: 30%;
-	padding-right: 30px;
-	padding-left: 30px;
-	height: 500px;
+    
+    margin-bottom: -120px;
+	min-height: 500px;  
+}
+
+.splash-filter {
+    background-color: rgba(0,0,0, 0.4);
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10%;
+}
+
+.title {
+    padding-bottom: 240px;  
+}
+
+.reduced-padding-left {
+    padding-left: 5px;
+}
+
+.reduced-padding-right {
+    padding-right: 5px;
 }
 
 .courts_mobile_baseline {
