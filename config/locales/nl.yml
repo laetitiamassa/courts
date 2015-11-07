@@ -339,6 +339,7 @@ nl:
     placeholder_court_short: "Jurisdictie"
     placeholder_court: "Jurisdictie"
     found_loco: "Heb je een beschikbare confrater al gevonden?"
+    button_new_court_mobile: "Vinden een vervanger"
     button_new_court_short: "Publiceren"
     button_add_details_court: "Een beschrijving toevoegen"
     button_add_comment: "Toevoegen"

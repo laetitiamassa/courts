@@ -1,0 +1,75 @@
+
+
+<!-- <nav class="navbar navbar-fixed-top navbar-inverse no-margin more-padding" role="navigation">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-2">
+        <%= link_to root_path do %>  
+          <%= content_tag(:i, "", :class => "fa fa-home fa-lg fa-inverse" ) %>
+        <% end %>
+      </div>
+      <div class="col-xs-8 text-center white">
+        <b><%= yield :head %></b>
+      </div>
+      <div class="col-xs-2">
+        <%= link_to new_court_path do %>  
+          <%= content_tag(:i, "", :class => "fa fa-bars fa-lg fa-inverse pull-right" ) %>
+        <% end %>
+      </div>
+    </div>
+</div>
+</nav> -->
+
+<div class="navbar navbar-inverse navbar-fixed-top no-margin" role="navigation" id="slide-nav">
+  <div class="container">
+   <div class="navbar-header">
+    
+    <a class="navbar-toggle"> 
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+     </a>
+    <!-- <a class="navbar-brand" href="#">Project name</a> -->
+    <div class="text-center white more-padding">
+        <b><%= yield :head %></b>
+    </div>
+   </div>
+
+   <div id="slidemenu">
+    <div class='text-center margins-profile-menu white'>
+      <%= link_to (image_tag (current_user.avatar.url(:mini)), class: "img-circle"), user_path(current_user) %>
+      <br>
+    <br><b><%= link_to current_user.name_or_placeholder, user_path(current_user), :class => "white" %></b>
+    <br><%= link_to "voir", user_path(current_user), :class => "white" %> | <%= link_to "modifier", edit_user_path(current_user), :class => "white" %>
+   
+  </div>
+    <ul class="nav navbar-nav">
+     <li><%= link_to "Accueil", root_path %></li>
+     <li><%= link_to "Notifications", notifications_path %></li>
+     
+     <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Audiences <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Audiences futures", user_path(current_user) %></li>
+          <li><%= link_to "Audiences passées", user_path(current_user) %></li>
+        </ul>
+      </li>
+      <li><%= link_to "Conversations en cours", edit_user_path(current_user) %></li>
+      
+      <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evaluations <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Evaluations à donner", user_path(current_user) %></li>
+
+          <li><%= link_to "Evaluations données", user_path(current_user) %></li>
+          <li><%= link_to "Evaluations reçues", user_path(current_user) %></li>
+        </ul>
+      </li>
+      <li><%= link_to "Compte", edit_user_path(current_user) %></li>
+      <li role="presentation" class="divider"></li>     
+            <li><%= link_to t("header.log_out"), destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to "Langue", edit_user_path(current_user) %></li>
+    </ul>
+
+   </div>
+  </div>
+ </div>

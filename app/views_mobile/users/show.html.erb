@@ -1,29 +1,22 @@
-<div class="panel panel-default col-md-8 col-md-offset-2 no-border-radius profile-card">
-	<div class="row">
-		<div class="col-md-5 no-padding-left no-padding-right">
-            <%= image_tag (@user.avatar.url(:large)) %>
-		</div>
-		<div class="col-md-7">
-			
-			<blockquote>
-				<h2>
+<%= content_for :head do %>
+Me <%= @user.name_or_placeholder %>
+<% end %>
+
+
+<div class="user-bg text-center more-padding">
+    <%= image_tag (@user.avatar.url(:thumb)), class: "img-circle" %>			
+	<h4><%= @user.name_or_placeholder %></h4>
+	<i class="fa fa-map-marker"></i> <%= t("bars.#{@user.bar}") %>
+	<% if @user == current_user %>
+	<br><%= link_to t("helpers.submit.update"), edit_user_path(current_user), class: "btn btn-info btn-xs" %><br>
+<% end %>
+</div>
+
+
+
+
 				
-				<%= @user.name_or_placeholder %>
-				<% if @user == current_user %>
-				<%= link_to t("helpers.submit.update"), edit_user_path(current_user), class: "btn btn-info btn-xs pull-right" %>
-				<% end %>
-				</h2>
-					<div class="lead">
-						<i class="fa fa-map-marker"></i>
-						<%= @user.bar %>
-					</div>
-
-					<small><% @user.prefered_areas.each do |area| %>
-					<span class="label label-primary no-bold"><%= area.name %></span>
-					<% end %></small>
-
-				</blockquote>
-			
+		
 
 			<h3><small><%= @user.presentation %></small></h3>
 			<%= render "recommandations" %>

@@ -1,17 +1,19 @@
 <!-- Les réponses obtenues -->  
-  <ul class="list-group">
-    <li class="list-group-item text-center">
-      <b><small><%= t("courts.locos.thera_are") %> 
+
+    <li class="list-group-item text-center new-court">
+      <b><small><%= t("courts.locos.there_are") %> 
         <% if !@court.current %>
          <%= t("courts.locos.there_have_been") %> 
         <% end %>
         <%= @court.responses.count %> <%= t("courts.locos.responses_to_your_court") %></small></b>
       <% if @court.current %>
+        <% if @court.responses.any? %>
         <br>
         <small><%= t("courts.locos.choose_your_loco") %></small>
+        <% end %>
       <% end %>
     </li>
-    
+   
         <% @court.responses.each do |response| %>
 
           <li class="list-group-item">
@@ -78,5 +80,6 @@
             <br>
           </li>
     <% end %>
-  </ul>
+
+
 

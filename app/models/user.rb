@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   has_many :notifications_as_notifiee, :class_name=> 'Notification', :foreign_key => 'notifiee_id'
 
   has_attached_file :avatar, 
-                    :styles => { large: "320x420#", medium: "300x300#", thumb: "100x100#", mini: "50x50#" }, 
+                    :styles => { large: "320x420#", medium: "300x300#", thumb: "100x100#", mini: "50x50#", rikiki: "35x35#" }, 
                     :default_url => ":style/missing.jpeg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 

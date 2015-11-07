@@ -1,19 +1,19 @@
 
 
-<ul class="list-group col-md-4 col-md-offset-4">
-  <li class="list-group-item">
-    <h1 class="text-center"><small><%= t("notifications.title") %></small></h1>
-  </li>
+<%= content_for :head do %>
+Notifications
+<% end %>
+
 
   <% @notifications.each do |notification| %>
     <% unless current_user == notification.notifier %>
       <% unless notification.message.include? "invite" %>
       <li class="list-group-item">
         <div class="row">
-          <div class="col-md-2">
-            <%= link_to image_tag(notification.notifier.avatar.url(:mini), class: "img-rounded"), user_path(notification.notifier) %>
+          <div class="col-xs-2">
+            <%= link_to image_tag(notification.notifier.avatar.url(:mini), class: "img-circle"), user_path(notification.notifier) %>
           </div>
-          <div class="col-md-10">
+          <div class="col-xs-10">
 
             <%= render :partial => "notifiable_message", :locals => {:notification => notification} %>
             <div class="text-right"><small><%= l notification.created_at_display, :format => ('%e %b à %H:%M') %></small></div>
@@ -24,11 +24,11 @@
         <% if notification.notifiable && notification.notifiable.court.past %>
           <li class="list-group-item">
             <div class="row">
-              <div class="col-md-2">
+              <div class="col-xs-2">
                 <%= link_to image_tag(notification.notifier.avatar.url(:mini), class: "img-rounded"), user_path(notification.notifier) %>
               </div>
-              <div class="col-md-10">
-                <%= link_to notification.message, court_path(notification.notifiable.court.id) %>
+              <div class="col-xs-10">
+                <%= link_to notification.message, court_path(notification.notifiable.court.id), :class => "blue" %>
                 <div class="text-right"><small><%= l notification.created_at_display, :format => ('%e %b à %H:%M') %></small></div>
               </div>
             </div>
@@ -37,4 +37,3 @@
       <% end %>
     <% end %>
   <% end %>
-</ul>

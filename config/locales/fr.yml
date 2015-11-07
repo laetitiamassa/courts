@@ -341,6 +341,7 @@ fr:
     found_loco: "Avez-vous déjà trouvé un confrère disponible ?"
     i_found_loco: "J'ai trouvé un confrère disponible"
     button_new_court: "Nouvelle demande"
+    button_new_court_mobile: "Trouver un remplaçant"
     button_new_court_short: "Publier"
     button_add_details_court: "Ajouter la description"
     button_add_comment: "Ajouter"

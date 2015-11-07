@@ -10,7 +10,7 @@
     <% end %>
 
 	<!-- modifier -->
-    <%= link_to t("courts.button_edit"), edit_court_path(court),:class=> 'btn btn-default btn-sm' -%>
+    <%= link_to t("courts.button_edit"), edit_court_path(court),:class=> 'btn btn-default btn-xs' -%>
       
 
 <% else %>      
@@ -30,7 +30,7 @@
 		<% else %> 
 			<%= form_for(@response) do |f| %>   
 	        	<%= f.hidden_field :court_id, :value => court.id %>
-				<button type="submit" class="btn btn-primary btn-sm">
+				<button type="submit" class="btn btn-primary btn-xs">
 					<%= content_tag(:i, " " , :class=> 'fa fa-ok') -%>  
 					<%= t("courts.status.propose_my_services") %>
 				</button>

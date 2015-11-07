@@ -1,49 +1,37 @@
 
-<div class="col-md-10 col-md-offset-1">
+  <h2 class="text-center"><%= @court.performance %></h2>
+  <h4 class="text-center"><%= @court.jurisdiction %>
+    <br><small>
+      <i class="fa fa-clock-o fa-lg grey"> </i>
+        <%= l @court.date_display, :format => ('%e %b') %>
+        <%= l @court.date_display, :format => ('%H:%M') %>
+       
+    <br><i class="fa fa-map-marker fa-lg grey"> </i>
+      <%= t("bars.#{@court.bar}") %>
+    </small>
 
-<div class="panel panel-default">
+    </h4>
+ <div class="text-right shrinker">
   
-  <div class="panel-body">
-    
-    <div class="row">      
-      <div class="col-md-2 center">
-        <small><%= l @court.date_display, :format => '%A' %></small>
-        <br><span class="big"><i><%= l @court.date_display, :format => ('%e') %></i></span> 
-        <br><b><%= l @court.date_display, :format => ('%B') %> 
-        <br><small> <%= l @court.date_display, :format => ('%H:%M') %></small></b> 
-      </div>
-
-      <div class="col-md-7">
-        <div class="header">
-          <br>
-            <span class="bigger"><%= @court.jurisdiction %></span>
-          <br><span class="big"><small><%= @court.performance %></small></span>  
-          
-            <i>loco Me <%= link_to @court.user.last_name_or_placeholder, user_path(@court.user) %></i>
-            
-        </div>
-      </div>
-
-      <div class="col-md-3 text-right">
-        <span class="glyphicon glyphicon-map-marker"></span>
-        <%= t("bars.#{@court.bar}") %> 
-      </div>
-    </div>
-
-  </div>
-    
-  <div class="panel-footer">
+</div>
+       
+     <hr>   
 
       <% unless @court.current %>
         <!-- evaluations -->
         <%= render "evaluations" %>
       
       <% else %>
-          <div class="text-right">
+      <div class="row">
+          <div class="col-xs-2">
+            <%= link_to (image_tag (@court.user.avatar.url(:rikiki)), class: "img-circle"), user_path(@court.user) %>
+          </div>
+          <div class="col-xs-4">
+           <i>loco Me <%= link_to @court.user.last_name_or_placeholder, user_path(@court.user) %></i>
+          </div>
+          
+          <div class="col-xs-6 text-right">
             <%= render "status_and_cta" %>
           </div>
-  
+  </div>
       <% end %>
-
-  </div> <!-- fin panel footer -->
-</div>

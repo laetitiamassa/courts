@@ -1,6 +1,4 @@
 
-<div class="panel panel-default">
-  <div class="panel-body">
         <h4><%= t("courts.description.details") %></h4>
         <hr>
 
@@ -98,17 +96,15 @@
 
    <% if current_user == @court.user && @court.current %>
 
-      <h3 class="text-center"><%= t("courts.description.what_do_you_expect") %>
-    
-      <br><small><%= t("courts.description.who_will_see_this") %></small></h3>
+      
       
       <%= form_for(@court) do |f| %>
         <div class="form-inputs">
           <%= f.text_area :details, :placeholder => t("courts.placeholder_details"), class: "form-control input-sm" %>
         </div>
         <br>
-        <div class="form-actions">
-          <%= f.submit t('courts.button_add_details_court'), :class => "btn btn-primary pull-right" %>
+        <div class="form-actions text-right">
+          <%= f.submit t('courts.button_add_details_court'), :class => "btn btn-primary" %>
         </div>
       <% end %>
 
@@ -121,5 +117,4 @@
   <% end %>
 
 <% end %>
-</div>
-</div>
+
