@@ -223,6 +223,8 @@ class User < ActiveRecord::Base
       1.month
     elsif plan == "1510"
       1.year
+    else
+      1.second
     end
   end
 
