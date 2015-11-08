@@ -34,7 +34,9 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @bars = User.bars
     if @user.update(user_params)
-      redirect_to @user, notice: t("users.well_modified") 
+      
+        redirect_to @user, notice: t("users.well_modified") 
+      
     else
       render action: 'edit', notice: t("users.error")
     end

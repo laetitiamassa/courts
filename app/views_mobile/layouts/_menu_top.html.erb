@@ -50,21 +50,21 @@
      
      <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Audiences <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><%= link_to "Audiences futures", user_path(current_user) %></li>
-          <li><%= link_to "Audiences passées", user_path(current_user) %></li>
+          <li><%= link_to "Audiences futures", user_current_courts_path %></li>
+          <li><%= link_to "Audiences passées", user_past_courts_path %></li>
         </ul>
       </li>
-      <li><%= link_to "Conversations en cours", edit_user_path(current_user) %></li>
+      <li><%= link_to "Conversations en cours", user_current_conversations_path %></li>
       
       <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evaluations <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><%= link_to "Evaluations à donner", user_path(current_user) %></li>
+          <li><%= link_to "Evaluations à donner", user_evaluations_to_give_path %></li>
 
-          <li><%= link_to "Evaluations données", user_path(current_user) %></li>
-          <li><%= link_to "Evaluations reçues", user_path(current_user) %></li>
+          <li><%= link_to "Evaluations données", user_evaluations_given_path %></li>
+          <li><%= link_to "Evaluations reçues", user_evaluations_received_path %></li>
         </ul>
       </li>
-      <li><%= link_to "Compte", edit_user_path(current_user) %></li>
+      <li><%= link_to "Compte", account_path %></li>
       <li role="presentation" class="divider"></li>     
             <li><%= link_to t("header.log_out"), destroy_user_session_path, method: :delete %></li>
       <li><%= link_to "Langue", edit_user_path(current_user) %></li>

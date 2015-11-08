@@ -1,0 +1,22 @@
+<% @courts.sort_by(&:date_display).each do |court| %>
+					<% if court.past %>
+						<% if court.locos.any? && court.locos.last.user == current_user %>
+							<% if court.dominus_litis_evaluation.blank? %>
+								<li class="list-group-item">
+									<%= link_to "Evaluez Me #{court.user.last_name_or_placeholder}", court_path(court) %>
+								</li>
+							<% end %>
+						<% end %>
+
+						<% if court.locos.any? && court.user == current_user %>
+							<% if court.loco_evaluation.blank? %>
+							<li class="list-group-item">
+								<%= link_to "Evaluez Me #{court.locos.last.user.last_name_or_placeholder}", court_path(court) %>
+								<div class="text-right"><small>
+									(<%= link_to court.performance, court_path(court) %>)
+								</small></div>
+							</li>
+							<% end %>
+						<% end %>
+					<% end %>
+				<% end %>

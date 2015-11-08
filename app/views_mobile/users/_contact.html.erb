@@ -1,0 +1,60 @@
+
+<% if @user.full_address.present? %>
+	<li class="list-group-item text-center">
+		<i class="fa fa-map-marker fa-primary fa-2x pull-left"> </i>
+		    <%= @user.full_address %>
+	</li>
+<% end %>
+
+<% if @user.telephone.present? %>
+	<li class="list-group-item text-center">
+		<i class="fa fa-phone fa-primary fa-2x pull-left"> </i>
+		    +32 <%= @user.telephone %>
+	</li>
+<% end %>
+
+<% if @user.fax.present? %>
+<li class="list-group-item text-center">
+		<i class="fa fa-fax fa-primary fa-2x pull-left"> </i>
+		    +32 <%= @user.fax %>
+	</li>
+<% end %>
+
+<% if @user.mobile.present? %>
+<li class="list-group-item text-center">
+		<i class="fa fa-mobile fa-primary fa-2x pull-left"> </i>
+		    +32 <%= @user.mobile %>
+	</li>
+<% end %>
+
+<% if @user.website.present? %>
+<li class="list-group-item text-center">
+		<i class="fa fa-link fa-primary fa-2x pull-left"> </i>
+		    <%= link_to @user.website, @user.website, target: "_blank" %> 
+	</li>
+<% end %>
+
+<% if @user.linkedin.present? %>
+<li class="list-group-item text-center">
+		<i class="fa fa-linkedin fa-primary fa-2x pull-left"> </i>
+		    <%= link_to @user.linkedin, @user.linkedin, target: "_blank" %> 
+	</li>
+<% end %>
+
+<% if @user.twitter.present? %>
+<li class="list-group-item text-center">
+		<i class="fa fa-twitter fa-primary fa-2x pull-left"> </i>
+		    <%= link_to @user.twitter, @user.twitter, target: "_blank" %> 
+	</li>
+<% end %>
+
+<% if @user.facebook.present? %>
+<li class="list-group-item text-center">
+		<i class="fa fa-facebook fa-primary fa-2x pull-left"> </i>
+		    <%= link_to @user.facebook, @user.facebook, target: "_blank" %> 
+	</li>
+<% end %>
+
+
+
+

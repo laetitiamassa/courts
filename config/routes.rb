@@ -39,11 +39,23 @@ Courts::Application.routes.draw do
   get "welcome" => "pages#welcome"
   get "account" => "pages#account"
   get "rewards" => "pages#rewards"
+
+  get "user_evaluations_to_give" => "pages#user_evaluations_to_give"
+  get "user_evaluations_received" => "pages#user_evaluations_received"
+  get "user_evaluations_given" => "pages#user_evaluations_given"
+
+  get "user_current_courts" => "pages#user_current_courts"
+  get "user_past_courts" => "pages#user_past_courts"
+  
+  get "user_current_conversations" => "pages#user_current_conversations"
+  get "user_past_conversations" => "pages#user_past_conversations"
+
   get "pricing" => "subscribers#new"
   get "unsubscribed" => "subscribers#unsubscribed"
 
   get "edit_coordonnees" => "users#edit_coordonnees"
   get "edit_activity" => "users#edit_activity"
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

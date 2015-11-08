@@ -1,0 +1,20 @@
+<%= form_for @user, :url => user_path(@user), :html => { :method => :put } do |f| %>
+<div class="more_padding_bottom">
+<li class="list-group-item">
+	<%= f.file_field :avatar, class: "form-control" %>
+</li>
+<li class="list-group-item">
+	<%= f.text_field :last_name, class: "form-control input-lg", :placeholder => t("users.your_name") %>
+</li>
+<li class="list-group-item">
+	<%= f.text_field :first_name, class: "form-control input-lg", :placeholder => t("users.your_first_name") %>
+</li>
+<li class="list-group-item">
+	<%= f.select :bar, @bars, {:include_blank => true}, {class: "form-control input-lg"} %>  
+</li>				
+	<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+	<%= f.submit t("users.save_changes"), class: "btn btn-primary btn-lg btn-block" %>
+	</nav>
+</div>
+
+<% end %>

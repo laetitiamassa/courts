@@ -10,10 +10,6 @@ $brand-primary:            	#c0392b;
 $brand-info:				#5c97bf;
 $jumbotron-bg:             	white;
 
-body { 
-	padding-bottom: 80px; 
-}
-
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
 
@@ -35,6 +31,10 @@ body {
     padding-top: 10%;
 }
 
+.more_padding_bottom {
+    padding-bottom: 40px;
+}
+
 .title {
     padding-bottom: 240px;  
 }
@@ -50,6 +50,7 @@ body {
 .courts_mobile_baseline {
 	color: #c0392b;
 	margin-bottom: 30px;
+    text-shadow: 0 2px 4px #000000;
 }
 
 .menu_footer {
@@ -75,13 +76,18 @@ body {
 	padding-right: 0px;
 }
 
+
 .blue {
 		color: #34495e;
 }
 
 .user-bg {
 	background-color: #c0392b;
-	padding: 10px 0;
+	padding: 10px 0 0 0;
+}
+
+.user-padding-bottom {
+    padding-bottom: 5px;
 }
 
 .grey {
@@ -129,9 +135,10 @@ body {
 	color: #c0392b;
 }
 
-
-
-
+.padding-left-right {
+    padding-left: 15px;
+    padding-right: 15px;
+}
 
 /* adjust body when menu is open */
 body.slide-active {

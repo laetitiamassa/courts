@@ -3,168 +3,64 @@ Me <%= @user.name_or_placeholder %>
 <% end %>
 
 
-<div class="user-bg text-center more-padding">
+<div class="user-bg text-center">
     <%= image_tag (@user.avatar.url(:thumb)), class: "img-circle" %>			
 	<h4><%= @user.name_or_placeholder %></h4>
 	<i class="fa fa-map-marker"></i> <%= t("bars.#{@user.bar}") %>
+	<br><br>
 	<% if @user == current_user %>
-	<br><%= link_to t("helpers.submit.update"), edit_user_path(current_user), class: "btn btn-info btn-xs" %><br>
-<% end %>
-</div>
+	
+	<%= link_to t("helpers.submit.update"), edit_user_path(current_user), class: "btn btn-primary btn-lg btn-block" %>
+	<% else %>
+		<div class="principal">
+			<button id="contact_button", class="btn btn-primary btn-lg btn-block">
+				<%= t("users.see_contact") %> 
+					<i class='fa fa-angle-right fa-lg pull-right'></i>
+			</button>
+		</div>
 
-
-
-
-				
+		<div class="contact">
+			<button id="principal_button", class="btn btn-primary btn-lg btn-block">
+				<i class='fa fa-angle-left fa-lg pull-left'></i>
+				<%= t("users.go_back_to_profile") %>
+					
+			</button>
+		</div>
 		
+	<% end %>
+</div>
 
-			<h3><small><%= @user.presentation %></small></h3>
-			<%= render "recommandations" %>
+<div class="principal">
+	<div class="container-fluid">
+		<h3><small><%= @user.presentation %></small></h3>
+	</div>
 
-	<hr>	
+	<%= render "recommandations" %>
+</div>	
 
-
-<p><small><b><%= t("users.coordonnees") %> <%= @user.last_name_or_placeholder %> :</b>
-<br><%= t("users.coordonnees_details") %></small>
-</p>
-
-<% if @user.full_address.present? %>
-<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseAddress" aria-expanded="false" aria-controls="collapseExample">
-	<i class="fa fa-map-marker"></i>
-</button>
-<% end %>
-
-<% if @user.telephone.present? %>
-<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseTelephone" aria-expanded="false" aria-controls="collapseExample">
-	<i class="fa fa-phone"></i>
-</button>
-<% end %>
-
-<% if @user.fax.present? %>
-<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseFax" aria-expanded="false" aria-controls="collapseExample">
-	<i class="fa fa-fax"></i>
-</button>
-<% end %>
-
-<% if @user.mobile.present? %>
-<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseMobile" aria-expanded="false" aria-controls="collapseExample">
-	<i class="fa fa-mobile"></i>
-</button>
-<% end %>
-
-<% if @user.website.present? %>
-<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseWebsite" aria-expanded="false" aria-controls="collapseExample">
-	<i class="fa fa-link"></i>
-</button>
-<% end %>
-
-<% if @user.linkedin.present? %>
-<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseLinkedin" aria-expanded="false" aria-controls="collapseExample">
-	<i class="fa fa-linkedin"></i>
-</button>
-<% end %>
-
-<% if @user.twitter.present? %>
-<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseTwitter" aria-expanded="false" aria-controls="collapseExample">
-	<i class="fa fa-twitter"></i>
-</button>
-<% end %>
-
-<% if @user.facebook.present? %>
-<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseFacebook" aria-expanded="false" aria-controls="collapseExample">
-	<i class="fa fa-facebook"></i>
-</button>
-<% end %>
-
-
-<div class="collapse" id="collapseMail">
-	<br>
-	<ul class="list-group">
-		<li class="list-group-item">
-			<%= @user.email %>    
-		</li>
-	</ul>
+<div class="contact">
+	<%= render "contact" %>
 </div>
 
 
 
-<div class="collapse" id="collapseAddress">
-	<br>
-	<ul class="list-group">
-		<li class="list-group-item">
-		    <%= @user.full_address %>
-		</li>
-	</ul>
-</div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$(".contact").hide();
+    $("#contact_button").click(function(){
+        $(".principal").hide();
+        $(".contact").show();
+    });
+    $("#principal_button").click(function(){
+        $(".principal").show();
+        $(".contact").hide();
+    });
+});
 
 
 
-<div class="collapse" id="collapseTelephone">
-	<br>
-	<ul class="list-group">
-		<li class="list-group-item">
-		      <%= @user.telephone %>      
-		</li>
-	</ul>
-</div>
+</script>
 
-<div class="collapse" id="collapseFax">
-	<br>
-	<ul class="list-group">
-		<li class="list-group-item">
-		      <%= @user.fax %>      
-		</li>
-	</ul>
-</div>
-
-<div class="collapse" id="collapseMobile">
-	<br>
-	<ul class="list-group">
-		<li class="list-group-item">
-		      <%= @user.mobile %>      
-		</li>
-	</ul>
-</div>
-
-<div class="collapse" id="collapseWebsite">
-	<br>
-	<ul class="list-group">
-		<li class="list-group-item">
-		      <%= link_to @user.website, @user.website, target: "_blank" %>    
-		</li>
-	</ul>
-</div>
-
-<div class="collapse" id="collapseLinkedin">
-	<br>
-	<ul class="list-group">
-		<li class="list-group-item">
-		      <%= link_to @user.linkedin, @user.linkedin, target: "_blank" %>    
-		</li>
-	</ul>
-</div>
-
-<div class="collapse" id="collapseTwitter">
-	<br>
-	<ul class="list-group">
-		<li class="list-group-item">
-		      <%= link_to @user.twitter, @user.twitter, target: "_blank" %>    
-		</li>
-	</ul>
-</div>
-
-<div class="collapse" id="collapseFacebook">
-	<br>
-	<ul class="list-group">
-		<li class="list-group-item">
-		      <%= link_to @user.facebook, @user.facebook, target: "_blank" %>    
-		</li>
-	</ul>
-</div>
-
-
-
-</div>
-</div>
-</div>
 

@@ -394,6 +394,9 @@ fr:
       choose_another_loco: "Choisissez un autre remplaçant"
       choose: "Choisir"
   users:
+    see_contact: "Voir les coordonées"
+    go_back_to_profile: "Retour au profil"
+    save_changes: "Enregistrer"
     well_modified: "Votre profil a bien été mis à jour."
     error: "Oops, essayez à nouveau"
     registration:

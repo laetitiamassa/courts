@@ -25,10 +25,54 @@ class PagesController < ApplicationController
     @court = current_user.courts.build if current_user
     @bars = Court.bars
 
-    @questions = Question.all
-    @question = current_user.questions.build if current_user
-
     @response = current_user.responses.build if current_user
+
+    # @questions = Question.all
+    # @question = current_user.questions.build if current_user
+
+    
+  end
+
+  def user_evaluations_to_give
+    @courts = Court.all
+    @court = current_user.courts.build if current_user
+    @bars = Court.bars
+  end
+
+  def user_evaluations_received
+    @courts = Court.all
+    @court = current_user.courts.build if current_user
+    @bars = Court.bars
+  end
+
+  def user_evaluations_given
+    @courts = Court.all
+    @court = current_user.courts.build if current_user
+    @bars = Court.bars
+  end
+
+  def user_current_courts
+    @courts = Court.all
+    @court = current_user.courts.build if current_user
+    @bars = Court.bars
+  end
+
+  def user_past_courts
+    @courts = Court.all
+    @court = current_user.courts.build if current_user
+    @bars = Court.bars
+  end
+
+  def user_current_conversations
+    @courts = Court.all
+    @court = current_user.courts.build if current_user
+    @bars = Court.bars
+  end
+
+  def user_past_conversations
+    @courts = Court.all
+    @court = current_user.courts.build if current_user
+    @bars = Court.bars
   end
 
   def account

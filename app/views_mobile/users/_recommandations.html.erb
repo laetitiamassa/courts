@@ -1,82 +1,51 @@
-<hr>
 
-			
-<p><small><b><%= t("users.recommandations") %><%= @user.last_name_or_placeholder %> :</b>
-<br><%= t("users.click_to_see_more_reco") %></small>
-</p>
-			
-<% @courts.each do |court| %>
-						
+<li class="list-group-item text-center">		
+<small><b><%= t("users.recommandations") %><%= @user.last_name_or_placeholder %></b>
+</li>
+<% if @user.reco_count > 0 %>			
+<% @courts.each do |court| %>					
 	<% if court.loco_evaluation && court.loco_evaluatee == @user %>
-		<% if court.loco_evaluation.evaluation == "happy" %>
-					
-
-		<button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseLocoEval_<%= court.loco_evaluation.id %>" aria-expanded="false" aria-controls="collapseExample">
-			<i class="fa fa-smile-o fa-lg fa-success"></i>
-		</button>
-
-           <% end %>   
-		
-				
+		<% if court.loco_evaluation.evaluation == "happy" %>			
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col-xs-2">
+						<i class="fa fa-smile-o fa-3x fa-success"></i>
+					</div>
+					<div class="col-xs-8">
+					    "<i><%= court.loco_evaluation.comment %></i>"
+					    <br><span class="shrinker">- Me <%= link_to court.user.last_name_or_placeholder, user_path(court.user) %></span>
+					</div>
+					<div class="col-xs-2">	
+				        <%= link_to (image_tag (court.user.avatar.url(:rikiki)), class: "img-circle"), user_path(court.user) %>
+				    </div>
+				</div>
+		    </li>
+        <% end %>   		
 	<% end %>
 <% end %>
 
-<% @courts.each do |court| %>
-				
-				
+<% @courts.each do |court| %>					
 	<% if court.dominus_litis_evaluation && court.dominus_litis_evaluatee == @user %>
 		<% if court.dominus_litis_evaluation.evaluation == "happy" %>
-		
-		<button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseDLEval_<%= court.dominus_litis_evaluation.id %>" aria-expanded="false" aria-controls="collapseExample">
-			<i class="fa fa-smile-o fa-lg fa-success"></i>
-		</button>
-
-		<% end %>
-					
-	<% end %>
-
-<% end %>
-
-<% @courts.each do |court| %>
-						
-	<% if court.loco_evaluation && court.loco_evaluatee == @user %>
-		<% if court.loco_evaluation.evaluation == "happy" %>
-					
-
-		
-
-              
-		<div class="collapse" id="collapseLocoEval_<%= court.loco_evaluation.id %>">
-			<br>
-			<ul class="list-group">
-		        <li class="list-group-item">
-			        
-			        "<i><%= court.loco_evaluation.comment %></i>"
-		             - Me <%= link_to court.user.last_name_or_placeholder, user_path(court.user) %>
-			    </li>
-			</ul>
-		</div>
-			<% end %>	
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col-xs-2">
+						<i class="fa fa-smile-o fa-3x fa-success"></i>
+					</div>
+					<div class="col-xs-8">
+					    "<i><%= court.dominus_litis_evaluation.comment %></i>"
+					    <br><span class="shrinker">- Me <%= link_to court.locos.last.user.last_name_or_placeholder, user_path(court.locos.last.user) %></span>
+					</div>
+					<div class="col-xs-2">
+				        <%= link_to (image_tag (court.locos.last.user.avatar.url(:rikiki)), class: "img-circle"), user_path(court.locos.last.user) %>
+				    </div>
+		     	</div>
+		    </li>
+		<% end %>			
 	<% end %>
 <% end %>
-
-<% @courts.each do |court| %>
-				
-				
-	<% if court.dominus_litis_evaluation && court.dominus_litis_evaluatee == @user %>
-		<% if court.dominus_litis_evaluation.evaluation == "happy" %>
-		
-
-		<div class="collapse" id="collapseDLEval_<%= court.dominus_litis_evaluation.id %>">
-		    <br>
-		    <ul class="list-group">
-		        <li class="list-group-item">
-		            "<i><%= court.dominus_litis_evaluation.comment %></i>"
-		             - Me <%= link_to court.locos.last.user.last_name_or_placeholder, user_path(court.locos.last.user) %>
-		        </li>
-		    </ul>
-		</div>
-			<% end %>		
-	<% end %>
-
+<% else %>
+<li class="list-group-item text-center">
+	Me <%= @user.last_name_or_placeholder %> n'a pas encore de recommandation
+</li>
 <% end %>

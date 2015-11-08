@@ -388,6 +388,9 @@ nl:
       choose_another_loco: "Kies een andere vervanger"
       choose: "Kiezen"
   users:
+    see_contact: "Zie contact informatie"
+    go_back_to_profile: "Terug naar profiel"
+    save_changes: "Opslaan"
     well_modified: "Uw profile is bijgewerkt."
     error: "Oops, probeer opnieuw"
     registration:
