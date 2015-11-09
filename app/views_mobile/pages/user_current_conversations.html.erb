@@ -1,17 +1,23 @@
-<li class="list-group-item">
-				<h4><small><%= t("welcome.your_current_conversations") %></small></h4>
-				<% if current_user.locos.any? or current_user.courts.any? %>
-					<% current_user.locos.each do |loco| %>
-						<% if loco.comments.any? && loco.comments.last.user == loco.court.user %>
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-md-3">
-									<%= image_tag (loco.court.user.avatar.url(:mini)), class: "img-rounded" %>
-								</div>
-								<div class="col-md-9">
-									<%= link_to truncate(loco.comments.last.body, :length => 50), court_path(loco.court) %>
+<%= content_for :head do %>
+	<%= t("welcome.your_current_conversations") %>
+<% end %>
+
+			
+<% if current_user.locos.any? or current_user.courts.any? %>
+	<% current_user.locos.each do |loco| %>
+		<% if loco.comments.any? && loco.comments.last.user == loco.court.user %>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col-xs-3">
+						<%= image_tag (loco.court.user.avatar.url(:mini)), class: "img-circle" %>
+					</div>
+
+					<div class="col-xs-9">
+						<b><%= link_to loco.court.user.name_or_placeholder, court_path(loco.court), class: "blue" %></b><br> 
+						<%= link_to truncate(loco.comments.last.body, :length => 100), court_path(loco.court), class: "grey shrinker" %>
 									<div class="text-right"><small>
-										(<%= link_to loco.court.performance, court_path(loco.court) %>)
+										
+										<%= l loco.comments.last.created_at, :format => ('%e %b à %H:%M') %>
 									</small></div>
 								</div>
 							</div>
@@ -19,27 +25,30 @@
 						<% end %>
 					<% end %>
 
-					<% current_user.courts.each do |court| %>
-						<% if court.locos.any? %>
-							<% court.locos.each do |loco| %> 
-								<% if loco.comments.any? && loco.comments.last.user == loco.user %>
-									<li class="list-group-item">
-										<div class="row">
-											<div class="col-md-3">
-												<%= image_tag (loco.user.avatar.url(:mini)), class: "img-rounded" %>
-											</div>
-											<div class="col-md-9">
-												<%= link_to truncate(loco.comments.last.body, :length => 50), court_path(loco.court) %>
-												<div class="text-right"><small>
-													(<%= link_to loco.court.performance, court_path(loco.court) %>)
-												</small></div>
-											</div>
-										</div>
-									</li>
-								<% end %>
-							<% end %>
-						<% end %>
-					<% end %>
-
+	<% current_user.courts.each do |court| %>
+		<% if court.locos.any? %>
+			<% court.locos.each do |loco| %> 
+				<% if loco.comments.any? && loco.comments.last.user == loco.user %>
+					
+					<li class="list-group-item">
+						<div class="row">
+							<div class="col-xs-3">
+								<%= image_tag (loco.user.avatar.url(:mini)), class: "img-circle" %>
+							</div>
+							<div class="col-xs-9">
+								<b><%= link_to loco.user.name_or_placeholder, court_path(loco.court), class: "blue" %></b><br> 
+								<%= link_to truncate(loco.comments.last.body, :length => 100), court_path(loco.court), class: "grey shrinker" %>
+								<div class="text-right"><small>
+									
+									<%= l loco.comments.last.created_at, :format => ('%e %b à %H:%M') %>
+								</small></div>
+							</div>
+						</div>
+					</li>
 				<% end %>
-			</li>
+			<% end %>
+		<% end %>
+	<% end %>
+
+<% end %>
+			

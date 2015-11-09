@@ -1,27 +1,102 @@
+<%= content_for :head do %>
+<%= t("welcome.your_future_courts") %>
+<% end %>
+
+
 <% if current_user.locos.any? or current_user.courts.any? %>
-			<ul class="list-group">
+
+		
+	<% @courts.sort_by(&:date_display).each do |court| %>
+		<% if court.current %>
+			<% if court.locos.any? && court.locos.last.user == current_user %>
+			
+			<li class="list-group-item">
+				<div class="row">
+				<div class="col-xs-2 no-padding text-center">
+					<small>
+						<span class="shrinker"><%= l court.date_display, :format => '%A' %></span>
+						<br><span class="shrink"><b><%= l court.date_display, :format => ('%e %b') %></b>
+						<br><%= l court.date_display, :format => ('%H:%M') %></span> 
+					</small> 
+				</div>
+
+				<div class="col-xs-7">
+					<div class="header">
+						<%= link_to court.jurisdiction, court_path(court), :class => "blue" %>
+							           
+						<br>
+						<span class="fa fa-map-marker"> <%= t("bars.#{court.bar}") %></span>
+		        		
+		        		<br>
+		        		<%= link_to court.performance, court, :class => "grey" %> 
+							             
+						<div class="text-right">
+							
+							<span class="label label-info pull-right no-bold">loco</span>
+								
+						</div>  
+					</div>
+				</div>
+
+				<div class="col-xs-3 text-right">
+					<%= link_to (image_tag (court.user.avatar.url(:mini)), class: "img-circle"), user_path(court.user) %>
+					<span class="shrinker"><i>pour Me <%= link_to court.user.last_name_or_placeholder, user_path(court.user) %></i></span>
+				</div>
+			</div>
+			</li>
+
+			<% elsif court.user == current_user %>
+
 				<li class="list-group-item">
-					<h4><small><%= t("welcome.your_future_courts") %></small></h4>
-				</li>
-				<% @courts.sort_by(&:date_display).each do |court| %>
-					<% if court.current %>
-						<% if court.locos.any? && court.locos.last.user == current_user %>
-							<li class="list-group-item">
-								<div class="row with-padding-left with-padding-right">
-									<%= link_to "#{l court.date_display, :format => '%e %B'} - #{court.jurisdiction}", court_path(court) %>
-									<span class="label label-info pull-right no-bold">loco</span>
-								</div>
-							</li>
-						<% end %>
-						<% if court.user == current_user %>
-							<li class="list-group-item">
-								<div class="row with-padding-left with-padding-right">
-									<%= link_to "#{l court.date_display, :format => '%e %B'} - #{court.jurisdiction}", court_path(court) %>
-									<span class="label label-info pull-right no-bold">dominus litis</span>
-								</div>
-							</li>
-						<% end %>
+				<div class="row">
+				<div class="col-xs-2 no-padding text-center">
+					<small>
+						<span class="shrinker"><%= l court.date_display, :format => '%A' %></span>
+						<br><span class="shrink"><b><%= l court.date_display, :format => ('%e %b') %></b>
+						<br><%= l court.date_display, :format => ('%H:%M') %></span> 
+					</small> 
+				</div>
+
+				<div class="col-xs-7">
+					<div class="header">
+						<%= link_to court.jurisdiction, court_path(court), :class => "blue" %>
+							           
+						<br>
+						<span class="fa fa-map-marker"> <%= t("bars.#{court.bar}") %></span>
+		        		
+		        		<br>
+		        		<%= link_to court.performance, court, :class => "grey" %> 
+							             
+						<div class="text-right">
+								
+							<span class="label label-info no-bold">dominus litis</span>
+								
+						</div>  
+					</div>
+				</div>
+				<div class="col-xs-3 text-right">
+					<% if court.locos.any? %>
+					
+						<%= link_to (image_tag (court.locos.last.user.avatar.url(:mini)), class: "img-circle"), user_path(court.locos.last.user) %>
+						<span class="shrinker"><i>par Me <%= link_to court.locos.last.user.last_name_or_placeholder, user_path(court.locos.last.user) %></i></span>
+					
+					<% else %>
+						<%= link_to (image_tag (current_user.avatar.url(:mini)), class: "img-circle"), user_path(current_user) %>
+
+						<span class="label label-warning no-bold">no loco</span>
 					<% end %>
-				<% end %>
-			</ul>
+				</div>
+			</div>
+			</li>
 		<% end %>
+					
+		<% end %>
+	<% end %>
+			
+<% end %>
+
+
+
+		
+					    
+		

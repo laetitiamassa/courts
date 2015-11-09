@@ -3,7 +3,8 @@
 <head>
   <title>Courts</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "only screen and (min-width: 401px)", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "mobile", media: "only screen and (max-width: 400px)", "data-turbolinks-track" => true %>
   
 
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -25,9 +26,22 @@
 
   <%= csrf_meta_tags %>
 </head>
+<% if mobile_device? %>
+<% if user_signed_in? %>
+<%= render "layouts/menu_top" %>
+<% end %>
+<% end %>
 <body>
 
-
+<% if mobile_device? %>
+  <% if user_signed_in? %>
+  <div class="padding-topper" id="page-content">
+    <%= yield %>
+  </div>
+  <% else %>
+  <%= yield %>
+  <% end %>
+<% else %>
 <%= render 'layouts/header' %>
 
 <% if user_signed_in? %>
@@ -60,7 +74,7 @@
 
 <% end %>
 <!-- <br><br><br><br><br><br><br><br> -->
-
+<% end %>
 
 
 <script>

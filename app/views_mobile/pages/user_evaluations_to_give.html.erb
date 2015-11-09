@@ -1,22 +1,60 @@
-<% @courts.sort_by(&:date_display).each do |court| %>
-					<% if court.past %>
-						<% if court.locos.any? && court.locos.last.user == current_user %>
-							<% if court.dominus_litis_evaluation.blank? %>
-								<li class="list-group-item">
-									<%= link_to "Evaluez Me #{court.user.last_name_or_placeholder}", court_path(court) %>
-								</li>
-							<% end %>
-						<% end %>
+<%= content_for :head do %>
+<%= t("welcome.to_evaluate") %>
+<% end %>
 
-						<% if court.locos.any? && court.user == current_user %>
-							<% if court.loco_evaluation.blank? %>
-							<li class="list-group-item">
-								<%= link_to "Evaluez Me #{court.locos.last.user.last_name_or_placeholder}", court_path(court) %>
-								<div class="text-right"><small>
-									(<%= link_to court.performance, court_path(court) %>)
-								</small></div>
-							</li>
-							<% end %>
-						<% end %>
-					<% end %>
-				<% end %>
+<% @courts.sort_by(&:date_display).each do |court| %>
+	<% if court.past %>
+		<% if court.locos.any? && court.locos.last.user == current_user %>
+			<% if court.dominus_litis_evaluation.blank? %>
+
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col-xs-2">
+							<%= link_to (image_tag (court.user.avatar.url(:rikiki)), class: "img-circle"), user_path(court.user) %>
+						</div>
+
+						<div class="col-xs-7 text-center">
+							<div class="header">
+								Me <%= link_to court.user.last_name_or_placeholder, user_path(court.user), :class => "blue" %>
+								<span class="shrinker">
+									<br>(<%= link_to court.performance, court, :class => "grey" %>)
+				        		 </span>
+							</div>
+						</div>
+
+						<div class="col-xs-3">
+							<%= link_to "Evaluer", court_path(court), class: "btn btn-sm btn-primary" %>
+						</div>
+					</div>
+				</li>
+			<% end %>
+		<% end %>
+
+		<% if court.locos.any? && court.user == current_user %>
+			<% if court.loco_evaluation.blank? %>
+
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col-xs-2">
+							<%= link_to (image_tag (court.locos.last.user.avatar.url(:rikiki)), class: "img-circle"), user_path(court.locos.last.user) %>
+						</div>
+
+						<div class="col-xs-7 text-center">
+							<div class="header">
+								Me <%= link_to court.locos.last.user.last_name_or_placeholder, user_path(court.locos.last.user), :class => "blue" %>
+								<span class="shrinker">
+									<br>(<%= link_to court.performance, court, :class => "grey" %>)
+				        		 </span>
+							</div>
+						</div>
+
+						<div class="col-xs-3">
+							<%= link_to "Evaluer", court_path(court), class: "btn btn-sm btn-primary" %>
+						</div>
+					</div>
+				</li>
+			<% end %>
+		<% end %>
+					
+	<% end %>
+<% end %>

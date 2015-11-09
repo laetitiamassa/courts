@@ -1,84 +1,55 @@
 
-<% @courts.each do |court| %>
-						
+<% @courts.each do |court| %>					
 	<% if court.loco_evaluation && court.loco_evaluation.evaluator == current_user %>
-					
+		<li class="list-group-item">
+			<div class="row">
+				<div class="col-xs-2 no-padding text-center">
+					<% if court.loco_evaluation.evaluation == "happy" %>
+			           <i class="fa fa-smile-o fa-3x fa-success"></i>
+			      	<% elsif court.loco_evaluation.evaluation == "ok" %>
+			            <i class="fa fa-meh-o fa-3x fa-warning"></i>
+			      	<% else %>
+			            <i class="fa fa-frown-o fa-3x fa-danger"></i>
+			      	<% end %>
+			    </div>
+			    <div class="col-xs-7">
 
-		<button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseMeLocoEval_<%= court.loco_evaluation.id %>" aria-expanded="false" aria-controls="collapseExample">
-			<% if court.loco_evaluation.evaluation == "happy" %>
-	           <i class="fa fa-smile-o fa-lg fa-success"></i>
-	      <% elsif court.loco_evaluation.evaluation == "ok" %>
-	            <i class="fa fa-meh-o fa-lg fa-warning"></i>
-	      <% else %>
-	            <i class="fa fa-frown-o fa-lg fa-danger"></i>
-	      <% end %>
-			
-		</button>
-
-              
-		
+			      "<i><%= court.loco_evaluation.comment %></i>"
+				  <div class="text-right"><small>(<%= t("courts.evaluation_about") %> <%= link_to court.loco_evaluatee.last_name_or_placeholder, court_path(court) %>)</small></div>	
+				</div>
 				
+				<div class="col-xs-3">
+					<%= link_to (image_tag (court.loco_evaluatee.avatar.url(:mini)), class: "img-circle"), user_path(court.loco_evaluatee) %>
+				</div>
+			</div>
+		</li>	
 	<% end %>
 <% end %>
 
 
-<% @courts.each do |court| %>
-				
-				
+<% @courts.each do |court| %>		
 	<% if court.dominus_litis_evaluation && court.dominus_litis_evaluation.evaluator == current_user %>
+		<li class="list-group-item">
+			<div class="row">
+				<div class="col-xs-2 no-padding text-center">
 		
-		<button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseMeDLEval_<%= court.dominus_litis_evaluation.id %>" aria-expanded="false" aria-controls="collapseExample">
-			<% if court.dominus_litis_evaluation.evaluation == "happy" %>
-	           <i class="fa fa-smile-o fa-lg fa-success"></i>
-	      <% elsif court.dominus_litis_evaluation.evaluation == "ok" %>
-	            <i class="fa fa-meh-o fa-lg fa-warning"></i>
-	      <% else %>
-	            <i class="fa fa-frown-o fa-lg fa-danger"></i>
-	      <% end %>
-		</button>
+					<% if court.dominus_litis_evaluation.evaluation == "happy" %>
+			           <i class="fa fa-smile-o fa-3x fa-success"></i>
+			      	<% elsif court.dominus_litis_evaluation.evaluation == "ok" %>
+			            <i class="fa fa-meh-o fa-3x fa-warning"></i>
+			      	<% else %>
+			            <i class="fa fa-frown-o fa-3X fa-danger"></i>
+			      	<% end %>
+			    </div>
+			    <div class="col-xs-7">
 
-		
-					
-	<% end %>
-
-<% end %>
-<br>
-<br>
-<% @courts.each do |court| %>
-						
-	<% if court.loco_evaluation && court.loco_evaluation.evaluator == current_user %>
-					
-		<div class="collapse" id="collapseMeLocoEval_<%= court.loco_evaluation.id %>">
-			
-			<ul class="list-group">
-		        <li class="list-group-item">
-			        
-			        "<i><%= court.loco_evaluation.comment %></i>"
-		             <div class="text-right"><small>(<%= t("courts.evaluation_about") %> <%= link_to court.loco_evaluatee.last_name_or_placeholder, court_path(court) %>)</small></div>
-			    </li>
-			</ul>
-		</div>
-				
-	<% end %>
-<% end %>
-
-<% @courts.each do |court| %>
-				
-				
-	<% if court.dominus_litis_evaluation && court.dominus_litis_evaluation.evaluator == current_user %>
-		
-		
-
-		<div class="collapse" id="collapseMeDLEval_<%= court.dominus_litis_evaluation.id %>">
-		    
-		    <ul class="list-group">
-		        <li class="list-group-item">
-		            "<i><%= court.dominus_litis_evaluation.comment %></i>"
+			    	"<i><%= court.dominus_litis_evaluation.comment %></i>"
 		             <div class="text-right"><small>(<%= t("courts.evaluation_about") %> <%= link_to court.dominus_litis_evaluatee.last_name_or_placeholder, court_path(court) %>)</small></div>
-		        </li>
-		    </ul>
-		</div>
-					
+		        </div>
+				<div class="col-xs-3">
+					<%= link_to (image_tag (court.dominus_litis_evaluatee.avatar.url(:mini)), class: "img-circle"), user_path(court.dominus_litis_evaluatee) %>
+				</div>
+			</div>
+		</li>						
 	<% end %>
-
 <% end %>
