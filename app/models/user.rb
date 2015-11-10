@@ -95,7 +95,7 @@ class User < ActiveRecord::Base
   def trial_end_date
     if extended_trial
       extended_trial_end_date
-    elsif created_by_invite?
+    elsif created_by_invite? && invitation_accepted_at.present?
       invitation_accepted_at + 15.days
     else
       created_at + 15.days
@@ -218,7 +218,7 @@ class User < ActiveRecord::Base
 
   def free_months_period_start_date
     if overdue && accepted_invitations_count >= 1
-      self.invitations.first.invitation_accepted_at
+      self.invitations.where.not('invitation_accepted_at IS ?', nil).first.invitation_accepted_at
     else
       subscription_end_date_or_placeholder
     end

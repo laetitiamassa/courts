@@ -20,7 +20,7 @@ class PagesController < ApplicationController
   end
 
   def welcome
- 
+    @users = User.all
   	@courts = Court.all
     @court = current_user.courts.build if current_user
     @bars = Court.bars
