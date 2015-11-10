@@ -27,7 +27,8 @@ class Court < ActiveRecord::Base
 	end
 
 	def current 
-		date_display >= Time.now
+		date_display - 1.hour >= Time.now #workaround for wintertime in production
+
 		#workaround datetimepicker not set to UTC
 		#date_display - 2.hours >= Time.now
 	end
