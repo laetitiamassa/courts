@@ -18,7 +18,7 @@ class Court < ActiveRecord::Base
 	validates :jurisdiction, presence: true
 	validates :bar, presence: true
 
-	scope :active, lambda {where('date >= ?', Time.now)}
+	scope :active, lambda {where('date >= ? or created_at >= ?', Time.now, "2015-10-20")}
 
 	def self.bars
 	    BARS.map do |bar|
@@ -26,9 +26,10 @@ class Court < ActiveRecord::Base
 	    end
 	end
 
-	def current #workaround datetimepicker not set to UTC
-		#date_display >= Time.now
-		date_display - 2.hours >= Time.now
+	def current 
+		date_display >= Time.now
+		#workaround datetimepicker not set to UTC
+		#date_display - 2.hours >= Time.now
 	end
 
 	def past
@@ -42,7 +43,9 @@ class Court < ActiveRecord::Base
 	end
 
 	def date_display
+		if date
 		date.to_datetime
+	end
 	end
 
 	def loco_evaluator

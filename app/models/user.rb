@@ -36,6 +36,17 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
 
+#COURTS TO SEE
+  def current_courts_count
+      current_courts_count = 0
+      Court.active.each do |court|
+        if court.current
+          current_courts_count += 1
+        end
+      
+      end 
+      current_courts_count
+  end
 
 
 

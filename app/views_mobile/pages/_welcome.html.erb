@@ -5,11 +5,24 @@
 <% end %>
 <!-- courts -->
 <!-- <h3 class="text-center padding-top-short"><small><%= t("welcome.current_courts") %></small></h3> -->
+<% if current_user.current_courts_count > 1 %>
+
 <% @courts.sort_by(&:date_display).each do |court| %>
 	<% if court.current %>
 		<%= render :partial => "each_court", :locals => { :court => court} %>
 	<% end %>
 <% end %>
+
+<% else %>
+
+
+<%= t("courts.stream_no_current_court") %>
+
+<% end %>
+
+
+
+
 
 
 
