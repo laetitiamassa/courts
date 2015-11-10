@@ -33,7 +33,7 @@
 
   <div class="field col-md-2 few-padding-left">
     <div class="form-actions">
-      <% if current_user.overdue %>
+      <% unless current_user.has_active_access %>
       <%= link_to t("courts.button_new_court_short"), unsubscribed_path, :class => "btn btn-primary btn-sm btn-block" %>
       <% else %>
       <%= f.submit t("courts.button_new_court_short"), :class => "btn btn-primary btn-sm btn-block" %>
