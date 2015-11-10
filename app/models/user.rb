@@ -182,7 +182,7 @@ class User < ActiveRecord::Base
     if plan_end_date
       plan_end_date
     elsif subscribed
-      subscription_start_date + billing_duration
+      subscription_start_date_or_placeholder + billing_duration
     elsif on_trial
       trial_end_date
     else
