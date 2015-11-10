@@ -10,6 +10,7 @@
 <% @courts.sort_by(&:date_display).each do |court| %>
 	<% if court.current %>
 		<%= render :partial => "each_court", :locals => { :court => court} %>
+		<%= court.date %> | <%= court.date_display %> | <%= Time.now %>
 	<% end %>
 <% end %>
 
@@ -25,10 +26,11 @@
 	<%= content_tag(:i, t("courts.button_new_court_mobile"), class: "fa fa-university fa-2x btn btn-lg btn-primary") %>
 	<% end %>
 </li>
+
+
+<% end %>
 <div class="text-center">
 <%= link_to image_tag("courts_logo.png", :size => "125x50"), root_path %>
 </div>
-
-<% end %>
 
 <%= render "layouts/menu_footer" %>
