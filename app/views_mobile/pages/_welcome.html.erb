@@ -5,8 +5,8 @@
 <% end %>
 <!-- courts -->
 <!-- <h3 class="text-center padding-top-short"><small><%= t("welcome.current_courts") %></small></h3> -->
-<% if current_user.current_courts_count > 1 %>
 
+<% if current_user.current_courts_count > 0 %>
 <% @courts.sort_by(&:date_display).each do |court| %>
 	<% if court.current %>
 		<%= render :partial => "each_court", :locals => { :court => court} %>
@@ -15,17 +15,20 @@
 
 <% else %>
 
-
-<%= t("courts.stream_no_current_court") %>
+<li class="list-group-item text-center">
+	<br>
+	<p><span class="lead"><%= t("courts.stream_no_current_court1") %></span></p>
+		<p><%= t("courts.stream_no_current_court2") %>
+	</p>
+	<br>
+	<%= link_to new_court_path do %>
+	<%= content_tag(:i, t("courts.button_new_court_mobile"), class: "fa fa-university fa-2x btn btn-lg btn-primary") %>
+	<% end %>
+</li>
+<div class="text-center">
+<%= link_to image_tag("courts_logo.png", :size => "125x50"), root_path %>
+</div>
 
 <% end %>
-
-
-
-
-
-
-
-
 
 <%= render "layouts/menu_footer" %>

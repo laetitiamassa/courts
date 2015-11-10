@@ -1,14 +1,15 @@
-<!-- <div class="col-md-8 col-md-offset-2">
-	<div class="panel panel-default">
-	  <div class="panel-heading">
-	    <div class="panel-title">
-	    	<h1>Nouvelle demande de remplacement</h1>
-	    </div>
-	  </div>
-	    
-	  <div class="panel-body">
-			
-	  	<%= form_for(@court) do |f| %>
+
+
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <h3><%= t("courts.button_new") %></h3>
+      </div>
+    </div>
+    <div class="panel-body">
+      
+      <%= form_for(@court) do |f| %>
   <% if @court.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@court.errors.count, "error") %> prohibited this court from being saved:</h2>
@@ -21,30 +22,49 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <%= f.datetime_select :date, {:order => [:day,:month,:year]}, {class: "form-control input-lg"} %>
+  
+  
+  <div class="form-group">
+    <div class='input-group' id='datetimepicker'>
+      <%= f.text_field :date, class: "form-control" %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
   </div>
 
   <div class="field form-group">
-    <%= f.text_field :performance, :placeholder => t("courts.placeholder_performance"), class: "form-control input-lg" %>
+    <%= f.text_field :performance, :placeholder => t("courts.placeholder_performance"), class: "form-control" %>
   </div>
   <div class="field form-group">
-    <%= f.text_field :jurisdiction, :placeholder => t("courts.placeholder_court"), class: "form-control input-lg" %>
+    <%= f.text_field :jurisdiction, :placeholder => t("courts.placeholder_court"), class: "form-control" %>
   </div>
   
   <div class="field form-group">
-    <%= f.select :bar, @bars, {:selected => params[:bar]}, {class: "form-control input-lg"} %>
+    <%= f.select :bar, @bars, {:selected => params[:bar]}, {class: "form-control"} %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.text_area :details, :placeholder => t("courts.placeholder_details"), class: "form-control" %>
   </div>
   
   <br>
   <div class="form-actions">
-    <%= f.submit t("courts.button_new"), :class => "btn btn-primary btn-lg" %>
+    <%= f.submit t("courts.button_new_court_mobile"), :class => "btn btn-primary" %>
   </div>
 <% end %>
 
-		</div>
-		
-	</div>
+    </div>
+    
+  </div>
 </div>
--->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#datetimepicker').datetimepicker({
+                    locale: 'fr'
+                });
+  })
+
+</script>
 

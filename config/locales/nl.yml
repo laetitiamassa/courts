@@ -343,6 +343,8 @@ nl:
     button_new_court_short: "Publiceren"
     button_add_details_court: "Een beschrijving toevoegen"
     button_add_comment: "Toevoegen"
+    stream_no_current_court1: "Op dit moment hebben al uw confraters een vervanger gevonden!"
+    stream_no_current_court2: "U kunt later terugkomen naar de volgende opportuniteiten te zien, of klik hier om uw verzoek om vervanging te publiceren."
     button_found: "Gevonden!"
     button_edit: "Gewijzen"
     edit_title: "Vervanging verzoek gewijzen"
