@@ -220,7 +220,9 @@ nl:
       <<: *errors
   home:
     mobile:
-      signup_title: "La manière la plus pratique de publier et saisir des opportunités de remplacement"
+      mobile:
+        signup_title: "De meest praktische manier om opportuniteiten van vervanging te publiceren en te grijpen"
+        signin_title: "Uw 2.0 vervanging tool"
     baseline_lawyer: "Paleis advocaat ?"
     baseline_cta: "Publiceer uw verzoeken voor / Voer mogelijkheden van"
     baseline_replacements: "vervanging"
@@ -392,6 +394,7 @@ nl:
       choose_another_loco: "Kies een andere vervanger"
       choose: "Kiezen"
   users:
+    remember_me: "Ingelogd blijven"
     see_contact: "Zie contact informatie"
     go_back_to_profile: "Terug naar profiel"
     save_changes: "Opslaan"
