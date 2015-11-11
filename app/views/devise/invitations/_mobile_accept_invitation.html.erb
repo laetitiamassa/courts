@@ -1,0 +1,43 @@
+<div class="splash">
+    <div class="splash-filter text-center">
+    	<div class="courts_mobile_title text-center">
+          <%= link_to image_tag("courts_logo.png", :size => "250x100"), root_path %>
+        </div>
+        <div class="courts_mobile_baseline text-center white">  
+          <b>Remplacements entre confrères</b>
+        </div>
+
+    	<h4 class="white title-form-spacing"><%= t("devise.invitations.choose_your_password") %></h4>
+
+<div class="container">
+    	<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+			  <%= devise_error_messages! %>
+			  <%= f.hidden_field :invitation_token %>
+
+			  
+			  <%= f.password_field :password, :placeholder => t("home.password"), :class => "form-control input-lg input-form-spacing form-opacity" %></p>
+
+			  
+			  <%= f.password_field :password_confirmation, :placeholder => t("home.confirm_password"), :class => "form-control input-lg input-form-spacing form-opacity" %></p>
+
+			  <div class="btn-form-spacing">
+			  <%= f.submit t("devise.invitations.edit.submit_button"), :class => "btn btn-primary btn-lg btn-block" %>
+			</div>
+
+	          <!--<br><span class="center"><small><%= t("home.you_accept_terms") %><%= link_to t("home.our_terms"), legal_path %>)</small></span> -->
+	          <% end %>
+</div>
+
+
+
+
+    
+
+		
+	
+
+	<div class="text-center">
+	<%= link_to "Déja inscrit ?", new_user_session_path, class: "white" %>
+	</div>
+</div>
+</div>

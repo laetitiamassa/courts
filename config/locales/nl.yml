@@ -219,6 +219,8 @@ nl:
     errors:
       <<: *errors
   home:
+    mobile:
+      signup_title: "La manière la plus pratique de publier et saisir des opportunités de remplacement"
     baseline_lawyer: "Paleis advocaat ?"
     baseline_cta: "Publiceer uw verzoeken voor / Voer mogelijkheden van"
     baseline_replacements: "vervanging"

@@ -1,4 +1,6 @@
-
+<% if mobile_device? %>
+<%= render "mobile_accept_invitation" %>
+<% else %>
 <div class="homebg-invite">
 	<div class="row">
 		<div class="col-md-7">
@@ -33,4 +35,6 @@
 
 
 <%= render "pages/home_arguments" %>
+
+<% end %>
 

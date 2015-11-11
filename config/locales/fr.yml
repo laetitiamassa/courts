@@ -219,6 +219,9 @@ fr:
     errors:
       <<: *errors
   home:
+    mobile:
+      signup_title: "La manière la plus pratique de publier et saisir des opportunités de remplacement"
+      signin_title: "Votre outil de remplacement 2.0"
     baseline_lawyer: "Avocat de palais ?"
     baseline_cta: "Publiez vos demandes / Saisissez des opportunités de"
     baseline_replacements: "remplacements"
@@ -395,6 +398,7 @@ fr:
       choose_another_loco: "Choisissez un autre remplaçant"
       choose: "Choisir"
   users:
+    remember_me: "Se souvenir de moi"
     see_contact: "Voir les coordonées"
     go_back_to_profile: "Retour au profil"
     save_changes: "Enregistrer"

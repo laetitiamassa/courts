@@ -1,0 +1,35 @@
+<div class="splash">
+    <div class="splash-filter text-center">
+    	<%= link_to image_tag("courts_logo.png", :size => "125x50"), root_path %>
+    	<h2 class="white title-form-spacing"><%= t("home.mobile.signin_title") %></h2>
+
+<div class="container">
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		  
+		  
+		  	
+		  	<%= f.email_field :email, :placeholder => "email",class: "form-control input-lg input-form-spacing form-opacity", :autofocus => true %>
+		  
+		  	<%= f.password_field :password, :placeholder => t("home.password"), class: "form-control input-lg input-form-spacing form-opacity" %>
+
+			    <div class="input-group text-left">
+			      <span class="input-group-addon">
+			        <%= f.check_box :remember_me %>
+			      </span>
+			    	<%= f.label :remember_me, t("users.remember_me"), class: "form-control input-form-spacing form-opacity" %>
+    			</div>
+			  
+
+
+		  	<div class="btn-form-spacing">
+		  		<%= f.submit t("users.registration.sign_in"), class: "btn btn-primary btn-lg btn-block" %>
+		  	</div>
+		<% end %>
+	</div>
+
+	<div class="text-center">
+	<%= link_to t("users.registration.not_signed_up_yet"), new_registration_path(resource_name), class: "white" %>
+	<br><%= link_to t("users.registration.forgotten_password"), new_password_path(resource_name), class: "white" %>
+	</div>
+</div>
+</div>

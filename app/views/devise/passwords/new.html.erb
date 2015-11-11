@@ -1,3 +1,6 @@
+<% if mobile_device? %>
+<%= render "mobile_new_password" %>
+<% else %>
 <div class="container">
 	<div class="col-md-6 col-md-offset-3">
 	<div class="panel panel-default">
@@ -29,3 +32,4 @@
 </div>
 </div>
 </div>
+<% end %>
