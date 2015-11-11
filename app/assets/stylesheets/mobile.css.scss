@@ -115,8 +115,8 @@ $jumbotron-bg:             	white;
 }
 
 .margins-profile-menu {
-	margin-top: 20px;
-	margin-bottom: 20px;
+	padding-top: 30px;
+	padding-bottom: 20px;
 }
 
 .fa-success {
@@ -138,6 +138,14 @@ $jumbotron-bg:             	white;
 .padding-left-right {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.less-padding-top {
+   margin-top: -23px;
+}
+
+.no-margin-invite-top {
+    margin-top: -20px;
 }
 
 /* adjust body when menu is open */

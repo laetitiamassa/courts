@@ -1,110 +1,100 @@
-<div class="row">
-  
-    <div class="col-md-3">
-    <ul class="list-group">
-        <%= link_to t("account.subscription"), account_path, class: "list-group-item active" %>
-        <%= link_to t("account.invitations"), new_user_invitation_path, class: "list-group-item" %>
-        <%= link_to t("account.password"), edit_user_registration_path(current_user), class: "list-group-item" %>
-    </ul>
-  </div>
+<%= content_for :head do %>
+<%= t("account.your_subscription_to_courts") %>
+<% end %>
 
-<div class="col-md-9">
-  
+<li class='list-group-item text-center'>
+  <h4><small>Actuellement, vous accédez à Courts en mode</small></h4>
+  <h4><%= render "layouts/user_status" %> 
+    <% unless current_user.has_active_access %>
+      <br><%= link_to t("account.activate"), new_subscriber_path, class: "btn btn-default btn-sm pull-right" %>
+    <% end %>
+  </h4>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4><%= t("account.your_subscription_to_courts") %>
-          <%= render "layouts/user_status" %> 
-          <% unless current_user.has_active_access %>
-            <%= link_to t("account.activate"), new_subscriber_path, class: "btn btn-default btn-sm pull-right" %>
-          <% end %>
-        </h4>
-      </div>
+  <hr>
 
-      <div class="panel-body">
-
-        <!-- abonnement -->
-      	<div class="row">
-      		<div class="col-sm-3 text-right">
-      			<h4><small><%= t("account.your_subscription") %></small></h4>
-      		</div>
-      		
-          <div class="col-sm-9">
-      			<h4>
-              <%= current_user.plan_name_display %>
-              <small>
-                <% unless current_user.subscribed %>
-                <%= link_to t("account.activate_my_account"), new_subscriber_path, class: "btn btn-primary btn-sm pull-right" %>
-                <% end %>
-                <br>
-                <% unless current_user.overdue %>
+  <h4><small>
+    <% if Time.now < current_user.next_billing_date_including_free_months %>
+      <%= t("account.next_billing_date") %>
+    <% else %>
+      <%= t("account.expiration") %>
+    <% end %>
+  </small>
+<span class="shrinker">
+  <br><%= l current_user.next_billing_date_including_free_months, :format => '%e %B %Y, %H:%M' %>
+    <small><br>
+      <% if current_user.plan == 1530 %>
+        <% if Time.now < current_user.next_billing_date_including_free_months %>
+          <%= t("account.your_access_ends_then") %>
+        <% end %>
+      <% elsif current_user.subscribed %>
+        <%= t("account.your_access_renews_then") %>
+      <% end %>
+    </small>
+  </span>
+  </h4>
                
-                  <%= t("account.from") %> 
-                  <%= l current_user.subscription_start_date_or_placeholder, :format => '%e %B %Y' %>
-                   <%= t("account.to") %> 
-                   <%= l current_user.subscription_end_date_or_placeholder, :format => '%e %B %Y, %H:%M' %>
-                <% end %>
-              </small>
-            </h4>
-      		</div>
-      	</div>
+</li>
+<li class="list-group-item text-center">
+  
+    <h4><small><%= t("account.your_subscription") %></small>
+
+  <br>
+  <span class="shrinker">
+    <%= current_user.plan_name_display %>
+    <small>
+      <br>
+      <% unless current_user.overdue %>
+                 
+        <%= t("account.from") %> 
+        <%= l current_user.subscription_start_date_or_placeholder, :format => '%e %B %Y' %>
+        <%= t("account.to") %> 
+        <%= l current_user.subscription_end_date_or_placeholder, :format => '%e %B %Y, %H:%M' %>
+      <% end %>
+    
+      <% unless current_user.subscribed %>
+    </li>
+        <nav class="navbar navbar-inverse">
+        <%= link_to t("account.activate_my_account"), new_subscriber_path, class: "btn btn-primary btn-lg btn-block" %>
+      </nav>
+      <% end %>
+      
+      
+    </small>
+  </span>
+  </h4>
+
+</li>
 
 
 
-        <!-- mois gratuits -->
-      	<div class="row">
-      		<div class="col-sm-3 text-right">
-      			<h4><small><i class="fa fa-gift fa-lg fa-success"></i> <%= t("account.extensions") %></small></h4>
-      		</div>
-
-      		<div class="col-sm-9">
-      			<h4>
-              <%= current_user.free_months_period_in_months_display %> 
-              <%= t("account.free_months") %> 
-              <small>
-        				<% if current_user.accepted_invitations_count >= 12 %>
-        					<%= link_to t("account.invite_other_colleagues"), new_user_invitation_path, :class => "btn btn-default btn-sm pull-right" %>
-        				<% else %>
-        				  <%= link_to t("account.receive_free_months"), new_user_invitation_path, :class => "btn btn-success btn-sm pull-right" %>
-        				<% end %>
-                <% if current_user.accepted_invitations_count >= 1 %>
-        				<br> <%= t("account.from") %> 
-                <%= l current_user.free_months_period_start_date, :format => '%e %B %Y' %>
-                 <%= t("account.to") %> <%= l current_user.free_months_period_end_date, :format => '%e %B %Y, %H:%M' %>
-                 <% end %>
-      			 </small></h4>
-      		</div>
-      	</div>
-
-        <!-- échéance -->
-      	<div class="row">
-      		<div class="col-sm-3 text-right">
-      			<h4><small>
-              <% if Time.now < current_user.next_billing_date_including_free_months %>
-              <%= t("account.next_billing_date") %>
-              <% else %>
-              <%= t("account.expiration") %>
-              <% end %>
-            </small></h4>
-      		</div>
-      		<div class="col-sm-9">
-      			<h4> <%= l current_user.next_billing_date_including_free_months, :format => '%e %B %Y, %H:%M' %>
-              <small><br>
-                <% if current_user.plan == 1530 %>
-                  <% if Time.now < current_user.next_billing_date_including_free_months %>
-                  <%= t("account.your_access_ends_then") %>
-                  <% end %>
-                <% elsif current_user.subscribed %>
-                  <%= t("account.your_access_renews_then") %>
-                <% end %>
-              </small>
-            </h4>
-      		</div>
-      	</div>
-
-      </div>
-    </div>
-
-  </div>
-
-</div>
+<!-- mois gratuits -->
+<li class="list-group-item text-center no-margin-invite-top">
+  <h4><small><i class="fa fa-gift fa-lg fa-success"></i> <%= t("account.extensions") %></small>
+    
+    <br>
+    <span class="shrinker">
+    <b><%= current_user.free_months_period_in_months_display %> 
+    <%= t("account.free_months") %></b> 
+              
+    <small>
+      <% if current_user.accepted_invitations_count >= 1 %>
+        <br> <%= t("account.from") %> 
+        <%= l current_user.free_months_period_start_date, :format => '%e %B %Y' %>
+        <%= t("account.to") %> <%= l current_user.free_months_period_end_date, :format => '%e %B %Y, %H:%M' %>
+      <% end %>
+      </small>
+  </span>
+  </h4>
+      <% if current_user.accepted_invitations_count >= 12 %>
+   
+        <%= link_to t("account.invite_other_colleagues"), new_user_invitation_path, :class => "btn btn-default btn-sm pull-right" %>
+      
+      <% else %>
+    
+        <%= link_to t("account.receive_free_months"), new_user_invitation_path, :class => "btn btn-success btn-block" %>
+     
+      <% end %>
+                
+      
+    
+</li>

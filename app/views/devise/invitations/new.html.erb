@@ -1,3 +1,6 @@
+<% if mobile_device? %>
+<%= render "mobile_invitation_new" %>
+<% else %>
 <div class="row">
   <div class="col-md-3">
     <ul class="list-group">
@@ -84,7 +87,7 @@
   </div>
 
 </div>
-
+<% end %>
 
 
 

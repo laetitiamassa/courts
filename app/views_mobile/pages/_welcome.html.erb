@@ -10,7 +10,7 @@
 <% @courts.sort_by(&:date_display).each do |court| %>
 	<% if court.current %>
 		<%= render :partial => "each_court", :locals => { :court => court} %>
-		<%= court.date %> | <%= court.date_display %> | <%= Time.now %>
+		
 	<% end %>
 <% end %>
 

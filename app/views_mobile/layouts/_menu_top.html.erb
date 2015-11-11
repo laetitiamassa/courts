@@ -34,18 +34,23 @@
     <div class="text-center white more-padding">
         <b><%= yield :head %></b>
     </div>
+    
+    <%= link_to root_path do %>
+    <%= content_tag(:i, "", class: "fa fa-university fa-2x pull-right white less-padding-top btn btn-primary btn-xs") %>
+    <% end %>
    </div>
 
    <div id="slidemenu">
-    <div class='text-center margins-profile-menu white'>
+    <div class='row margins-profile-menu white'>
+      <div class="col-xs-3 col-xs-offset-1 text-right">
       <%= link_to (image_tag (current_user.avatar.url(:mini)), class: "img-circle"), user_path(current_user) %>
-      <br>
-    <br><b><%= link_to current_user.name_or_placeholder, user_path(current_user), :class => "white" %></b>
-    <br><%= link_to "voir", user_path(current_user), :class => "white" %> | <%= link_to "modifier", edit_user_path(current_user), :class => "white" %>
-   
+      </div>
+      <div class="col-xs-8">
+    <b><%= link_to current_user.name_or_placeholder, user_path(current_user), :class => "white" %></b>
+    <br><%= link_to "modifier", edit_user_path(current_user), :class => "white" %>
+   </div>
   </div>
     <ul class="nav navbar-nav">
-     <li><%= link_to "Accueil", root_path %></li>
      <li><%= link_to "Notifications", notifications_path %></li>
      
      <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Audiences <b class="caret"></b></a>
@@ -54,6 +59,7 @@
           <li><%= link_to "Audiences passées", user_past_courts_path %></li>
         </ul>
       </li>
+
       <li><%= link_to "Conversations en cours", user_current_conversations_path %></li>
       
       <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evaluations <b class="caret"></b></a>
@@ -64,10 +70,20 @@
           <li><%= link_to "Evaluations reçues", user_evaluations_received_path %></li>
         </ul>
       </li>
-      <li><%= link_to "Compte", account_path %></li>
+
+      <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paramètres <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Abonnement", account_path %></li>
+
+          <li><%= link_to "Invitations", new_user_invitation_path %></li>
+          <li><%= link_to "Mot de passe", edit_user_registration_path(current_user) %></li>
+          <li><%= link_to "Langue", edit_user_path(current_user) %></li>
+        </ul>
+      </li>
+
       <li role="presentation" class="divider"></li>     
             <li><%= link_to t("header.log_out"), destroy_user_session_path, method: :delete %></li>
-      <li><%= link_to "Langue", edit_user_path(current_user) %></li>
+      
     </ul>
 
    </div>
