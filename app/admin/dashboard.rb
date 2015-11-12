@@ -267,169 +267,169 @@ ActiveAdmin.register_page "Dashboard" do
                         li "Bruxelles OBFG : " do 
                             span Court.where(:bar =>"BrusselsFR").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"BrusselsFR", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Bruxelles OVB : " do 
                             span Court.where(:bar =>"BrusselsNL").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"BrusselsNL", :have_found => true).count
                             span "trouvé"
                         end
                         li "Arlon : " do 
                             span Court.where(:bar =>"Arlon").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Arlon", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Charleroi : " do 
                             span Court.where(:bar =>"Charleroi").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Charleroi", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Dinant : " do 
                             span Court.where(:bar =>"Dinant").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Dinant", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Eupen : " do 
                             span Court.where(:bar =>"Eupen").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Eupen", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Huy : " do 
                             span Court.where(:bar =>"Huy").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Huy", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Liège : " do 
                             span Court.where(:bar =>"Liege").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Liege", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Marche : " do 
                             span Court.where(:bar =>"Marche").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Marche", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Mons : " do 
                             span Court.where(:bar =>"Mons").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Mons", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Namur : " do 
                             span Court.where(:bar =>"Namur").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Namur", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Neufchateau : " do 
                             span Court.where(:bar =>"Neufchateau").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Neufchateau", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Nivelles : " do 
                             span Court.where(:bar =>"Nivelles").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Nivelles", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Tournai : " do 
                             span Court.where(:bar =>"Tournai").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Tournai", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Verviers : " do 
                             span Court.where(:bar =>"Anvers").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Anvers", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Anvers : " do 
                             span Court.where(:bar =>"Anvers").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Anvers", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Brugge : " do 
                             span Court.where(:bar =>"Brugge").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Brugge", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Dendermonde : " do 
                             span Court.where(:bar =>"Dendermonde").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Dendermonde", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Gent : " do 
                             span Court.where(:bar =>"Gent").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Gent", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Hasselt : " do 
                             span Court.where(:bar =>"Hasselt").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Hasselt", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Ieper : " do 
                             span Court.where(:bar =>"Ieper").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Ieper", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Kortrijk : " do 
                             span Court.where(:bar =>"Kortrijk").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Kortrijk", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Leuven : " do 
                             span Court.where(:bar =>"Leuven").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Leuven", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Mechelen : " do 
                             span Court.where(:bar =>"Mechelen").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Mechelen", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Oudernaarde : " do 
                             span Court.where(:bar =>"Oudernaarde").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Oudernaarde", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Tongeren : " do 
                             span Court.where(:bar =>"Tongeren").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Tongeren", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Turnhout : " do 
                             span Court.where(:bar =>"Turnhout").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Turnhout", :have_found => true).count
                             span "trouvé" 
                         end
                         li "Veurne : " do 
                             span Court.where(:bar =>"Veurne").count
                             span "/"
-                            span Court.where(:have_found => true).count
+                            span Court.where(:bar =>"Veurne", :have_found => true).count
                             span "trouvé" 
                         end
 
