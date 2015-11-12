@@ -517,6 +517,8 @@ nl:
     founder_of_courts: "Oprichter van Courts.be"
   mailer:
     salutation: "Geachte Meester,"
+    button_does_not_work: "De knop werkt niet? Klik "
+    here: "hier"
     end_salutation: "Met vriendelijke groeten,"
     signature_team: "Het team Courts"
     new_court_in_my_bar: 

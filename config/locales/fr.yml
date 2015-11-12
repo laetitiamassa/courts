@@ -521,6 +521,8 @@ fr:
     founder_of_courts: "Fondatrice de Courts.be"
   mailer:
     salutation: "Cher Maître,"
+    button_does_not_work: "Le bouton ne fonctionne pas ? Cliquez "
+    here: "ici"
     end_salutation: "Bien à vous,"
     signature_team: "L'Equipe Courts"
     new_court_in_my_bar: 
