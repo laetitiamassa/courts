@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029110222) do
+ActiveRecord::Schema.define(version: 20151112173810) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -66,15 +66,20 @@ ActiveRecord::Schema.define(version: 20151029110222) do
   end
 
   create_table "courts", force: :cascade do |t|
-    t.string   "performance",  limit: 255
-    t.string   "jurisdiction", limit: 255
+    t.string   "performance",                   limit: 255
+    t.string   "jurisdiction",                  limit: 255
     t.string   "date"
-    t.string   "bar",          limit: 255
+    t.string   "bar",                           limit: 255
     t.boolean  "have_found"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.text     "details"
+    t.boolean  "is_external"
+    t.string   "external_requester_first_name"
+    t.string   "external_requester_last_name"
+    t.string   "external_requester_email"
+    t.datetime "internalized_at"
   end
 
   add_index "courts", ["user_id"], name: "index_courts_on_user_id"

@@ -1,24 +1,178 @@
-<!-- court -->
-  <%= render "court" %>
+<% if @court.is_external %>
 
 
-<div class="row">
-  <div class="col-md-8">
-  <!-- description (avec documents visibles à tout disponible) -->
-    <%= render "description" %>
-  </div>
 
-  <div class="col-md-4">
-  <!-- personnes disponibles/choisie -->
-  <% if current_user == @court.user %>
-    <%= render "available_locos" %>
+  <% if user_signed_in? %>
+
+    <% if current_user.has_active_access %>
+    
+      <!-- simplifié : date, heure, nom du demandeur, description = message si y a, juridiction, barreau, prestation (quitte à indiquer à déterminer)
+        + description s'il y en a
+        + possibilité de répondre si notre email n'est pas email requester
+      OU de gérer cette demande car on est le dominus litis (form to change court.user_id email requester = current_user email)
+      -->
+      <div class="court_message text-center col-md-6 col-md-offset-3">
+        <li class="list-group-item">
+          Un de vos confrères recherche un remplaçant :
+          <h3><%= @court.performance %>
+          <br><small><%= t("bars.#{@court.bar}") %>
+          | <%= l @court.date_display, :format => "%e %B" %></small></h3>
+          
+        </li>
+        <li class="list-group-item list-group-item-info">
+          <h4>Etes-vous disponible pour remplacer votre confrère ?
+            <br></h4>
+          <%= render "status_and_cta" %>
+         
+          <p><small><br>S'agit-il de votre demande de remplacement ?
+
+       
+          <!-- mettre à jour le court.user_id => court.user_id updated to current_user.id 
+          + date à laquelle ce changement a été fait : court.internalized_at = Time.now -->
+          <%= form_for(@court) do |f| %>
+          <%= f.hidden_field :user_id, :value => current_user.id  %>
+          <%= f.hidden_field :internalized_at, :value => Time.now %>
+          <%= f.hidden_field :is_external, :value => false %>
+          <%= f.submit "Oui, j'en suis le dominus litis", :class => "btn btn-sm" %>
+          <% end %>
+
+
+          </small></p>
+        </li>
+      </div>
+
+    <% else %> <!-- connecté mais overdue -->
+
+      <div class="court_message text-center col-md-6 col-md-offset-3">
+        <li class="list-group-item">
+          Un de vos confrères recherche un remplaçant :
+          <h4><%= @court.performance %>
+          <br><small><%= t("bars.#{@court.bar}") %>
+          | <%= l @court.date_display, :format => "%e %B" %></small></h4>
+          
+          <hr>
+          
+          <div class="alert alert-info" role="alert">
+            <h4>Vous devez activer votre compte ou obtenir des mois gratuits pour gérer ou accéder à cette demande de remplacement</h4>
+            <%= link_to "Activer mon compte", new_subscriber_path, :class => "btn btn-primary" %>
+            <%= link_to "Obtenir des mois gratuits", new_user_invitation_path, :class => "btn btn-default" %>
+          </div>
+        </li>
+      </div>
+
+
     <% end %>
-  </div>
 
-</div>
+  <% else %> <!-- non connecté -->
 
-<!-- conversations (avec documents visibles only aux membres de la conversation) -->
-<%= render "conversations" %>
+    <!-- simplifié : date, heure, nom du demandeur, description = message si y a, juridiction, barreau, prestation (quitte à indiquer à déterminer)
+      + possibilité de répondre si notre email n'est pas email requester
+      OU de gérer cette demande car on est le dominus litis (form to signup/signin, puis )
+    -->
+
+    <div class="court_message text-center col-md-6 col-md-offset-3">
+        <li class="list-group-item">
+          Un de vos confrères recherche un remplaçant :
+          <h3><%= @court.performance %>
+          <br><small><%= t("bars.#{@court.bar}") %>
+          | <%= l @court.date_display, :format => "%e %B" %></small></h3>
+          
+        </li>
+        <li class="list-group-item list-group-item-info">
+          <h4>Etes-vous disponible pour remplacer votre confrère ?
+            <br><small>Découvrez les détails de la demande, et proposez vos services !</small></h4>
+          <%= link_to "Me connecter pour proposer mes services", new_user_session_path, class: "btn btn-primary" %>
+         
+          <p><small><br>Il s'agit de votre demande ?
+          <br><%= link_to "Connectez-vous pour gérer votre demande de remplacement", new_user_session_path %></small></p>
+        </li>
+      </div>
+
+  <% end %>
+
+
+
+
+
+
+<% else %> <!-- if normal court -->
+
+
+
+
+
+  <% if user_signed_in? %>
+
+    <% if current_user.has_active_access %> <!-- connecté et subscribed -->
+
+      <!-- court -->
+      <%= render "court" %>
+
+      <div class="row">
+        <div class="col-md-8">
+        <!-- description (avec documents visibles à tout disponible) -->
+          <%= render "description" %>
+        </div>
+
+        <div class="col-md-4">
+        <!-- personnes disponibles/choisie -->
+        <% if current_user == @court.user %>
+          <%= render "available_locos" %>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- conversations (avec documents visibles only aux membres de la conversation) -->
+      <%= render "conversations" %>
+
+    <% else %> <!-- connecté mais overdue -->
+
+
+      <div class="court_message text-center col-md-6 col-md-offset-3">
+        <li class="list-group-item">
+          Un de vos confrères recherche un remplaçant :
+          <h4><%= @court.performance %>
+          <br><small><%= t("bars.#{@court.bar}") %>
+          | <%= l @court.date_display, :format => "%e %B" %></small></h4>
+          
+          <hr>
+          
+          <div class="alert alert-info" role="alert">
+            <h4>Vous devez activer votre compte ou obtenir des mois gratuits gérer ou accéder à cette demande de remplacement</h4>
+            <%= link_to "Activer mon compte", new_subscriber_path, :class => "btn btn-primary" %>
+            <%= link_to "Obtenir des mois gratuits", new_user_invitation_path, :class => "btn btn-default" %>
+          </div>
+        </li>
+      </div>
+
+    <% end %>
+
+  <% else %> <!-- non connecté -->
+
+    <div class="court_message text-center col-md-6 col-md-offset-3">
+      <li class="list-group-item">
+        Un de vos confrères recherche un remplaçant :
+        <h4><%= @court.performance %>
+        <br><small><%= t("bars.#{@court.bar}") %>
+        | <%= l @court.date_display, :format => "%e %B" %></small></h4>
+        
+        <hr>
+        
+        <div class="alert alert-info" role="alert">
+          <h4>Vous devez vous inscrire ou vous connecter pour gérer ou accéder à cette demande de remplacement</h4>
+          <%= link_to "S'inscrire", new_user_registration_path, :class => "btn btn-primary" %>
+          <%= link_to "Se connecter", new_user_session_path, :class => "btn btn-default" %>
+        </div>
+      </li>
+    </div>
+
+  <% end %>
+
+
+
+
+
+<% end %>
 
 
 

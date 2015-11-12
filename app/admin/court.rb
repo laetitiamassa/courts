@@ -13,5 +13,7 @@ ActiveAdmin.register Court do
 #   permitted
 # end
 
+permit_params :performance, :jurisdiction, :date, :bar, :have_found, :details, :is_external, :external_requester_first_name, :external_requester_last_name, :external_requester_email, :internalized_at, :user_id
+
 
 end

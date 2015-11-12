@@ -6,10 +6,10 @@ class CourtsController < ApplicationController
   #before_filter :prepare_for_mobile, :only => :show
 
   before_action :set_notifications
-  before_filter :authenticate_user!, except: [:index]
-  before_action :subscribed_user#, :only => [:show, :new, :edit]
+  before_filter :authenticate_user!, except: [:index, :show]
+  before_action :subscribed_user, :except => [:show]
   before_action :set_court, only: [:show, :edit, :update, :destroy]
-  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :correct_user, :only => [:edit]
 
   # GET /courts
   # GET /courts.json
@@ -24,6 +24,7 @@ class CourtsController < ApplicationController
   # GET /courts/1.json
   def show
     @response = current_user.responses.build if current_user
+
     @loco = Loco.new
     @locos = Loco.all
 
@@ -122,7 +123,7 @@ class CourtsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def court_params
-      params.require(:court).permit(:performance, :jurisdiction, :date, :bar, :have_found, :details)
+      params.require(:court).permit(:performance, :jurisdiction, :date, :bar, :have_found, :details, :is_external, :external_requester_first_name, :external_requester_last_name, :external_requester_email, :internalized_at, :user_id)
     end
 
 end
