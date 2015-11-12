@@ -264,34 +264,174 @@ ActiveAdmin.register_page "Dashboard" do
             panel "Demande de remplacement par barreau" do
                 ul do
                     #le bar en question + le nombre de users dont le barreau est celui-là
-                        li "Bruxelles OBFG : " do span Court.where(:bar =>"BrusselsFR").count end
-                        li "Bruxelles OVB : " do span Court.where(:bar =>"BrusselsNL").count end
-                        li "Arlon : " do span Court.where(:bar =>"Arlon").count end
-                        li "Charleroi : " do span Court.where(:bar =>"Charleroi").count end
-                        li "Dinant : " do span Court.where(:bar =>"Dinant").count end
-                        li "Eupen : " do span Court.where(:bar =>"Eupen").count end
-                        li "Huy : " do span Court.where(:bar =>"Huy").count end
-                        li "Liège : " do span Court.where(:bar =>"Liege").count end
-                        li "Marche : " do span Court.where(:bar =>"Marche").count end
-                        li "Mons : " do span Court.where(:bar =>"Mons").count end
-                        li "Namur : " do span Court.where(:bar =>"Namur").count end
-                        li "Neufchateau : " do span Court.where(:bar =>"Neufchateau").count end
-                        li "Nivelles : " do span Court.where(:bar =>"Nivelles").count end
-                        li "Tournai : " do span Court.where(:bar =>"Tournai").count end
-                        li "Verviers : " do span Court.where(:bar =>"Anvers").count end
-                        li "Anvers : " do span Court.where(:bar =>"Anvers").count end
-                        li "Brugge : " do span Court.where(:bar =>"Brugge").count end
-                        li "Dendermonde : " do span Court.where(:bar =>"Dendermonde").count end
-                        li "Gent : " do span Court.where(:bar =>"Gent").count end
-                        li "Hasselt : " do span Court.where(:bar =>"Hasselt").count end
-                        li "Ieper : " do span Court.where(:bar =>"Ieper").count end
-                        li "Kortrijk : " do span Court.where(:bar =>"Kortrijk").count end
-                        li "Leuven : " do span Court.where(:bar =>"Leuven").count end
-                        li "Mechelen : " do span Court.where(:bar =>"Mechelen").count end
-                        li "Oudernaarde : " do span Court.where(:bar =>"Oudernaarde").count end
-                        li "Tongeren : " do span Court.where(:bar =>"Tongeren").count end
-                        li "Turnhout : " do span Court.where(:bar =>"Turnhout").count end
-                        li "Veurne : " do span Court.where(:bar =>"Veurne").count end
+                        li "Bruxelles OBFG : " do 
+                            span Court.where(:bar =>"BrusselsFR").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Bruxelles OVB : " do 
+                            span Court.where(:bar =>"BrusselsNL").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé"
+                        end
+                        li "Arlon : " do 
+                            span Court.where(:bar =>"Arlon").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Charleroi : " do 
+                            span Court.where(:bar =>"Charleroi").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Dinant : " do 
+                            span Court.where(:bar =>"Dinant").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Eupen : " do 
+                            span Court.where(:bar =>"Eupen").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Huy : " do 
+                            span Court.where(:bar =>"Huy").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Liège : " do 
+                            span Court.where(:bar =>"Liege").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Marche : " do 
+                            span Court.where(:bar =>"Marche").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Mons : " do 
+                            span Court.where(:bar =>"Mons").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Namur : " do 
+                            span Court.where(:bar =>"Namur").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Neufchateau : " do 
+                            span Court.where(:bar =>"Neufchateau").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Nivelles : " do 
+                            span Court.where(:bar =>"Nivelles").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Tournai : " do 
+                            span Court.where(:bar =>"Tournai").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Verviers : " do 
+                            span Court.where(:bar =>"Anvers").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Anvers : " do 
+                            span Court.where(:bar =>"Anvers").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Brugge : " do 
+                            span Court.where(:bar =>"Brugge").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Dendermonde : " do 
+                            span Court.where(:bar =>"Dendermonde").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Gent : " do 
+                            span Court.where(:bar =>"Gent").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Hasselt : " do 
+                            span Court.where(:bar =>"Hasselt").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Ieper : " do 
+                            span Court.where(:bar =>"Ieper").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Kortrijk : " do 
+                            span Court.where(:bar =>"Kortrijk").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Leuven : " do 
+                            span Court.where(:bar =>"Leuven").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Mechelen : " do 
+                            span Court.where(:bar =>"Mechelen").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Oudernaarde : " do 
+                            span Court.where(:bar =>"Oudernaarde").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Tongeren : " do 
+                            span Court.where(:bar =>"Tongeren").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Turnhout : " do 
+                            span Court.where(:bar =>"Turnhout").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
+                        li "Veurne : " do 
+                            span Court.where(:bar =>"Veurne").count
+                            span "/"
+                            span Court.where(:have_found => true).count
+                            span "trouvé" 
+                        end
 
 
                         #"Mons", "Namur", "Neufchateau", "Nivelles", "Tournai", "Verviers", "Anvers", "Brugge", "Dendermonde", "Gent", "Hasselt", "Ieper", "Kortrijk", "Leuven", "Mechelen", "Oudernaarde", "Tongeren", "Turnhout", "Veurne"
