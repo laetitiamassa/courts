@@ -28,14 +28,16 @@ class LocosController < ApplicationController
   # POST /locos.json
   def create
     @loco = Loco.new(loco_params)
+    @court = @loco.court
+    @chosen_loco = @loco.user
 
     respond_to do |format|
       if @loco.save
-        #send potential loco in the concerned bar a notification
-        #UserMailer.new_court_in_my_bar(@court, users_in_bar).deliver if has_users_in_bar?
+        #notify people that a choice has been made
+        UserMailer.you_have_been_chosen_as_loco(@loco, @chosen_loco).deliver
         #UserMailer.after_court_creation(@court, @court.user).deliver if has_users_in_bar?
 
-        format.html { redirect_to :back, notice: 'Loco was successfully created.' }
+        format.html { redirect_to :back, notice: 'Votre choix a été notifié à vos confrères.' }
         format.json { render action: 'show', status: :created, location: @loco }
       else
         format.html { render action: 'new' }

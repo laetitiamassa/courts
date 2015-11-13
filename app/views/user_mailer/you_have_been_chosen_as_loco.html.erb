@@ -1,1 +1,27 @@
-you_have_been_chosen_as_loco.html.erb
+
+<p><%= t("mailer.salutation") %></p>
+
+<h3>Félicitations !</h3>
+
+<p>Votre confrère, Me <%= @court.user.last_name_or_placeholder %>, vous a choisi pour intervenir loco.</p>
+
+<p>Vous pouvez, dès maintenant, échanger des informations et documents en privé, depuis la page de la demande.</p>
+
+<%= link_to court_url(@court) do %>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td align="center" width="300" height="40" bgcolor="#c0392b" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">
+<span style="font-size:16px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; line-height:40px; width:100%; display:inline-block"><span style="color: #FFFFFF">
+
+	Voir les détails de la demande
+</span></span>
+</td>
+</tr>
+</table>
+<% end %>
+
+<br><%= t("mailer.button_does_not_work") %><%= link_to t("mailer.here"), court_url(@court) %>.
+
+<p class="signature"><%= t("mailer.end_salutation") %>
+	<br><%= t("mailer.signature_team") %>
+</p>

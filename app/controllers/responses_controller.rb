@@ -43,7 +43,7 @@ class ResponsesController < ApplicationController
         UserMailer.new_response_to_your_court_internal(@response, @court.user).deliver if !@court.is_external
         UserMailer.new_response_to_your_court_external(@response, @external_requester_email).deliver if @court.is_external
 
-        format.html { redirect_to :back, notice: 'Response was successfully created.' }
+        format.html { redirect_to :back, notice: 'Votre réponse a été notifiée à votre confrère.' }
         format.json { render action: 'show', status: :created, location: @response }
       else
         format.html { render action: 'new' }

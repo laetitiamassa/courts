@@ -38,7 +38,13 @@ class UserMailer < ActionMailer::Base
       )
   end
 
-  def you_have_been_chosen_as_loco #envoyé au loco choisi quand un loco est créé
+  def you_have_been_chosen_as_loco(loco, user) #envoyé au loco choisi quand un loco est créé
+    @court = loco.court
+    @chosen_loco = @court.locos.last.user
+    mail(
+      :to => @chosen_loco.email,
+      :subject => "Votre confrère vous a choisi pour intervenir loco"
+      )
   end
 
   def another_loco_has_been_chosen #envoyé à chaque répondant non choisi, quand un loco est choisi
