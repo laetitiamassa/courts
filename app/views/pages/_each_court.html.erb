@@ -25,7 +25,9 @@
 					    </div>
 					    <div class="col-md-3 text-right">
 					    <% if court.is_external %>
-					    <%= image_tag (court.user.avatar.url(:mini)), class: "img-rounded" %>
+					    
+					    <%= image_tag("mini/missing.jpeg", class: "img-rounded") %>
+					
 					    <br><i>loco Me <%= court.external_requester_last_name %></i>
 					    <% else %>
 						<%= image_tag (court.user.avatar.url(:mini)), class: "img-rounded" %>
