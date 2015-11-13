@@ -32,7 +32,7 @@ class UserMailer < ActionMailer::Base
     @court = response.court
     @external_requester_email = response.court.external_requester_email
     mail(
-      :from => "Courts.be | votre outil de remplacement 2.0 <contact@courts.be>"
+      :from => "Courts.be | votre outil de remplacement 2.0 <contact@courts.be>",
       :to => @external_requester_email,
       :subject => "Votre demande de remplacement : un de vos confrères est disponible"
       )
