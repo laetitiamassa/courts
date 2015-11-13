@@ -19,6 +19,30 @@ class UserMailer < ActionMailer::Base
   		)
   end
 
+  def new_response_to_your_court_internal(response, user) #envoyé au dominus litis quand une réponse est créée - diffère selon internal or external court
+    @court = response.court
+    @user = @court.user
+    mail(
+      :to => user.email,
+      :subject => "Un de vos confrères est disponible pour vous remplacer"
+      )
+  end
+
+  def new_response_to_your_court_external(response, user)
+    @court = response.court
+    @external_requester_email = response.court.external_requester_email
+    mail(
+      :to => @external_requester_email,
+      :subject => "Votre demande de remplacement : un de vos confrères est disponible"
+      )
+  end
+
+  def you_have_been_chosen_as_loco #envoyé au loco choisi quand un loco est créé
+  end
+
+  def another_loco_has_been_chosen #envoyé à chaque répondant non choisi, quand un loco est choisi
+  end
+
 
   # def weekly(email)
   #   mail(

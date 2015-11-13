@@ -34,9 +34,15 @@ class ResponsesController < ApplicationController
   # POST /responses.json
   def create
     @response = current_user.responses.build(response_params)
+    @court = @response.court
+    @external_requester_email = @response.court.external_requester_email
 
     respond_to do |format|
       if @response.save
+        #send dominus litis the info that people are interested
+        UserMailer.new_response_to_your_court_internal(@response, @court.user).deliver if !@court.is_external
+        UserMailer.new_response_to_your_court_external(@response, @external_requester_email).deliver if @court.is_external
+
         format.html { redirect_to :back, notice: 'Response was successfully created.' }
         format.json { render action: 'show', status: :created, location: @response }
       else

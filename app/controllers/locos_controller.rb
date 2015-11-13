@@ -31,6 +31,10 @@ class LocosController < ApplicationController
 
     respond_to do |format|
       if @loco.save
+        #send potential loco in the concerned bar a notification
+        #UserMailer.new_court_in_my_bar(@court, users_in_bar).deliver if has_users_in_bar?
+        #UserMailer.after_court_creation(@court, @court.user).deliver if has_users_in_bar?
+
         format.html { redirect_to :back, notice: 'Loco was successfully created.' }
         format.json { render action: 'show', status: :created, location: @loco }
       else
