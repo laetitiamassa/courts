@@ -180,6 +180,14 @@ $jumbotron-bg:             	white;
     margin-bottom: -20px;
 }
 
+.court_message {
+    margin-top: 100px;
+}
+
+.court_message_logged_out {
+    opacity: 0.89;
+}
+
 /* adjust body when menu is open */
 body.slide-active {
     overflow-x: hidden

@@ -25,9 +25,13 @@
 		</div>
 					    
 		<div class="col-xs-3 text-right">
-			
-			<%= link_to (image_tag (court.user.avatar.url(:mini)), class: "img-circle"), user_path(court.user) %>
-			<span class="shrinker"><i>Me <%= link_to court.user.last_name_or_placeholder, user_path(court.user) %></i></span>
+			<% if court.is_external %>
+				<%= image_tag("mini/missing.jpeg", class: "img-circle") %>
+				<span class="shrinker"><i>Me <%= court.external_requester_last_name %></i></span>
+			<% else %>
+				<%= link_to (image_tag (court.user.avatar.url(:mini)), class: "img-circle"), user_path(court.user) %>
+				<span class="shrinker"><i>Me <%= link_to court.user.last_name_or_placeholder, user_path(court.user) %></i></span>
+			<% end %>
 		</div>
 						
 	</div>
