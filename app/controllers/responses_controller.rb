@@ -39,9 +39,11 @@ class ResponsesController < ApplicationController
 
     respond_to do |format|
       if @response.save
-        #send dominus litis the info that people are interested
-        UserMailer.new_response_to_your_court_internal(@response, @court.user).deliver if !@court.is_external
-        UserMailer.new_response_to_your_court_external(@response, @external_requester_email).deliver if @court.is_external
+        unless @court.to_confirm
+          #send dominus litis the info that people are interested
+          UserMailer.new_response_to_your_court_internal(@response, @court.user).deliver if !@court.is_external
+          UserMailer.new_response_to_your_court_external(@response, @external_requester_email).deliver if @court.is_external
+        end
 
         format.html { redirect_to :back, notice: 'Votre réponse a été notifiée à votre confrère.' }
         format.json { render action: 'show', status: :created, location: @response }

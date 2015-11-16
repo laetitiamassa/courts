@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_many :loco_evaluations
   has_many :dominus_litis_evaluations
 
+  has_many :confirmations
+
   has_many :documentations
   has_many :private_documentations
 
@@ -40,7 +42,7 @@ class User < ActiveRecord::Base
   def current_courts_count
       current_courts_count = 0
       Court.active.each do |court|
-        if court.current
+        if court.current && !court.infirmed
           current_courts_count += 1
         end
       
@@ -380,6 +382,10 @@ class User < ActiveRecord::Base
     BARS.map do |bar|
       [I18n.t("bars.#{bar}"), bar]
     end
+  end
+
+  def is_power_user
+    self.email == "laetitiamassa@gmail.com" #"lol@lol.com"
   end
 
 

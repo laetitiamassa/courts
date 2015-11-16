@@ -33,6 +33,17 @@
     </div>
   </div>
 
+<% if current_user.is_power_user %>
+  <li class="list-group-item">
+    <%= f.check_box :is_external %> est externe
+    <br><%= f.check_box :to_confirm %> à confirmer
+    <br><%= f.text_field :external_requester_first_name, :placeholder => "prénom", class: "form-control" %> 
+    <br><%= f.text_field :external_requester_last_name, :placeholder => "nom", class: "form-control" %>
+    <br><%= f.text_field :external_requester_email, :placeholder => "email", class: "form-control" %>
+  </li>
+  <br>
+<% end %>
+
   <div class="field form-group">
     <%= f.text_field :performance, :placeholder => t("courts.placeholder_performance"), class: "form-control" %>
   </div>

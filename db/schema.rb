@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112173810) do
+ActiveRecord::Schema.define(version: 20151115140639) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 20151112173810) do
     t.integer  "loco_id"
   end
 
+  create_table "confirmations", force: :cascade do |t|
+    t.integer  "court_id"
+    t.integer  "user_id"
+    t.boolean  "confirmed"
+    t.boolean  "infirmed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "courts", force: :cascade do |t|
     t.string   "performance",                   limit: 255
     t.string   "jurisdiction",                  limit: 255
@@ -80,6 +89,10 @@ ActiveRecord::Schema.define(version: 20151112173810) do
     t.string   "external_requester_last_name"
     t.string   "external_requester_email"
     t.datetime "internalized_at"
+    t.boolean  "to_confirm"
+    t.boolean  "infirmed"
+    t.datetime "confirmed_at"
+    t.datetime "infirmed_at"
   end
 
   add_index "courts", ["user_id"], name: "index_courts_on_user_id"

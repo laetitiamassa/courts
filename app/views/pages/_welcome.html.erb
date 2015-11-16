@@ -158,7 +158,7 @@
 
 					<% if current_user.current_courts_count > 0 %>
 						<% @courts.sort_by(&:date_display).each do |court| %>
-							<% if court.current %>
+							<% if court.current && !court.infirmed %>
 								<%= render :partial => "each_court", :locals => { :court => court} %>
 							<% end %>
 						<% end %>

@@ -24,20 +24,40 @@
             <br></h4>
           <%= render "status_and_cta" %>
          
-          <p><small><br>S'agit-il de votre demande de remplacement ?
+         <% if @court.to_confirm %>
+            <p><small><br>
+              S'agit-il de votre audience ? Confirmez la demande de remplacement :
+              <div class='row'>
+                <div class="col-md-6">
+              <%= form_for (@confirmation) do |f| %>
+                <%= f.hidden_field :court_id, :value => @court.id %>
+                <%= f.hidden_field :confirmed, :value => true %>
+                <%= f.submit "Oui, j'ai besoin d'un remplaçant", :class => "btn btn-sm btn-block btn-success" %>
+              <% end %>
+            </div>
+            <div class='col-md-6'>
+              <%= form_for (@confirmation) do |f| %>
+                <%= f.hidden_field :court_id, :value => @court.id %>
+                <%= f.hidden_field :infirmed, :value => true %>
+                <%= f.submit "Finalement, non", :class => "btn btn-sm btn-block" %>
+              <% end %>
+            </div>
+          </div>
+            </small></p>
+         <% else %>
+            <p><small><br>S'agit-il de votre demande de remplacement ?
 
-       
-          <!-- mettre à jour le court.user_id => court.user_id updated to current_user.id 
-          + date à laquelle ce changement a été fait : court.internalized_at = Time.now -->
-          <%= form_for(@court) do |f| %>
-          <%= f.hidden_field :user_id, :value => current_user.id  %>
-          <%= f.hidden_field :internalized_at, :value => Time.now %>
-          <%= f.hidden_field :is_external, :value => false %>
-          <%= f.submit "Oui, j'en suis le dominus litis", :class => "btn btn-sm" %>
+            <!-- mettre à jour le court.user_id => court.user_id updated to current_user.id 
+            + date à laquelle ce changement a été fait : court.internalized_at = Time.now -->
+            <%= form_for(@court) do |f| %>
+              <%= f.hidden_field :user_id, :value => current_user.id  %>
+              <%= f.hidden_field :internalized_at, :value => Time.now %>
+              <%= f.hidden_field :is_external, :value => false %>
+              <%= f.submit "Oui, j'en suis le dominus litis", :class => "btn btn-sm" %>
+            <% end %>
+
+            </small></p>
           <% end %>
-
-
-          </small></p>
         </li>
       </div>
 
@@ -108,23 +128,29 @@
       <!-- court -->
       <%= render "court" %>
 
-      <div class="row">
-        <div class="col-md-8">
-        <!-- description (avec documents visibles à tout disponible) -->
-          <%= render "description" %>
+      <% if @court.infirmed %>
+        <li class="list-group-item list-group-item-warning text-center">
+        <b>Demande annulée</b>
+      </li>
+      <% else %>
+        <div class="row">
+          <div class="col-md-8">
+          <!-- description (avec documents visibles à tout disponible) -->
+            <%= render "description" %>
+          </div>
+
+          <div class="col-md-4">
+          <!-- personnes disponibles/choisie -->
+          <% if current_user == @court.user %>
+            <%= render "available_locos" %>
+            <% end %>
+          </div>
         </div>
 
-        <div class="col-md-4">
-        <!-- personnes disponibles/choisie -->
-        <% if current_user == @court.user %>
-          <%= render "available_locos" %>
-          <% end %>
-        </div>
-      </div>
 
-      <!-- conversations (avec documents visibles only aux membres de la conversation) -->
-      <%= render "conversations" %>
-
+        <!-- conversations (avec documents visibles only aux membres de la conversation) -->
+        <%= render "conversations" %>
+      <% end %>
     <% else %> <!-- connecté mais overdue -->
 
 

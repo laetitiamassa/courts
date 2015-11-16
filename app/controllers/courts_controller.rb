@@ -23,6 +23,8 @@ class CourtsController < ApplicationController
   # GET /courts/1
   # GET /courts/1.json
   def show
+    @confirmation = current_user.confirmations.build if current_user
+
     @response = current_user.responses.build if current_user
 
     @loco = Loco.new
@@ -59,9 +61,14 @@ class CourtsController < ApplicationController
 
     respond_to do |format|
       if @court.save
-        #send potential loco in the concerned bar a notification
-        UserMailer.new_court_in_my_bar(@court, users_in_bar).deliver if has_users_in_bar?
-        UserMailer.after_court_creation(@court, @court.user).deliver if has_users_in_bar?
+      
+          #send potential loco in the concerned bar a notification
+          UserMailer.new_court_in_my_bar(@court, users_in_bar).deliver if has_users_in_bar? && !@court.to_confirm
+          UserMailer.after_court_creation(@court, @court.user).deliver if has_users_in_bar? && !@court.to_confirm
+      
+          #envoyer notif à dl lui demandant s'il veut se faire remplacer pour cette audience
+          UserMailer.do_you_need_a_loco(@court, @court.user).deliver #if @court.to_confirm
+       
 
         format.html { redirect_to root_path, notice: t("courts.well_created") }
         format.json { render action: 'show', status: :created, location: @court }
@@ -123,7 +130,9 @@ class CourtsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def court_params
-      params.require(:court).permit(:performance, :jurisdiction, :date, :bar, :have_found, :details, :is_external, :external_requester_first_name, :external_requester_last_name, :external_requester_email, :internalized_at, :user_id)
+      params.require(:court).permit(:user_id, :performance, :jurisdiction, :date, :bar, :have_found, :details, 
+                                    :is_external, :external_requester_first_name, :external_requester_last_name, :external_requester_email, :internalized_at,
+                                    :to_confirm, :confirmed, :infirmed, :confirmed_at, :infirmed_at)
     end
 
 end

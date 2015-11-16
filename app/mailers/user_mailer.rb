@@ -50,6 +50,16 @@ class UserMailer < ActionMailer::Base
   def another_loco_has_been_chosen #envoyé à chaque répondant non choisi, quand un loco est choisi
   end
 
+  def do_you_need_a_loco(court, user)
+    @court = court
+    @external_requester_email = court.external_requester_email
+    mail(
+      :from => "Courts.be | votre outil de remplacement 2.0 <contact@courts.be>",
+      :to => @external_requester_email,
+      :subject => "Votre audience : trouvez un remplaçant en quelques minutes"
+      )
+  end
+
 
   # def weekly(email)
   #   mail(

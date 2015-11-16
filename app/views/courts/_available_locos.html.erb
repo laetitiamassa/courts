@@ -1,82 +1,84 @@
 <!-- Les réponses obtenues -->  
   <ul class="list-group">
-    <li class="list-group-item text-center">
-      <b><small><%= t("courts.locos.there_are") %> 
-        <% if !@court.current %>
-         <%= t("courts.locos.there_have_been") %> 
+
+      <li class="list-group-item text-center">
+        <b><small><%= t("courts.locos.there_are") %> 
+          <% if !@court.current %>
+           <%= t("courts.locos.there_have_been") %> 
+          <% end %>
+          <%= @court.responses.count %> <%= t("courts.locos.responses_to_your_court") %></small></b>
+        <% if @court.current %>
+          <br>
+          <small><%= t("courts.locos.choose_your_loco") %></small>
         <% end %>
-        <%= @court.responses.count %> <%= t("courts.locos.responses_to_your_court") %></small></b>
-      <% if @court.current %>
-        <br>
-        <small><%= t("courts.locos.choose_your_loco") %></small>
-      <% end %>
-    </li>
-    
-        <% @court.responses.each do |response| %>
+      </li>
+      
+          <% @court.responses.each do |response| %>
 
-          <li class="list-group-item">
-            
-            Me <%= link_to response.user.last_name_or_placeholder, user_path(response.user) if response.user %>
-            
-            <% if @loco_lawyer %>
+            <li class="list-group-item">
+              
+              Me <%= link_to response.user.last_name_or_placeholder, user_path(response.user) if response.user %>
+              
+              <% if @loco_lawyer %>
 
-              <% if response.user == @court.locos.last.user %>
-                <% if @court.current %>
-                  <!-- <%= link_to(@court.locos.last, method: :delete) do %>
-                    <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-remove btn-sm btn-danger pull-right') -%>
-                  <% end %> -->
-                  <!-- pour changer de loco, il faut cliquer sur le bouton, les autres répondants apparaîtront, et il suffira de créer un nouveau loco (qui sera locos.last) %> -->
-                  
-                  <button class="btn btn-xs btn-danger pull-right" type="button" data-toggle="collapse" data-target="#collapseLoco" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fa fa-remove"></i>
-                  </button>
-
-                  <button class="btn btn-success btn-xs pull-right disabled">loco</button>
-                  <div class="collapse row" id="collapseLoco">
+                <% if response.user == @court.locos.last.user %>
+                  <% if @court.current %>
+                    <!-- <%= link_to(@court.locos.last, method: :delete) do %>
+                      <%= content_tag(:i, " " ,:class=> 'glyphicon glyphicon-remove btn-sm btn-danger pull-right') -%>
+                    <% end %> -->
+                    <!-- pour changer de loco, il faut cliquer sur le bouton, les autres répondants apparaîtront, et il suffira de créer un nouveau loco (qui sera locos.last) %> -->
                     
-                      
-                      <ul class="list-group col-md-10 col-md-offset-1">
-                        <li class="list-group-item">
-                          <small><%= t("courts.locos.choose_another_loco") %></small>
-                        </li>
-                        <% @court.responses.each do |r| %>
+                    <button class="btn btn-xs btn-danger pull-right" type="button" data-toggle="collapse" data-target="#collapseLoco" aria-expanded="false" aria-controls="collapseExample">
+                      <i class="fa fa-remove"></i>
+                    </button>
 
-                          <% unless r.user == @loco_lawyer %>
-                            <li class="list-group-item">
-                              Me <%= link_to r.user.last_name_or_placeholder, user_path(r.user) if r.user %>
-                              <%= form_for(@loco) do |f| %>
-                                <%= f.hidden_field :court_id, :value => @court.id %>
-                                <%= f.hidden_field :user_id, :value => r.user.id %>
-                                <button type="submit" class="btn btn-xs btn-success pull-right">
-                                      <%= t("courts.locos.choose") %>
-                                </button>
-                              <% end %>
-                            </li>
+                    <button class="btn btn-success btn-xs pull-right disabled">loco</button>
+                    <div class="collapse row" id="collapseLoco">
+                      
+                        
+                        <ul class="list-group col-md-10 col-md-offset-1">
+                          <li class="list-group-item">
+                            <small><%= t("courts.locos.choose_another_loco") %></small>
+                          </li>
+                          <% @court.responses.each do |r| %>
+
+                            <% unless r.user == @loco_lawyer %>
+                              <li class="list-group-item">
+                                Me <%= link_to r.user.last_name_or_placeholder, user_path(r.user) if r.user %>
+                                <%= form_for(@loco) do |f| %>
+                                  <%= f.hidden_field :court_id, :value => @court.id %>
+                                  <%= f.hidden_field :user_id, :value => r.user.id %>
+                                  <button type="submit" class="btn btn-xs btn-success pull-right">
+                                        <%= t("courts.locos.choose") %>
+                                  </button>
+                                <% end %>
+                              </li>
+                            <% end %>
+
                           <% end %>
-
-                        <% end %>
-                      </ul>
+                        </ul>
+                        
                       
-                    
-                  </div>
+                    </div>
+                  <% end %>
+
+                  
                 <% end %>
 
-                
+              <% else %>
+
+                <%= form_for(@loco) do |f| %>
+                  <%= f.hidden_field :court_id, :value => @court.id %>
+                  <%= f.hidden_field :user_id, :value => response.user.id %>
+                  <button type="submit" class="btn btn-xs btn-success pull-right">
+                        <%= t("courts.locos.choose") %>
+                  </button>
+                <% end %>
               <% end %>
 
-            <% else %>
+              <br>
+            </li>
+      <% end %>
 
-              <%= form_for(@loco) do |f| %>
-                <%= f.hidden_field :court_id, :value => @court.id %>
-                <%= f.hidden_field :user_id, :value => response.user.id %>
-                <button type="submit" class="btn btn-xs btn-success pull-right">
-                      <%= t("courts.locos.choose") %>
-                </button>
-              <% end %>
-            <% end %>
-
-            <br>
-          </li>
-    <% end %>
   </ul>
 

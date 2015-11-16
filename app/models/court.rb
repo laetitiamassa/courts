@@ -13,6 +13,8 @@ class Court < ActiveRecord::Base
 
 	has_many :notifications, :as => :notifiable
 
+	has_one :confirmation
+
 	
 	validates :performance, presence: true
 	validates :jurisdiction, presence: true
