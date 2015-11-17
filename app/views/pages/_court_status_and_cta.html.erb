@@ -1,4 +1,37 @@
+<% if court.is_external && court.external_requester_last_name && current_user.email.include?(court.external_requester_last_name.downcase) %>
 
+	<% if court.to_confirm %>
+
+            <div class='row'>
+            	<div class='col-md-3 col-md-offset-2'>
+              <%= form_for (@confirmation) do |f| %>
+                <%= f.hidden_field :court_id, :value => court.id %>
+                <%= f.hidden_field :infirmed, :value => true %>
+                <%= f.submit "Annuler", :class => "btn btn-xs" %>
+              <% end %>
+            </div>
+            <div class="col-md-7">
+              <%= form_for (@confirmation) do |f| %>
+                <%= f.hidden_field :court_id, :value => court.id %>
+                <%= f.hidden_field :confirmed, :value => true %>
+                <%= f.submit "Confirmer la demande", :class => "btn btn-sm btn-block btn-success" %>
+              <% end %>
+            </div>
+            
+          </div>
+            
+         <% else %>
+            
+            <%= form_for(@court) do |f| %>
+              <%= f.hidden_field :user_id, :value => current_user.id  %>
+              <%= f.hidden_field :internalized_at, :value => Time.now %>
+              <%= f.hidden_field :is_external, :value => false %>
+              <%= f.submit "Confirmer ma demande", :class => "btn btn-sm btn-primary" %>
+            <% end %>
+
+          <% end %>
+
+<% else %>
       <!-- modifier / proposer ses services => vous avez répondu => vous intervenez loco / trouvé -->
    
 <!-- DL -->
@@ -56,5 +89,5 @@
 	<% end %>
 
 <% end %>
-
+<% end %>
  

@@ -388,8 +388,6 @@ class User < ActiveRecord::Base
     self.email == "laetitiamassa@gmail.com" or self.email == "lol@lol.com"
   end
 
-
-
 # email hebdomadaire audiences
   def self.weekly
     @users = User.all

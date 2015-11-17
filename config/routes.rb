@@ -56,6 +56,8 @@ Courts::Application.routes.draw do
 
   get "edit_coordonnees" => "users#edit_coordonnees"
   get "edit_activity" => "users#edit_activity"
+
+  get "courts_to_confirm" => "courts#to_confirm"
   
 
   # The priority is based upon order of creation: first created -> highest priority.

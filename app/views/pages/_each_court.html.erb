@@ -1,4 +1,9 @@
+<% if court.is_external && court.external_requester_last_name && current_user.email.include?(court.external_requester_last_name.downcase) %>
+<li class="list-group-item list-group-item-info">
+<% else %>
+
 <li class="list-group-item">
+	<% end %>
 						<div class="row">
 						  <div class="col-md-2 center">
 					        <small><%= l court.date_display, :format => '%A' %></small>

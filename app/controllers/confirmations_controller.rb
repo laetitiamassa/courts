@@ -13,14 +13,14 @@ class ConfirmationsController < InheritedResources::Base
 
 
   		if @confirmation.confirmed
-	  		@court.update_attributes(:is_external => false, :to_confirm => false, :confirmed_at => Time.now, :internalized_at => Time.now, :user_id => @confirmation.user.id)
+	  		@confirmation.court.update_attributes(:is_external => false, :to_confirm => false, :confirmed_at => Time.now, :internalized_at => Time.now, :user_id => @confirmation.user.id)
 	  	elsif @confirmation.infirmed
-	  		@court.update_attributes(:is_external => false, :to_confirm => false, :infirmed => true, :infirmed_at => Time.now, :user_id => @confirmation.user.id)
+	  		@confirmation.court.update_attributes(:is_external => false, :to_confirm => false, :infirmed => true, :infirmed_at => Time.now, :user_id => @confirmation.user.id)
 	  	end
 
 
 	  	if @confirmation.confirmed
-	        format.html { redirect_to court_path(@court), notice: "Votre demande de remplacement est bien confirmée. Vous pouvez choisir parmi vos confrères disponibles." }
+	        format.html { redirect_to court_path(@confirmation.court), notice: "Votre demande de remplacement est bien confirmée. Vous pouvez choisir parmi vos confrères disponibles." }
 	    elsif @confirmation.infirmed
 	    	format.html { redirect_to root_path, notice: "Merci pour votre réponse. Cette demande de remplacement est maintenant désactivée." }
 	    end

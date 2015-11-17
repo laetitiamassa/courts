@@ -27,6 +27,9 @@ class PagesController < ApplicationController
 
     @response = current_user.responses.build if current_user
 
+    @external_courts = Court.where(:is_external => true)
+    @confirmation = current_user.confirmations.build if current_user
+
     # @questions = Question.all
     # @question = current_user.questions.build if current_user
 
