@@ -85,7 +85,7 @@ Courts::Application.configure do
     :user_name => "contact@courts.be",
     :password  => "gNPcW50j1B0YkzDJcXbZ8Q", # SMTP password is any valid API key
     :authentication => 'login', # Mandrill supports 'plain' or 'login'
-    :domain => 'courts.be', # your domain to identify your server when connecting
+    :domain => 'devcourts.herokuapp.com', # your domain to identify your server when connecting
   }
 
 
