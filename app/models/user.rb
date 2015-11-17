@@ -385,7 +385,7 @@ class User < ActiveRecord::Base
   end
 
   def is_power_user
-    self.email == "laetitiamassa@gmail.com" #"lol@lol.com"
+    self.email == "laetitiamassa@gmail.com" or self.email == "lol@lol.com"
   end
 
 

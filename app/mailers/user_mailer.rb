@@ -56,7 +56,7 @@ class UserMailer < ActionMailer::Base
     mail(
       :from => "Courts.be | votre outil de remplacement 2.0 <contact@courts.be>",
       :to => @external_requester_email,
-      :subject => "Votre audience : trouvez un remplaçant en quelques minutes"
+      :subject => "Votre audience du #{l @court.date_display, :format => '%e %B'} prochain : trouvez un remplaçant en quelques minutes"
       )
   end
 

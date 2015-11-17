@@ -1,1 +1,29 @@
-do_you_need_a_loco.html.erb
+<p><%= t("mailer.salutation") %></p>
+
+<p>Souhaitez-vous vous faire remplacer par un de vos confrères lors de votre audience du <%= l @court.date_display, :format => '%e %B'%> prochain ?</p>
+
+<p>Rien de plus simple, grâce à Courts.be !</p>
+
+<p>En effet, <%= link_to "Courts.be", root_url %> <%= t("devise.mailer.invitation_instructions.content3") %></p>
+
+<p>Il ne vous reste plus qu'à <b>confirmer, en un clic, votre demande de remplacement</b>, et <b>choisir ensuite parmi vos confrères disponibles</b> pour vous remplacer.</p>
+
+<%= link_to court_url(@court) do %>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td align="center" width="300" height="40" bgcolor="#c0392b" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">
+<span style="font-size:16px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; line-height:40px; width:100%; display:inline-block"><span style="color: #FFFFFF">
+	Voir ma demande
+</span></span>
+</td>
+</tr>
+</table>
+<% end %>
+
+<br><%= t("mailer.button_does_not_work") %><%= link_to t("mailer.here"), court_url(@court) %>.
+
+<p>Pour en savoir plus sur Courts.be, vous pouvez cliquer <%= link_to t("mailer.here"), root_url %>.</p>
+
+<p class="signature"><%= t("mailer.end_salutation") %>
+	<br><%= t("mailer.signature_team") %>
+</p>

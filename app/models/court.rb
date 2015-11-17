@@ -71,14 +71,26 @@ class Court < ActiveRecord::Base
 	    @users_in_bar = User.where(:bar => self.bar)
 		
 		@users_in_bar.each do |user|
-		    Notification.create(
-		      notifier: self.user,
-		      notifiable_type: "Court",
-		      notifiable_id: self.id,
-		      notifiee: user,
-		      message: "Me #{self.user.last_name_or_placeholder} recherche un remplaçant",
-		      read: false
-		    )
+			if self.is_external
+				Notification.create(
+			      notifier: self.user,
+			      notifiable_type: "Court",
+			      notifiable_id: self.id,
+			      notifiee: user,
+				  message: "Me #{self.external_requester_last_name} recherche un remplaçant",
+				  read: false
+				)
+			else
+
+			    Notification.create(
+			      notifier: self.user,
+			      notifiable_type: "Court",
+			      notifiable_id: self.id,
+			      notifiee: user,
+				  message: "Me #{self.user.last_name_or_placeholder} recherche un remplaçant",
+			      read: false
+			    )
+			end
 		end
 	end
 

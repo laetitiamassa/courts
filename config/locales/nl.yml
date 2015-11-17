@@ -40,18 +40,18 @@ nl:
       short: ! '%e %b'
     month_names:
     - 
-    - Januari
-    - Februari
-    - Maart
-    - April
-    - Mei
-    - Juni
-    - Juli
-    - Augustus
-    - September
-    - Oktober
-    - November
-    - December
+    - anuari
+    - februari
+    - maart
+    - april
+    - mei
+    - juni
+    - juli
+    - augustus
+    - september
+    - oktober
+    - november
+    - december
     order:
     - :day
     - :month
