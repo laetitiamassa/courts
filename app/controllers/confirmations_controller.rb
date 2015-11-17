@@ -13,9 +13,9 @@ class ConfirmationsController < InheritedResources::Base
 
 
   		if @confirmation.confirmed
-	  		@court.update_attributes(:is_external => false, :to_confirm => false, :confirmed_at => Time.now, :internalized_at => Time.now)
+	  		@court.update_attributes(:is_external => false, :to_confirm => false, :confirmed_at => Time.now, :internalized_at => Time.now, :user_id => @confirmation.user.id)
 	  	elsif @confirmation.infirmed
-	  		@court.update_attributes(:is_external => false, :to_confirm => false, :infirmed => true, :infirmed_at => Time.now)
+	  		@court.update_attributes(:is_external => false, :to_confirm => false, :infirmed => true, :infirmed_at => Time.now, :user_id => @confirmation.user.id)
 	  	end
 
 

@@ -303,8 +303,8 @@ nl:
     contact_us: "Om meer informatie, contacteer ons"
   bars:
     Arlon: "Aaren"
-    BrusselsFR: "Brussel - OBFG"
-    BrusselsNL: "Brussel - OVB"
+    BrusselsFR: "Brussel (FR)"
+    BrusselsNL: "Brussel (NL)"
     Charleroi: "Charleroi"
     Dinant: "Dinant"
     Eupen: "Eupen"
