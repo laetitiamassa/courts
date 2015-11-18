@@ -16,6 +16,17 @@
     </div>
   <% end %>
 
+  <% if current_user.is_power_user %>
+  <li class="list-group-item">
+    <%= f.check_box :is_external %> est externe
+    <br><%= f.check_box :to_confirm %> à confirmer
+    <br><%= f.text_field :external_requester_first_name, :placeholder => "prénom", class: "form-control" %> 
+    <br><%= f.text_field :external_requester_last_name, :placeholder => "nom", class: "form-control" %>
+    <br><%= f.text_field :external_requester_email, :placeholder => "email", class: "form-control" %>
+  </li>
+  <br>
+<% end %>
+
   <div class="form-group col-md-4 few-padding-right">
     <div class='input-group input-group-lg' id='datetimepicker'>
       <%= f.text_field :date, class: "form-control input-lg" %>

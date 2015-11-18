@@ -20,14 +20,6 @@ class CourtsController < ApplicationController
     @bars = Court.bars
   end
 
-  def to_confirm
-    @courts_to_confirm = Court.where("external_requester_last_name ilike ?", "%#{current_user.email}%")
-    @courts = Court.all
-    @court = current_user.courts.build if current_user
-    @response = current_user.responses.build if current_user
-    @bars = Court.bars
-  end
-
   # GET /courts/1
   # GET /courts/1.json
   def show

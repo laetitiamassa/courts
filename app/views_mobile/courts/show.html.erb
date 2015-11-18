@@ -5,8 +5,6 @@
 
 <% if @court.is_external %>
 
-
-
   <% if user_signed_in? %>
 
     <% if current_user.has_active_access %>
@@ -29,6 +27,30 @@
             <br></h4>
           <%= render "status_and_cta" %>
          
+
+         <% if @court.to_confirm %>
+            <p><small><br>
+              S'agit-il de votre audience ? Confirmez la demande de remplacement :
+              <div class='row'>
+                <div class="col-xs-7">
+              <%= form_for (@confirmation) do |f| %>
+                <%= f.hidden_field :court_id, :value => @court.id %>
+                <%= f.hidden_field :confirmed, :value => true %>
+                <%= f.submit "Je confirme", :class => "btn btn-sm btn-block btn-success" %>
+              <% end %>
+            </div>
+            <div class='col-xs-5'>
+              <%= form_for (@confirmation) do |f| %>
+                <%= f.hidden_field :court_id, :value => @court.id %>
+                <%= f.hidden_field :infirmed, :value => true %>
+                <%= f.submit "Finalement, non", :class => "btn btn-sm btn-block" %>
+              <% end %>
+            </div>
+          </div>
+            </small></p>
+
+         <% else %>
+
           <p><small><br>S'agit-il de votre demande de remplacement ?
 
        
@@ -43,6 +65,7 @@
 
 
           </small></p>
+          <% end %>
         </li>
       </div>
 
